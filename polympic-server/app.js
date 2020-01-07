@@ -1,41 +1,47 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const route = require('./routes');
+const path = require('path');
+const { handle404Error, handleDevErrors, handleClientErrors, logErrors } = require('./middlewares/error-handlers');
+const { LogTheTransaction } = require('./config/logger');
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
+app.disable('x-powered-by');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+if (process.env.NODE_ENV === 'production') {
+  app.enable('trust proxy');
+}
+
+// log everything that pass to the router
+app.use((req, res, next) => {
+  LogTheTransaction(`${req.originalUrl} - ${req.method} - ${req.ip}`, 'info');
+  next();
+});
+
+
+// add all the routes
+app.use('/', route.main);
+// starter route
+app.use('/users', route.users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// triggered when a non-existent route attempts to be accessed
+app.use(handle404Error);
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// log the errors
+app.use(logErrors);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// client error handler
+app.use(handleClientErrors);
+
+// dev error handler
+app.use(handleDevErrors);
 
 module.exports = app;
