@@ -4,7 +4,7 @@ import 'package:polympic/services/service.dart';
 enum BasicEvent { fetch }
 
 class BasicState extends BlocBase<BasicEvent, int> {
-  BasicState(int seed) : super(seed: seed, initEvent: BasicEvent.fetch);
+  BasicState() : super(seed: 0, initEvent: BasicEvent.fetch);
 
   @override
   Stream<int> eventToState(BasicEvent event, [data]) async* {
