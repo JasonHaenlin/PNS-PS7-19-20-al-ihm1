@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/blocs/basic/basic_bloc.dart';
-import 'package:polympic/blocs/basic/basic_state.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 
 class AppPage extends StatelessWidget {
@@ -8,15 +7,14 @@ class AppPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = BlocProvider.of<BasicBloc>(context).basicBloc;
-    authBloc.dispatch(BasicEvent.fetch);
+    final basicBloc = BlocProvider.of<BasicBloc>(context).basicBloc;
 
     return StreamBuilder(
-        stream: authBloc.currentValue$,
+        stream: basicBloc.currentValue$,
         builder: (BuildContext context, AsyncSnapshot snapshot) =>
-            snapshot.hasData && snapshot.data
+            snapshot.hasData
                 ? Center(
-                    child: Text(snapshot.data),
+                    child: Text(snapshot.data.toString()),
                   )
                 : Center());
   }

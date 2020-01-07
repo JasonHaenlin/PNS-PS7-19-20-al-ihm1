@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/blocs/basic/basic_bloc.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/loading/loading_bloc.dart';
 import 'package:polympic/screens/app-page/app-page.dart';
@@ -11,10 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LoadingBloc>(
       bloc: LoadingBloc(),
-      child: MaterialApp(
-        title: 'Polympic basic',
-        theme: appTheme(),
-        home: AppPage(),
+      child: BlocProvider<BasicBloc>(
+        bloc: BasicBloc(),
+        child: MaterialApp(
+          title: 'Polympic basic',
+          theme: appTheme(),
+          home: AppPage(),
+        ),
       ),
     );
   }

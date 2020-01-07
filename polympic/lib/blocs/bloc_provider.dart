@@ -9,5 +9,7 @@ class BlocProvider<T> extends InheritedWidget {
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
   static T of<T>(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<BlocProvider<T>>().bloc;
+      (context.dependOnInheritedWidgetOfExactType<BlocProvider<T>>()).bloc;
+
+  static Type _typeOf<T>() => T;
 }
