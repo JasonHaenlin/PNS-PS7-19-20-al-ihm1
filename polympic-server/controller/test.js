@@ -1,7 +1,7 @@
-const { Test } = require('../middlewares/orm')
+const { Test } = require('../models')
 
 module.exports = {
     getTest() {
-        return Test.query();
+        return Test.get()
     }
 };
