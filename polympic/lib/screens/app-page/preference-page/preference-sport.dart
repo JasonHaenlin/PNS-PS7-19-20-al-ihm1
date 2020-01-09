@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:polympic/blocs/basic/category_bloc.dart';
 import 'package:polympic/blocs/basic/category_state.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/core/router.dart';
 import 'package:polympic/models/category_model.dart';
+import 'package:polympic/theme/colors.dart';
 
 class PreferenceSport extends StatelessWidget {
   const PreferenceSport({Key key}) : super(key: key);
@@ -41,7 +43,7 @@ class ListSports extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           tooltip: 'close',
-          onPressed: () => {},
+          onPressed: () => navigateBackFromPage(context),
         ),
       ),
       body: ListView.builder(
@@ -64,6 +66,10 @@ class SportCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
+
+    _categoryBloc.dispatch(CategoryEvent.fetch);
+
     return Container(
         decoration: BoxDecoration(
           border: Border(
@@ -80,7 +86,7 @@ class SportCard extends StatelessWidget {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Material(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     clipBehavior: Clip.antiAlias,
@@ -94,15 +100,22 @@ class SportCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 15),
-                Text(this.data.label),
+                Text(this.data.label,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
               child: Container(
                 child: RaisedButton(
-                  onPressed: () => print('RELAOD'),
-                  child: Text('Ajouter'),
+                  color: this.data.added ? kColorAccent : kColorIconSelected,
+                  onPressed: () => {
+                    _categoryBloc.dispatch(CategoryEvent.update, {
+                      'category': this.data,
+                      'checked': this.data.added ? 'false' : 'true',
+                    }),
+                  },
+                  child: Text(this.data.added ? 'Ajouter' : 'Retirer'),
                 ),
               ),
             ),

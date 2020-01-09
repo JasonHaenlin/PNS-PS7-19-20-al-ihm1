@@ -4,11 +4,13 @@ class CategoryModel {
   final String label;
   final String tag;
   final String image;
+  bool added;
 
-  const CategoryModel({
+  CategoryModel({
     @required this.label,
     @required this.tag,
     @required this.image,
+    this.added,
   })  : assert(label != null),
         assert(tag != null),
         assert(image != null);

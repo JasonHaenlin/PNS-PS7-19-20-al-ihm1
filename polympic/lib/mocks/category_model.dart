@@ -27,6 +27,6 @@ const CATEGORY_MOCK = [
   {
     "label": "Tir à L'arc",
     "tag": "Sport",
-    "image": "assets/images/tiraarc.jpg",
+    "image": "assets/images/tiralarc.jpg",
   },
 ];

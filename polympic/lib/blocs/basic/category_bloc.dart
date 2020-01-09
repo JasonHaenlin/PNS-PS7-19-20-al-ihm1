@@ -1,9 +1,9 @@
 import 'package:polympic/blocs/basic/category_state.dart';
 
 class CategoryBloc {
-  CategoryState _entry;
+  CategoryState _category;
 
-  CategoryBloc() : _entry = CategoryState();
+  CategoryBloc() : _category = CategoryState();
 
-  CategoryState get categoryBloc => _entry;
+  CategoryState get categoryBloc => _category;
 }
