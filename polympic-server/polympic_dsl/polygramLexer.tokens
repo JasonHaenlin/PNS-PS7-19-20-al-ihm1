@@ -1,0 +1,27 @@
+T__0=1
+T__1=2
+T__2=3
+T__3=4
+CONCERNS=5
+PROGRAM=6
+IDENTIFIER=7
+FOREACH=8
+NUMBER=9
+AND=10
+OR=11
+WHEN=12
+THEN=13
+EOL=14
+WS=15
+'>'=1
+'<'=2
+'='=3
+'display'=4
+'concerns'=5
+'program'=6
+'score'=7
+'for each'=8
+'and'=10
+'or'=11
+'when'=12
+'then'=13
