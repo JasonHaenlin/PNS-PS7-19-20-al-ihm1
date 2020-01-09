@@ -6,8 +6,7 @@ ThemeData appTheme() {
   return ThemeData(
     //
     brightness: Brightness.light,
-    primaryColorDark: kColorPrimaryDark,
-    primaryColorLight: kColorPrimaryLight,
+    primaryColorLight: kColorPrimary,
     primaryColor: kColorPrimary,
     accentColor: kColorAccent,
     hintColor: Colors.black38,
@@ -17,7 +16,7 @@ ThemeData appTheme() {
     canvasColor: Colors.white,
 
     appBarTheme: AppBarTheme(
-      color: kColorAccent,
+      color: kColorPrimary,
       textTheme: TextTheme(
         title: TextStyle(fontSize: 20.0, color: kColorTextIcon),
         subtitle: TextStyle(fontSize: 14.0, color: kColorTextIcon),
@@ -29,9 +28,10 @@ ThemeData appTheme() {
 
     buttonTheme: ButtonThemeData(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        borderRadius: BorderRadius.all(Radius.circular(20.0)),
       ),
-      buttonColor: kColorPrimary,
+      buttonColor: kColorAccent,
+      textTheme: ButtonTextTheme.primary,
     ),
 
     inputDecorationTheme: InputDecorationTheme(
