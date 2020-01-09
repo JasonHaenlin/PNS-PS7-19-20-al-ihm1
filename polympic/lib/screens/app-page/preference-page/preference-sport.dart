@@ -1,20 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/core/router.dart';
+import 'package:polympic/blocs/basic/category_bloc.dart';
+import 'package:polympic/blocs/basic/category_state.dart';
+import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/models/category_model.dart';
 
 class PreferenceSport extends StatelessWidget {
   const PreferenceSport({Key key}) : super(key: key);
 
-  static List<String> _sports = ["Football", "Tennis", "Rugby"];
-  static List<String> _images = [
-    "assets/images/football.jpg",
-    "assets/images/tennis.jpg",
-    "assets/images/rugby.png"
-  ];
+  @override
+  Widget build(BuildContext context) {
+    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
+
+    _categoryBloc.dispatch(CategoryEvent.fetch);
+
+    return StreamBuilder<List<CategoryModel>>(
+      stream: _categoryBloc.currentValue$,
+      builder:
+          (BuildContext context, AsyncSnapshot<List<CategoryModel>> snapshot) =>
+              snapshot.hasData
+                  ? ListSports(data: snapshot.data)
+                  : Center(child: CircularProgressIndicator()),
+    );
+  }
+}
+
+class ListSports extends StatelessWidget {
+  const ListSports({
+    Key key,
+    @required List<CategoryModel> data,
+  })  : _data = data,
+        super(key: key);
+
+  final List<CategoryModel> _data;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Sports"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           tooltip: 'close',
@@ -22,12 +45,9 @@ class PreferenceSport extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: _sports.length,
+        itemCount: _data.length,
         itemBuilder: (BuildContext context, int index) {
-          return SportCard(
-            label: _sports[index],
-            image: _images[index],
-          );
+          return SportCard(data: _data[index]);
         },
       ),
     );
@@ -37,12 +57,10 @@ class PreferenceSport extends StatelessWidget {
 class SportCard extends StatelessWidget {
   const SportCard({
     Key key,
-    @required this.label,
-    @required this.image,
+    @required this.data,
   }) : super(key: key);
 
-  final String label;
-  final String image;
+  final CategoryModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +86,7 @@ class SportCard extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     elevation: 2.0,
                     child: Image.asset(
-                      this.image,
+                      this.data.image,
                       fit: BoxFit.cover,
                       width: 50,
                       height: 50,
@@ -76,7 +94,7 @@ class SportCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 15),
-                Text(label),
+                Text(this.data.label),
               ],
             ),
             Padding(

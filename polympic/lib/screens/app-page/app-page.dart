@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/screens/app-page/agenda-page.dart/agenda-page.dart';
 import 'package:polympic/screens/app-page/itinerary-page.dart/itinerary-page.dart';
-import 'package:polympic/screens/preference-view/preference-view.dart';
 
 class AppPage extends StatefulWidget {
   @override
@@ -17,7 +16,7 @@ class _AppPage extends State<AppPage> {
 
   @override
   Widget build(BuildContext context) {
-    var scaffold = Scaffold(
+    return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
@@ -34,7 +33,6 @@ class _AppPage extends State<AppPage> {
         ],
       ),
     );
-    return scaffold;
   }
 
   void onTabTapped(int index) {
