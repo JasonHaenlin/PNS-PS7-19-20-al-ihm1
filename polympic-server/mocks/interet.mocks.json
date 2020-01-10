@@ -1,34 +1,47 @@
 [
     {
         "name": "Football",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Rugby",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Handball",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Curling",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Pétanque",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Volleyball",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Tennis",
+        "tag": "sport",
         "img": ""
     },
     {
         "name": "Football",
+        "tag": "sport",
+        "img": ""
+    },
+    {
+        "name": "Pause repas",
+        "tag": "détente",
         "img": ""
     }
 ]
