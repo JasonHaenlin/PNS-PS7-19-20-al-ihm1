@@ -16,6 +16,17 @@ module.exports = {
       });
     });
     return empty;
+  },
+
+  getSortedEvenement(prop, asc) {
+    let collection = Evenement.get();
+    return collection.sort(function sort(a, b) {
+      if (asc) {
+        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+      } else {
+        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+      }
+    });
   }
 
 };
