@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/screens/app-page/agenda-page.dart/agenda-page.dart';
-import 'package:polympic/screens/app-page/itinerary-page.dart/itinerary-page.dart';
+import 'package:polympic/screens/app-page/agenda-page/agenda_page.dart';
+import 'package:polympic/screens/app-page/itinerary-page/itinerary_page.dart';
 
 class AppPage extends StatefulWidget {
   @override

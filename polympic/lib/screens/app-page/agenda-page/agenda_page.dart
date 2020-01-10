@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/blocs/basic/event-bloc/event_state.dart';
-import 'package:polympic/blocs/basic/event-bloc/event_bloc.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/blocs/event/event_bloc.dart';
+import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/models/event_model.dart';
 
 import 'components/list_events.dart';

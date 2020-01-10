@@ -1,6 +1,6 @@
 import 'package:polympic/blocs/bloc_base.dart';
 import 'package:polympic/models/event_model.dart';
-import 'package:polympic/services/event-service.dart';
+import 'package:polympic/services/event_service.dart';
 
 enum EventEvent { fetch, update }
 

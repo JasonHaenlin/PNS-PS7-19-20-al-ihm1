@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/core/router.dart';
-import 'package:polympic/screens/app-page/preference-page/preference-sport.dart';
+import 'package:polympic/screens/app-page/preference-page/preference_sport.dart';
 
 class ItinerariesPage extends StatelessWidget {
   const ItinerariesPage({

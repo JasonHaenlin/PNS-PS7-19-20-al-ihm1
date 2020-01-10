@@ -1,4 +1,4 @@
-import 'package:polympic/blocs/basic/event-bloc/event_state.dart';
+import 'package:polympic/blocs/event/event_state.dart';
 
 class EventBloc {
   EventState _event;

@@ -8,7 +8,7 @@ class Category {
         CATEGORY_MOCK.map((item) => CategoryModel.fromMap(item)).toList();
 
     for (CategoryModel d in data) {
-      String check = await readStorage(key: d.label);
+      String check = await readStorage(key: d.label, nullReturnValue: 'false');
       d.added = check == 'true';
     }
 

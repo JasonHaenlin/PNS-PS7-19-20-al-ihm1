@@ -1,6 +1,6 @@
 import 'package:polympic/blocs/bloc_base.dart';
 import 'package:polympic/models/category_model.dart';
-import 'package:polympic/services/category-service.dart';
+import 'package:polympic/services/category_service.dart';
 
 enum CategoryEvent { fetch, update }
 

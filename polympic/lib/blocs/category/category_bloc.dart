@@ -1,4 +1,4 @@
-import 'package:polympic/blocs/basic/category_state.dart';
+import 'package:polympic/blocs/category/category_state.dart';
 
 class CategoryBloc {
   CategoryState _category;

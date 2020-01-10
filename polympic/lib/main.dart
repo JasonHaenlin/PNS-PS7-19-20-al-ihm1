@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/blocs/basic/category_bloc.dart';
-import 'package:polympic/blocs/basic/event-bloc/event_bloc.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/blocs/category/category_bloc.dart';
+import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/loading/loading_bloc.dart';
-import 'package:polympic/screens/app-page/app-page.dart';
+import 'package:polympic/screens/app-page/app_page.dart';
+import 'package:polympic/screens/app-page/itinerary-page/itinerary/itinerary.dart';
 import 'package:polympic/theme/style.dart';
 
 void main() => runApp(MyApp());

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/blocs/basic/category_bloc.dart';
-import 'package:polympic/blocs/basic/category_state.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/blocs/category/category_bloc.dart';
+import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/category_model.dart';
 import 'package:polympic/theme/colors.dart';
