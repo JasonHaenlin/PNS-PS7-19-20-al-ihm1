@@ -1,49 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/components/timeline.dart';
+import 'package:polympic/theme/colors.dart';
 
 class Itinerary extends StatelessWidget {
-  const Itinerary({Key key}) : super(key: key);
+  const Itinerary({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.orange),
+      appBar: AppBar(backgroundColor: kColorPrimary),
       body: Timeline(
-        childrens: <Widget>[
-          ExpansionTile(
-            title: Tile(
-              childrens: <Widget>[
-                Text("Match de Football"),
-                Text("8h00 - 9h00"),
-              ],
-            ),
-            children: <Widget>[
+        childrens: <TimelineTab>[
+          TimelineTab(
+            title: "Match de Football",
+            beginDate: DateTime(2020, 1, 7, 8, 00),
+            endDate: DateTime(2020, 1, 7, 10, 00),
+            dropChildrens: <Widget>[
               Text("data"),
               Text("data"),
               Text("data"),
             ],
           ),
-          ExpansionTile(
-            title: Tile(
-              childrens: <Widget>[
-                Text("Match de Football"),
-                Text("8h00 - 9h00"),
-              ],
-            ),
-            children: <Widget>[
+          TimelineTab(
+            title: "Match de Rugby",
+            beginDate: DateTime(2020, 1, 7, 11, 00),
+            endDate: DateTime(2020, 1, 7, 12, 00),
+            dropChildrens: <Widget>[
               Text("data"),
               Text("data"),
               Text("data"),
             ],
           ),
-          ExpansionTile(
-            title: Tile(
-              childrens: <Widget>[
-                Text("Match de Football"),
-                Text("8h00 - 9h00"),
-              ],
-            ),
-            children: <Widget>[
+          TimelineTab(
+            title: "Match de Tennis",
+            beginDate: DateTime(2020, 1, 7, 15, 00),
+            endDate: DateTime(2020, 1, 7, 19, 00),
+            dropChildrens: <Widget>[
+              Text("data"),
+              Text("data"),
+              Text("data"),
+            ],
+          ),
+          TimelineTab(
+            title: "Match de Tennis",
+            beginDate: DateTime(2020, 1, 7, 19, 00),
+            endDate: DateTime(2020, 1, 7, 20, 00),
+            dropChildrens: <Widget>[
               Text("data"),
               Text("data"),
               Text("data"),

@@ -4,7 +4,6 @@ import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/loading/loading_bloc.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
-import 'package:polympic/screens/app-page/itinerary-page/itinerary/itinerary.dart';
 import 'package:polympic/theme/style.dart';
 
 void main() => runApp(MyApp());
