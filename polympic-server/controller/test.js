@@ -1,7 +1,7 @@
-const { Test } = require('../models')
+const { Test } = require('../models');
 
 module.exports = {
-    getTest() {
-        return Test.get()
-    }
+  getTest() {
+    return Test.get();
+  }
 };
