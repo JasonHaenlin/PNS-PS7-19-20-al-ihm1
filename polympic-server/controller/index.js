@@ -1,8 +1,6 @@
-const test = require('./test');
-const site = require('./site');
+const interet = require('./interet');
 const evenement = require('./evenement');
 module.exports = {
-  test,
-  site,
+  interet,
   evenement
 };
