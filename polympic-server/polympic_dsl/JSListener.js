@@ -1,22 +1,56 @@
-// Generated from polygram.g4 by ANTLR 4.7.2
-// jshint ignore: start
-var antlr4 = require('antlr4/index');
+import {write} from 'eslint';
 
-// This class defines a complete listener for a parse tree produced by polygramParser.
-function polygramListener() {
-	antlr4.tree.ParseTreeListener.call(this);
-	return this;
+var antlr4 = require('antlr4/index');
+const calcListener = require('./calcListener.js').calcListener
+const fs = require("fs")
+
+// include directly the implementation of the compiler
+
+//eval(fs.readFileSync("implement.js", "UTF-8"))
+
+JSListener = function () {
+  calcListener.call(this);
+  return this;
 }
 
-polygramListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
-polygramListener.prototype.constructor = polygramListener;
+JSListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
+JSListener.prototype.constructor = JSListener;
 
-// Enter a parse tree produced by polygramParser#program.
-polygramListener.prototype.enterProgram = function(ctx) {
+JSListener.tFileName = "test"
+
+JSListener.prototype.enterProgram = function(ctx) {
+  // create the target file
+  openTarget()
 };
 
-// Exit a parse tree produced by polygramParser#program.
-polygramListener.prototype.exitProgram = function(ctx) {
+JSListener.prototype.exitProgram = function(ctx) {
+  // fill the target file and close it
+  closeTarget()
+};
+
+
+
+JSListener.prototype.enterAssign = function(ctx) {
+};
+
+JSListener.prototype.exitAssign = function(ctx) {
+  // get the variable
+  var t1 = ctx.getChild(0).getText()
+  // skip the := symbol to use = instead
+  // get the expression
+  var t2 = ctx.getChild(2).getText()
+  write(t1 + "=" + t2)
+};
+
+JSListener.prototype.enterPrint = function(ctx) {
+};
+
+JSListener.prototype.exitPrint = function(ctx) {
+  var temp = "console.log("
+  // I skip the 'print' keyword so go to second child
+  temp += ctx.getChild(1).getText()
+  temp +=")"
+  write(temp)
 };
 
 
@@ -72,7 +106,3 @@ polygramListener.prototype.enterVariable_prototype = function(ctx) {
 // Exit a parse tree produced by polygramParser#variable_prototype.
 polygramListener.prototype.exitVariable_prototype = function(ctx) {
 };
-
-
-
-exports.polygramListener = polygramListener;

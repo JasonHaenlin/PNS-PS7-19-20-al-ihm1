@@ -1,4 +1,3 @@
-for each program
-when score > 5.1 then display
-
-display
+for each EVENT
+when 2 < 3
+then display

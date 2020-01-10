@@ -22,7 +22,6 @@ if(DEBUG) {
     });
 }
 
-
 var input = fs.readFileSync(iName, 'UTF-8')
 var chars = new antlr4.InputStream(input)
 var lexer = new polygramLexer.polygramLexer(chars)

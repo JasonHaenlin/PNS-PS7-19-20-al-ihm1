@@ -1,44 +1,75 @@
 grammar polygram;
 
 program:
-    FOREACH subject EOL statement* EOF;
+    FOREACH WS subject EOL statement;
 
 subject:
-    PROGRAM;
+        PROGRAM
+    |   EVENT
+    ;
 
 statement:
         EOL
-    |   action
-    |   WHEN expression THEN action
+    |   expression EOL
+    |   func_decl
+    |   WHEN WS expression EOL THEN WS statement
+    |   variable_prototype EOL
+    |   DISP EOL
+    |   statement_list
+    ;
+
+statement_list:
+        statement_list statement
+    |   EOL
     ;
 
 expression:
-        ( NUMBER | IDENTIFIER) '>' ( NUMBER | IDENTIFIER )
-    |   ( NUMBER | IDENTIFIER) '<' ( NUMBER | IDENTIFIER )
-    |   ( NUMBER | IDENTIFIER) '=' ( NUMBER | IDENTIFIER )
-    |   expression AND expression
-    |   expression OR expression
+        NUMBER
+    |   variable_prototype
+    |   expression  '>'  expression
+    |   expression  '<'  expression
+    |   expression  '='  expression
+    |   expression  '>='  expression
+    |   expression  '<='  expression
+    |   expression  '!='  expression
+    |   expression  AND  expression
+    |   expression  OR  expression
     ;
 
-action:
+func_decl:
+    DEFINITION  variable_prototype  ':'  EOL statement
+    ;
+
+variable_prototype:
+    IDENTIFIER;
+
+DISP:
     'display';
 
+DEFINITION:
+    'define';
 
 CONCERNS:
-    'concerns';
+    'CONCERNS';
 
 PROGRAM:
-    'program';
+    'PROGRAM'
+    ;
+
+EVENT:
+    'EVENT'
+    ;
 
 IDENTIFIER:
-    'score';
+    [a-zA-Z][_a-zA-Z0-9]*
+    ;
 
 FOREACH:
     'for each';
 
 NUMBER:
     '-'?[0-9]+( ',' | '.' )?[0-9]*;
-    
+
 AND:
     'and';
 
@@ -55,4 +86,9 @@ EOL:
     [\r\n]+;
 
 WS:
-    [ \t] + -> skip;
+        [ \t]+ -> skip
+    ;
+
+COMMENT:
+    '//'.*? EOL -> skip
+    ;
