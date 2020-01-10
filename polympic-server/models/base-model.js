@@ -35,6 +35,19 @@ module.exports = class BaseModel {
     return this.items;
   }
 
+  getSpecificEvenement(types) {
+    let collection = this.get();
+    let empty = [];
+    types.forEach(type => {
+      collection.forEach(element => {
+        if (element.sport === type) {
+          empty.push(element);
+        }
+      });
+    });
+    return empty;
+  }
+
   getById(id) {
     if (typeof id === 'string') {
       id = parseInt(id, 10);
