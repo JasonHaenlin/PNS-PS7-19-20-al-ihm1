@@ -18,9 +18,12 @@ class Itinerary extends StatelessWidget {
             beginDate: DateTime(2020, 1, 7, 8, 00),
             endDate: DateTime(2020, 1, 7, 10, 00),
             dropChildrens: <Widget>[
-              Text("data"),
-              Text("data"),
-              Text("data"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Text("A little Description"),
+                ),
+              ),
             ],
           ),
           TimelineTab(
@@ -28,9 +31,12 @@ class Itinerary extends StatelessWidget {
             beginDate: DateTime(2020, 1, 7, 11, 00),
             endDate: DateTime(2020, 1, 7, 12, 00),
             dropChildrens: <Widget>[
-              Text("data"),
-              Text("data"),
-              Text("data"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Text("A little Description"),
+                ),
+              ),
             ],
           ),
           TimelineTab(
@@ -38,9 +44,12 @@ class Itinerary extends StatelessWidget {
             beginDate: DateTime(2020, 1, 7, 15, 00),
             endDate: DateTime(2020, 1, 7, 19, 00),
             dropChildrens: <Widget>[
-              Text("data"),
-              Text("data"),
-              Text("data"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Text("A little Description"),
+                ),
+              ),
             ],
           ),
           TimelineTab(
@@ -48,9 +57,12 @@ class Itinerary extends StatelessWidget {
             beginDate: DateTime(2020, 1, 7, 19, 00),
             endDate: DateTime(2020, 1, 7, 20, 00),
             dropChildrens: <Widget>[
-              Text("data"),
-              Text("data"),
-              Text("data"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Text("A little Description"),
+                ),
+              ),
             ],
           ),
         ],

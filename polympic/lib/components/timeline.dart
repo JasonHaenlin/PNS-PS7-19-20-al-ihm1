@@ -98,13 +98,13 @@ class Indicator extends StatelessWidget {
   static dynamic icons = <Status, IconData>{
     Status.done: Icons.check_circle_outline,
     Status.waiting: Icons.radio_button_unchecked,
-    Status.inProgress: Icons.loop,
+    Status.inProgress: Icons.hourglass_empty,
   };
 
   static dynamic colors = <Status, Color>{
     Status.done: kColorPrimary,
-    Status.waiting: kColorSecondary,
-    Status.inProgress: kColorValidate,
+    Status.waiting: kColorPrimary,
+    Status.inProgress: kColorSecondary,
   };
 
   @override
@@ -121,9 +121,13 @@ class Indicator extends StatelessWidget {
           margin: EdgeInsets.all(5.0),
           height: 30.0,
           width: 30.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: colors[status],
+          ),
           child: Icon(
             icons[status],
-            color: colors[status],
+            color: Colors.white,
           ),
         ),
       ),
@@ -135,11 +139,17 @@ class Line extends StatelessWidget {
   const Line({
     Key key,
     this.color = kColorTextIcon,
-    this.half = false,
+    this.status = Status.done,
   }) : super(key: key);
 
   final Color color;
-  final bool half;
+  final Status status;
+
+  static dynamic colors = <Status, Color>{
+    Status.done: kColorPrimary,
+    Status.waiting: kColorSecondary,
+    Status.inProgress: kColorValidate,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -149,8 +159,8 @@ class Line extends StatelessWidget {
       left: 35.0,
       child: Container(
         height: double.infinity,
-        width: 1.0,
-        color: this.color,
+        width: 2.0,
+        color: colors[status],
       ),
     );
   }
@@ -195,9 +205,16 @@ class TimelineTab extends StatelessWidget {
     return ExpansionTile(
       title: Tile(
         childrens: <Widget>[
-          Text(this.title),
+          Text(
+            this.title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: kColorPrimaryText,
+            ),
+          ),
           Text(
             date.format(this.beginDate) + " - " + date.format(this.endDate),
+            style: TextStyle(fontWeight: FontWeight.w400),
           ),
         ],
       ),
