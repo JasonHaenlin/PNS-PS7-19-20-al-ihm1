@@ -32,7 +32,7 @@
         "name": "Volley Finale 1/1 ",
         "description": "La grande finale de volley opposant l'Italie et le Canada, un match à ne surtout pas râter !",
         "versus": ["Italie","Canada"],
-        "sport": "Volley Ball",
+        "sport": "Volleyball",
         "site": {
             "name" :"Stade de la croisée",
             "lattitude" :49.924459,

@@ -1,8 +1,34 @@
 [
     {
-        "test": "testing 1"
+        "name": "Football",
+        "img": ""
     },
     {
-        "test": "testing 2"
+        "name": "Rugby",
+        "img": ""
+    },
+    {
+        "name": "Handball",
+        "img": ""
+    },
+    {
+        "name": "Curling",
+        "img": ""
+    },
+    {
+        "name": "Pétanque",
+        "img": ""
+    },
+    {
+        "name": "Volleyball",
+        "img": ""
+    },
+    {
+        "name": "Tennis",
+        "img": ""
+    },
+    {
+        "name": "Football",
+        "img": ""
     }
 ]
