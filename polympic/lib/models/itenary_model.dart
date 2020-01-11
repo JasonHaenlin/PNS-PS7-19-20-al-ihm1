@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/models/event_model.dart';
 
-class CategoryModel {
+class ItineraryModel {
   final String label;
   final String description;
   final String beginDate;
   final String endDate;
   final List<EventModel> events;
 
-  CategoryModel({
+  ItineraryModel({
     @required this.label,
     @required this.description,
     @required this.beginDate,
@@ -20,7 +20,7 @@ class CategoryModel {
         assert(endDate != null),
         assert(events != null);
 
-  CategoryModel.fromMap(Map<String, dynamic> json)
+  ItineraryModel.fromMap(Map<String, dynamic> json)
       : label = json['label'],
         description = json['description'],
         beginDate = json['beginDate'],

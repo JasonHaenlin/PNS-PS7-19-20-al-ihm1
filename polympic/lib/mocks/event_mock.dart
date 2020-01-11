@@ -18,5 +18,15 @@ const EVENT_MOCK = [
     "versus": ["France", "Allemange"],
     "starthour": 1720620000,
     "endhour": 1714921200
+  },
+  {
+    "id": 3,
+    "name": "Match de Rugby",
+    "description": "Match épique ! (ou pas)",
+    "sport": "Rugby",
+    "place": "Stade de B",
+    "versus": ["Thailande", "Madacascar"],
+    "starthour": 1714903200,
+    "endhour": 1714910400
   }
 ];
