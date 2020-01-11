@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
 DateTime formatTimestamp(int timestamp) {
-  return DateTime.fromMicrosecondsSinceEpoch(timestamp);
+  return DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
 }
 
 String timestampToDateString(int timestamp) {

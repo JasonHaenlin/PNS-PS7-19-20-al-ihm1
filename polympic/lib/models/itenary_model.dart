@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/models/event_model.dart';
 
 class ItineraryModel {
   final String label;
   final String description;
-  final String beginDate;
-  final String endDate;
-  final List<EventModel> events;
+  final int beginDate;
+  final int endDate;
+  final List<dynamic> events;
 
   ItineraryModel({
     @required this.label,

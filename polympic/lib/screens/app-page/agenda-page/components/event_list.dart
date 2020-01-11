@@ -4,10 +4,10 @@ import 'package:polympic/theme/colors.dart';
 
 import 'event_card.dart';
 
-class ListEvents extends StatelessWidget {
+class EventList extends StatelessWidget {
   final List<EventModel> _data;
 
-  const ListEvents({
+  const EventList({
     Key key,
     @required List<EventModel> data,
   })  : _data = data,

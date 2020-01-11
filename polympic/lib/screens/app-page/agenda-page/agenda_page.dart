@@ -3,8 +3,7 @@ import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/models/event_model.dart';
-
-import 'components/list_events.dart';
+import 'package:polympic/screens/app-page/agenda-page/components/event_list.dart';
 
 class AgendaPage extends StatelessWidget {
   const AgendaPage({Key key}) : super(key: key);
@@ -20,7 +19,7 @@ class AgendaPage extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<List<EventModel>> snapshot) =>
               snapshot.hasData
-                  ? ListEvents(data: snapshot.data)
+                  ? EventList(data: snapshot.data)
                   : Center(child: CircularProgressIndicator()),
     );
   }
