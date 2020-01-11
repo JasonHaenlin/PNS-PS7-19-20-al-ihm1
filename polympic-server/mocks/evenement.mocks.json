@@ -7,7 +7,7 @@
         "sport": "Football",
         "site": {
             "name" :"Stade de France A",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578641596,
@@ -21,7 +21,7 @@
         "sport": "Football",
         "site": {
             "name" :"Stade de France B",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578641596,
@@ -35,7 +35,7 @@
         "sport": "Volleyball",
         "site": {
             "name" :"Stade de la croisée",
-            "lattitude" :49.924459,
+            "latitude" :49.924459,
             "longitude" :2.380164
         },
         "startTime": 1578758596,
@@ -49,7 +49,7 @@
         "sport": "Tennis",
         "site": {
             "name" :"Stade de Tennis B",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -63,7 +63,7 @@
         "sport": "Tennis",
         "site": {
             "name" :"Stade de Tennis A",
-            "lattitude" :47.924459,
+            "latitude" :47.924459,
             "longitude" :2.370164
         },
         "startTime": 1578688596,
@@ -77,7 +77,7 @@
         "sport": "Tennis",
         "site": {
             "name" :"Stade de Tennis C",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -91,7 +91,7 @@
         "sport": "Tennis",
         "site": {
             "name" :"Stade de Tennis D",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -105,7 +105,7 @@
         "sport": "Curling",
         "site": {
             "name" :"Stade de Curling Pro",
-            "lattitude" :46.924459,
+            "latitude" :46.924459,
             "longitude" :2.340164
         },
         "startTime": 1578648596,
@@ -119,7 +119,7 @@
         "sport": "Pétanque",
         "site": {
             "name" :"Stade de France",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -133,7 +133,7 @@
         "sport": "Tennis",
         "site": {
             "name" :"Stade de Tennis B",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -147,7 +147,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby A",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -161,7 +161,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby B",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -175,7 +175,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby C",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -189,7 +189,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby D",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -203,7 +203,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby E",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -217,7 +217,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby F",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -231,7 +231,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby G",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -245,7 +245,7 @@
         "sport": "Rugby",
         "site": {
             "name" :"Stade de Rugby H",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -259,7 +259,7 @@
         "sport": "Handball",
         "site": {
             "name" :"Stade de Handball A",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -273,7 +273,7 @@
         "sport": "Handball",
         "site": {
             "name" :"Stade de Handball B",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -287,7 +287,7 @@
         "sport": "Handball",
         "site": {
             "name" :"Stade de Handball C",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,
@@ -301,7 +301,7 @@
         "sport": "Handball",
         "site": {
             "name" :"Stade de Handball D",
-            "lattitude" :48.924459,
+            "latitude" :48.924459,
             "longitude" :2.360164
         },
         "startTime": 1578648596,

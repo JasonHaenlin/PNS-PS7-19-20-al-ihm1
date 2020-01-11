@@ -1,4 +1,5 @@
 const { Evenement } = require('../models');
+const geolib = require('geolib');
 
 module.exports = {
   getEvenement() {
@@ -29,6 +30,17 @@ module.exports = {
         return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
       }
     });
+  },
+
+  getDistanceEvenement(coord, collection) {
+    // eslint-disable-next-line security/detect-object-injection
+    collection.forEach(element => {
+      Vlatitude = element.site.latitude;
+      Vlongitude = element.site.longitude;
+      coordElem = {latitude: Vlatitude, longitude: Vlongitude};
+      element.distance = geolib.getDistance(coord, coordElem);
+    });
+    return collection;
   }
 
 };
