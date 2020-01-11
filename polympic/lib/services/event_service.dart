@@ -2,7 +2,7 @@ import 'package:polympic/core/storage.dart';
 import 'package:polympic/mocks/event_mock.dart';
 import 'package:polympic/models/event_model.dart';
 
-class Event {
+class EventService {
   Future<List<EventModel>> getData() async {
     dynamic data = EVENT_MOCK.map((item) => EventModel.fromMap(item)).toList();
 
@@ -20,4 +20,4 @@ class Event {
   }
 }
 
-Event eventService = Event();
+EventService eventService = EventService();

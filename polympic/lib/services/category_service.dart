@@ -2,7 +2,7 @@ import 'package:polympic/core/storage.dart';
 import 'package:polympic/mocks/category_mock.dart';
 import 'package:polympic/models/category_model.dart';
 
-class Category {
+class CategoryService {
   Future<List<CategoryModel>> getData() async {
     dynamic data =
         CATEGORY_MOCK.map((item) => CategoryModel.fromMap(item)).toList();
@@ -20,4 +20,4 @@ class Category {
   }
 }
 
-Category categoryService = Category();
+CategoryService categoryService = CategoryService();
