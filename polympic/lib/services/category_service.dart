@@ -1,5 +1,5 @@
 import 'package:polympic/core/storage.dart';
-import 'package:polympic/mocks/category_model.dart';
+import 'package:polympic/mocks/category_mock.dart';
 import 'package:polympic/models/category_model.dart';
 
 class Category {

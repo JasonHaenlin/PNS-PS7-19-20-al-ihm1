@@ -27,7 +27,7 @@ class ItineraryCard extends StatelessWidget {
               style: TextStyle(
                 color: kColorPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
+                fontSize: 20,
               ),
             ),
             SizedBox(height: 8.0),
@@ -39,7 +39,11 @@ class ItineraryCard extends StatelessWidget {
             Text(
               // "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
               "beginDate - endDate",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: kColorSecondaryText,
+              ),
             ),
           ],
         ),

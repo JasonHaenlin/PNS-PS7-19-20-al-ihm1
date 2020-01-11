@@ -51,7 +51,10 @@ class SportCard extends StatelessWidget {
                 SizedBox(width: 15),
                 Text(
                   this.data.label,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),

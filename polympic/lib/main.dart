@@ -5,8 +5,10 @@ import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/loading/loading_bloc.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/theme/style.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() => runApp(MyApp());
+void main() =>
+    initializeDateFormatting('fr_FR', null).then((_) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {
   @override

@@ -40,7 +40,7 @@ class _EventCardState extends State<EventCard> {
           style: TextStyle(
             color: kColorPrimary,
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
           ),
         ),
         Row(
@@ -62,7 +62,11 @@ class _EventCardState extends State<EventCard> {
           children: <Widget>[
             Text(
               "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: kColorSecondaryText,
+              ),
             ),
             Text(
               "${widget.event.place}",
