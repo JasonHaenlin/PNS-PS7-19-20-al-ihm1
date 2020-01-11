@@ -20,18 +20,19 @@ class ListEvents extends StatelessWidget {
         title: const Text("Agenda"),
       ),
       body: ListView.builder(
-          itemCount: _data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-                child: Column(
-              children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: EventCard(event: _data[index])),
-                Divider(thickness: 1.0, color: kColorIcon),
-              ],
-            ));
-          }),
+        itemCount: _data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                child: EventCard(event: _data[index]),
+              ),
+              Divider(thickness: 1.0, color: kColorIcon),
+            ],
+          );
+        },
+      ),
     );
   }
 }

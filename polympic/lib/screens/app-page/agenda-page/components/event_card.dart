@@ -35,41 +35,34 @@ class _EventCardState extends State<EventCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Container(
-          child: Text(
-            widget.event.name,
-            style: TextStyle(
-              color: kColorPrimary,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+        Text(
+          widget.event.name,
+          style: TextStyle(
+            color: kColorPrimary,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-                child: Text(
+            Text(
               widget.event.description,
               style: TextStyle(color: kColorAccent, fontSize: 20),
-            )),
-            Container(
-              child: IconButton(
-                icon: (_favorited ? Icon(Icons.star) : Icon(Icons.star_border)),
-                color: kColorSecondary,
-                onPressed: _toogleFavorited,
-              ),
+            ),
+            IconButton(
+              icon: (_favorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+              color: kColorSecondary,
+              onPressed: _toogleFavorited,
             )
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              child: Text(
-                "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
+            Text(
+              "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             Text(
               "${widget.event.place}",
