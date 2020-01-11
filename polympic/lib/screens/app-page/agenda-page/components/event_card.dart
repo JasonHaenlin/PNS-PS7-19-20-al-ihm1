@@ -67,7 +67,7 @@ class _EventCardState extends State<EventCard> {
           children: <Widget>[
             Container(
               child: Text(
-                "${timestampToDateString(widget.event.starthour)} - ${widget.event.endhour}",
+                "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ),

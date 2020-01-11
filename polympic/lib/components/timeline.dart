@@ -38,6 +38,7 @@ class _TimelineState extends State<Timeline> {
   }
 
   void updateDate() {
+    // mock purpose
     DateTime current = DateTime(2020, 1, 7, 16, 00);
     for (var tab in this.widget.childrens) {
       bool beforeBegin = tab.beginDate.isBefore(current);
