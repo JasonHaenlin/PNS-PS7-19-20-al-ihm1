@@ -8,7 +8,7 @@ class EventService {
 
     for (EventModel d in data) {
       String favorite =
-          await readStorage(key: d.id.toString(), nullReturnValue: 'false');
+          await readStorage(key: d.id, nullReturnValue: 'false');
       d.favorite = favorite == 'true';
     }
 
@@ -16,7 +16,7 @@ class EventService {
   }
 
   void saveChange(EventModel event, String value) async {
-    await writeStorage(key: "${event.id}", value: value.toString());
+    await writeStorage(key: event.id, value: value);
   }
 }
 

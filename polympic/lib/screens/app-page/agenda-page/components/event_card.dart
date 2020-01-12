@@ -20,7 +20,12 @@ class _EventCardState extends State<EventCard> {
     final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
     _eventBloc.dispatch(EventEvent.fetch);
 
+    DateTime _starttime = formatTimestamp(this.widget.event.starttime);
+    DateTime _endtime = formatTimestamp(this.widget.event.endtime);
+    List <dynamic> competitors = this.widget.event.competitors;
     bool _favorited = this.widget.event.favorite;
+
+    double cWidth = MediaQuery.of(context).size.width*0.6;
 
     void _toogleFavorited() {
       setState(() {
@@ -31,6 +36,18 @@ class _EventCardState extends State<EventCard> {
         });
       });
     }
+
+    Widget _getTextWidgets(List<String> strings)
+  {
+    List<Widget> list = new List<Widget>();
+    int i = 0;
+    for( ; i < strings.length-1; i++){
+        list.add(new Text(strings[i]+"-"));
+    }
+    list.add(new Text(strings[i],
+    style: TextStyle(fontSize: 15) ,));
+    return new Row(children: list);
+  }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,12 +60,16 @@ class _EventCardState extends State<EventCard> {
             fontSize: 20,
           ),
         ),
+        _getTextWidgets(competitors),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
-              widget.event.description,
-              style: TextStyle(color: kColorAccent, fontSize: 20),
+            Container(
+              width: cWidth,
+              child: Text(
+                widget.event.description,
+                style: TextStyle(color: kColorAccent, fontSize: 15),
+              ),
             ),
             IconButton(
               icon: (_favorited ? Icon(Icons.star) : Icon(Icons.star_border)),
@@ -61,7 +82,7 @@ class _EventCardState extends State<EventCard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              "${timestampToDateString(widget.event.starthour)} - ${timestampToDateString(widget.event.endhour)}",
+              "${_starttime.hour}:${_starttime.minute} - ${_endtime.hour}:${_endtime.minute}",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
@@ -69,7 +90,7 @@ class _EventCardState extends State<EventCard> {
               ),
             ),
             Text(
-              "${widget.event.place}",
+              "${widget.event.placename}",
               style: TextStyle(fontSize: 16),
             ),
           ],

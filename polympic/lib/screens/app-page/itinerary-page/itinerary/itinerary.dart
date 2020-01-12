@@ -27,8 +27,8 @@ class Itinerary extends StatelessWidget {
       widgets.add(
         TimelineTab(
           title: e.name,
-          beginDate: formatTimestamp(e.starthour),
-          endDate: formatTimestamp(e.endhour),
+          beginDate: formatTimestamp(e.starttime),
+          endDate: formatTimestamp(e.endtime),
           dropChildrens: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),

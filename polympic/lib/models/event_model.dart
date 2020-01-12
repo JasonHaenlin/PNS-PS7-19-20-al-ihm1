@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
 class EventModel{
 
-  final int id;
+  final String id;
   final String name;
   final String description;
-  final int starthour;
-  final int endhour;
-  final String place;
+  final int starttime;
+  final int endtime;
+  final String placename;
+  final Map<String,dynamic> site;
+  final List <dynamic> competitors;
   bool favorite;
 
   EventModel(
@@ -15,33 +16,38 @@ class EventModel{
       @required this.id,
       @required this.name,
       @required this.description,
-      @required this.starthour,
-      @required this.endhour,
-      @required this.place,
-      this.favorite = false
+      @required this.starttime,
+      @required this.endtime,
+      @required this.site,
+      @required this.competitors,
+      this.favorite = false,
+      this.placename
     }
   ) : assert (id != null),
       assert (name != null),
       assert (description != null),
-      assert (starthour != null),
-      assert (endhour != null),
-      assert (place != null);
+      assert (starttime != null),
+      assert (endtime != null),
+      assert (site != null),
+      assert(competitors != null);
 
   EventModel.fromMap(Map<String,dynamic> json) 
     : id = json["id"],
       name = json["name"],
       description = json["description"],
-      starthour = json["starthour"],
-      endhour = json["endhour"],
-      place = json["place"];
+      starttime = json["startTime"],
+      endtime = json["endTime"],
+      site = json["site"],
+      placename = json["site"]["name"],
+      competitors = json["versus"];
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
-        "description": description,
-        "starthour" : starthour,
-        "endhour" : endhour,
-        "place" : place
+        "description":  description,
+        "startTime" : starttime ,
+        "endTime" : endtime,
+        "site" : site
       };
 
 }
