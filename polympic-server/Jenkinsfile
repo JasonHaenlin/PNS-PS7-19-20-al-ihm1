@@ -42,19 +42,18 @@ pipeline {
         NODE_ENV = 'production'
       }
       steps {
-        echo 'App restarted (mocked)'
-        // echo 'App restarted'
-        // =>/var/lib/jenkins/node-app//
-        // dir('../../node-app/') {
-        //   sh 'rm -rf projet-semestre-6-otake'
-        //   sh 'git clone git@github.com:2018-2019-ps6/projet-semestre-6-otake.git'
-        // }
-        // dir('../../node-app/projet-semestre-6-otake/back/') {
-        //   sh 'npm install'
-        //   withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-        //     sh 'npm run redeploy'
-        //   }
-        // }
+        echo 'App restarted'
+        // =>/var/lib/jenkins/node-app/projet-semestre-7-polympic
+        dir('../../node-app/') {
+          sh 'rm -rf projet-semestre-7-polympic'
+          sh 'git clone git@github.com/PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+        }
+        dir('../../node-app/projet-semestre-7-polympic/polympic-server/') {
+          sh 'npm install'
+          withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+            sh 'npm run redeploy'
+          }
+        }
       }
     }
   }
