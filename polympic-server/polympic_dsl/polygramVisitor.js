@@ -81,7 +81,7 @@ polygramVisitor.prototype.visitNumber = function(ctx) {
 
 // Visit a parse tree produced by polygramParser#attribute.
 polygramVisitor.prototype.visitAttribute = function(ctx) {
-  console.log("element." + ctx.getText().toLowerCase());  
+  console.log("element." + ctx.getText().toLowerCase());
   return null;
 };
 

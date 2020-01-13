@@ -1,2 +1,6 @@
 for each program
 when FOO and BAR then display
+for each event
+when 2 < 3
+then display
+2.3 <

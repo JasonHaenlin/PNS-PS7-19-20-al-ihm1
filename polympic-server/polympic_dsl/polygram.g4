@@ -1,5 +1,7 @@
 grammar polygram;
 
+// parser rules :
+
 program:
     FOREACH subject statement+;
 
@@ -20,23 +22,20 @@ action:
     DISPLAY;
 
 bool:
-        attribute
-    |   num_cmp
-    |   bool AND bool
-    |   bool OR bool
-    ;
-
-num_cmp:
-        number GT number
-    |   number LT number
-    |   number EQ number
-    |   number GE number
-    |   number LE number
-    |   number NE number
+        IDENTIFIER
+    |   number  GT  number
+    |   number  LT  number
+    |   number  EQ  number
+    |   number  GE  number
+    |   number  LE  number
+    |   number  NE  number
+    |   bool  AND  bool
+    |   bool  OR  bool
+    |   NOT  bool
     ;
 
 number:
-        attribute
+        IDENTIFIER
     |   NUMBER
     |   number '+' number
     |   number '-' number
@@ -44,8 +43,7 @@ number:
     |   number '/' number
     ;
 
-attribute:
-    IDENTIFIER;
+// lexer rules :
 
 DISPLAY:
     'display';
@@ -59,8 +57,7 @@ EVENT:
     ;
 
 IDENTIFIER:
-    [A-Z]+[A-Z0-9]+
-    ;
+    [A-Z]+[A-Z0-9]+;
 
 FOREACH:
     'for each';
