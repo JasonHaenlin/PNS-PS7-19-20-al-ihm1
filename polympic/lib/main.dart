@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
-import 'package:polympic/blocs/loading/loading_bloc.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/theme/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -15,15 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<EventBloc>(
       bloc: EventBloc(),
-      child: BlocProvider<LoadingBloc>(
-        bloc: LoadingBloc(),
-        child: BlocProvider<CategoryBloc>(
-          bloc: CategoryBloc(),
-          child: MaterialApp(
-            title: 'Polympic basic',
-            theme: appTheme(),
-            home: AppPage(),
-          ),
+      child: BlocProvider<CategoryBloc>(
+        bloc: CategoryBloc(),
+        child: MaterialApp(
+          title: 'Polympic basic',
+          theme: appTheme(),
+          home: AppPage(),
         ),
       ),
     );
