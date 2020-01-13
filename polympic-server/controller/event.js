@@ -32,11 +32,7 @@ module.exports = {
     });
   },
 
-<<<<<<< HEAD
-  getDistanceEvent(coord, events) {
-=======
-  getDistanceFromEvents(coord, collection) {
->>>>>>> GH-54 GH-56 routing for events and preferences
+  getDistanceFromEvents(coord, events) {
     // eslint-disable-next-line security/detect-object-injection
     events.forEach(event => {
       Vlatitude = event.site.latitude;
@@ -51,7 +47,7 @@ module.exports = {
     let min = 23;
     let minEvent;
     events.forEach(event => {
-      let date = new Date(event.startTime*1000);
+      let date = new Date(event.startTime * 1000);
       let hour = date.getHours();
       if (hour < min) {
         min = hour;
@@ -62,11 +58,11 @@ module.exports = {
   },
 
   getNext(event, Nevents) {
-    let date = new Date(event.endTime*1000);
+    let date = new Date(event.endTime * 1000);
     let hour = date.getHours();
     let next = [];
     Nevents.forEach(Nevent => {
-      let Ndate = new Date(Nevent.startTime*1000);
+      let Ndate = new Date(Nevent.startTime * 1000);
       let Nhour = Ndate.getHours();
       if ((Nhour - hour) <= 1 && (Nhour - hour) >= 0) {
         next.push(Nevent.id);
