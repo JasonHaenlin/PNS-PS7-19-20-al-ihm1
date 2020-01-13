@@ -32,15 +32,15 @@ module.exports = {
     });
   },
 
-  getDistanceEvent(coord, collection) {
+  getDistanceEvent(coord, events) {
     // eslint-disable-next-line security/detect-object-injection
-    collection.forEach(element => {
-      Vlatitude = element.site.latitude;
-      Vlongitude = element.site.longitude;
+    events.forEach(event => {
+      Vlatitude = event.site.latitude;
+      Vlongitude = event.site.longitude;
       coordElem = { latitude: Vlatitude, longitude: Vlongitude };
-      element.distance = geolib.getDistance(coord, coordElem);
+      event.distance = geolib.getDistance(coord, coordElem);
     });
-    return collection;
+    return events;
   },
 
   getEarliestEvent(events) {
@@ -53,7 +53,6 @@ module.exports = {
         min = hour;
         minEvent = event;
       }
-      // if (events.startTime.)
     });
     return minEvent;
   },
@@ -62,11 +61,9 @@ module.exports = {
     let date = new Date(event.endTime*1000);
     let hour = date.getHours();
     let next = [];
-    console.log(hour);
     Nevents.forEach(Nevent => {
       let Ndate = new Date(Nevent.startTime*1000);
       let Nhour = Ndate.getHours();
-      console.log(Nhour);
       if ((Nhour - hour) <= 1 && (Nhour - hour) >= 0) {
         next.push(Nevent.id);
       }

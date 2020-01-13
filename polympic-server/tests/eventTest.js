@@ -61,12 +61,29 @@ Aevents = [
   "startTime": 1667736000,
   "endTime": 1667736000
 }]
-// events = event.getEvents();
-// eventz = event.getEventById("fdm4");
-// console.log(eventz);
-// console.log(event.getNext(Sevent, events));
-// console.log(event.getEarliestEvent(events));
-// events = evenement.getEvenement();
+
+
+describe('Obtenir les informations dun événement via son id', () => {
+  it('Recherche dun événement par son id', async () => {
+    assert.isTrue(event.getEventById('fdm2').name === 'Football Demi Finale 2/2 ');
+  });
+  it('Recherche dun second événement par son id', async () => {
+    assert.isTrue(event.getEventById('vf1').name === 'Volley Finale 1/1 ');
+  });
+});
+
+describe('Obtenir les potentiel événemenets où aller ensuite', () => {
+  it('Liste des next possibles pour un événement Sevent donné', async () => {
+    assert.isTrue(event.getNext(Sevent, Aevents)[0] === 'fdm2');
+    assert.isTrue(event.getNext(Sevent, Aevents).length === 1);
+  });
+});
+
+describe('Obtenir lévénement qui commence le plus tôt de la journée', () => {
+  it('Liste dévénement commencant à des heures différentes', async () => {
+    assert.isTrue(event.getEarliestEvent(Aevents).name === "Football Demi Finale 1/2 ");
+  });
+});
 
 coord1 = {latitude: 48.922456, longitude: 2.361977};
 describe('Liste donnant la distance entre lutilisateur et un/des événements', () => {
