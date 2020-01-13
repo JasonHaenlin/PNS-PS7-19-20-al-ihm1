@@ -18,7 +18,7 @@ Sevent =
   "endTime": 1667725200
 }
 
-events = [
+/* events = [
   {
     "id": "fdm2",
     "name": "Football Demi Finale 1/2 ",
@@ -60,18 +60,15 @@ events = [
   },
   "startTime": 1667736000,
   "endTime": 1667736000
-}]
-
-eventz = event.getEventById("fdm4");
-console.log(eventz);
-
+}]*/
+// events = event.getEvents();
+// eventz = event.getEventById("fdm4");
+// console.log(eventz);
 // console.log(event.getNext(Sevent, events));
-
 // console.log(event.getEarliestEvent(events));
-
 // events = evenement.getEvenement();
-// coord1 = {latitude: 51.525, longitude: 7.4575};
-// console.log(evenement.getDistance(coord1, events));
+// coord1 = {latitude: 48.922456, longitude: 2.361977};
+// console.log(event.getDistanceEvent(coord1, events));
 
 describe('Liste contenant uniquement certains sports', () => {
   it('Taille d une liste d evenement apres tri par sport', async () => {
