@@ -71,11 +71,27 @@ Aevents = [
 // console.log(event.getDistanceEvent(coord1, events));
 
 describe('Liste contenant uniquement certains sports', () => {
-  it('Taille d une liste d evenement apres tri par sport', async () => {
+  it('Taille dune liste devenements avec du foot, du hand, et de la pétanque', async () => {
+    assert.lengthOf(event.getSpecificEvent(['Football', 'Handball', 'Pétanque']), 7);
+  });
+  it('Taille dune liste devenements avec du foot et du hand', async () => {
     assert.lengthOf(event.getSpecificEvent(['Football', 'Handball']), 6);
   });
+  it('Taille dune liste devenements avec du foot', async () => {
+    assert.lengthOf(event.getSpecificEvent(['Football']), 2);
+    assert.isTrue(event.getSpecificEvent(['Football'])[0].sport === 'Football');
+  });
+  it('Taille dune liste devenements avec de la pétanque', async () => {
+    assert.lengthOf(event.getSpecificEvent(['Pétanque']), 1);
+    assert.isTrue(event.getSpecificEvent(['Pétanque'])[0].sport === 'Pétanque');
+  });
+  it('Taille dune liste devenements avec du hand', async () => {
+    assert.lengthOf(event.getSpecificEvent(['Handball']), 4);
+    assert.isTrue(event.getSpecificEvent(['Handball'])[0].sport === 'Handball');
+  });
 });
-console.log(event.getSortedEvent('name', false));
+
+
 describe('Liste triée par un critère', () => {
   it('Liste triée par rapport a lheure de départ décroissant', async () => {
     assert.isTrue(event.getSortedEvent('startTime', false)[0].name === 'Pétanque Finale 1');
