@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 const { Event } = require('../models');
 const geolib = require('geolib');
 
@@ -23,9 +24,9 @@ module.exports = {
     let events = Event.get();
     return events.sort((a, b) => {
       if (asc) {
-        return (a[parseInt(prop)] > b[parseInt(prop)]) ? 1 : ((a[parseInt(prop)] < b[parseInt(prop)]) ? -1 : 0);
+        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
       } else {
-        return (b[parseInt(prop)] > a[parseInt(prop)]) ? 1 : ((b[parseInt(prop)] < a[parseInt(prop)]) ? -1 : 0);
+        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
       }
     });
   },

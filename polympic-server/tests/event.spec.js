@@ -1,9 +1,9 @@
 require('../bin/www');
 const assert = require('chai').assert;
 const { event } = require('../controller');
-const itinerary = require('../controller/itinerary');
+// const itinerary = require('../controller/itinerary');
 
-console.log(itinerary.getRandomItinerary(['Handball']));
+// console.log(itinerary.getRandomItinerary(['Handball']));
 
 Sevent = {
   id: 'fdm2',

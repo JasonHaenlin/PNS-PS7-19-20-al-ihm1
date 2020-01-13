@@ -10,10 +10,11 @@ getNextEvents = (listEvents) => {
 
 
 getNextStepItinerary = (event) => {
-  if (event.next !== null) {
+  if (event.next) {
     let index = Math.floor(Math.random() * (event.next.length));
     return event.next[parseInt(index)];
   }
+  return null;
 };
 
 module.exports = {

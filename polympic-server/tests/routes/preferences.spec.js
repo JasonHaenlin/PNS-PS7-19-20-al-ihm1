@@ -10,7 +10,7 @@ describe('status route', () => {
         .get('/preferences')
         .expect('content-type', /json/)
         .expect(200)
-        .expect('Content-Length', '1119')
+        .expect('Content-Length', '1118')
         .expect((res) => {
           assert.notEqual(res.body, null);
         })
@@ -44,7 +44,7 @@ describe('status route', () => {
         .get('/preferences?select=sport,détente')
         .expect('content-type', /json/)
         .expect(200)
-        .expect('Content-Length', '1119')
+        .expect('Content-Length', '1118')
         .expect((res) => {
           assert.notEqual(res.body, null);
         })
