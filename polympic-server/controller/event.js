@@ -23,17 +23,14 @@ module.exports = {
     let events = Event.get();
     return events.sort((a, b) => {
       if (asc) {
-        // eslint-disable-next-line security/detect-object-injection
-        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        return (a[parsInt(prop)] > b[parsInt(prop)]) ? 1 : ((a[parsInt(prop)] < b[parsInt(prop)]) ? -1 : 0);
       } else {
-        // eslint-disable-next-line security/detect-object-injection
-        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        return (b[parsInt(prop)] > a[parsInt(prop)]) ? 1 : ((b[parsInt(prop)] < a[parsInt(prop)]) ? -1 : 0);
       }
     });
   },
 
   getDistanceFromEvents(coord, events) {
-    // eslint-disable-next-line security/detect-object-injection
     events.forEach(event => {
       Vlatitude = event.site.latitude;
       Vlongitude = event.site.longitude;
