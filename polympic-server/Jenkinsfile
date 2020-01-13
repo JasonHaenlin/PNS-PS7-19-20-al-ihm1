@@ -43,12 +43,12 @@ pipeline {
       }
       steps {
         echo 'App restarted'
-        // =>/var/lib/jenkins/node-app/projet-semestre-7-polympic
+        // =>/var/lib/jenkins/node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1
         dir('../../node-app/') {
-          sh 'rm -rf projet-semestre-7-polympic'
+          sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
           sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
         }
-        dir('../../node-app/projet-semestre-7-polympic/polympic-server/') {
+        dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
           sh 'npm install'
           withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
             sh 'npm run redeploy'
