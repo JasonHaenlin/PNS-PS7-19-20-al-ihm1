@@ -46,7 +46,7 @@ pipeline {
         // =>/var/lib/jenkins/node-app/projet-semestre-7-polympic
         dir('../../node-app/') {
           sh 'rm -rf projet-semestre-7-polympic'
-          sh 'git clone git@github.com/PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+          sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
         }
         dir('../../node-app/projet-semestre-7-polympic/polympic-server/') {
           sh 'npm install'
