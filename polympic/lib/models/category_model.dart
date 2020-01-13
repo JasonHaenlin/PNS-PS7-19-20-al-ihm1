@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
 class CategoryModel {
-  final String label;
+  final String name;
   final String tag;
-  final String image;
+  final String img;
   bool added;
 
   CategoryModel({
-    @required this.label,
+    @required this.name,
     @required this.tag,
-    @required this.image,
+    @required this.img,
     this.added,
-  })  : assert(label != null),
+  })  : assert(name != null),
         assert(tag != null),
-        assert(image != null);
+        assert(img != null);
 
   CategoryModel.fromMap(Map<String, dynamic> json)
-      : label = json['label'],
+      : name = json['name'],
         tag = json['tag'],
-        image = json['image'];
+        img = json['img'];
 
   Map<String, dynamic> toMap() => {
-        "label": label,
+        "name": name,
         "tag": tag,
-        "image": image,
+        "img": img,
       };
 }

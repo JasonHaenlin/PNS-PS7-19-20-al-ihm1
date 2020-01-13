@@ -40,8 +40,8 @@ class SportCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     clipBehavior: Clip.antiAlias,
                     elevation: 2.0,
-                    child: Image.asset(
-                      this.data.image,
+                    child: Image.network(
+                      this.data.img,
                       fit: BoxFit.cover,
                       width: 50,
                       height: 50,
@@ -50,7 +50,7 @@ class SportCard extends StatelessWidget {
                 ),
                 SizedBox(width: 15),
                 Text(
-                  this.data.label,
+                  this.data.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

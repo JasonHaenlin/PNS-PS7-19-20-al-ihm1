@@ -1,18 +1,24 @@
+import 'dart:convert';
+
 import 'package:polympic/core/storage.dart';
-import 'package:polympic/mocks/event_mock.dart';
 import 'package:polympic/models/event_model.dart';
+import 'package:http/http.dart' as http;
 
 class EventService {
   Future<List<EventModel>> getData() async {
-    dynamic data = EVENT_MOCK.map((item) => EventModel.fromMap(item)).toList();
-
-    for (EventModel d in data) {
-      String favorite =
-          await readStorage(key: d.id, nullReturnValue: 'false');
-      d.favorite = favorite == 'true';
+    final response = await http.get('https://polympic.otakedev.com/events');
+    Iterable list = json.decode(response.body);
+    dynamic data = list.map((model) => EventModel.fromMap(model)).toList();
+    if (response.statusCode == 200) {
+      for (EventModel d in data) {
+        String favorite =
+            await readStorage(key: d.id, nullReturnValue: 'false');
+        d.favorite = favorite == 'true';
+      }
+      return data;
+    } else {
+      throw Exception('Failed to load post');
     }
-
-    return data;
   }
 
   void saveChange(EventModel event, String value) async {

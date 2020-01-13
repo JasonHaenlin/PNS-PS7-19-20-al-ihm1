@@ -1,22 +1,29 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:polympic/core/storage.dart';
 import 'package:polympic/mocks/category_mock.dart';
 import 'package:polympic/models/category_model.dart';
 
 class CategoryService {
   Future<List<CategoryModel>> getData() async {
-    dynamic data =
-        CATEGORY_MOCK.map((item) => CategoryModel.fromMap(item)).toList();
-
-    for (CategoryModel d in data) {
-      String check = await readStorage(key: d.label, nullReturnValue: 'false');
-      d.added = check == 'true';
+    final response =
+        await http.get('https://polympic.otakedev.com/preferences');
+    Iterable list = json.decode(response.body);
+    dynamic data = list.map((model) => CategoryModel.fromMap(model)).toList();
+    if (response.statusCode == 200) {
+      for (CategoryModel d in data) {
+        String check = await readStorage(key: d.name, nullReturnValue: 'false');
+        d.added = check == 'true';
+      }
+      return data;
+    } else {
+      throw Exception('Failed to load post');
     }
-
-    return data;
   }
 
   void saveChange(CategoryModel category, String value) async {
-    await writeStorage(key: category.label, value: value);
+    await writeStorage(key: category.name, value: value);
   }
 }
 

@@ -5,6 +5,6 @@ DateTime formatTimestamp(int timestamp) {
 }
 
 String timestampToDateString(int timestamp) {
-  final date = DateFormat.MMMMd('fr_FR').add_Hm();
+  final date = DateFormat.MMMd('fr_FR').add_Hm();
   return date.format(DateTime.fromMillisecondsSinceEpoch(timestamp * 1000));
 }

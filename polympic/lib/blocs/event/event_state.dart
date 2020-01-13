@@ -14,7 +14,7 @@ class EventState extends BlocBase<EventEvent, List<EventModel>> {
         yield await eventService.getData();
         break;
       case EventEvent.update:
-        eventService.saveChange(data['event'], data['favorited']);
+        eventService.saveChange(data['event'], data['favorite']);
         break;
       default:
     }

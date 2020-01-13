@@ -6,34 +6,49 @@ const ITINERARY_MOCK = [
     "endDate": 1714921200,
     "events": [
       {
-        "id": 1,
+        "id": "1",
         "name": "Match de Foot",
         "description": "France - Allemagne",
         "sport": "Foot",
         "place": "Stade de France",
         "versus": ["France", "Allemange"],
-        "starthour": 1714888800,
-        "endhour": 1714896000,
+        "site": {
+          "name": "Stade de France A",
+          "latitude": 48.924459,
+          "longitude": 2.360164
+        },
+        "startTime": 1714888800,
+        "endTime": 1714896000,
       },
       {
-        "id": 2,
+        "id": "2",
         "name": "Match de Rugby",
         "description": "Thailande - Madacascar",
         "sport": "Rugby",
         "place": "Stade de B",
         "versus": ["Thailande", "Madacascar"],
-        "starthour": 1714903200,
-        "endhour": 1714910400
+        "site": {
+          "name": "Stade de France A",
+          "latitude": 48.924459,
+          "longitude": 2.360164
+        },
+        "startTime": 1714903200,
+        "endTime": 1714910400
       },
       {
-        "id": 2,
+        "id": "2",
         "name": "Match de Rugby",
         "description": "Belgique - Japon",
         "sport": "Rugby",
         "place": "Stade de A",
         "versus": ["Belgique", "Japon"],
-        "starthour": 1720620000,
-        "endhour": 1714921200
+        "site": {
+          "name": "Stade de France A",
+          "latitude": 48.924459,
+          "longitude": 2.360164
+        },
+        "startTime": 1720620000,
+        "endTime": 1714921200
       }
     ]
   },
@@ -44,14 +59,19 @@ const ITINERARY_MOCK = [
     "endDate": 1714921200,
     "events": [
       {
-        "id": 4,
+        "id": "4",
         "name": "S'allonger sur l'herbe",
         "description": "Un max de chilling !",
         "sport": "dormir",
         "place": "prairie",
         "versus": ["Dormeur"],
-        "starthour": 1714903200,
-        "endhour": 1714910400
+        "site": {
+          "name": "Stade de France A",
+          "latitude": 48.924459,
+          "longitude": 2.360164
+        },
+        "startTime": 1714903200,
+        "endTime": 1714910400
       }
     ]
   }

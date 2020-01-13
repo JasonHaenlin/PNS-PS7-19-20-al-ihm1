@@ -20,34 +20,34 @@ class _EventCardState extends State<EventCard> {
     final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
     _eventBloc.dispatch(EventEvent.fetch);
 
-    DateTime _starttime = formatTimestamp(this.widget.event.starttime);
-    DateTime _endtime = formatTimestamp(this.widget.event.endtime);
-    List <dynamic> competitors = this.widget.event.competitors;
-    bool _favorited = this.widget.event.favorite;
+    String _starttime = timestampToDateString(this.widget.event.starttime);
+    String _endtime = timestampToDateString(this.widget.event.endtime);
+    bool _favorite = this.widget.event.favorite;
 
-    double cWidth = MediaQuery.of(context).size.width*0.6;
+    double cWidth = MediaQuery.of(context).size.width * 0.6;
 
-    void _toogleFavorited() {
+    void _tooglefavorite() {
       setState(() {
-        _favorited = !_favorited;
+        _favorite = !_favorite;
         _eventBloc.dispatch(EventEvent.update, {
           'event': this.widget.event,
-          'favorited': _favorited.toString(),
+          'favorite': _favorite.toString(),
         });
       });
     }
 
-    Widget _getTextWidgets(List<String> strings)
-  {
-    List<Widget> list = new List<Widget>();
-    int i = 0;
-    for( ; i < strings.length-1; i++){
-        list.add(new Text(strings[i]+"-"));
+    Widget _getTextWidgets(dynamic strings) {
+      List<Widget> list = new List<Widget>();
+      int i = 0;
+      for (; i < strings.length - 1; i++) {
+        list.add(new Text(strings[i] + "-"));
+      }
+      list.add(new Text(
+        strings[i],
+        style: TextStyle(fontSize: 15),
+      ));
+      return new Row(children: list);
     }
-    list.add(new Text(strings[i],
-    style: TextStyle(fontSize: 15) ,));
-    return new Row(children: list);
-  }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +60,7 @@ class _EventCardState extends State<EventCard> {
             fontSize: 20,
           ),
         ),
-        _getTextWidgets(competitors),
+        _getTextWidgets(this.widget.event.competitors),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -72,9 +72,9 @@ class _EventCardState extends State<EventCard> {
               ),
             ),
             IconButton(
-              icon: (_favorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+              icon: (_favorite ? Icon(Icons.star) : Icon(Icons.star_border)),
               color: kColorSecondary,
-              onPressed: _toogleFavorited,
+              onPressed: _tooglefavorite,
             )
           ],
         ),
@@ -82,16 +82,12 @@ class _EventCardState extends State<EventCard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              "${_starttime.hour}:${_starttime.minute} - ${_endtime.hour}:${_endtime.minute}",
+              _starttime + " - " + _endtime + "\n" + widget.event.placename,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
                 color: kColorSecondaryText,
               ),
-            ),
-            Text(
-              "${widget.event.placename}",
-              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
