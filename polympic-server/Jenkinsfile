@@ -47,6 +47,7 @@ pipeline {
         dir('../../node-app/') {
           sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
           sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+          sh 'git checkout develop'
         }
         dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
           sh 'npm install'
