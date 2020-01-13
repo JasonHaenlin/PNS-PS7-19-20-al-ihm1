@@ -6,8 +6,8 @@ module.exports = {
     return Event.get();
   },
 
-  getSpecificEvent(tags) {
-    let events = Event.get();
+  getSpecificEvents(tags) {
+    const events = Event.get();
     let empty = [];
     tags.forEach(type => {
       events.forEach(element => {
@@ -19,7 +19,7 @@ module.exports = {
     return empty;
   },
 
-  getSortedEvent(prop, asc) {
+  getSortedEvents(prop, asc) {
     let events = Event.get();
     return events.sort((a, b) => {
       if (asc) {
@@ -32,7 +32,11 @@ module.exports = {
     });
   },
 
+<<<<<<< HEAD
   getDistanceEvent(coord, events) {
+=======
+  getDistanceFromEvents(coord, collection) {
+>>>>>>> GH-54 GH-56 routing for events and preferences
     // eslint-disable-next-line security/detect-object-injection
     events.forEach(event => {
       Vlatitude = event.site.latitude;

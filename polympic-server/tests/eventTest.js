@@ -7,12 +7,12 @@ Sevent =
   "id": "fdm2",
   "name": "Football Demi Finale 1/2 ",
   "description": "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
-  "versus": ["Italie","Espagne"],
+  "versus": ["Italie", "Espagne"],
   "sport": "Football",
   "site": {
-      "name" :"Stade de France A",
-      "latitude" :48.924459,
-      "longitude" :2.360164
+    "name": "Stade de France A",
+    "latitude": 48.924459,
+    "longitude": 2.360164
   },
   "startTime": 1667721600,
   "endTime": 1667725200
@@ -23,44 +23,44 @@ Aevents = [
     "id": "fdm1",
     "name": "Football Demi Finale 1/2 ",
     "description": "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
-    "versus": ["Italie","Espagne"],
+    "versus": ["Italie", "Espagne"],
     "sport": "Football",
     "site": {
-        "name" :"Stade de France A",
-        "latitude" :48.922456,
-        "longitude" :2.361977
+      "name": "Stade de France A",
+      "latitude": 48.922456,
+      "longitude": 2.361977
     },
     "startTime": 1667721600,
     "endTime": 1667725200
-},
-{
+  },
+  {
     "id": "fdm2",
     "name": "Football Demi Finale 2/2 ",
     "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
-    "versus": ["France","Allemagne"],
+    "versus": ["France", "Allemagne"],
     "sport": "Football",
     "site": {
-        "name" :"Stade de France B",
-        "latitude" :48.922456,
-        "longitude" :2.365555
+      "name": "Stade de France B",
+      "latitude": 48.922456,
+      "longitude": 2.365555
     },
     "startTime": 1667728800,
     "endTime": 1667736000
-},
-{
-  "id": "fdm3",
-  "name": "Football Demi Finale 2/2 ",
-  "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
-  "versus": ["France","Allemagne"],
-  "sport": "Handball",
-  "site": {
-      "name" :"Stade de France B",
-      "latitude" :58.924459,
-      "longitude" :2.360164
   },
-  "startTime": 1667736000,
-  "endTime": 1667736000
-}]
+  {
+    "id": "fdm3",
+    "name": "Football Demi Finale 2/2 ",
+    "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
+    "versus": ["France", "Allemagne"],
+    "sport": "Handball",
+    "site": {
+      "name": "Stade de France B",
+      "latitude": 58.924459,
+      "longitude": 2.360164
+    },
+    "startTime": 1667736000,
+    "endTime": 1667736000
+  }]
 
 
 describe('Obtenir les informations dun événement via son id', () => {
@@ -85,7 +85,7 @@ describe('Obtenir lévénement qui commence le plus tôt de la journée', () => 
   });
 });
 
-coord1 = {latitude: 48.922456, longitude: 2.361977};
+coord1 = { latitude: 48.922456, longitude: 2.361977 };
 describe('Liste donnant la distance entre lutilisateur et un/des événements', () => {
   it('Distance entre deux points identiques', async () => {
     assert.isTrue(event.getDistanceEvent(coord1, Aevents)[0].distance === 0);
@@ -121,10 +121,15 @@ describe('Liste contenant uniquement certains sports', () => {
 
 
 describe('Liste triée par un critère', () => {
+<<<<<<< HEAD
   it('Liste triée par rapport a lheure de départ décroissant', async () => {
     assert.isTrue(event.getSortedEvent('startTime', false)[0].name === 'Pétanque Finale 1');
   });
   it('Liste triée par rapport au nom décroissant', async () => {
     assert.isTrue(event.getSortedEvent('name', false)[0].name === 'Volley Finale 1/1 ');
+=======
+  it('Liste triée par rapport a l heure de début', async () => {
+    assert.lengthOf(event.getSpecificEvents(['Football', 'Handball']), 6);
+>>>>>>> GH-54 GH-56 routing for events and preferences
   });
 });

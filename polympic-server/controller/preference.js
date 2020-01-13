@@ -1,7 +1,12 @@
 const { Preference } = require('../models');
 
 module.exports = {
-  getPreference() {
+
+  getPreferences() {
     return Preference.get();
+  },
+
+  getPreferencesByTypes(types) {
+    return Preference.get().filter((elem) => types.includes(elem.tag));
   }
 };
