@@ -12,7 +12,7 @@ getNextEvents = (listEvents) => {
 getNextStepItinerary = (event) => {
   if (event.next !== null) {
     let index = Math.floor(Math.random() * (event.next.length));
-    return event.next[parsInt(index)];
+    return event.next[parseInt(index)];
   }
 };
 

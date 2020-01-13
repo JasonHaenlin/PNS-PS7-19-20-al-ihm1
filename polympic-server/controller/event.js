@@ -23,9 +23,9 @@ module.exports = {
     let events = Event.get();
     return events.sort((a, b) => {
       if (asc) {
-        return (a[parsInt(prop)] > b[parsInt(prop)]) ? 1 : ((a[parsInt(prop)] < b[parsInt(prop)]) ? -1 : 0);
+        return (a[parseInt(prop)] > b[parseInt(prop)]) ? 1 : ((a[parseInt(prop)] < b[parseInt(prop)]) ? -1 : 0);
       } else {
-        return (b[parsInt(prop)] > a[parsInt(prop)]) ? 1 : ((b[parsInt(prop)] < a[parsInt(prop)]) ? -1 : 0);
+        return (b[parseInt(prop)] > a[parseInt(prop)]) ? 1 : ((b[parseInt(prop)] < a[parseInt(prop)]) ? -1 : 0);
       }
     });
   },
