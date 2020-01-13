@@ -18,9 +18,9 @@ Sevent =
   "endTime": 1667725200
 }
 
-/* events = [
+Aevents = [
   {
-    "id": "fdm2",
+    "id": "fdm1",
     "name": "Football Demi Finale 1/2 ",
     "description": "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
     "versus": ["Italie","Espagne"],
@@ -34,7 +34,7 @@ Sevent =
     "endTime": 1667725200
 },
 {
-    "id": "fdm3",
+    "id": "fdm2",
     "name": "Football Demi Finale 2/2 ",
     "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
     "versus": ["France","Allemagne"],
@@ -48,11 +48,11 @@ Sevent =
     "endTime": 1667736000
 },
 {
-  "id": "fdm4",
+  "id": "fdm3",
   "name": "Football Demi Finale 2/2 ",
   "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
   "versus": ["France","Allemagne"],
-  "sport": "Football",
+  "sport": "Handball",
   "site": {
       "name" :"Stade de France B",
       "latitude" :48.924459,
@@ -60,7 +60,7 @@ Sevent =
   },
   "startTime": 1667736000,
   "endTime": 1667736000
-}]*/
+}]
 // events = event.getEvents();
 // eventz = event.getEventById("fdm4");
 // console.log(eventz);
@@ -75,9 +75,12 @@ describe('Liste contenant uniquement certains sports', () => {
     assert.lengthOf(event.getSpecificEvent(['Football', 'Handball']), 6);
   });
 });
-
+console.log(event.getSortedEvent('name', false));
 describe('Liste triée par un critère', () => {
-  it('Liste triée par rapport a l heure de début', async () => {
-    assert.lengthOf(event.getSpecificEvent(['Football', 'Handball']), 6);
+  it('Liste triée par rapport a lheure de départ décroissant', async () => {
+    assert.isTrue(event.getSortedEvent('startTime', false)[0].name === 'Pétanque Finale 1');
+  });
+  it('Liste triée par rapport au nom décroissant', async () => {
+    assert.isTrue(event.getSortedEvent('name', false)[0].name === 'Volley Finale 1/1 ');
   });
 });
