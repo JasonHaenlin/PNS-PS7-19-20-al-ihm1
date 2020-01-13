@@ -1,3 +1,2 @@
-for each EVENT
-when 2 < 3
-then display
+for each program
+when FOO and BAR then display

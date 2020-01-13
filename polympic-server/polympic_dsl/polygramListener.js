@@ -38,39 +38,57 @@ polygramListener.prototype.exitStatement = function(ctx) {
 };
 
 
-// Enter a parse tree produced by polygramParser#statement_list.
-polygramListener.prototype.enterStatement_list = function(ctx) {
+// Enter a parse tree produced by polygramParser#condition.
+polygramListener.prototype.enterCondition = function(ctx) {
 };
 
-// Exit a parse tree produced by polygramParser#statement_list.
-polygramListener.prototype.exitStatement_list = function(ctx) {
-};
-
-
-// Enter a parse tree produced by polygramParser#expression.
-polygramListener.prototype.enterExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by polygramParser#expression.
-polygramListener.prototype.exitExpression = function(ctx) {
+// Exit a parse tree produced by polygramParser#condition.
+polygramListener.prototype.exitCondition = function(ctx) {
 };
 
 
-// Enter a parse tree produced by polygramParser#func_decl.
-polygramListener.prototype.enterFunc_decl = function(ctx) {
+// Enter a parse tree produced by polygramParser#action.
+polygramListener.prototype.enterAction = function(ctx) {
 };
 
-// Exit a parse tree produced by polygramParser#func_decl.
-polygramListener.prototype.exitFunc_decl = function(ctx) {
+// Exit a parse tree produced by polygramParser#action.
+polygramListener.prototype.exitAction = function(ctx) {
 };
 
 
-// Enter a parse tree produced by polygramParser#variable_prototype.
-polygramListener.prototype.enterVariable_prototype = function(ctx) {
+// Enter a parse tree produced by polygramParser#bool.
+polygramListener.prototype.enterBool = function(ctx) {
 };
 
-// Exit a parse tree produced by polygramParser#variable_prototype.
-polygramListener.prototype.exitVariable_prototype = function(ctx) {
+// Exit a parse tree produced by polygramParser#bool.
+polygramListener.prototype.exitBool = function(ctx) {
+};
+
+
+// Enter a parse tree produced by polygramParser#num_cmp.
+polygramListener.prototype.enterNum_cmp = function(ctx) {
+};
+
+// Exit a parse tree produced by polygramParser#num_cmp.
+polygramListener.prototype.exitNum_cmp = function(ctx) {
+};
+
+
+// Enter a parse tree produced by polygramParser#number.
+polygramListener.prototype.enterNumber = function(ctx) {
+};
+
+// Exit a parse tree produced by polygramParser#number.
+polygramListener.prototype.exitNumber = function(ctx) {
+};
+
+
+// Enter a parse tree produced by polygramParser#attribute.
+polygramListener.prototype.enterAttribute = function(ctx) {
+};
+
+// Exit a parse tree produced by polygramParser#attribute.
+polygramListener.prototype.exitAttribute = function(ctx) {
 };
 
 

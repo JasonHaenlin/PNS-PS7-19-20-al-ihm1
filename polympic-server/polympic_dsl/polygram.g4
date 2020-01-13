@@ -1,7 +1,7 @@
 grammar polygram;
 
 program:
-    FOREACH WS subject EOL statement;
+    FOREACH subject statement+;
 
 subject:
         PROGRAM
@@ -9,59 +9,57 @@ subject:
     ;
 
 statement:
-        EOL
-    |   expression EOL
-    |   func_decl
-    |   WHEN WS expression EOL THEN WS statement
-    |   variable_prototype EOL
-    |   DISP EOL
-    |   statement_list
+        action
+    |   condition
     ;
 
-statement_list:
-        statement_list statement
-    |   EOL
+condition:
+    WHEN bool THEN action;
+
+action:
+    DISPLAY;
+
+bool:
+        attribute
+    |   num_cmp
+    |   bool AND bool
+    |   bool OR bool
     ;
 
-expression:
-        NUMBER
-    |   variable_prototype
-    |   expression  '>'  expression
-    |   expression  '<'  expression
-    |   expression  '='  expression
-    |   expression  '>='  expression
-    |   expression  '<='  expression
-    |   expression  '!='  expression
-    |   expression  AND  expression
-    |   expression  OR  expression
+num_cmp:
+        number GT number
+    |   number LT number
+    |   number EQ number
+    |   number GE number
+    |   number LE number
+    |   number NE number
     ;
 
-func_decl:
-    DEFINITION  variable_prototype  ':'  EOL statement
+number:
+        attribute
+    |   NUMBER
+    |   number '+' number
+    |   number '-' number
+    |   number '*' number
+    |   number '/' number
     ;
 
-variable_prototype:
+attribute:
     IDENTIFIER;
 
-DISP:
+DISPLAY:
     'display';
 
-DEFINITION:
-    'define';
-
-CONCERNS:
-    'CONCERNS';
-
 PROGRAM:
-    'PROGRAM'
+    'program'
     ;
 
 EVENT:
-    'EVENT'
+    'event'
     ;
 
 IDENTIFIER:
-    [a-zA-Z][_a-zA-Z0-9]*
+    [A-Z]+[A-Z0-9]+
     ;
 
 FOREACH:
@@ -76,6 +74,27 @@ AND:
 OR:
     'or';
 
+NOT:
+    'not';
+
+GT:
+    '>';
+
+LT:
+    '<';
+
+GE:
+    '>=';
+
+LE:
+    '<=';
+
+EQ:
+    '=';
+
+NE:
+    '!=';
+
 WHEN:
     'when';
 
@@ -83,12 +102,10 @@ THEN:
     'then';
 
 EOL:
-    [\r\n]+;
+    [\r\n]+ -> skip;
 
 WS:
-        [ \t]+ -> skip
-    ;
+    [ \t]+ -> skip;
 
 COMMENT:
-    '//'.*? EOL -> skip
-    ;
+    '//'.*? EOL -> skip;

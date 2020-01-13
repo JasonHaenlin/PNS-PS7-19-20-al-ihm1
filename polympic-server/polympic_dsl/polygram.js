@@ -5,8 +5,7 @@ const fs = require("fs")
 const antlr4 = require("antlr4/index")
 const polygramLexer = require("./polygramLexer.js")
 const polygramParser = require("./polygramParser.js")
-const polygramListener = require("./polygramListener.js").polygramListener
-
+const polygramVisitor = require("./polygramVisitor.js").polygramVisitor
 
 const DEBUG = false
 
@@ -30,5 +29,5 @@ var parser = new polygramParser.polygramParser(tokens)
 parser.buildParseTrees = true
 var tree = parser.program()
 
-var extractor = new polygramListener()
-antlr4.tree.ParseTreeWalker.DEFAULT.walk(extractor, tree)
+var visitor = new polygramVisitor()
+visitor.visitProgram(tree);
