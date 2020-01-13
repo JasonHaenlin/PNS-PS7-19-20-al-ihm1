@@ -13,13 +13,17 @@ pipeline {
     stage('Install') {
       steps {
         echo 'Install Dependencies'
-        sh 'npm install'
+        dir('./polympic-server/'){
+          sh 'npm install'
+        }
       }
     }
     stage('Lint') {
       steps {
         echo 'javascript Linter'
+        dir('./polympic-server/'){
           sh 'npm run lint'
+        }
       }
     }
     stage('Test') {
@@ -28,7 +32,9 @@ pipeline {
       }
       steps {
         echo 'Test'
-        sh 'npm test'
+        dir('./polympic-server/'){
+          sh 'npm test'
+        }
       }
     }
     stage(' Deployment') {
