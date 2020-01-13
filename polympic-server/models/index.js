@@ -1,9 +1,9 @@
 const BaseModel = require('./base-model');
 
-const Interet = new BaseModel('Interet');
-const Evenement = new BaseModel('Evenement');
+const Preference = new BaseModel('Preference');
+const Event = new BaseModel('Event');
 
 module.exports = {
-  Interet,
-  Evenement
+  Preference,
+  Event
 };

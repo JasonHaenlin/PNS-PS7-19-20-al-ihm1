@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "mocha",
+    "test": "mocha tests/ -R spec --recursive --exit",
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js ./",
     "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js ./ --fix",
     "dev": "nodemon -e js -w ./ ./bin/www",

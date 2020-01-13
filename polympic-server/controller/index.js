@@ -1,7 +1,7 @@
-const interet = require('./interet');
-const evenement = require('./evenement');
+const preference = require('./preference');
+const event = require('./event');
 
 module.exports = {
-  interet,
-  evenement
+  preference,
+  event
 };
