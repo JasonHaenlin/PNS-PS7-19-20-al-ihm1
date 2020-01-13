@@ -72,6 +72,16 @@ module.exports = {
       }
     });
     return next;
+  },
+
+  getEventById(ids) {
+    let events = Event.get();
+    for (const e of events) {
+      if (e.id === ids) {
+        return e;
+      }
+    }
+    return 0;
   }
 
 };

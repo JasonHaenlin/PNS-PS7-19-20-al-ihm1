@@ -62,6 +62,9 @@ events = [
   "endTime": 1667736000
 }]
 
+eventz = event.getEventById("fdm4");
+console.log(eventz);
+
 // console.log(event.getNext(Sevent, events));
 
 // console.log(event.getEarliestEvent(events));
