@@ -27,8 +27,8 @@ Aevents = [
     "sport": "Football",
     "site": {
         "name" :"Stade de France A",
-        "latitude" :48.924459,
-        "longitude" :2.360164
+        "latitude" :48.922456,
+        "longitude" :2.361977
     },
     "startTime": 1667721600,
     "endTime": 1667725200
@@ -41,8 +41,8 @@ Aevents = [
     "sport": "Football",
     "site": {
         "name" :"Stade de France B",
-        "latitude" :48.924459,
-        "longitude" :2.360164
+        "latitude" :48.922456,
+        "longitude" :2.365555
     },
     "startTime": 1667728800,
     "endTime": 1667736000
@@ -55,7 +55,7 @@ Aevents = [
   "sport": "Handball",
   "site": {
       "name" :"Stade de France B",
-      "latitude" :48.924459,
+      "latitude" :58.924459,
       "longitude" :2.360164
   },
   "startTime": 1667736000,
@@ -67,8 +67,19 @@ Aevents = [
 // console.log(event.getNext(Sevent, events));
 // console.log(event.getEarliestEvent(events));
 // events = evenement.getEvenement();
-// coord1 = {latitude: 48.922456, longitude: 2.361977};
-// console.log(event.getDistanceEvent(coord1, events));
+
+coord1 = {latitude: 48.922456, longitude: 2.361977};
+describe('Liste donnant la distance entre lutilisateur et un/des événements', () => {
+  it('Distance entre deux points identiques', async () => {
+    assert.isTrue(event.getDistanceEvent(coord1, Aevents)[0].distance === 0);
+  });
+  it('Distance entre deux points différents', async () => {
+    assert.isTrue(event.getDistanceEvent(coord1, Aevents)[1].distance > 0);
+  });
+  it('Distance entre deux points très éloignés', async () => {
+    assert.isTrue(event.getDistanceEvent(coord1, Aevents)[2].distance > 1000);
+  });
+});
 
 describe('Liste contenant uniquement certains sports', () => {
   it('Taille dune liste devenements avec du foot, du hand, et de la pétanque', async () => {
