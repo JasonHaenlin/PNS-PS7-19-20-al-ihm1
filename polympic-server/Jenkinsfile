@@ -10,46 +10,46 @@ pipeline {
         echo 'Checkout'
       }
     }
-  }
-  stage('Install') {
-    steps {
-      echo 'Install Dependencies'
-      sh 'npm install'
+    stage('Install') {
+      steps {
+        echo 'Install Dependencies'
+        sh 'npm install'
+      }
     }
-  }
-  stage('Lint') {
-    steps {
-      echo 'javascript Linter'
-        sh 'npm run lint'
+    stage('Lint') {
+      steps {
+        echo 'javascript Linter'
+          sh 'npm run lint'
+      }
     }
-  }
-  stage('Test') {
-    environment {
-      NODE_ENV = 'development'
+    stage('Test') {
+      environment {
+        NODE_ENV = 'development'
+      }
+      steps {
+        echo 'Test'
+        sh 'npm test'
+      }
     }
-    steps {
-      echo 'Test'
-      sh 'npm test'
-    }
-  }
-  stage(' Deployment') {
-    environment {
-      NODE_ENV = 'production'
-    }
-    steps {
-      echo 'App restarted (mocked)'
-      // echo 'App restarted'
-      // =>/var/lib/jenkins/node-app//
-      // dir('../../node-app/') {
-      //   sh 'rm -rf projet-semestre-6-otake'
-      //   sh 'git clone git@github.com:2018-2019-ps6/projet-semestre-6-otake.git'
-      // }
-      // dir('../../node-app/projet-semestre-6-otake/back/') {
-      //   sh 'npm install'
-      //   withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-      //     sh 'npm run redeploy'
-      //   }
-      // }
+    stage(' Deployment') {
+      environment {
+        NODE_ENV = 'production'
+      }
+      steps {
+        echo 'App restarted (mocked)'
+        // echo 'App restarted'
+        // =>/var/lib/jenkins/node-app//
+        // dir('../../node-app/') {
+        //   sh 'rm -rf projet-semestre-6-otake'
+        //   sh 'git clone git@github.com:2018-2019-ps6/projet-semestre-6-otake.git'
+        // }
+        // dir('../../node-app/projet-semestre-6-otake/back/') {
+        //   sh 'npm install'
+        //   withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+        //     sh 'npm run redeploy'
+        //   }
+        // }
+      }
     }
   }
   post {
