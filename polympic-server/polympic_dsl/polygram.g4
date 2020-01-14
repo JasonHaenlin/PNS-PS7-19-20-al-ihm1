@@ -1,5 +1,7 @@
 grammar polygram;
 
+//@header{const produceCode = require("polygram")}
+
 // parser rules :
 
 program:
@@ -16,45 +18,41 @@ statement:
     ;
 
 condition:
-    WHEN bool THEN action;
+    WHEN bool THEN statement+;
 
 action:
     DISPLAY;
 
 bool:
-        IDENTIFIER
-    |   number  GT  number
-    |   number  LT  number
-    |   number  EQ  number
-    |   number  GE  number
-    |   number  LE  number
-    |   number  NE  number
-    |   bool  AND  bool
-    |   bool  OR  bool
-    |   NOT  bool
-    ;
+	IDENTIFIER
+	| number GT number
+	| number LT number
+	| number EQ number
+	| number GE number
+	| number LE number
+	| number NE number
+	| bool AND bool
+	| bool OR bool
+	| NOT bool;
 
 number:
-        IDENTIFIER
-    |   NUMBER
-    |   number '+' number
-    |   number '-' number
-    |   number '*' number
-    |   number '/' number
-    ;
+	IDENTIFIER
+	| NUMBER
+	| number '+' number
+	| number '-' number
+	| number '*' number
+	| number '/' number;
 
 // lexer rules :
+
+PROGRAM:
+    'program';
 
 DISPLAY:
     'display';
 
-PROGRAM:
-    'program'
-    ;
-
 EVENT:
-    'event'
-    ;
+    'event';
 
 IDENTIFIER:
     [A-Z]+[A-Z0-9]+;
@@ -63,7 +61,7 @@ FOREACH:
     'for each';
 
 NUMBER:
-    '-'?[0-9]+( ',' | '.' )?[0-9]*;
+    '-'? [0-9]+ ( ',' | '.')? [0-9]*;
 
 AND:
     'and';
@@ -105,4 +103,4 @@ WS:
     [ \t]+ -> skip;
 
 COMMENT:
-    '//'.*? EOL -> skip;
+    '//' .*? EOL -> skip;
