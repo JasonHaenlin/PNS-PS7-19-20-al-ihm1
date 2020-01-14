@@ -5,7 +5,7 @@ exports.getEventsByPreferencesandDistance = async (req, res) => {
   let prefs = req.query.prefs;
   let anItinierary = [];
   if (prefs) {
-    anItinierary.add(itinerary.getItinerary(prefs.split(',')));
+    anItinierary.push(itinerary.getItinerary(prefs.split(',')));
   }
   resHandler.yahResponse(res, anItinierary);
 };

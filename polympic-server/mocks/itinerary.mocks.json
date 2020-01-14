@@ -1,12 +1,10 @@
 {
-  "label": "Multi-Disciplines",
+  "label": "Uni-Discipline",
   "description": [
-    "Football",
-    "Rugby",
-    "Handball"
+    "Football"
   ],
   "beginDate": 1641369600,
-  "endDate": 1641416400,
+  "endDate": 1641380400,
   "events": [
     {
       "id": "fdm1",
@@ -23,104 +21,7 @@
         "longitude": 2.359805
       },
       "startTime": 1641369600,
-      "endTime": 1641380400,
-      "duration": 10800,
-      "is_foot": true
-    },
-    {
-      "id": "rhf3",
-      "name": "Rugby Huitème de finale 3/8",
-      "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
-      "versus": [
-        "Italie",
-        "Espagne"
-      ],
-      "sport": "Rugby",
-      "site": {
-        "name": "Stade de Rugby C",
-        "latitude": 48.928184,
-        "longitude": 2.349687
-      },
-      "startTime": 1641384000,
-      "endTime": 1641387600,
-      "duration": 3600,
-      "is_foot": false
-    },
-    {
-      "id": "fdm2",
-      "name": "Football Demi Finale 2/2 ",
-      "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
-      "versus": [
-        "France",
-        "Allemagne"
-      ],
-      "sport": "Football",
-      "site": {
-        "name": "Stade de France B",
-        "latitude": 48.924298,
-        "longitude": 2.359805
-      },
-      "startTime": 1641387600,
-      "endTime": 1641398400,
-      "duration": 10800,
-      "is_foot": true
-    },
-    {
-      "id": "hdf1",
-      "name": "Handball Demi finale 1/4",
-      "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
-      "versus": [
-        "France",
-        "Canada"
-      ],
-      "sport": "Handball",
-      "site": {
-        "name": "Stade de Handball A",
-        "latitude": 48.920482,
-        "longitude": 2.366151
-      },
-      "startTime": 1641403800,
-      "endTime": 1641405600,
-      "duration": 1800,
-      "is_foot": false
-    },
-    {
-      "id": "hdf3",
-      "name": "Handball Demi finale 3/4",
-      "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
-      "versus": [
-        "Italie",
-        "Turquie"
-      ],
-      "sport": "Handball",
-      "site": {
-        "name": "Stade de Handball C",
-        "latitude": 48.920482,
-        "longitude": 2.366151
-      },
-      "startTime": 1641411000,
-      "endTime": 1641412800,
-      "duration": 1800,
-      "is_foot": false
-    },
-    {
-      "id": "hdf4",
-      "name": "Handball Demi finale 4/4",
-      "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
-      "versus": [
-        "Belgique",
-        "Monaco"
-      ],
-      "sport": "Handball",
-      "site": {
-        "name": "Stade de Handball D",
-        "latitude": 48.920482,
-        "longitude": 2.366151
-      },
-      "startTime": 1641414600,
-      "endTime": 1641416400,
-      "duration": 1800,
-      "is_foot": false
+      "endTime": 1641380400
     }
   ]
 }
