@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
-import 'package:polympic/blocs/itinerary/itinerary_state.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/screens/app-page/itinerary-page/components/itinerary_list.dart';

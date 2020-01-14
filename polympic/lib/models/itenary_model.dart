@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ItineraryModel {
   final String label;
-  final String description;
+  final List<String> description;
   final int beginDate;
   final int endDate;
   final List<dynamic> events;

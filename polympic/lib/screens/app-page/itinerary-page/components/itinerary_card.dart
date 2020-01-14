@@ -43,7 +43,7 @@ class ItineraryCard extends StatelessWidget {
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  data.description,
+                  _description(data.description),
                   style: TextStyle(color: kColorAccent, fontSize: 20),
                 ),
                 SizedBox(height: 8.0),
@@ -75,4 +75,12 @@ class ItineraryCard extends StatelessWidget {
   _passEvent() {
     return data.events.map((item) => EventModel.fromMap(item)).toList();
   }
+}
+
+String _description(List<String> description) {
+  String msg = "";
+  for (var i = 0; i < description.length; i++) {
+    msg += description[i] + (i < description.length - 1 ? " - " : "");
+  }
+  return msg;
 }

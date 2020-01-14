@@ -22,7 +22,7 @@ class _EventCardState extends State<EventCard> {
 
     String _starttime = timestampToDateString(this.widget.event.starttime);
     String _endtime = timestampToDateString(this.widget.event.endtime);
-    bool _favorite = this.widget.event.favorite;
+    // bool _favorite = this.widget.event.favorite;
 
     double cWidth = MediaQuery.of(context).size.width * 0.6;
 

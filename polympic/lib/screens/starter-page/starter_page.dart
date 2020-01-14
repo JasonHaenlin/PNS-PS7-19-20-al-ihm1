@@ -8,7 +8,6 @@ import 'package:polympic/core/router.dart';
 import 'package:polympic/models/category_model.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/screens/app-page/preference-page/components/sport_card.dart';
-import 'package:polympic/screens/app-page/preference-page/components/sport_list.dart';
 import 'package:polympic/theme/colors.dart';
 
 class StarterPage extends StatelessWidget {
