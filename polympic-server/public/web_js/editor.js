@@ -59,11 +59,22 @@ let file_itineraries="example_2.js";
 let editor = document.getElementById('editor');
 let preview = document.getElementById('preview');
 let preview_btn = document.getElementById('btn-preview');
+let save_btn = document.getElementById('btn-save');
 let loader_btn = document.getElementById('loader');
 loadFile(file_events);
 loader_btn.innerText = "Load " + file_events;
 
 preview_btn.addEventListener('click', runPreview);
+save_btn.addEventListener('click', function() {
+  fetch('/editor/save',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ file: file, code: editor.innerText })
+    })
+})
 loader_btn.addEventListener('click', function() {
     if (file === file_events) {
         loadFile(file_itineraries);
