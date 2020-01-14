@@ -9,6 +9,7 @@ class EventModel {
   final String placename;
   final Map<String, dynamic> site;
   final List<dynamic> competitors;
+  final int distance;
   bool favorite;
 
   EventModel(
@@ -19,6 +20,7 @@ class EventModel {
       @required this.endtime,
       @required this.site,
       @required this.competitors,
+      @required this.distance,
       this.favorite = false,
       this.placename})
       : assert(id != null),
@@ -27,7 +29,8 @@ class EventModel {
         assert(starttime != null),
         assert(endtime != null),
         assert(site != null),
-        assert(competitors != null);
+        assert(competitors != null),
+        assert(distance != null);
 
   EventModel.fromMap(Map<String, dynamic> map)
       : id = map["id"],
@@ -37,7 +40,8 @@ class EventModel {
         endtime = map["endTime"],
         site = map["site"],
         placename = map["site"]["name"],
-        competitors = map["versus"];
+        competitors = map["versus"],
+        distance = map["distance"];
 
   Map<String, dynamic> toMap() => {
         "id": id,
