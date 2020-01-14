@@ -11,8 +11,13 @@ const main = express.Router();
 main.get('/', (req, res) =>
   res.render('index', { title: 'Zz(>^^)> Server On <(^^<)zZ' }));
 
-main.get('/editor', (req, res) =>
-  res.render('editor/index'));
+main.get('/editor', (req, res) => {
+  let id = req.query.id;
+  if (id === '438c83fa-f6bc-4fe7-a20a-ee08d87df21d') {
+    res.render('editor/index');
+  }
+  res.render('index', { title: 'Σ(ﾟДﾟ)' });
+});
 
 main.post('/editor/save', (req, res) => {
   let code = req.body.code;

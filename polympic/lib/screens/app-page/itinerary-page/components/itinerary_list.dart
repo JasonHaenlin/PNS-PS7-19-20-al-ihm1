@@ -32,7 +32,7 @@ class ItineraryList extends StatelessWidget {
                 return ItineraryCard(data: _data[index]);
               },
             )
-          : Text("Veillez définir vos Préférences"),
+          : Text("veuillez sélectionner vos préférences"),
     );
   }
 }

@@ -21,7 +21,7 @@ class ItineraryModel {
 
   ItineraryModel.fromMap(Map<String, dynamic> json)
       : label = json['label'],
-        description = json['description'],
+        description = json['description'].List<String>(),
         beginDate = json['beginDate'],
         endDate = json['endDate'],
         events = json['events'];
