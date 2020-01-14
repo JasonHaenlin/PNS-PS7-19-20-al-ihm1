@@ -1,14 +1,15 @@
+/* eslint-disable security/detect-eval-with-expression */
 /* eslint-disable security/detect-object-injection */
 const { Event } = require('../models');
 const geolib = require('geolib');
-const compiler = require("../utils/compiler");
+const compiler = require('../utils/compiler');
 
 module.exports = {
   getEvents() {
     return this.filterByScript();
   },
 
-  // use the code in parameter 
+  // use the code in parameter
   runScript(code) {
     const events = Event.get();
     const compiledScript = compiler.compileCode(code);
@@ -18,7 +19,7 @@ module.exports = {
   // use the example script
   filterByScript() {
     const events = Event.get();
-    const scriptName = "./public/scripts/example.js";
+    const scriptName = './public/scripts/example.js';
     const compiledScript = compiler.compile(scriptName);
     return eval(compiledScript).run(events);
   },

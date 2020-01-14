@@ -53,7 +53,7 @@ module.exports = {
     "no-caller": 2, // disallow use of arguments.caller or arguments.callee
     "no-div-regex": 2, // disallow division operators explicitly at beginning of regular expression (off by default)
     "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
-    "no-eval": 2, // disallow use of eval()
+    "no-eval": 0, // disallow use of eval()
     "no-extend-native": 2, // disallow adding to native types
     "no-extra-bind": 2, // disallow unnecessary function binding
     "no-fallthrough": 2, // disallow fallthrough of case statements
