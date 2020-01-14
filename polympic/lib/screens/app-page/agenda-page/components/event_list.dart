@@ -40,35 +40,10 @@ class _EventListState extends State<EventList> {
       return;
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Agenda"),
-      ),
-      body:
-          // Padding(
-          //   padding: const EdgeInsets.all(12.0),
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //         contentPadding: EdgeInsets.all(10.0),
-          //         prefixIcon: Icon(Icons.search),
-          //         hintText: "Enter an event name"),
-          //     onChanged: (filter) {
-          //       setState(() {
-          //         this.filteredData = this
-          //             .widget
-          //             ._data
-          //             .where((e) =>
-          //                 (e.name.toLowerCase().contains(filter.toLowerCase())))
-          //             .toList();
-          //       });
-          //     },
-          //   ),
-          // ),
-          RefreshIndicator(
-        onRefresh: _handleRefresh,
-        child: ListView(
-          children: _getEvents(this.widget._data),
-        ),
+    return RefreshIndicator(
+      onRefresh: _handleRefresh,
+      child: ListView(
+        children: _getEvents(this.widget._data),
       ),
     );
   }

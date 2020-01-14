@@ -31,10 +31,9 @@ class Itineraries extends StatelessWidget {
     final _itineraryBLoc =
         BlocProvider.of<ItineraryBloc>(context).itineraryBloc;
 
-    _itineraryBLoc.dispatch(ItineraryEvent.fetch);
-
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Itinéraires'),
         actions: <Widget>[
           IconButton(
