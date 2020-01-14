@@ -37,16 +37,16 @@ class _EventCardState extends State<EventCard> {
     }
 
     Widget _getTextWidgets(dynamic strings) {
-      List<Widget> list = new List<Widget>();
+      List<Widget> list = List<Widget>();
       int i = 0;
       for (; i < strings.length - 1; i++) {
-        list.add(new Text(strings[i] + "-"));
+        list.add(Text(strings[i] + "-"));
       }
-      list.add(new Text(
+      list.add(Text(
         strings[i],
         style: TextStyle(fontSize: 15),
       ));
-      return new Row(children: list);
+      return Row(children: list);
     }
 
     return Column(
@@ -71,11 +71,11 @@ class _EventCardState extends State<EventCard> {
                 style: TextStyle(color: kColorAccent, fontSize: 15),
               ),
             ),
-            IconButton(
-              icon: (_favorite ? Icon(Icons.star) : Icon(Icons.star_border)),
-              color: kColorSecondary,
-              onPressed: _tooglefavorite,
-            )
+            // IconButton(
+            //   icon: (_favorite ? Icon(Icons.star) : Icon(Icons.star_border)),
+            //   color: kColorSecondary,
+            //   onPressed: _tooglefavorite,
+            // )
           ],
         ),
         Row(

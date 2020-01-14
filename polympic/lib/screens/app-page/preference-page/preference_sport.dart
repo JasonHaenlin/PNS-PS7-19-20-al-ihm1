@@ -12,7 +12,9 @@ class PreferenceSport extends StatelessWidget {
   Widget build(BuildContext context) {
     final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
 
-    _categoryBloc.dispatch(CategoryEvent.fetch);
+    _categoryBloc.dispatch(CategoryEvent.fetch, {
+      'tag': ['sport']
+    });
 
     return StreamBuilder<List<CategoryModel>>(
       stream: _categoryBloc.currentValue$,

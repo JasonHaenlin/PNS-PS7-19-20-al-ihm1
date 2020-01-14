@@ -8,7 +8,8 @@ const ITINERARY_MOCK = [
       {
         "id": "1",
         "name": "Match de Foot",
-        "description": "France - Allemagne",
+        "description":
+            "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
         "sport": "Foot",
         "place": "Stade de France",
         "versus": ["France", "Allemange"],
@@ -23,7 +24,7 @@ const ITINERARY_MOCK = [
       {
         "id": "2",
         "name": "Match de Rugby",
-        "description": "Thailande - Madacascar",
+        "description": "Comment sont-ils arrivés là ? Personne ne le sait...",
         "sport": "Rugby",
         "place": "Stade de B",
         "versus": ["Thailande", "Madacascar"],
@@ -38,7 +39,7 @@ const ITINERARY_MOCK = [
       {
         "id": "2",
         "name": "Match de Rugby",
-        "description": "Belgique - Japon",
+        "description": "Peut-être un beau match qui s'annnoce ! Ou pas.",
         "sport": "Rugby",
         "place": "Stade de A",
         "versus": ["Belgique", "Japon"],

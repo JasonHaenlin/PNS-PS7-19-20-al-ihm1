@@ -17,8 +17,6 @@ class SportCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
 
-    _categoryBloc.dispatch(CategoryEvent.fetch);
-
     return Container(
         decoration: BoxDecoration(
           border: Border(

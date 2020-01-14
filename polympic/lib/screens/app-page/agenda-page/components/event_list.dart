@@ -36,25 +36,25 @@ class _EventListState extends State<EventList> {
       ),
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10.0),
-                  prefixIcon: Icon(Icons.search),
-                  hintText: "Enter an event name"),
-              onChanged: (filter) {
-                setState(() {
-                  this.filteredData = this
-                      .widget
-                      ._data
-                      .where((e) =>
-                          (e.name.toLowerCase().contains(filter.toLowerCase())))
-                      .toList();
-                });
-              },
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(12.0),
+          //   child: TextField(
+          //     decoration: InputDecoration(
+          //         contentPadding: EdgeInsets.all(10.0),
+          //         prefixIcon: Icon(Icons.search),
+          //         hintText: "Enter an event name"),
+          //     onChanged: (filter) {
+          //       setState(() {
+          //         this.filteredData = this
+          //             .widget
+          //             ._data
+          //             .where((e) =>
+          //                 (e.name.toLowerCase().contains(filter.toLowerCase())))
+          //             .toList();
+          //       });
+          //     },
+          //   ),
+          // ),
           Expanded(
             child: ListView.builder(
               itemCount: filteredData.length,

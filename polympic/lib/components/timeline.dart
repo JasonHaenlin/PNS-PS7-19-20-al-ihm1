@@ -185,6 +185,19 @@ class Tile extends StatelessWidget {
   }
 }
 
+Widget _getTextWidgets(List<String> strings) {
+  List<Widget> list = List<Widget>();
+  int i = 0;
+  for (; i < strings.length - 1; i++) {
+    list.add(Text(strings[i] + "-"));
+  }
+  list.add(Text(
+    strings[i],
+    style: TextStyle(fontSize: 15),
+  ));
+  return Row(children: list);
+}
+
 class TimelineTab extends StatelessWidget {
   const TimelineTab({
     Key key,
@@ -192,12 +205,14 @@ class TimelineTab extends StatelessWidget {
     @required this.beginDate,
     @required this.endDate,
     @required this.dropChildrens,
+    @required this.versus,
   }) : super(key: key);
 
   final String title;
   final DateTime beginDate;
   final DateTime endDate;
   final List<Widget> dropChildrens;
+  final List<String> versus;
 
   @override
   Widget build(BuildContext context) {
@@ -212,6 +227,7 @@ class TimelineTab extends StatelessWidget {
               color: kColorPrimaryText,
             ),
           ),
+          _getTextWidgets(this.versus),
           Text(
             date.format(this.beginDate) + " - " + date.format(this.endDate),
             style: TextStyle(fontWeight: FontWeight.w400),

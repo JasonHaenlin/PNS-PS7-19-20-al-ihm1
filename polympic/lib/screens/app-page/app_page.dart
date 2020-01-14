@@ -23,12 +23,12 @@ class _AppPage extends State<AppPage> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.calendar_today),
-            title: new Text('Agenda'),
+            icon: Icon(Icons.calendar_today),
+            title: Text('Agenda'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.format_list_numbered),
-            title: new Text('Itinéraires'),
+            icon: Icon(Icons.format_list_numbered),
+            title: Text('Itinéraires'),
           ),
         ],
       ),
