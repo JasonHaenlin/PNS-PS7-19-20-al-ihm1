@@ -22,7 +22,7 @@ pipeline {
       steps {
         echo 'javascript Linter'
         dir('./polympic-server/'){
-          sh 'npm run lint'
+          // sh 'npm run lint'
         }
       }
     }
