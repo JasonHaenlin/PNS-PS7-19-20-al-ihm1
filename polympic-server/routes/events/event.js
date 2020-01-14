@@ -11,3 +11,8 @@ exports.getEventsByPreferences = async (req, res) => {
   }
   resHandler.yahResponse(res, events);
 };
+
+exports.previewResult = async (req, res) => {
+  let code = req.body.code;
+  resHandler.yahResponse(res, event.runScript(code));
+}

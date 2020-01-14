@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editing <%= file %></title>
+    <link rel="stylesheet" href="/stylesheets/editor-style.css"/>
+</head>
+<body>
+    <h1><%= file %></h1>
+    <div id="IDE">
+        <div id="editor-container">
+            <div id="editor" contenteditable="true" spellcheck="false"></div>
+        </div>
+        <div id="right-panel">
+            <div>
+                <button id="btn-save">Save</button>
+                <button id="btn-preview">Preview</button>
+            </div>
+            <div id="preview"></div>
+        </div>
+    </div>
+    
+    <script src="/web_js/editor.js"></script>
+  </body>
+</html>

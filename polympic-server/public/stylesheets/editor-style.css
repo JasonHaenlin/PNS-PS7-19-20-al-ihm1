@@ -1,0 +1,66 @@
+body {
+    font-family:
+                'Lucida Sans',
+                'Lucida Sans Regular', 
+                'Lucida Grande',
+                'Lucida Sans Unicode',
+                Geneva,
+                Verdana,
+                sans-serif;
+}
+
+#IDE {
+    display: grid;
+    grid-template-areas:
+            'editor buttons'
+            'editor preview';
+    
+    height: 80%;
+}
+
+#editor-container {
+    padding: 2em;
+    border: 1px lightgray solid;
+}
+
+#editor {
+    outline: none;
+    overflow: auto;
+}
+
+#right-panel {
+    padding: 2em;
+    border: 1px lightgray solid;
+}
+
+#preview {
+    overflow: auto;
+    border: 1px lightgray solid;
+}
+
+.preview-item {
+    border: 1px lightgray solid;
+    margin: 5px;
+    width: 95%;
+}
+
+.preview-item span {
+    display: block;
+    width: 100%
+}
+
+.preview-title {
+    font-size: medium;
+    color: blue;
+    font-weight: bold;
+}
+
+.preview-versus {
+    font-size: small;
+    color: black;
+}
+
+.preview-desc {
+    font-size: small;
+    color: red;
+}
