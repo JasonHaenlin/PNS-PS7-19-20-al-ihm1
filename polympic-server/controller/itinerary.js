@@ -42,7 +42,7 @@ constructObjectItinerary = (itinerary, tags) => {
     objectitinerary.beginDate = itinerary[0].startTime;
     objectitinerary.endDate = itinerary[itinerary.length - 2].endTime;
     for (var index = 0; index < itinerary.length - 1; index++) {
-        ['next', 'listNearEvents'].forEach(function(k) {
+        ['next', 'listNearEvents', 'distance'].forEach(function(k) {
             delete itinerary[index][k];
         });
         console.log(itinerary[index].listNearEvents);
@@ -54,8 +54,7 @@ constructObjectItinerary = (itinerary, tags) => {
 };
 
 
-writeItinerary = (itinerarytab, tags) => {
-    let itinerary = constructObjectItinerary(itinerarytab, tags);
+writeItinerary = (itinerary) => {
     const jsonitinerary = JSON.stringify(itinerary, null, 2);
     fs.writeFile('../polympic-server/mocks/itinerary.mocks.json', jsonitinerary, err => {
         if (err) {
@@ -102,7 +101,8 @@ module.exports = {
             nextevent = event.getEventById(nextevent);
             nextevent = getNextStepItinerary(nextevent);
         };
-        writeItinerary(proximityItinerary, tags);
-        //return proximityItinerary;
+        anItinerary = constructObjectItinerary(proximityItinerary, tags)
+        writeItinerary(anItinerary);
+        return anItinerary;
     }
 };

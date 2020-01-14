@@ -16,13 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (process.env.NODE_ENV === 'production') {
-  app.enable('trust proxy');
+    app.enable('trust proxy');
 }
 
 // log everything that pass to the router
 app.use((req, res, next) => {
-  LogTheTransaction(`${req.originalUrl} - ${req.method} - ${req.ip}`, 'info');
-  next();
+    LogTheTransaction(`${req.originalUrl} - ${req.method} - ${req.ip}`, 'info');
+    next();
 });
 
 
@@ -32,6 +32,8 @@ app.use('/', route.main);
 app.use('/preferences', route.preferences);
 // events routes
 app.use('/events', route.events);
+// itinerary
+app.use('/itinerary', route.anItinerary);
 
 // catch 404 and forward to error handler
 // triggered when a non-existent route attempts to be accessed

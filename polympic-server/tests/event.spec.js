@@ -4,7 +4,7 @@ const { event } = require('../controller');
 const itinerary = require('../controller/itinerary');
 
 // console.log(itinerary.getRandomItinerary(['Handball']));
-itinerary.getProximityItinerary(['Handball', 'Rugby', 'Volleyball'], 500);
+//itinerary.getProximityItinerary(['Handball', 'Rugby', 'Volleyball'], 500);
 
 Sevent = {
     id: 'fdm2',
