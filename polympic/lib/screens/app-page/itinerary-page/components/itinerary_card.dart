@@ -15,6 +15,8 @@ class ItineraryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width * 0.6;
+
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -42,9 +44,12 @@ class ItineraryCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.0),
-                Text(
-                  _description(data.description),
-                  style: TextStyle(color: kColorAccent, fontSize: 20),
+                Container(
+                  width: _width,
+                  child: Text(
+                    _description(data.description),
+                    style: TextStyle(color: kColorAccent, fontSize: 16),
+                  ),
                 ),
                 SizedBox(height: 8.0),
                 Text(
@@ -77,10 +82,10 @@ class ItineraryCard extends StatelessWidget {
   }
 }
 
-String _description(List<String> description) {
+String _description(List<dynamic> description) {
   String msg = "";
   for (var i = 0; i < description.length; i++) {
-    msg += description[i] + (i < description.length - 1 ? " - " : "");
+    msg += description[i] + " - ";
   }
   return msg;
 }

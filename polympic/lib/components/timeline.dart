@@ -23,6 +23,13 @@ class Timeline extends StatefulWidget {
 
 class _TimelineState extends State<Timeline> {
   @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
   void initState() {
     super.initState();
     for (var tab in this.widget.childrens) {
@@ -185,7 +192,7 @@ class Tile extends StatelessWidget {
   }
 }
 
-Widget _getTextWidgets(List<String> strings) {
+Widget _getTextWidgets(List<dynamic> strings) {
   List<Widget> list = List<Widget>();
   int i = 0;
   for (; i < strings.length - 1; i++) {
@@ -212,7 +219,7 @@ class TimelineTab extends StatelessWidget {
   final DateTime beginDate;
   final DateTime endDate;
   final List<Widget> dropChildrens;
-  final List<String> versus;
+  final List<dynamic> versus;
 
   @override
   Widget build(BuildContext context) {

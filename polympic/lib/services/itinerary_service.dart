@@ -14,9 +14,10 @@ class ItineraryService {
         params += t.name + ',';
       }
     }
+    print("aaa?");
     final response = await http
         .get('https://polympic.otakedev.com/itineraries?prefs=' + params);
-
+    print("aaad?");
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
       dynamic data =

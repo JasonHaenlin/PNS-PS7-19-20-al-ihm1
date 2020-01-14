@@ -21,7 +21,7 @@ main.get('/editor', (req, res) => {
 
 main.post('/editor/save', (req, res) => {
   let code = req.body.code;
-  let file = "./public/scripts/" + req.body.file;
+  let file = './public/scripts/' + req.body.file;
   fs.writeFileSync(file, code);
   resHandler.yahResponse(res, 'ok');
 });

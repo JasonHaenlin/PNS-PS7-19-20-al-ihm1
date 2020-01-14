@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/category/category_state.dart';
-import 'package:polympic/blocs/event/event_bloc.dart';
-import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
 import 'package:polympic/blocs/starter/starter_state.dart';
 import 'package:polympic/core/router.dart';
@@ -79,7 +77,6 @@ class SportStarterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _starterBloc = BlocProvider.of<StarterBloc>(context).starterBloc;
-    final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
 
     return Scaffold(
       appBar: AppBar(
@@ -97,7 +94,6 @@ class SportStarterPage extends StatelessWidget {
             color: kColorPrimary,
             onPressed: () => {
               _starterBloc.dispatch(StarterEvent.init),
-              _eventBloc.dispatch(EventEvent.fetch),
               navigateToPage(context, AppPage()),
             },
           ),

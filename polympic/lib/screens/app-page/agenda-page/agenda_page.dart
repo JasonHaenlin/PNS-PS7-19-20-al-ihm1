@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
+import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/screens/app-page/agenda-page/components/event_list.dart';
@@ -12,6 +13,7 @@ class AgendaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
+    _eventBloc.dispatch(EventEvent.fetch);
 
     return Scaffold(
       appBar: AppBar(

@@ -64,6 +64,8 @@ constructObjectItinerary = (itinerary, tags) => {
 
 writeItinerary = (itinerary) => {
   const jsonitinerary = JSON.stringify(itinerary, null, 2);
+  console.log(jsonitinerary);
+
   fs.writeFile('../polympic-server/mocks/itinerary.mocks.json', jsonitinerary, err => {
     if (err) {
       console.log('Error', err);

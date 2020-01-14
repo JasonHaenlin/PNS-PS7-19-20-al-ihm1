@@ -3,15 +3,16 @@ const loadFile = async filename => {
   let res = await fetch('/scripts/' + filename);
   let code = await res.text();
   editor.innerText = code;
-  file = filename 
+  file = filename;
 };
 
 const runPreview = async () => {
-  let url= ''
-  if (file == file_events)
-    url = '/events/preview'
-  else
-    url = '/itineraries/preview?prefs=Football,Rugby,Handball'
+  let url = '';
+  if (file == file_events) {
+    url = '/events/preview';
+  } else {
+    url = '/itineraries/preview?prefs=Football,Rugby,Handball';
+  }
   fetch(url,
     {
       method: 'POST',
@@ -36,7 +37,7 @@ const runPreview = async () => {
 };
 
 const showElement = element => {
-  if (file===file_events) {
+  if (file === file_events) {
     let node = '';
     node = node + '<div class=\'preview-item\'>';
     node = node + ('<span class=\'preview-title\'>' + element.name + ' (' + element.distance + 'm)' + '</span>');
@@ -53,19 +54,19 @@ const showElement = element => {
     return node;
   }
 };
-let file = ""
-let file_events="example.js";
-let file_itineraries="example_2.js";
+let file = '';
+let file_events = 'example.js';
+let file_itineraries = 'example_2.js';
 let editor = document.getElementById('editor');
 let preview = document.getElementById('preview');
 let preview_btn = document.getElementById('btn-preview');
 let save_btn = document.getElementById('btn-save');
 let loader_btn = document.getElementById('loader');
 loadFile(file_events);
-loader_btn.innerText = "Load " + file_events;
+loader_btn.innerText = 'Load ' + file_events;
 
 preview_btn.addEventListener('click', runPreview);
-save_btn.addEventListener('click', function() {
+save_btn.addEventListener('click', function () {
   fetch('/editor/save',
     {
       method: 'POST',
@@ -73,13 +74,13 @@ save_btn.addEventListener('click', function() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ file: file, code: editor.innerText })
-    })
-})
-loader_btn.addEventListener('click', function() {
-    if (file === file_events) {
-        loadFile(file_itineraries);
-    } else {
-        loadFile(file_events);
-    }
-    loader_btn.innerText = "Load " + file;
+    });
+});
+loader_btn.addEventListener('click', function () {
+  if (file === file_events) {
+    loadFile(file_itineraries);
+  } else {
+    loadFile(file_events);
+  }
+  loader_btn.innerText = 'Load ' + file;
 });

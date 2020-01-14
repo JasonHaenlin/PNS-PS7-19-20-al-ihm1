@@ -17,9 +17,6 @@ class EventCard extends StatefulWidget {
 class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
-    final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
-    _eventBloc.dispatch(EventEvent.fetch);
-
     String _starttime = timestampToDateString(this.widget.event.starttime);
     String _endtime = timestampToDateString(this.widget.event.endtime);
     // bool _favorite = this.widget.event.favorite;

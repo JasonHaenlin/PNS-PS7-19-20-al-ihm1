@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ItineraryModel {
   final String label;
-  final List<String> description;
+  final List<dynamic> description;
   final int beginDate;
   final int endDate;
   final List<dynamic> events;
@@ -21,7 +21,7 @@ class ItineraryModel {
 
   ItineraryModel.fromMap(Map<String, dynamic> json)
       : label = json['label'],
-        description = json['description'].List<String>(),
+        description = json['description'],
         beginDate = json['beginDate'],
         endDate = json['endDate'],
         events = json['events'];
