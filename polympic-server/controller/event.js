@@ -11,8 +11,7 @@ module.exports = {
 
     // use the code in parameter
     runScript(code) {
-        let coords = {"latitude": 48.924298,
-        "longitude": 2.359805}
+        let coords = {"latitude": 48.924298, "longitude": 2.359805};
         let events = this.getDistanceFromEvents(coords, Event.get());
         const compiledScript = compiler.compileCode(code);
         return eval(compiledScript).run(events);
@@ -20,7 +19,8 @@ module.exports = {
 
     // use the example script
     filterByScript() {
-        let events = this.getDistanceFromEvents(Event.get());
+        let coords = {"latitude": 48.924298, "longitude": 2.359805};
+        let events = this.getDistanceFromEvents(coords, Event.get());
         const scriptName = './public/scripts/example.js';
         const compiledScript = compiler.compile(scriptName);
         return eval(compiledScript).run(events);
