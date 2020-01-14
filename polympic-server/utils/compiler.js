@@ -11,7 +11,6 @@ const compileCode = (code) => {
 // compile a file and return some JS code
 const compile = (filename) => {
   let content = fs.readFileSync(filename, 'UTF-8');
-  console.log('debug...');
   let code = compileCode(content);
   return code;
 };

@@ -32,7 +32,7 @@ const run = (array) => {
     for (const def of defines) {
       element[def.name] = eval(def.value);
     }
-    if (element.is_foot) {
+    if (element.distance < 500) {
       display(output, element);
     }
   }

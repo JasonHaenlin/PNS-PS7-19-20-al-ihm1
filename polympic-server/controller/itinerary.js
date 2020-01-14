@@ -1,6 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 const event = require('./event');
 const fs = require('fs');
+const compiler = require('../utils/compiler');
 
 
 getNextEvents = (listEvents) => {
@@ -73,6 +74,25 @@ writeItinerary = (itinerary) => {
 };
 
 module.exports = {
+
+  getItinerary(tags) {
+    return this.filterByScript(tags);
+  },
+
+  // use the code in parameter
+  runScript(code, tags) {
+    const compiledScript = compiler.compileCode(code);
+    const distance = eval(compiledScript).run();
+    return this.getProximityItinerary(tags, distance);
+  },
+
+  // use the example script
+  filterByScript(tags) {
+    const scriptName = './public/scripts/example_2.js';
+    const compiledScript = compiler.compile(scriptName);
+    const distance = eval(compiledScript).run();
+    return this.getProximityItinerary(tags, distance);
+  },
 
     getRandomItinerary(tags) {
         let randomitinerary = [];

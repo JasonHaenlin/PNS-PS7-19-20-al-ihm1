@@ -10,7 +10,7 @@ main.get('/', (req, res) =>
   res.render('index', { title: 'Zz(>^^)> Server On <(^^<)zZ' }));
 
 main.get('/editor', (req, res) =>
-  res.render('editor/index', { file: 'example.js' }));
+  res.render('editor/index'));
 
 module.exports = {
   main,
