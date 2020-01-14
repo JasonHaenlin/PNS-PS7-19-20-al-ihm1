@@ -91,6 +91,13 @@ class _EventCardState extends State<EventCard> {
             ),
           ],
         ),
+        Text(
+          "Se trouve à ${widget.event.distance}m",
+          style: TextStyle(
+            fontSize: 14,
+            color: kColorAccent,
+          ),
+        ),
       ],
     );
   }
