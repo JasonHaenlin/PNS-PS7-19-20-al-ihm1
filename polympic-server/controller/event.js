@@ -20,6 +20,18 @@ module.exports = {
     return empty;
   },
 
+  getSpecificListEvents(tags, events) {
+    let empty = [];
+    tags.forEach(type => {
+      events.forEach(element => {
+        if (element.sport === type) {
+          empty.push(element);
+        }
+      });
+    });
+    return empty;
+  },
+
   getSortedEvents(prop, asc) {
     let events = Event.get();
     return events.sort((a, b) => {
@@ -31,7 +43,7 @@ module.exports = {
     });
   },
 
-  getSortedListEvent(prop, asc, events) {
+  getSortedListEvents(prop, asc, events) {
     return events.sort((a, b) => {
       if (asc) {
         return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
@@ -81,6 +93,15 @@ module.exports = {
 
   getEventById(ids) {
     let events = Event.get();
+    for (const e of events) {
+      if (e.id === ids) {
+        return e;
+      }
+    }
+    return 0;
+  },
+
+  getListEventsById(ids, events) {
     for (const e of events) {
       if (e.id === ids) {
         return e;

@@ -72,6 +72,9 @@ describe('Obtenir les informations dun événement via son id', () => {
   it('Recherche dun second événement par son id', async () => {
     assert.isTrue(event.getEventById('vf1').name === 'Volley Finale 1/1 ');
   });
+  it('Recherche dun second événement par son id', async () => {
+    assert.isTrue(event.getListEventsById('fdm1', Aevents).name === 'Football Demi Finale 1/2 ');
+  });
 });
 
 describe('Obtenir les potentiel événemenets où aller ensuite', () => {
@@ -119,6 +122,10 @@ describe('Liste contenant uniquement sport', () => {
     assert.lengthOf(event.getSpecificEvents(['Handball']), 4);
     assert.isTrue(event.getSpecificEvents(['Handball'])[0].sport === 'Handball');
   });
+  it('Taille 2 dune liste devenements avec du hand', async () => {
+    assert.lengthOf(event.getSpecificListEvents(['Handball'], Aevents), 1);
+    assert.isTrue(event.getSpecificEvents(['Handball'], Aevents)[0].sport === 'Handball');
+  });
 });
 
 
@@ -128,5 +135,9 @@ describe('Liste triée par un critère', () => {
   });
   it('Liste triée par rapport au nom décroissant', async () => {
     assert.isTrue(event.getSortedEvents('name', false)[0].name === 'Volley Finale 1/1 ');
+  });
+  it('Liste 2 triée par rapport au nom décroissant', async () => {
+    console.log(event.getSortedListEvents('name', false, Aevents)[0].name);
+    assert.isTrue(event.getSortedListEvents('name', false, Aevents)[0].name === 'Football Demi Finale 2/2 ');
   });
 });
