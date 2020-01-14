@@ -35,7 +35,7 @@ constructObjectItinerary = (itinerary, tags) => {
   let objectitinerary = {};
   let itineraryevents = [];
   if (tags.length > 1) {
-    objectitinerary.label = 'Multi-Discipline';
+    objectitinerary.label = 'Multi-Disciplines';
   } else {
     objectitinerary.label = 'Uni-Discipline';
   }
@@ -43,10 +43,9 @@ constructObjectItinerary = (itinerary, tags) => {
   objectitinerary.beginDate = itinerary[0].startTime;
   objectitinerary.endDate = itinerary[itinerary.length - 2].endTime;
   for (let index = 0; index < itinerary.length - 1; index++) {
-    ['next', 'listNearEvents'].forEach((k) => {
+    ['next', 'listNearEvents', 'distance'].forEach((k) => {
       delete itinerary[index][k];
     });
-    console.log(itinerary[index].listNearEvents);
     itineraryevents.push(itinerary[index]);
   }
   objectitinerary.events = itineraryevents;
@@ -55,8 +54,7 @@ constructObjectItinerary = (itinerary, tags) => {
 };
 
 
-writeItinerary = (itinerarytab, tags) => {
-  let itinerary = constructObjectItinerary(itinerarytab, tags);
+writeItinerary = (itinerary) => {
   const jsonitinerary = JSON.stringify(itinerary, null, 2);
   fs.writeFile('../polympic-server/mocks/itinerary.mocks.json', jsonitinerary, err => {
     if (err) {
@@ -103,6 +101,8 @@ module.exports = {
       nextevent = event.getEventById(nextevent);
       nextevent = getNextStepItinerary(nextevent);
     }
-    writeItinerary(proximityItinerary, tags);
+    anItinerary = constructObjectItinerary(proximityItinerary, tags);
+    writeItinerary(anItinerary);
+    return anItinerary;
   }
 };
