@@ -7,8 +7,10 @@ import 'package:polympic/models/category_model.dart';
 class CategoryService {
   Future<List<CategoryModel>> getData([tags]) async {
     String params = '';
-    for (var t in tags) {
-      params += t + ',';
+    if (tags != null) {
+      for (var t in tags) {
+        params += t + ',';
+      }
     }
     final response = await http
         .get('https://polympic.otakedev.com/preferences?select=' + params);

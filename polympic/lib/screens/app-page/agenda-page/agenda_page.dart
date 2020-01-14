@@ -12,7 +12,7 @@ class AgendaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;
 
-    _eventBloc.dispatch(EventEvent.fetch);
+    // _eventBloc.dispatch(EventEvent.fetch);
 
     return StreamBuilder<List<EventModel>>(
       stream: _eventBloc.currentValue$,

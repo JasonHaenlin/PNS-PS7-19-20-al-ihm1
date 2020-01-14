@@ -5,7 +5,7 @@ import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/models/category_model.dart';
 import 'package:polympic/theme/colors.dart';
 
-class SportCard extends StatelessWidget {
+class SportCard extends StatefulWidget {
   const SportCard({
     Key key,
     @required this.data,
@@ -14,8 +14,23 @@ class SportCard extends StatelessWidget {
   final CategoryModel data;
 
   @override
+  _SportCardState createState() => _SportCardState();
+}
+
+class _SportCardState extends State<SportCard> {
+  @override
   Widget build(BuildContext context) {
     final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
+
+    void _toogleSport() {
+      setState(() {
+        this.widget.data.added = !this.widget.data.added;
+        _categoryBloc.dispatch(CategoryEvent.update, {
+          'category': this.widget.data,
+          'checked': this.widget.data.added ? 'true' : 'false',
+        });
+      });
+    }
 
     return Container(
         decoration: BoxDecoration(
@@ -39,7 +54,7 @@ class SportCard extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     elevation: 2.0,
                     child: Image.network(
-                      this.data.img,
+                      this.widget.data.img,
                       fit: BoxFit.cover,
                       width: 50,
                       height: 50,
@@ -48,7 +63,7 @@ class SportCard extends StatelessWidget {
                 ),
                 SizedBox(width: 15),
                 Text(
-                  this.data.name,
+                  this.widget.data.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -60,14 +75,11 @@ class SportCard extends StatelessWidget {
               padding: const EdgeInsets.only(right: 25),
               child: Container(
                 child: RaisedButton(
-                  color: this.data.added ? kColorAccent : kColorIconSelected,
-                  onPressed: () => {
-                    _categoryBloc.dispatch(CategoryEvent.update, {
-                      'category': this.data,
-                      'checked': this.data.added ? 'false' : 'true',
-                    }),
-                  },
-                  child: Text(this.data.added ? 'Ajouter' : 'Retirer'),
+                  color: this.widget.data.added
+                      ? kColorAccent
+                      : kColorIconSelected,
+                  onPressed: _toogleSport,
+                  child: Text(this.widget.data.added ? 'Ajouter' : 'Retirer'),
                 ),
               ),
             ),
