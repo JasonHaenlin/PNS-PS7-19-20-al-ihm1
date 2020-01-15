@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 const express = require('express');
 const events = require('./events');
 const preferences = require('./preferences');

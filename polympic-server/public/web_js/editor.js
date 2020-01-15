@@ -8,25 +8,24 @@ const loadFile = async filename => {
 
 const runPreview = async () => {
   let url = '';
-  if (file == file_events) {
+  if (file === file_events) {
     url = '/events/preview';
   } else {
     url = '/itineraries/preview?prefs=Football,Rugby,Handball';
   }
-  fetch(url,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ code: editor.innerText })
-    })
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ code: editor.innerText })
+  })
     .then(data => {
       return data.json();
     })
     .then(res => {
       preview.innerHTML = '';
-      if (file == file_events) {
+      if (file === file_events) {
         for (element of res) {
           preview.innerHTML = preview.innerHTML + showElement(element);
         }
@@ -66,17 +65,16 @@ loadFile(file_events);
 loader_btn.innerText = 'Load ' + file_events;
 
 preview_btn.addEventListener('click', runPreview);
-save_btn.addEventListener('click', function () {
-  fetch('/editor/save',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ file: file, code: editor.innerText })
-    });
+save_btn.addEventListener('click', () => {
+  fetch('/editor/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ file: file, code: editor.innerText })
+  });
 });
-loader_btn.addEventListener('click', function () {
+loader_btn.addEventListener('click', () => {
   if (file === file_events) {
     loadFile(file_itineraries);
   } else {
