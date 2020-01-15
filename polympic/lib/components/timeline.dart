@@ -232,6 +232,7 @@ class TimelineTab extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: kColorPrimaryText,
+              fontSize: 15,
             ),
           ),
           _getTextWidgets(this.versus),

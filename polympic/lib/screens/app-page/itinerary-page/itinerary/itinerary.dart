@@ -36,7 +36,7 @@ class Itinerary extends StatelessWidget {
               child: Container(
                 child: Text(
                   e.description,
-                  style: TextStyle(fontSize: 13),
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
             ),
