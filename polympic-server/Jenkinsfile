@@ -22,7 +22,7 @@ pipeline {
       steps {
         echo 'javascript Linter'
         dir('./polympic-server/'){
-          // sh 'npm run lint'
+          sh 'npm run lint'
         }
       }
     }
@@ -33,7 +33,7 @@ pipeline {
       steps {
         echo 'Test'
         dir('./polympic-server/'){
-          // sh 'npm test'
+          sh 'npm test'
         }
       }
     }

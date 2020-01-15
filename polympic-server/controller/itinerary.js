@@ -1,81 +1,49 @@
 /* eslint-disable security/detect-eval-with-expression */
 /* eslint-disable security/detect-object-injection */
 /* eslint no-eval: 0 */
+const _ = require('lodash');
 const event = require('./event');
-// const fs = require('fs');
 const compiler = require('../utils/compiler');
 
 
-getNextEvents = (listEvents) => {
-  listEvents.forEach(element => {
-    element.next = event.getNext(element, listEvents);
+filterEventsWithShortestTime = (events, childEventsToCheck) => {
+  childEventsToCheck = childEventsToCheck || events;
+  events.forEach(e => {
+    e.next = event.retrieveEventWithinGapHour(e, childEventsToCheck, 0, 2);
   });
-  return listEvents;
+  return events;
 };
 
-getNextWithDistanceEvents = (listEvents) => {
-  listEvents.forEach(element => {
-    element.next = event.getNext(element, element.listNearEvents);
-  });
-  return listEvents;
+rndNextChild = (event) => {
+  return _.sample(event.next);
 };
 
-
-getNextStepItinerary = (event) => {
-  if (event.next) {
-    let index = Math.floor(Math.random() * (event.next.length));
-    return event.next[parseInt(index)];
-  }
-  return null;
-};
-
-getProximityEvents = (coordelement, listEvents, distance) => {
-  listNearEvents = [];
-  tempevent = event.getDistanceFromEvents(coordelement, listEvents);
-
-  tempevent.forEach(element => {
-    if (element.distance <= distance) {
-      listNearEvents.push(element);
-    }
-  });
-  return listNearEvents;
+computeEventsByProximity = (coordObj, events, distance) => {
+  events = event.measureDistance(coordObj, events);
+  return events.filter((e) => e.distance <= distance);
 };
 
 constructObjectItinerary = (itinerary, tags) => {
-  let objectitinerary = {};
-  let itineraryevents = [];
+  let objItinerary = {};
+  let itineraryEvents = [];
   if (tags.length > 1) {
-    objectitinerary.label = 'Multi-Disciplines';
+    objItinerary.label = 'Multi-Disciplines';
   } else {
-    objectitinerary.label = 'Uni-Discipline';
+    objItinerary.label = 'Uni-Discipline';
   }
-  objectitinerary.description = tags;
-  objectitinerary.beginDate = itinerary[0].startTime;
-  objectitinerary.endDate = itinerary[itinerary.length - 2].endTime;
-  for (let index = 0; index < itinerary.length - 1; index++) {
+  objItinerary.description = tags;
+  objItinerary.beginDate = itinerary[0].startTime;
+  objItinerary.endDate = itinerary[itinerary.length - 1].endTime;
+  for (let index = 0; index < itinerary.length; index++) {
     ['next', 'listNearEvents', 'distance'].forEach((k) => {
       delete itinerary[index][k];
     });
-    itineraryevents.push(itinerary[index]);
+    itineraryEvents.push(itinerary[index]);
   }
-  objectitinerary.events = itineraryevents;
+  objItinerary.events = itineraryEvents;
 
-  return objectitinerary;
+  return objItinerary;
 };
-
-
-/* writeItinerary = (itinerary) => {
-  const jsonitinerary = JSON.stringify(itinerary, null, 2);
-  console.log(jsonitinerary);
-
-  fs.writeFile('../polympic-server/mocks/itinerary.mocks.json', jsonitinerary, err => {
-    if (err) {
-      console.log('Error', err);
-    } else {
-      console.log('Success');
-    }
-  });
-};*/
 
 module.exports = {
 
@@ -87,7 +55,7 @@ module.exports = {
   runScript(code, tags) {
     const compiledScript = compiler.compileCode(code);
     const distance = eval(compiledScript).run();
-    return this.getProximityItinerary(tags, distance);
+    return this.computeItineraryByProximity(tags, distance);
   },
 
   // use the example script
@@ -95,47 +63,44 @@ module.exports = {
     const scriptName = './public/scripts/example_2.js';
     const compiledScript = compiler.compile(scriptName);
     const distance = eval(compiledScript).run();
-    return this.getProximityItinerary(tags, distance);
+    return this.computeItineraryByProximity(tags, distance);
   },
 
-  getRandomItinerary(tags) {
-    let randomitinerary = [];
-    let listEvents = getNextEvents(event.getSpecificEvents(tags));
-    let firstEvent = event.getEarliestEvent(listEvents);
+  computeRandomItinerary(tags) {
+    let rndItinerary = [];
+    let events = filterEventsWithShortestTime(event.filterEventsByTags(tags));
+    let firstEvent = event.retrieveEarliestEvent(events);
 
-    randomitinerary.push(firstEvent);
-    let nextevent = getNextStepItinerary(firstEvent);
-    while (nextevent !== null) {
-      randomitinerary.push(event.getEventById(nextevent));
-      nextevent = event.getEventById(nextevent);
-      nextevent = getNextStepItinerary(nextevent);
+    rndItinerary.push(firstEvent);
+    let nextEvent = rndNextChild(firstEvent);
+    while (nextEvent !== null) {
+      rndItinerary.push(event.getEventById(nextEvent));
+      nextEvent = event.getEventById(nextEvent);
+      nextEvent = rndNextChild(nextEvent);
     }
-    return randomitinerary;
+    return rndItinerary;
   },
 
-  getProximityItinerary(tags, distance) {
+  computeItineraryByProximity(tags, distance) {
     let proximityItinerary = [];
-    let listEvents = event.getEvents();
-    console.log(listEvents);
+    let events = event.getEvents();
 
-    listEvents.forEach(element => {
-      latitudElement = element.site.latitude;
-      longitudeElement = element.site.longitude;
-      coordelement = { latitude: latitudElement, longitude: longitudeElement };
-      element.listNearEvents = getProximityEvents(coordelement, listEvents, distance);
+    events.forEach(e => {
+      latitudeObj = e.site.latitude;
+      longitudeObj = e.site.longitude;
+      coordObj = { latitude: latitudeObj, longitude: longitudeObj };
+      e.listNearEvents = computeEventsByProximity(coordObj, events, distance);
     });
-    listEvents = getNextWithDistanceEvents(listEvents);
-    let firstEvent = event.getEarliestEvent(listEvents);
+    events = filterEventsWithShortestTime(events);
+    let firstEvent = event.retrieveEarliestEvent(events);
     proximityItinerary.push(firstEvent);
 
-    let nextevent = getNextStepItinerary(firstEvent);
-    while (nextevent !== null) {
-      proximityItinerary.push(event.getEventById(nextevent));
-      nextevent = event.getEventById(nextevent);
-      nextevent = getNextStepItinerary(nextevent);
+    let nextEvent = rndNextChild(firstEvent);
+    while (nextEvent) {
+      proximityItinerary.push(nextEvent);
+      nextEvent = rndNextChild(nextEvent);
     }
     anItinerary = constructObjectItinerary(proximityItinerary, tags);
-    // writeItinerary(anItinerary);
     return anItinerary;
   }
 };

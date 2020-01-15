@@ -5,13 +5,7 @@ exports.getEventsByPreferences = async (req, res) => {
   let prefs = req.query.prefs;
   let events;
   if (prefs) {
-    events = event.getProximityEvents(prefs.split(','));
-    /* events.forEach(element => {
-          if (element.listNearEvents) {
-            delete element.listNearEvents;
-          }
-        });
-        console.log(events);*/
+    events = event.filterEventsByProximityAndTags(prefs.split(','));
   } else {
     events = event.getEvents();
   }

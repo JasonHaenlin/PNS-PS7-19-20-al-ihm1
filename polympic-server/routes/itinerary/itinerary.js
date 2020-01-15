@@ -16,5 +16,6 @@ exports.previewResult = async (req, res) => {
   let prefs = req.query.prefs;
   let r = itinerary.runScript(code, prefs.split(','));
   console.log(r);
+
   resHandler.yahResponse(res, r);
 };

@@ -11,7 +11,8 @@
     "deploy": "pm2 start ./bin/www --log-date-format \"YYYY-MM-DD HH:mm Z\" --name nodejs-ps7",
     "stop": "pm2 stop nodejs-ps7 || echo 'fail to stop nodejs-ps7 process'",
     "redeploy": "pm2 restart nodejs-ps7 || npm run deploy",
-    "doc": "apidoc -i  routes -o ./doc/express/"
+    "doc": "apidoc -i  routes -o ./doc/express/",
+    "debug": "node --nolazy --inspect-brk=9229 ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -23,6 +24,7 @@
     "geolib": "^3.2.1",
     "google-maps": "^3.3.0",
     "http-errors": "~1.6.2",
+    "lodash": "^4.17.15",
     "winston": "^3.2.1"
   },
   "devDependencies": {
