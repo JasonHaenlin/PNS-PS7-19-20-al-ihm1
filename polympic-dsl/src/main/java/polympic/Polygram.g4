@@ -1,6 +1,6 @@
-grammar polygram;
+grammar Polygram;
 
-//@header{const produceCode = require("polygram")}
+@header {package polympic;}
 
 // parser rules :
 
@@ -24,16 +24,24 @@ action:
     DISPLAY;
 
 bool:
-	IDENTIFIER
-	| number GT number
-	| number LT number
-	| number EQ number
-	| number GE number
-	| number LE number
-	| number NE number
-	| bool AND bool
-	| bool OR bool
-	| NOT bool;
+    IDENTIFIER
+    | number_cmp
+    | bool bool_cmp
+    ;
+
+number_cmp:
+      number GT number
+    | number LT number
+    | number EQ number
+    | number GE number
+    | number LE number
+    | number NE number
+    ;
+
+bool_cmp:
+        OR bool
+    |   AND bool
+    ;
 
 number:
 	IDENTIFIER
