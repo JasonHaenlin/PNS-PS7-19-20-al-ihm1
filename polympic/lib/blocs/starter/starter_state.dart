@@ -8,7 +8,7 @@ class StarterState extends BlocBase<StarterEvent, bool> {
 
   @override
   Stream<bool> eventToState(StarterEvent event, [data]) async* {
-    const key = 'test';
+    const key = 'initiate';
 
     switch (event) {
       case StarterEvent.init:

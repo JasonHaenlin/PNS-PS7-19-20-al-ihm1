@@ -33,7 +33,7 @@ module.exports = class BaseModel {
   }
 
   get() {
-    return this.items;
+    return JSON.parse(JSON.stringify(this.items));
   }
 
   getById(id) {

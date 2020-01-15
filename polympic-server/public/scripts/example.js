@@ -12,32 +12,32 @@
 
 // this function should be defined in an other file
 const display = (output, element) => {
-  output.push(element);
+output.push(element);
 };
 
 // this function should be defined in an other file
 const sort = (elements, property) => {
-  return elements.sort((a, b) => a[property] - b[property]);
+return elements.sort((a, b) => a[property] - b[property]);
 };
 
 // Everything following this comment is the actual output of the compiler
 
 const run = (array) => {
-  let output = [];
-  const defines = [
-    { name: 'duration', value: 'element.endTime-element.startTime' },
-    { name: 'is_foot', value: 'element.sport==\'Football\'' }
-  ];
-  for (const element of array) {
-    for (const def of defines) {
-      element[def.name] = eval(def.value);
-    }
-    if (element.distance < 500) {
-      display(output, element);
-    }
-  }
-  output = sort(output, 'startTime');
-  return output;
+let output = [];
+const defines = [
+{ name: 'duration', value: 'element.endTime-element.startTime' },
+{ name: 'is_foot', value: 'element.sport==\'Football\'' }
+];
+for (const element of array) {
+for (const def of defines) {
+element[def.name] = eval(def.value);
+}
+if (element.distance < 8700) {
+display(output, element);
+}
+}
+output = sort(output, 'startTime');
+return output;
 };
 
 module.exports = { run };
