@@ -36,8 +36,8 @@ class Itineraries extends StatelessWidget {
         title: const Text('Itinéraires'),
         actions: <Widget>[
           IconButton(
-              iconSize: 50.0,
-              icon: Icon(Icons.edit_attributes),
+              iconSize: 40.0,
+              icon: Icon(Icons.settings),
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
       ),

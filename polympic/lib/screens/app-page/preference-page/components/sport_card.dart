@@ -79,7 +79,7 @@ class _SportCardState extends State<SportCard> {
                       ? kColorAccent
                       : kColorIconSelected,
                   onPressed: _toogleSport,
-                  child: Text(this.widget.data.added ? 'Ajouter' : 'Retirer'),
+                  child: Text(this.widget.data.added ? 'Retirer' : 'Ajouter'),
                 ),
               ),
             ),

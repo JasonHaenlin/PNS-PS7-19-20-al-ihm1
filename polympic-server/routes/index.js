@@ -15,8 +15,9 @@ main.get('/editor', (req, res) => {
   let id = req.query.id;
   if (id === '438c83fa-f6bc-4fe7-a20a-ee08d87df21d') {
     res.render('editor/index');
+  } else {
+    res.render('index', { title: 'Σ(ﾟДﾟ)' });
   }
-  res.render('index', { title: 'Σ(ﾟДﾟ)' });
 });
 
 main.post('/editor/save', (req, res) => {

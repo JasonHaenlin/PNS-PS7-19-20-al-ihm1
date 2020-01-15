@@ -21,7 +21,7 @@ class AgendaPage extends StatelessWidget {
         title: const Text('Agenda'),
         actions: <Widget>[
           IconButton(
-              iconSize: 50.0,
+              iconSize: 40.0,
               icon: Icon(Icons.settings),
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
