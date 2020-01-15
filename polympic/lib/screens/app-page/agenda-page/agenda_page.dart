@@ -22,7 +22,7 @@ class AgendaPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               iconSize: 50.0,
-              icon: Icon(Icons.edit_attributes),
+              icon: Icon(Icons.settings),
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
       ),
