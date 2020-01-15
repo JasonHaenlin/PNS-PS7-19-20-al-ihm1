@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/event/event_state.dart';
@@ -21,8 +22,8 @@ class AgendaPage extends StatelessWidget {
         title: const Text('Agenda'),
         actions: <Widget>[
           IconButton(
-              iconSize: 40.0,
-              icon: Icon(Icons.settings),
+              iconSize: 30.0,
+              icon: Icon(FontAwesomeIcons.slidersH),
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
       ),

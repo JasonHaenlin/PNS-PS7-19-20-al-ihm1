@@ -7,7 +7,7 @@ import 'package:polympic/services/category_service.dart';
 
 class EventService {
   Future<List<EventModel>> getData() async {
-    final tags = await categoryService.getData();
+    final tags = categoryService.categories;
     String params = '';
     for (var t in tags) {
       if (t.added) {
@@ -29,7 +29,7 @@ class EventService {
       }
       return data;
     } else {
-      // throw Exception('Failed to load post');
+      throw Exception('Failed to load post');
     }
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/components/timeline.dart';
+import 'package:polympic/components/timeline/timeline.dart';
+import 'package:polympic/components/timeline/timeline_tab.dart';
 import 'package:polympic/core/utils.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/theme/colors.dart';

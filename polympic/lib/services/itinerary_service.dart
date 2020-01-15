@@ -6,7 +6,7 @@ import 'package:polympic/services/category_service.dart';
 
 class ItineraryService {
   Future<List<ItineraryModel>> getData() async {
-    final tags = await categoryService.getData();
+    final tags = categoryService.categories;
     String params = '';
     for (var t in tags) {
       if (t.added) {

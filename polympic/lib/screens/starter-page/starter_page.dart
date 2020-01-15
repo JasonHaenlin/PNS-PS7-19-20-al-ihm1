@@ -46,21 +46,24 @@ class ChoosePreferences extends StatelessWidget {
       stream: _categoryBloc.currentValue$,
       builder:
           (BuildContext context, AsyncSnapshot<List<CategoryModel>> snapshot) =>
-              snapshot.hasData
-                  ? SportStarterPage(data: snapshot.data)
-                  : Center(
-                      child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Image.asset(
-                            'assets/images/jo.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        CircularProgressIndicator(),
-                      ],
-                    )),
+              snapshot.hasData ? SportStarterPage(data: snapshot.data) : logojo,
+    );
+  }
+
+  Widget get logojo {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Image.asset(
+              'assets/images/jo.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          CircularProgressIndicator(),
+        ],
+      ),
     );
   }
 }

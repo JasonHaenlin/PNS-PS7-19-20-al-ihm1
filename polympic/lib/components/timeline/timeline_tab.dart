@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:polympic/components/timeline/tile.dart';
-import 'package:polympic/components/timeline/timeline.dart';
 import 'package:polympic/theme/colors.dart';
 
 class TimelineTab extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/models/category_model.dart';
 import 'package:polympic/theme/colors.dart';
 
-class SportCard extends StatefulWidget {
+class SportCard extends StatelessWidget {
   const SportCard({
     Key key,
     @required this.data,
@@ -14,25 +14,9 @@ class SportCard extends StatefulWidget {
   final CategoryModel data;
 
   @override
-  _SportCardState createState() => _SportCardState();
-}
-
-class _SportCardState extends State<SportCard> {
-  @override
   Widget build(BuildContext context) {
-    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
-
-    void _toogleSport() {
-      setState(() {
-        this.widget.data.added = !this.widget.data.added;
-        _categoryBloc.dispatch(CategoryEvent.update, {
-          'category': this.widget.data,
-          'checked': this.widget.data.added ? 'true' : 'false',
-        });
-      });
-    }
-
     return Container(
+      child: Container(
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
@@ -54,7 +38,7 @@ class _SportCardState extends State<SportCard> {
                     clipBehavior: Clip.antiAlias,
                     elevation: 2.0,
                     child: Image.network(
-                      this.widget.data.img,
+                      this.data.img,
                       fit: BoxFit.cover,
                       width: 50,
                       height: 50,
@@ -63,7 +47,7 @@ class _SportCardState extends State<SportCard> {
                 ),
                 SizedBox(width: 15),
                 Text(
-                  this.widget.data.name,
+                  this.data.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -71,19 +55,50 @@ class _SportCardState extends State<SportCard> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 25),
-              child: Container(
-                child: RaisedButton(
-                  color: this.widget.data.added
-                      ? kColorAccent
-                      : kColorIconSelected,
-                  onPressed: _toogleSport,
-                  child: Text(this.widget.data.added ? 'Retirer' : 'Ajouter'),
-                ),
-              ),
-            ),
+            PrefButton(data: this.data),
           ],
-        ));
+        ),
+      ),
+    );
+  }
+}
+
+class PrefButton extends StatefulWidget {
+  const PrefButton({
+    Key key,
+    @required this.data,
+  }) : super(key: key);
+
+  final CategoryModel data;
+
+  @override
+  _PrefButtonState createState() => _PrefButtonState();
+}
+
+class _PrefButtonState extends State<PrefButton> {
+  @override
+  Widget build(BuildContext context) {
+    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
+
+    void _toogleSport() {
+      setState(() {
+        this.widget.data.added = !this.widget.data.added;
+        _categoryBloc.dispatch(CategoryEvent.update, {
+          'category': this.widget.data,
+          'checked': this.widget.data.added ? 'true' : 'false',
+        });
+      });
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 25),
+      child: Container(
+        child: RaisedButton(
+          color: this.widget.data.added ? kColorAccent : kColorIconSelected,
+          onPressed: _toogleSport,
+          child: Text(this.widget.data.added ? 'Retirer' : 'Ajouter'),
+        ),
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
 import 'package:polympic/core/router.dart';
@@ -36,8 +37,8 @@ class Itineraries extends StatelessWidget {
         title: const Text('Itinéraires'),
         actions: <Widget>[
           IconButton(
-              iconSize: 40.0,
-              icon: Icon(Icons.settings),
+              iconSize: 30.0,
+              icon: Icon(FontAwesomeIcons.slidersH),
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
       ),
