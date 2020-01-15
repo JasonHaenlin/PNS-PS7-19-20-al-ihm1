@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'package:polympic/mocks/itinerary_mock.dart';
+import 'package:http/http.dart' as http;
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/services/category_service.dart';
-import 'package:http/http.dart' as http;
 
 class ItineraryService {
   Future<List<ItineraryModel>> getData() async {
@@ -14,10 +13,8 @@ class ItineraryService {
         params += t.name + ',';
       }
     }
-    print("aaa?");
     final response = await http
         .get('https://polympic.otakedev.com/itineraries?prefs=' + params);
-    print("aaad?");
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
       dynamic data =

@@ -34,7 +34,10 @@ class Itinerary extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                child: Text(e.description),
+                child: Text(
+                  e.description,
+                  style: TextStyle(fontSize: 13),
+                ),
               ),
             ),
           ],

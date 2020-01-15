@@ -17,11 +17,8 @@ class EventService {
     if (params.length > 0) {
       params = '?prefs=' + params;
     }
-    print("bbb?");
-    // return [];
     final response =
         await http.get('https://polympic.otakedev.com/events' + params);
-    print("bbbd?");
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
       dynamic data = list.map((model) => EventModel.fromMap(model)).toList();

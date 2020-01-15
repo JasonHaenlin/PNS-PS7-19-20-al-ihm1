@@ -45,7 +45,7 @@ class _TimelineState extends State<Timeline> {
   }
 
   void updateDate() {
-    DateTime current = DateTime.now();
+    DateTime current = DateTime(2022, 1, 5, 13, 30);
     for (var tab in this.widget.childrens) {
       bool beforeBegin = tab.beginDate.isBefore(current);
       bool beforeEnd = tab.endDate.isBefore(current);
