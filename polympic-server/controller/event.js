@@ -26,8 +26,7 @@ module.exports = {
     return eval(compiledScript).run(events);
   },
 
-  getSpecificEvents(tags) {
-    const events = Event.get();
+  getSpecificEvents(tags, events) {
     let empty = [];
     tags.forEach(type => {
       events.forEach(element => {
@@ -40,8 +39,9 @@ module.exports = {
   },
 
   getProximityEvents(tags) {
+    const events = Event.get();
     Eiffel_Tower_coord = { latitude: 48.858370, longitude: 2.294481 };
-    listEvents = this.getSpecificEvents(tags);
+    listEvents = this.getSpecificEvents(tags, events);
     listEvents = this.getDistanceFromEvents(Eiffel_Tower_coord, listEvents);
     return listEvents;
   },

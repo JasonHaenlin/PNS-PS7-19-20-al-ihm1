@@ -6,12 +6,12 @@ exports.getEventsByPreferences = async (req, res) => {
   let events;
   if (prefs) {
     events = event.getProximityEvents(prefs.split(','));
-    events.forEach(element => {
-      if (element.listNearEvents) {
-        delete element.listNearEvents;
-      }
-    });
-    console.log(events);
+    /* events.forEach(element => {
+          if (element.listNearEvents) {
+            delete element.listNearEvents;
+          }
+        });
+        console.log(events);*/
   } else {
     events = event.getEvents();
   }

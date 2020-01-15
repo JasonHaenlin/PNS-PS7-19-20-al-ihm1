@@ -115,7 +115,9 @@ module.exports = {
 
   getProximityItinerary(tags, distance) {
     let proximityItinerary = [];
-    let listEvents = event.getSpecificEvents(tags);
+    let listEvents = event.getEvents();
+    console.log(listEvents);
+
     listEvents.forEach(element => {
       latitudElement = element.site.latitude;
       longitudeElement = element.site.longitude;

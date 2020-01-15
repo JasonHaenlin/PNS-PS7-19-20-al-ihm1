@@ -1,5 +1,5 @@
 const run = () => {
-return 500;
+  return 500;
 };
 
 module.exports = { run };
