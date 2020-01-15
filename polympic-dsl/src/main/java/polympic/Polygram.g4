@@ -62,9 +62,6 @@ DISPLAY:
 EVENT:
     'event';
 
-IDENTIFIER:
-    [A-Z]+[A-Z0-9]+;
-
 FOREACH:
     'for each';
 
@@ -107,8 +104,11 @@ THEN:
 EOL:
     [\r\n]+ -> skip;
 
+COMMENT:
+    '//' .*? EOL -> skip;
+
 WS:
     [ \t]+ -> skip;
 
-COMMENT:
-    '//' .*? EOL -> skip;
+IDENTIFIER:
+    [a-zA-Z][_a-zA-Z0-9]*;

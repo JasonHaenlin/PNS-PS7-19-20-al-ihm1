@@ -47,6 +47,18 @@ public interface PolygramVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBool(PolygramParser.BoolContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PolygramParser#number_cmp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber_cmp(PolygramParser.Number_cmpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PolygramParser#bool_cmp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool_cmp(PolygramParser.Bool_cmpContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PolygramParser#number}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
