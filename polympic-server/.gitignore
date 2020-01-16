@@ -4,3 +4,5 @@ log/*
 doc
 .sqlite3
 .antlr
+.gradle
+.settings

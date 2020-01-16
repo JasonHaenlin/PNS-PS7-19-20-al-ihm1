@@ -3,9 +3,7 @@
 .idea
 **/*.class
 *.iml
-polympic-dsl/target
 polympic-dsl/target/*
-target/*
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup

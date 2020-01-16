@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable no-param-reassign */
 const fs = require('fs');
 const { logTheError } = require('../config/logger');
@@ -32,7 +33,7 @@ module.exports = class BaseModel {
   }
 
   get() {
-    return this.items;
+    return JSON.parse(JSON.stringify(this.items, null, 2));
   }
 
   getById(id) {
@@ -45,5 +46,4 @@ module.exports = class BaseModel {
     }
     return item;
   }
-
 };

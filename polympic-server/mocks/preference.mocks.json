@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Football",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/football.jpg"
+    },
+    {
+        "name": "Natation",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/natation.png"
+    },
+    {
+        "name": "Relais",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/relais.jpg"
+    },
+    {
+        "name": "Tir à l'arc",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg"
+    },
+    {
+        "name": "Volleyball",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/volleyball.jpg"
+    },
+    {
+        "name": "Rugby",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/rugby.png"
+    },
+    {
+        "name": "Handball",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/handball.png"
+    },
+    {
+        "name": "Curling",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/curling.jpg"
+    },
+    {
+        "name": "Pétanque",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/petanque.jpg"
+    },
+    {
+        "name": "Tennis",
+        "tag": "sport",
+        "img": "https://otakedev.com/share/preferences/sports/tennis.jpg"
+    },
+    {
+        "name": "Pause repas",
+        "tag": "détente",
+        "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg"
+    }
+]
