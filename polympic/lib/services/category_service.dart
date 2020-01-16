@@ -9,7 +9,6 @@ class CategoryService {
 
   CategoryService({Client client}) {
     this.client = client ?? Client();
-    print('stop');
   }
 
   List<CategoryModel> _categories = List();

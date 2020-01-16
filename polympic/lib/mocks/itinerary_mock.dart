@@ -1,7 +1,7 @@
 const ITINERARY_MOCK = [
   {
     "label": "Multi Discipline",
-    "description": "Football - Rugby",
+    "description": ["Football", " Rugby"],
     "beginDate": 1714888800,
     "endDate": 1714921200,
     "events": [
@@ -55,7 +55,7 @@ const ITINERARY_MOCK = [
   },
   {
     "label": "Detente",
-    "description": "do nothing",
+    "description": ["do nothing"],
     "beginDate": 1714888800,
     "endDate": 1714921200,
     "events": [
