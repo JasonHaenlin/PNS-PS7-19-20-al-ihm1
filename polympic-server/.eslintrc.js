@@ -53,7 +53,7 @@ module.exports = {
     "no-caller": 2, // disallow use of arguments.caller or arguments.callee
     "no-div-regex": 2, // disallow division operators explicitly at beginning of regular expression (off by default)
     "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
-    "no-eval": 0, // disallow use of eval()
+    "no-eval": 2, // disallow use of eval()
     "no-extend-native": 2, // disallow adding to native types
     "no-extra-bind": 2, // disallow unnecessary function binding
     "no-fallthrough": 2, // disallow fallthrough of case statements
@@ -83,7 +83,7 @@ module.exports = {
     "no-void": 2, // disallow use of void operator (off by default)
     "no-warning-comments": [0, { "terms": ["todo", "fixme"], "location": "start" }], // disallow usage of configurable warning terms in comments": 2,
     "no-with": 2, // disallow use of the with statement
-    "radix": 0, // require use of the second argument for parseInt() (off by default)
+    "radix": 2, // require use of the second argument for parseInt() (off by default)
     "vars-on-top": 2, // requires to declare all vars on top of their containing scope (off by default)
     "wrap-iife": 2, // require immediate function invocation to be wrapped in parentheses (off by default)
     "yoda": 2, // require or disallow Yoda conditions

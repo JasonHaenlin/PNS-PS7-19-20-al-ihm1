@@ -1,9 +1,5 @@
-const preference = require('./preference');
-const event = require('./event');
-const itinerary = require('./itinerary');
+const test = require('./test')
 
 module.exports = {
-  preference,
-  event,
-  itinerary
-};
+    test,
+}

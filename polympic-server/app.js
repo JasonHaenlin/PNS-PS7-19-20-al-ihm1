@@ -28,12 +28,8 @@ app.use((req, res, next) => {
 
 // add all the routes
 app.use('/', route.main);
-// preferences routes
-app.use('/preferences', route.preferences);
-// events routes
-app.use('/events', route.events);
-// itinerary
-app.use('/itineraries', route.itineraries);
+// starter route
+app.use('/users', route.users);
 
 // catch 404 and forward to error handler
 // triggered when a non-existent route attempts to be accessed

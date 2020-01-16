@@ -3,16 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "mocha tests/ -R spec --recursive --exit",
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js ./",
     "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js ./ --fix",
     "dev": "nodemon -e js -w ./ ./bin/www",
     "start": "node --trace-warnings ./bin/www",
-    "deploy": "pm2 start ./bin/www --log-date-format \"YYYY-MM-DD HH:mm Z\" --name nodejs-ps7",
-    "stop": "pm2 stop nodejs-ps7 || echo 'fail to stop nodejs-ps7 process'",
-    "redeploy": "pm2 restart nodejs-ps7 || npm run deploy",
     "doc": "apidoc -i  routes -o ./doc/express/",
-    "debug": "node --nolazy --inspect-brk=9229 ./bin/www"
+    "knex": "knex",
+    "km": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -21,21 +18,20 @@
     "dotenv": "^8.2.0",
     "ejs": "~2.5.7",
     "express": "^4.16.4",
-    "geolib": "^3.2.1",
-    "google-maps": "^3.3.0",
     "http-errors": "~1.6.2",
-    "lodash": "^4.17.15",
+    "knex": "^0.20.7",
+    "objection": "^2.0.10",
+    "pg": "^7.17.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "apidoc": "^0.19.1",
-    "supertest": "^4.0.2",
     "babel-eslint": "^10.0.3",
-    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
-    "mocha": "^7.0.0",
-    "nodemon": "^2.0.2"
+    "migrate": "^1.6.2",
+    "nodemon": "^2.0.2",
+    "sqlite3": "^4.1.1"
   }
 }

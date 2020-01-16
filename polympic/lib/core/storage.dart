@@ -14,8 +14,3 @@ Future<bool> cleanStorage() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.clear();
 }
-
-Future<bool> exist({String key}) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString(key) != null;
-}
