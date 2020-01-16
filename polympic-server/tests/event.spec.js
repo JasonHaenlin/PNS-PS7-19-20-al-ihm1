@@ -1,10 +1,6 @@
 require('../bin/www');
 const assert = require('chai').assert;
 const { event } = require('../controller');
-// const itinerary = require('../controller/itinerary');
-
-// console.log(itinerary.getRandomItinerary(['Handball']));
-// itinerary.getProximityItinerary(['Handball', 'Rugby', 'Volleyball'], 500);
 
 Sevent = {
   id: 'fdm2',
@@ -65,19 +61,6 @@ Aevents = [{
 }
 ];
 
-
-describe('Obtenir les informations dun événement via son id', () => {
-  it('Recherche dun événement par son id', async () => {
-    assert.isTrue(event.getEventById('fdm2').name === 'Football Demi Finale 2/2 ');
-  });
-  it('Recherche dun second événement par son id', async () => {
-    assert.isTrue(event.getEventById('vf1').name === 'Volley Finale 1/1 ');
-  });
-  it('Recherche dun second événement par son id', async () => {
-    assert.isTrue(event.getEventById('fdm1', Aevents).name === 'Football Demi Finale 1/2 ');
-  });
-});
-
 describe('Obtenir les potentiel événenemets où aller ensuite', () => {
   it('Liste des next possibles pour un événement Sevent donné', async () => {
     assert.isTrue(event.retrieveEventWithinGapHour(Sevent, Aevents)[0].id === 'fdm2');
@@ -105,25 +88,14 @@ describe('Liste donnant la distance entre lutilisateur et un/des événements', 
 });
 
 describe('Liste contenant uniquement sport', () => {
-  it('Taille dune liste devenements avec du foot, du hand, et de la pétanque', async () => {
-    assert.lengthOf(event.filterEventsByTags(['Football', 'Handball', 'Pétanque']), 7);
-  });
-  it('Taille dune liste devenements avec du foot et du hand', async () => {
-    assert.lengthOf(event.filterEventsByTags(['Football', 'Handball']), 6);
-  });
-  it('Taille dune liste devenements avec du foot', async () => {
-    assert.lengthOf(event.filterEventsByTags(['Football']), 2);
-    assert.isTrue(event.filterEventsByTags(['Football'])[0].sport === 'Football');
-  });
-  it('Taille dune liste devenements avec de la pétanque', async () => {
-    assert.lengthOf(event.filterEventsByTags(['Pétanque']), 1);
-    assert.isTrue(event.filterEventsByTags(['Pétanque'])[0].sport === 'Pétanque');
+  it('Taille dune liste devenements avec du hand', async () => {
+    assert.lengthOf(event.filterEventsByTags(['Football', 'Handball'], Aevents), 3);
   });
   it('Taille dune liste devenements avec du hand', async () => {
-    assert.lengthOf(event.filterEventsByTags(['Handball']), 4);
-    assert.isTrue(event.filterEventsByTags(['Handball'])[0].sport === 'Handball');
+    assert.lengthOf(event.filterEventsByTags(['Football'], Aevents), 2);
+    assert.isTrue(event.filterEventsByTags(['Football'], Aevents)[0].sport === 'Football');
   });
-  it('Taille 2 dune liste devenements avec du hand', async () => {
+  it('Taille dune liste devenements avec du hand', async () => {
     assert.lengthOf(event.filterEventsByTags(['Handball'], Aevents), 1);
     assert.isTrue(event.filterEventsByTags(['Handball'], Aevents)[0].sport === 'Handball');
   });
@@ -131,12 +103,6 @@ describe('Liste contenant uniquement sport', () => {
 
 
 describe('Liste triée par un critère', () => {
-  it('Liste triée par rapport a lheure de départ décroissant', async () => {
-    assert.isTrue(event.sortEvents('startTime', false)[0].name === 'Pétanque Finale 1');
-  });
-  it('Liste triée par rapport au nom décroissant', async () => {
-    assert.isTrue(event.sortEvents('name', false)[0].name === 'Volley Finale 1/1 ');
-  });
   it('Liste 2 triée par rapport au nom décroissant', async () => {
     console.log(event.sortEvents('name', false, Aevents)[0].name);
     assert.isTrue(event.sortEvents('name', false, Aevents)[0].name === 'Football Demi Finale 2/2 ');
