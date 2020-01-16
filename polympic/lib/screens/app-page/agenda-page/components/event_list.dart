@@ -23,14 +23,6 @@ class EventList extends StatefulWidget {
 }
 
 class _EventListState extends State<EventList> {
-  // List<EventModel> filteredData = List();
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   filteredData = this.widget._data;
-  // }
-
   @override
   Widget build(BuildContext context) {
     final _eventBloc = BlocProvider.of<EventBloc>(context).eventBloc;

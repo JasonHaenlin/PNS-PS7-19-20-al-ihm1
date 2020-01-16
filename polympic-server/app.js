@@ -1,11 +1,13 @@
 const express = require('express');
 const route = require('./routes');
 const path = require('path');
+const cors = require('cors');
 const { handle404Error, handleDevErrors, handleClientErrors, logErrors } = require('./middlewares/error-handlers');
 const { LogTheTransaction } = require('./config/logger');
 const app = express();
 
 app.disable('x-powered-by');
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
