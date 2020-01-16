@@ -1,11 +1,16 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show Client;
 import 'package:polympic/core/storage.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/services/category_service.dart';
 
 class EventService {
+  Client client ;
+
+  EventService({Client client}){
+    this.client = client ?? Client();
+  }
   Future<List<EventModel>> getData() async {
     final tags = categoryService.categories;
     String params = '';
@@ -18,7 +23,7 @@ class EventService {
       params = '?prefs=' + params;
     }
     final response =
-        await http.get('https://polympic.otakedev.com/events' + params);
+        await client.get('https://polympic.otakedev.com/events' + params);
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
       dynamic data = list.map((model) => EventModel.fromMap(model)).toList();
