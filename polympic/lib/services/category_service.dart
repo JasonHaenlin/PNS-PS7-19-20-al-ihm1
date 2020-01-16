@@ -1,15 +1,22 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show Client;
 import 'package:polympic/core/storage.dart';
 import 'package:polympic/models/category_model.dart';
 
 class CategoryService {
+  Client client;
+
+  CategoryService({Client client}) {
+    this.client = client ?? Client();
+    print('stop');
+  }
+
   List<CategoryModel> _categories = List();
 
   Future<List<CategoryModel>> getData([tags]) async {
     String params = _buildParams(tags);
-    final response = await http
+    final response = await client
         .get('https://polympic.otakedev.com/preferences?select=' + params);
     Iterable list = json.decode(response.body);
     dynamic data = list.map((model) => CategoryModel.fromMap(model)).toList();
@@ -28,7 +35,7 @@ class CategoryService {
   String _buildParams(tags) {
     String params = '';
     if (tags != null) {
-      for (var t in tags) {
+      for (dynamic t in tags) {
         params += t + ',';
       }
     }
