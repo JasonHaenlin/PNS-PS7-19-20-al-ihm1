@@ -3,7 +3,7 @@ const express = require('express');
 const events = require('./events');
 const preferences = require('./preferences');
 const itineraries = require('./itinerary');
-const touristicSites = require('./touristicSites');
+const touristicSites = require('./touristicsites');
 const fs = require('fs');
 const resHandler = require('../utils/response-handler');
 

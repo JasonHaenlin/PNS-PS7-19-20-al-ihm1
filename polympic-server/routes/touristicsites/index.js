@@ -1,7 +1,7 @@
 const express = require('express');
 const { handleExceptions } = require('../../middlewares/error-handlers');
 
-const t = require('./touristicSites');
+const t = require('./touristicsites');
 
 const touristicSites = express.Router();
 
