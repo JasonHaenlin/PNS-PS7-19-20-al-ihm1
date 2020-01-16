@@ -16,7 +16,9 @@ public class MainPolygram {
         parser.setBuildParseTree(true);
         RuleContext tree = parser.program();
         GeneratorVisitor visitor = new GeneratorVisitor();
-        String result = visitor.visit(tree);
+        String result = "function execute(array) {\n    ";
+        result += visitor.visit(tree);
+        result += "\n}";
         System.out.println(result);
 
     }

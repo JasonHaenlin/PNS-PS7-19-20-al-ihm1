@@ -46,10 +46,11 @@ bool_cmp:
 number:
 	IDENTIFIER
 	| NUMBER
-	| number '+' number
-	| number '-' number
-	| number '*' number
-	| number '/' number;
+	| number PLUS number
+	| number MINUS number
+	| number MUL number
+	| number DIV number
+	;
 
 // lexer rules :
 
@@ -58,6 +59,19 @@ PROGRAM:
 
 DISPLAY:
     'display';
+
+MUL:
+    '*';
+
+DIV:
+    '/';
+
+PLUS:
+    '+';
+
+MINUS:
+    '-';
+
 
 EVENT:
     'event';
@@ -105,7 +119,7 @@ EOL:
     [\r\n]+ -> skip;
 
 COMMENT:
-    '//' .*? EOL -> skip;
+    '//'~('\r'|'\n')* -> skip;
 
 WS:
     [ \t]+ -> skip;

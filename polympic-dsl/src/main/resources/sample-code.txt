@@ -1,3 +1,4 @@
 for each program
-//when score + 3 < 5 and BAR then when BAR = 3 then display
-when FOO then display
+when score + scorz < 5 and BAR then when BAR = 3 then display
+//when FOO then display
+//display
