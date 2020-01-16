@@ -104,7 +104,6 @@ describe('Liste contenant uniquement sport', () => {
 
 describe('Liste triée par un critère', () => {
   it('Liste 2 triée par rapport au nom décroissant', async () => {
-    console.log(event.sortEvents('name', false, Aevents)[0].name);
     assert.isTrue(event.sortEvents('name', false, Aevents)[0].name === 'Football Demi Finale 2/2 ');
   });
 });

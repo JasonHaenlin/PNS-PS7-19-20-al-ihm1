@@ -3,6 +3,7 @@ const express = require('express');
 const events = require('./events');
 const preferences = require('./preferences');
 const itineraries = require('./itinerary');
+const touristicSites = require('./touristicSites');
 const fs = require('fs');
 const resHandler = require('../utils/response-handler');
 
@@ -32,5 +33,6 @@ module.exports = {
   main,
   events,
   preferences,
-  itineraries
+  itineraries,
+  touristicSites
 };
