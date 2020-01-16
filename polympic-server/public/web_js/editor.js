@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable promise/always-return */
 const loadFile = async filename => {
   let res = await fetch('/scripts/' + filename);
