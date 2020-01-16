@@ -6,17 +6,17 @@
 </head>
 <body>
     <h1>Editor</h1>
-    <button id="loader"></button>
+    <div>
+        <button id="loader"></button>
+        <button id="btn-save">Save</button>
+        <button id="btn-preview">Preview</button>
+    </div>
     <div id="IDE">
         <div id="editor-container">
             <div id="editor" contenteditable="true" spellcheck="false"></div>
         </div>
         <div id="right-panel">
-            <div>
-                <button id="btn-save">Save</button>
-                <button id="btn-preview">Preview</button>
-            </div>
-            <div id="preview"></div>
+            <object id='preview' type="text/html" data='/flutter-app'></object>
         </div>
     </div>
     

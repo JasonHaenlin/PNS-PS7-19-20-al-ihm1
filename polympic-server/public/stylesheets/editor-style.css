@@ -15,7 +15,9 @@ body {
             'editor buttons'
             'editor preview';
     
-    height: 80%;
+    height: 50%;
+    overflow: auto;
+
 }
 
 #editor-container {
@@ -25,7 +27,6 @@ body {
 
 #editor {
     outline: none;
-    overflow: auto;
 }
 
 #right-panel {
@@ -36,31 +37,10 @@ body {
 #preview {
     overflow: auto;
     border: 1px lightgray solid;
+    height: 100%;
+    width: 100%;
 }
 
-.preview-item {
-    border: 1px lightgray solid;
-    margin: 5px;
-    width: 95%;
-}
 
-.preview-item span {
-    display: block;
-    width: 100%
-}
 
-.preview-title {
-    font-size: medium;
-    color: blue;
-    font-weight: bold;
-}
 
-.preview-versus {
-    font-size: small;
-    color: black;
-}
-
-.preview-desc {
-    font-size: small;
-    color: red;
-}
