@@ -1,32 +1,32 @@
 const CATEGORY_MOCK = [
   {
     "label": "Football",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/football.jpg",
   },
   {
     "label": "Natation",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/natation.png",
   },
   {
     "label": "Relais",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/relais.jpg",
   },
   {
     "label": "Rugby",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/rugby.png",
   },
   {
     "label": "Tennis",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/tennis.jpg",
   },
   {
     "label": "Tir à L'arc",
-    "tag": "Sport",
+    "tag": "sport",
     "image": "assets/images/tiralarc.jpg",
   },
 ];
