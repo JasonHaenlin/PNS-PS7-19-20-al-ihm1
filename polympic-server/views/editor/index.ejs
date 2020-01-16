@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Editor</title>
-    <link rel="stylesheet" href="/stylesheets/editor-style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/editor-style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+        crossorigin="anonymous">
 </head>
+
 <body>
-    <h1>Editor</h1>
-    <div>
-        <button id="loader"></button>
-        <button id="btn-save">Save</button>
-        <button id="btn-preview">Preview</button>
+    <div class="header">
+        <div class="title">Editor</div>
+        <div class="buttons">
+            <button id="loader" class="pure-button"></button>
+            <button id="btn-save" class="pure-button-primary pure-button">Save</button>
+            <button id="btn-preview" class="button-secondary pure-button">Preview</button>
+        </div>
     </div>
-    <div id="IDE">
+    <div id="ide">
         <div id="editor-container">
             <div id="editor" contenteditable="true" spellcheck="false"></div>
         </div>
@@ -19,7 +29,8 @@
             <object id='preview' type="text/html" data='/flutter-app'></object>
         </div>
     </div>
-    
+
     <script src="/web_js/editor.js"></script>
-  </body>
+</body>
+
 </html>

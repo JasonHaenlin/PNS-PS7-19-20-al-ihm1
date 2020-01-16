@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    background-color: #fff;
+    color: #777;
+    line-height: 1.6;
+}
+
+
+html {
+    font: 400 15px/20px 'Roboto', "Helvetica Neue", sans-serif;
+    height: 100vh;
+    width: 100vw;
+    letter-spacing: 0.01em;
+
+}
+
+
+.ide [class*="pure-u"] {
+    padding: 1em 0;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-bottom: none;
+}
+
+.ide {
+    background: rgb(250, 250, 250);
+    margin: 2em auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.editor {
+    outline: none;
+}
+
+.right-panel {
+    padding: 2em;
+    border: 1px lightgray solid;
+}
+
+.preview {
+    overflow: auto;
+    border: 1px lightgray solid;
+    width: 100%;
+}

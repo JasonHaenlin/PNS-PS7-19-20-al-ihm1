@@ -1,37 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
-    font-family:
-                'Lucida Sans',
-                'Lucida Sans Regular', 
-                'Lucida Grande',
-                'Lucida Sans Unicode',
-                Geneva,
-                Verdana,
-                sans-serif;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
-#IDE {
-    display: grid;
-    grid-template-areas:
-            'editor buttons'
-            'editor preview';
-    
-    height: 50%;
-    overflow: auto;
-
+body {
+    background-color: #fff;
+    color: #777;
+    line-height: 1.6;
 }
+
+html {
+    font: 400 15px/20px 'Roboto', "Helvetica Neue", sans-serif;
+    letter-spacing: 0.01em;
+    overflow: hidden;
+}
+
+.title {
+    color: rgb(75, 75, 75);
+    font-size: 2em;
+}
+
+.header {
+    padding: 1.5em;
+    height: 8em;
+}
+
+#ide {
+    display: flex;
+    flex-direction: row;
+    background: rgb(250, 250, 250);
+    padding: 0.5em auto;
+    border: 1px solid #ddd;
+    height: calc(100% - 8em);
+}
+
 
 #editor-container {
     padding: 2em;
-    border: 1px lightgray solid;
+    border: 1px solid #ddd;
+    overflow: auto;
+    flex-grow: 3;
 }
 
 #editor {
     outline: none;
+    overflow: auto;
 }
 
 #right-panel {
-    padding: 2em;
-    border: 1px lightgray solid;
+    flex-grow: 2;
 }
 
 #preview {
@@ -41,6 +64,9 @@ body {
     width: 100%;
 }
 
-
-
-
+.ide [class*="pure-u"] {
+    padding: 1em 0;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-bottom: none;
+}
