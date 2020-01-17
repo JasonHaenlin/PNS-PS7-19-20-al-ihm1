@@ -7,3 +7,4 @@ doc
 .gradle
 .settings
 public/flutter-app/
+**/*.jar

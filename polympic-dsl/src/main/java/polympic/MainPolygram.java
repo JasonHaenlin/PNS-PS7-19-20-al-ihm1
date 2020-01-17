@@ -9,16 +9,19 @@ public class MainPolygram {
 
     public static void main(String[] args) throws IOException {
 
-        CharStream input = new ANTLRFileStream("C:/Users/user/Documents/Polytech_2019_2020/PS7/polympic-dsl/src/main/resources/sample-code.txt");
+        CharStream input = new ANTLRInputStream(System.in);
         PolygramLexer lexer = new PolygramLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         PolygramParser parser = new PolygramParser(tokens);
         parser.setBuildParseTree(true);
         RuleContext tree = parser.program();
         GeneratorVisitor visitor = new GeneratorVisitor();
-        String result = "function execute(array) {\n    ";
+        String result = "function run(array) {\n    ";
+        result += "eval('./lib.js');\n    ";
+        result += "let output = [];\n    ";
         result += visitor.visit(tree);
-        result += "\n}\n\n module.exports = { execute };";
+        result += "\n    return output;\n};\n";
+        result += "module.exports = { run };";
         System.out.println(result);
 
     }

@@ -9,6 +9,8 @@ const EIFFEL_TOWER_COORD = { latitude: 48.858370, longitude: 2.294481 };
 
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
+
+
 module.exports = {
   getEvents() {
     return this.filterByScript();
@@ -26,9 +28,15 @@ module.exports = {
   filterByScript() {
     let coords = { latitude: 48.858370, longitude: 2.294481 };
     let events = this.measureDistance(coords, Event.get());
-    const scriptName = './public/scripts/example.js';
+    const scriptName = './public/scripts/example.script';
     const compiledScript = compiler.compile(scriptName);
-    return eval(compiledScript).run(events);
+    let result;
+    try {
+      result = eval(compiledScript).run(events)
+    } catch {
+      result = [];
+    }
+    return result;
   },
 
   filterEventsByTags(tags, events) {

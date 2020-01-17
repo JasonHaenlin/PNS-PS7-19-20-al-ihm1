@@ -13,7 +13,8 @@
     "redeploy": "pm2 restart nodejs-ps7 || npm run deploy",
     "doc": "apidoc -i  routes -o ./doc/express/",
     "debug": "node --nolazy --inspect-brk=9229 ./bin/www",
-    "flutter-deploy": "cd ../polympic; flutter build web; cd ../polympic-server/; rm -rf public/flutter-app; cp -R ../polympic/build/web/ public/flutter-app/;"
+    "flutter-deploy": "cd ../polympic; flutter build web; cd ../polympic-server/; rm -rf public/flutter-app; cp -R ../polympic/build/web/ public/flutter-app/;",
+    "compiler-deploy": "rm -f utils/compiler/*.jar; cd ../polympic-dsl/; mvn clean compile assembly:single; cd ../polympic-server; cp ../polympic-dsl/target/*.jar utils/compiler/polympic-dsl.jar"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
