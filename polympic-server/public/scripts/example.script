@@ -1,2 +1,2 @@
 for each event
-when distance < 1000 then display
+when distance > 8700 then display

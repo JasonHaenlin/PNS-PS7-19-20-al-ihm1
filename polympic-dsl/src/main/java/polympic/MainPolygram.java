@@ -17,7 +17,6 @@ public class MainPolygram {
         RuleContext tree = parser.program();
         GeneratorVisitor visitor = new GeneratorVisitor();
         String result = "function run(array) {\n    ";
-        result += "eval('./lib.js');\n    ";
         result += "let output = [];\n    ";
         result += visitor.visit(tree);
         result += "\n    return output;\n};\n";

@@ -32,6 +32,7 @@ module.exports = {
     const compiledScript = compiler.compile(scriptName);
     let result;
     try {
+      const lib = require('../utils/compiler/lib'); // required for the compiled script
       result = eval(compiledScript).run(events)
     } catch {
       result = [];
@@ -45,7 +46,7 @@ module.exports = {
   },
 
   filterEventsByProximityAndTags(tags, from) {
-    let events = Event.get();
+    let events = this.getEvents();
     from = from || EIFFEL_TOWER_COORD;
     events = this.filterEventsByTags(tags, events);
     events = this.measureDistance(from, events);
