@@ -6,9 +6,9 @@ import 'package:polympic/models/event_model.dart';
 import 'package:polympic/services/category_service.dart';
 
 class EventService {
-  Client client ;
+  Client client;
 
-  EventService({Client client}){
+  EventService({Client client}) {
     this.client = client ?? Client();
   }
   Future<List<EventModel>> getData() async {
@@ -34,7 +34,8 @@ class EventService {
       }
       return data;
     } else {
-      throw Exception('Failed to load post');
+      // throw Exception('Failed to load post');
+      return [];
     }
   }
 

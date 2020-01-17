@@ -27,7 +27,8 @@ class CategoryService {
       _categories = data;
       return data;
     } else {
-      throw Exception('Failed to load post');
+      // throw Exception('Failed to load post');
+      return [];
     }
   }
 

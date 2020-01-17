@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/components/carousel/carousel.dart';
 import 'package:polympic/components/timeline/timeline.dart';
 import 'package:polympic/components/timeline/timeline_tab.dart';
 import 'package:polympic/core/utils.dart';
@@ -12,19 +13,30 @@ class Itinerary extends StatelessWidget {
   })  : _data = data,
         super(key: key);
 
-  final List<EventModel> _data;
+  final List<dynamic> _data;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: kColorPrimary),
-      body: Timeline(childrens: _buildTimelineTabs()),
+      body: Timeline(childrens: _buildCarousels(_data)),
     );
   }
 
-  List<TimelineTab> _buildTimelineTabs() {
+  List<Carousel> _buildCarousels(data) {
+    List<Carousel> widgets = List();
+    for (dynamic c in data) {
+      widgets.add(Carousel(
+        childrens: _buildTimelineTabs(c),
+      ));
+    }
+    return widgets;
+  }
+
+  List<TimelineTab> _buildTimelineTabs(data) {
     List<TimelineTab> widgets = List();
-    for (var e in _data) {
+    data = List<EventModel>.from(data);
+    for (dynamic e in data) {
       widgets.add(
         TimelineTab(
           title: e.name,

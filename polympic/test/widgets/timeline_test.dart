@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:polympic/components/timeline/timeline.dart';
-import 'package:polympic/components/timeline/timeline_tab.dart';
 
 main() {
   testWidgets('timeline test', (WidgetTester tester) async {

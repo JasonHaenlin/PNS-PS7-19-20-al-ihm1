@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' show Client;
 import 'package:polympic/mocks/itinerary_mock.dart';
 import 'package:polympic/models/itenary_model.dart';
-import 'package:polympic/services/category_service.dart';
 
 class ItineraryService {
   Client client;
