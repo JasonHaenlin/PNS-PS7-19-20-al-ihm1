@@ -17,34 +17,34 @@ public class PolygramParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		PROGRAM=1, DISPLAY=2, MUL=3, DIV=4, PLUS=5, MINUS=6, EVENT=7, FOREACH=8, 
+		PROGRAMS=1, DISPLAY=2, MUL=3, DIV=4, PLUS=5, MINUS=6, EVENTS=7, CONCERNING=8, 
 		NUMBER=9, NOT=10, GT=11, LT=12, GE=13, LE=14, EQ=15, NE=16, AND=17, OR=18, 
 		MARK_AS=19, IS=20, WHEN=21, THEN=22, EOL=23, COMMENT=24, WS=25, IDENTIFIER=26;
 	public static final int
 		RULE_program = 0, RULE_subject = 1, RULE_statement = 2, RULE_condition = 3, 
 		RULE_action = 4, RULE_place_state = 5, RULE_expr = 6, RULE_str_cmp = 7, 
-		RULE_number_cmp = 8, RULE_expr_cmp = 9, RULE_number = 10;
+		RULE_number_cmp = 8, RULE_expr_cmp = 9, RULE_bool_cmp = 10, RULE_number = 11;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"program", "subject", "statement", "condition", "action", "place_state", 
-			"expr", "str_cmp", "number_cmp", "expr_cmp", "number"
+			"expr", "str_cmp", "number_cmp", "expr_cmp", "bool_cmp", "number"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'program'", "'display'", "'*'", "'/'", "'+'", "'-'", "'event'", 
-			"'for each'", null, "'not'", "'>'", "'<'", "'>='", "'<='", "'='", "'!='", 
+			null, "'programs'", "'display'", "'*'", "'/'", "'+'", "'-'", "'events'", 
+			"'concerning'", null, "'not'", "'>'", "'<'", "'>='", "'<='", "'='", "'!='", 
 			"'and'", "'or'", "'mark as'", "'is'", "'when'", "'then'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "PROGRAM", "DISPLAY", "MUL", "DIV", "PLUS", "MINUS", "EVENT", "FOREACH", 
-			"NUMBER", "NOT", "GT", "LT", "GE", "LE", "EQ", "NE", "AND", "OR", "MARK_AS", 
-			"IS", "WHEN", "THEN", "EOL", "COMMENT", "WS", "IDENTIFIER"
+			null, "PROGRAMS", "DISPLAY", "MUL", "DIV", "PLUS", "MINUS", "EVENTS", 
+			"CONCERNING", "NUMBER", "NOT", "GT", "LT", "GE", "LE", "EQ", "NE", "AND", 
+			"OR", "MARK_AS", "IS", "WHEN", "THEN", "EOL", "COMMENT", "WS", "IDENTIFIER"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -99,7 +99,7 @@ public class PolygramParser extends Parser {
 	}
 
 	public static class ProgramContext extends ParserRuleContext {
-		public TerminalNode FOREACH() { return getToken(PolygramParser.FOREACH, 0); }
+		public TerminalNode CONCERNING() { return getToken(PolygramParser.CONCERNING, 0); }
 		public SubjectContext subject() {
 			return getRuleContext(SubjectContext.class,0);
 		}
@@ -127,21 +127,21 @@ public class PolygramParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22);
-			match(FOREACH);
-			setState(23);
+			setState(24);
+			match(CONCERNING);
+			setState(25);
 			subject();
-			setState(25); 
+			setState(27); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(24);
+				setState(26);
 				statement();
 				}
 				}
-				setState(27); 
+				setState(29); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DISPLAY) | (1L << MARK_AS) | (1L << WHEN))) != 0) );
@@ -159,8 +159,8 @@ public class PolygramParser extends Parser {
 	}
 
 	public static class SubjectContext extends ParserRuleContext {
-		public TerminalNode PROGRAM() { return getToken(PolygramParser.PROGRAM, 0); }
-		public TerminalNode EVENT() { return getToken(PolygramParser.EVENT, 0); }
+		public TerminalNode PROGRAMS() { return getToken(PolygramParser.PROGRAMS, 0); }
+		public TerminalNode EVENTS() { return getToken(PolygramParser.EVENTS, 0); }
 		public SubjectContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -179,9 +179,9 @@ public class PolygramParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(29);
+			setState(31);
 			_la = _input.LA(1);
-			if ( !(_la==PROGRAM || _la==EVENT) ) {
+			if ( !(_la==PROGRAMS || _la==EVENTS) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -224,21 +224,21 @@ public class PolygramParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_statement);
 		try {
-			setState(33);
+			setState(35);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case DISPLAY:
 			case MARK_AS:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(31);
+				setState(33);
 				action();
 				}
 				break;
 			case WHEN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(32);
+				setState(34);
 				condition();
 				}
 				break;
@@ -283,13 +283,13 @@ public class PolygramParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(35);
-			match(WHEN);
-			setState(36);
-			expr(0);
 			setState(37);
-			match(THEN);
+			match(WHEN);
 			setState(38);
+			expr(0);
+			setState(39);
+			match(THEN);
+			setState(40);
 			statement();
 			}
 		}
@@ -325,22 +325,22 @@ public class PolygramParser extends Parser {
 		ActionContext _localctx = new ActionContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_action);
 		try {
-			setState(43);
+			setState(45);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case DISPLAY:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(40);
+				setState(42);
 				match(DISPLAY);
 				}
 				break;
 			case MARK_AS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(41);
+				setState(43);
 				match(MARK_AS);
-				setState(42);
+				setState(44);
 				place_state();
 				}
 				break;
@@ -378,7 +378,7 @@ public class PolygramParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(47);
 			match(IDENTIFIER);
 			}
 		}
@@ -400,6 +400,9 @@ public class PolygramParser extends Parser {
 		}
 		public Str_cmpContext str_cmp() {
 			return getRuleContext(Str_cmpContext.class,0);
+		}
+		public Bool_cmpContext bool_cmp() {
+			return getRuleContext(Bool_cmpContext.class,0);
 		}
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -433,30 +436,36 @@ public class PolygramParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(51);
+			setState(54);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
-				setState(48);
+				setState(50);
 				match(IDENTIFIER);
 				}
 				break;
 			case 2:
 				{
-				setState(49);
+				setState(51);
 				number_cmp();
 				}
 				break;
 			case 3:
 				{
-				setState(50);
+				setState(52);
 				str_cmp();
+				}
+				break;
+			case 4:
+				{
+				setState(53);
+				bool_cmp();
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(57);
+			setState(60);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -467,14 +476,14 @@ public class PolygramParser extends Parser {
 					{
 					_localctx = new ExprContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(53);
-					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(54);
+					setState(56);
+					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+					setState(57);
 					expr_cmp();
 					}
 					} 
 				}
-				setState(59);
+				setState(62);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
@@ -514,11 +523,11 @@ public class PolygramParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(63);
 			match(IDENTIFIER);
-			setState(61);
+			setState(64);
 			match(IS);
-			setState(62);
+			setState(65);
 			match(IDENTIFIER);
 			}
 		}
@@ -561,72 +570,72 @@ public class PolygramParser extends Parser {
 		Number_cmpContext _localctx = new Number_cmpContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_number_cmp);
 		try {
-			setState(88);
+			setState(91);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(64);
+				setState(67);
 				number(0);
-				setState(65);
+				setState(68);
 				match(GT);
-				setState(66);
+				setState(69);
 				number(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(68);
+				setState(71);
 				number(0);
-				setState(69);
+				setState(72);
 				match(LT);
-				setState(70);
+				setState(73);
 				number(0);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(72);
+				setState(75);
 				number(0);
-				setState(73);
+				setState(76);
 				match(EQ);
-				setState(74);
+				setState(77);
 				number(0);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(76);
+				setState(79);
 				number(0);
-				setState(77);
+				setState(80);
 				match(GE);
-				setState(78);
+				setState(81);
 				number(0);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(80);
+				setState(83);
 				number(0);
-				setState(81);
+				setState(84);
 				match(LE);
-				setState(82);
+				setState(85);
 				number(0);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(84);
+				setState(87);
 				number(0);
-				setState(85);
+				setState(88);
 				match(NE);
-				setState(86);
+				setState(89);
 				number(0);
 				}
 				break;
@@ -664,29 +673,66 @@ public class PolygramParser extends Parser {
 		Expr_cmpContext _localctx = new Expr_cmpContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_expr_cmp);
 		try {
-			setState(94);
+			setState(97);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case OR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(90);
+				setState(93);
 				match(OR);
-				setState(91);
+				setState(94);
 				expr(0);
 				}
 				break;
 			case AND:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(92);
+				setState(95);
 				match(AND);
-				setState(93);
+				setState(96);
 				expr(0);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Bool_cmpContext extends ParserRuleContext {
+		public TerminalNode IS() { return getToken(PolygramParser.IS, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(PolygramParser.IDENTIFIER, 0); }
+		public Bool_cmpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bool_cmp; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof PolygramVisitor ) return ((PolygramVisitor<? extends T>)visitor).visitBool_cmp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Bool_cmpContext bool_cmp() throws RecognitionException {
+		Bool_cmpContext _localctx = new Bool_cmpContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_bool_cmp);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(99);
+			match(IS);
+			setState(100);
+			match(IDENTIFIER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -733,24 +779,24 @@ public class PolygramParser extends Parser {
 		int _parentState = getState();
 		NumberContext _localctx = new NumberContext(_ctx, _parentState);
 		NumberContext _prevctx = _localctx;
-		int _startState = 20;
-		enterRecursionRule(_localctx, 20, RULE_number, _p);
+		int _startState = 22;
+		enterRecursionRule(_localctx, 22, RULE_number, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(99);
+			setState(105);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IDENTIFIER:
 				{
-				setState(97);
+				setState(103);
 				match(IDENTIFIER);
 				}
 				break;
 			case NUMBER:
 				{
-				setState(98);
+				setState(104);
 				match(NUMBER);
 				}
 				break;
@@ -758,7 +804,7 @@ public class PolygramParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(115);
+			setState(121);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -766,18 +812,18 @@ public class PolygramParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(113);
+					setState(119);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 					case 1:
 						{
 						_localctx = new NumberContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_number);
-						setState(101);
+						setState(107);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(102);
+						setState(108);
 						match(PLUS);
-						setState(103);
+						setState(109);
 						number(5);
 						}
 						break;
@@ -785,11 +831,11 @@ public class PolygramParser extends Parser {
 						{
 						_localctx = new NumberContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_number);
-						setState(104);
+						setState(110);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(105);
+						setState(111);
 						match(MINUS);
-						setState(106);
+						setState(112);
 						number(4);
 						}
 						break;
@@ -797,11 +843,11 @@ public class PolygramParser extends Parser {
 						{
 						_localctx = new NumberContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_number);
-						setState(107);
+						setState(113);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(108);
+						setState(114);
 						match(MUL);
-						setState(109);
+						setState(115);
 						number(3);
 						}
 						break;
@@ -809,18 +855,18 @@ public class PolygramParser extends Parser {
 						{
 						_localctx = new NumberContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_number);
-						setState(110);
+						setState(116);
 						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-						setState(111);
+						setState(117);
 						match(DIV);
-						setState(112);
+						setState(118);
 						number(2);
 						}
 						break;
 					}
 					} 
 				}
-				setState(117);
+				setState(123);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
 			}
@@ -841,7 +887,7 @@ public class PolygramParser extends Parser {
 		switch (ruleIndex) {
 		case 6:
 			return expr_sempred((ExprContext)_localctx, predIndex);
-		case 10:
+		case 11:
 			return number_sempred((NumberContext)_localctx, predIndex);
 		}
 		return true;
@@ -849,7 +895,7 @@ public class PolygramParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 2);
+			return precpred(_ctx, 3);
 		}
 		return true;
 	}
@@ -868,36 +914,37 @@ public class PolygramParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34y\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
-		"\f\t\f\3\2\3\2\3\2\6\2\34\n\2\r\2\16\2\35\3\3\3\3\3\4\3\4\5\4$\n\4\3\5"+
-		"\3\5\3\5\3\5\3\5\3\6\3\6\3\6\5\6.\n\6\3\7\3\7\3\b\3\b\3\b\3\b\5\b\66\n"+
-		"\b\3\b\3\b\7\b:\n\b\f\b\16\b=\13\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n"+
-		"\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\3\n\5\n[\n\n\3\13\3\13\3\13\3\13\5\13a\n\13\3\f\3\f\3\f\5\ff\n\f\3"+
-		"\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\7\ft\n\f\f\f\16\fw\13\f"+
-		"\3\f\2\4\16\26\r\2\4\6\b\n\f\16\20\22\24\26\2\3\4\2\3\3\t\t\2~\2\30\3"+
-		"\2\2\2\4\37\3\2\2\2\6#\3\2\2\2\b%\3\2\2\2\n-\3\2\2\2\f/\3\2\2\2\16\65"+
-		"\3\2\2\2\20>\3\2\2\2\22Z\3\2\2\2\24`\3\2\2\2\26e\3\2\2\2\30\31\7\n\2\2"+
-		"\31\33\5\4\3\2\32\34\5\6\4\2\33\32\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2"+
-		"\35\36\3\2\2\2\36\3\3\2\2\2\37 \t\2\2\2 \5\3\2\2\2!$\5\n\6\2\"$\5\b\5"+
-		"\2#!\3\2\2\2#\"\3\2\2\2$\7\3\2\2\2%&\7\27\2\2&\'\5\16\b\2\'(\7\30\2\2"+
-		"()\5\6\4\2)\t\3\2\2\2*.\7\4\2\2+,\7\25\2\2,.\5\f\7\2-*\3\2\2\2-+\3\2\2"+
-		"\2.\13\3\2\2\2/\60\7\34\2\2\60\r\3\2\2\2\61\62\b\b\1\2\62\66\7\34\2\2"+
-		"\63\66\5\22\n\2\64\66\5\20\t\2\65\61\3\2\2\2\65\63\3\2\2\2\65\64\3\2\2"+
-		"\2\66;\3\2\2\2\678\f\4\2\28:\5\24\13\29\67\3\2\2\2:=\3\2\2\2;9\3\2\2\2"+
-		";<\3\2\2\2<\17\3\2\2\2=;\3\2\2\2>?\7\34\2\2?@\7\26\2\2@A\7\34\2\2A\21"+
-		"\3\2\2\2BC\5\26\f\2CD\7\r\2\2DE\5\26\f\2E[\3\2\2\2FG\5\26\f\2GH\7\16\2"+
-		"\2HI\5\26\f\2I[\3\2\2\2JK\5\26\f\2KL\7\21\2\2LM\5\26\f\2M[\3\2\2\2NO\5"+
-		"\26\f\2OP\7\17\2\2PQ\5\26\f\2Q[\3\2\2\2RS\5\26\f\2ST\7\20\2\2TU\5\26\f"+
-		"\2U[\3\2\2\2VW\5\26\f\2WX\7\22\2\2XY\5\26\f\2Y[\3\2\2\2ZB\3\2\2\2ZF\3"+
-		"\2\2\2ZJ\3\2\2\2ZN\3\2\2\2ZR\3\2\2\2ZV\3\2\2\2[\23\3\2\2\2\\]\7\24\2\2"+
-		"]a\5\16\b\2^_\7\23\2\2_a\5\16\b\2`\\\3\2\2\2`^\3\2\2\2a\25\3\2\2\2bc\b"+
-		"\f\1\2cf\7\34\2\2df\7\13\2\2eb\3\2\2\2ed\3\2\2\2fu\3\2\2\2gh\f\6\2\2h"+
-		"i\7\7\2\2it\5\26\f\7jk\f\5\2\2kl\7\b\2\2lt\5\26\f\6mn\f\4\2\2no\7\5\2"+
-		"\2ot\5\26\f\5pq\f\3\2\2qr\7\6\2\2rt\5\26\f\4sg\3\2\2\2sj\3\2\2\2sm\3\2"+
-		"\2\2sp\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\27\3\2\2\2wu\3\2\2\2\f\35"+
-		"#-\65;Z`esu";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34\177\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\6\2\36\n\2\r\2\16\2\37\3\3\3\3\3\4\3\4"+
+		"\5\4&\n\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\5\6\60\n\6\3\7\3\7\3\b\3\b\3"+
+		"\b\3\b\3\b\5\b9\n\b\3\b\3\b\7\b=\n\b\f\b\16\b@\13\b\3\t\3\t\3\t\3\t\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n"+
+		"\3\n\3\n\3\n\3\n\3\n\3\n\5\n^\n\n\3\13\3\13\3\13\3\13\5\13d\n\13\3\f\3"+
+		"\f\3\f\3\r\3\r\3\r\5\rl\n\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3"+
+		"\r\3\r\7\rz\n\r\f\r\16\r}\13\r\3\r\2\4\16\30\16\2\4\6\b\n\f\16\20\22\24"+
+		"\26\30\2\3\4\2\3\3\t\t\2\u0084\2\32\3\2\2\2\4!\3\2\2\2\6%\3\2\2\2\b\'"+
+		"\3\2\2\2\n/\3\2\2\2\f\61\3\2\2\2\168\3\2\2\2\20A\3\2\2\2\22]\3\2\2\2\24"+
+		"c\3\2\2\2\26e\3\2\2\2\30k\3\2\2\2\32\33\7\n\2\2\33\35\5\4\3\2\34\36\5"+
+		"\6\4\2\35\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \3\3\2\2"+
+		"\2!\"\t\2\2\2\"\5\3\2\2\2#&\5\n\6\2$&\5\b\5\2%#\3\2\2\2%$\3\2\2\2&\7\3"+
+		"\2\2\2\'(\7\27\2\2()\5\16\b\2)*\7\30\2\2*+\5\6\4\2+\t\3\2\2\2,\60\7\4"+
+		"\2\2-.\7\25\2\2.\60\5\f\7\2/,\3\2\2\2/-\3\2\2\2\60\13\3\2\2\2\61\62\7"+
+		"\34\2\2\62\r\3\2\2\2\63\64\b\b\1\2\649\7\34\2\2\659\5\22\n\2\669\5\20"+
+		"\t\2\679\5\26\f\28\63\3\2\2\28\65\3\2\2\28\66\3\2\2\28\67\3\2\2\29>\3"+
+		"\2\2\2:;\f\5\2\2;=\5\24\13\2<:\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?"+
+		"\17\3\2\2\2@>\3\2\2\2AB\7\34\2\2BC\7\26\2\2CD\7\34\2\2D\21\3\2\2\2EF\5"+
+		"\30\r\2FG\7\r\2\2GH\5\30\r\2H^\3\2\2\2IJ\5\30\r\2JK\7\16\2\2KL\5\30\r"+
+		"\2L^\3\2\2\2MN\5\30\r\2NO\7\21\2\2OP\5\30\r\2P^\3\2\2\2QR\5\30\r\2RS\7"+
+		"\17\2\2ST\5\30\r\2T^\3\2\2\2UV\5\30\r\2VW\7\20\2\2WX\5\30\r\2X^\3\2\2"+
+		"\2YZ\5\30\r\2Z[\7\22\2\2[\\\5\30\r\2\\^\3\2\2\2]E\3\2\2\2]I\3\2\2\2]M"+
+		"\3\2\2\2]Q\3\2\2\2]U\3\2\2\2]Y\3\2\2\2^\23\3\2\2\2_`\7\24\2\2`d\5\16\b"+
+		"\2ab\7\23\2\2bd\5\16\b\2c_\3\2\2\2ca\3\2\2\2d\25\3\2\2\2ef\7\26\2\2fg"+
+		"\7\34\2\2g\27\3\2\2\2hi\b\r\1\2il\7\34\2\2jl\7\13\2\2kh\3\2\2\2kj\3\2"+
+		"\2\2l{\3\2\2\2mn\f\6\2\2no\7\7\2\2oz\5\30\r\7pq\f\5\2\2qr\7\b\2\2rz\5"+
+		"\30\r\6st\f\4\2\2tu\7\5\2\2uz\5\30\r\5vw\f\3\2\2wx\7\6\2\2xz\5\30\r\4"+
+		"ym\3\2\2\2yp\3\2\2\2ys\3\2\2\2yv\3\2\2\2z}\3\2\2\2{y\3\2\2\2{|\3\2\2\2"+
+		"|\31\3\2\2\2}{\3\2\2\2\f\37%/8>]cky{";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

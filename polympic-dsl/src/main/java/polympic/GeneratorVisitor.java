@@ -7,8 +7,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     private static final String EVENT = "event";
     private static final String PROGRAM = "program";
 
-    int indentation = 0;
-    String subject;
+    private int indentation = 0;
+    private String subject;
 
     private void updateIndentEnteringBlock() {
         indentation++;
@@ -56,9 +56,9 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitSubject(PolygramParser.SubjectContext ctx) {
         String result = "";
-        if (ctx.PROGRAM() != null) {
+        if (ctx.PROGRAMS() != null) {
             this.subject = GeneratorVisitor.PROGRAM;
-        } else if (ctx.EVENT() != null) {
+        } else if (ctx.EVENTS() != null) {
             this.subject = GeneratorVisitor.EVENT;
         }
         result += subject + " of array) {";
@@ -136,6 +136,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             result += this.visitNumber_cmp(ctx.number_cmp());
         } else if (ctx.str_cmp() != null) {
             result += this.visitStr_cmp(ctx.str_cmp());
+        } else if (ctx.bool_cmp() != null) {
+            result += this.visitBool_cmp(ctx.bool_cmp());
         } else {
             result += this.visitExpr(ctx.expr());
             result += this.visitExpr_cmp((ctx.expr_cmp()));
@@ -158,6 +160,19 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         result += " === ";
         result += "\"" + ctx.IDENTIFIER(1) + "\"";
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitBool_cmp(PolygramParser.Bool_cmpContext ctx) {
+        return this.subject + ".getSport() === \"" + ctx.IDENTIFIER().getText() + "\"";
     }
 
     /**

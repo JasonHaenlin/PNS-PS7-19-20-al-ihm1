@@ -142,7 +142,7 @@
     {
         "id": "rhf1",
         "name": "Rugby Huitème de finale 1/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","Canada"],
         "sport": "Rugby",
         "site": {
@@ -156,7 +156,7 @@
     {
         "id": "rhf2",
         "name": "Rugby Huitème de finale 2/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["France","Canada"],
         "sport": "Rugby",
         "site": {
@@ -170,7 +170,7 @@
     {
         "id": "rhf3",
         "name": "Rugby Huitème de finale 3/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Italie","Espagne"],
         "sport": "Rugby",
         "site": {
@@ -184,7 +184,7 @@
     {
         "id": "rhf4",
         "name": "Rugby Huitème de finale 4/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Belgique","Canada"],
         "sport": "Rugby",
         "site": {
@@ -198,7 +198,7 @@
     {
         "id": "rhf5",
         "name": "Rugby Huitème de finale 5/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","France"],
         "sport": "Rugby",
         "site": {
@@ -212,7 +212,7 @@
     {
         "id": "rhf6",
         "name": "Rugby Huitème de finale 6/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","Canada"],
         "sport": "Rugby",
         "site": {
@@ -226,7 +226,7 @@
     {
         "id": "rhf7",
         "name": "Rugby Huitème de finale 7/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","Canada"],
         "sport": "Rugby",
         "site": {
@@ -240,7 +240,7 @@
     {
         "id": "rhf8",
         "name": "Rugby Huitème de finale 8/8",
-        "description": "Les huitièmes de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","Canada"],
         "sport": "Rugby",
         "site": {
@@ -254,7 +254,7 @@
     {
         "id": "hdf1",
         "name": "Handball Demi finale 1/4",
-        "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["France","Canada"],
         "sport": "Handball",
         "site": {
@@ -268,7 +268,7 @@
     {
         "id": "hdf2",
         "name": "Handball Demi finale 2/4",
-        "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Etats-Unis","Espagne"],
         "sport": "Handball",
         "site": {
@@ -282,7 +282,7 @@
     {
         "id": "hdf3",
         "name": "Handball Demi finale 3/4",
-        "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Italie","Turquie"],
         "sport": "Handball",
         "site": {
@@ -296,7 +296,7 @@
     {
         "id": "hdf4",
         "name": "Handball Demi finale 4/4",
-        "description": "Les quarts de finale commencent, quels équipes seront sélectionnés ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": ["Belgique","Monaco"],
         "sport": "Handball",
         "site": {

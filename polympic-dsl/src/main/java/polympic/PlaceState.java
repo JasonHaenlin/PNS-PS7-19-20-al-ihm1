@@ -6,7 +6,9 @@ public enum PlaceState {
     IMPORTANT("important"),
     NEAR("near"),
     FAR("far"),
-    URGENT("urgent");
+    URGENT("urgent"),
+
+    ;
 
     private String state;
 

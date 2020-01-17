@@ -5,11 +5,11 @@ grammar Polygram;
 // parser rules :
 
 program:
-    FOREACH subject statement+;
+    CONCERNING subject statement+;
 
 subject:
-        PROGRAM
-    |   EVENT
+        PROGRAMS
+    |   EVENTS
     ;
 
 statement:
@@ -33,11 +33,13 @@ expr:
     |   number_cmp
     |   expr expr_cmp
     |   str_cmp
+    |   bool_cmp
     ;
 
 str_cmp:
         IDENTIFIER IS IDENTIFIER
     ;
+
 
 
 number_cmp:
@@ -54,6 +56,10 @@ expr_cmp:
     |   AND expr
     ;
 
+bool_cmp:
+        IS IDENTIFIER
+    ;
+
 number:
 	IDENTIFIER
 	| NUMBER
@@ -65,8 +71,8 @@ number:
 
 // lexer rules :
 
-PROGRAM:
-    'program';
+PROGRAMS:
+    'programs';
 
 DISPLAY:
     'display';
@@ -83,11 +89,11 @@ PLUS:
 MINUS:
     '-';
 
-EVENT:
-    'event';
+EVENTS:
+    'events';
 
-FOREACH:
-    'for each';
+CONCERNING:
+    'concerning';
 
 NUMBER:
     '-'? [0-9]+ ( ',' | '.')? [0-9]*;
