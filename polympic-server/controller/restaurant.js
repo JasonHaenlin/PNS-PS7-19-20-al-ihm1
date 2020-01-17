@@ -1,5 +1,5 @@
 const { Restaurant } = require('../models');
-const _ = require('lodash');
+// const _ = require('lodash');
 const geolib = require('geolib');
 
 module.exports = {
