@@ -53,5 +53,30 @@
         "name": "Pause repas",
         "tag": "détente",
         "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg"
-    }
+    },
+    {
+        "name": "Sites touristiques",
+        "tag": "détente",
+        "img": "https://svgsilh.com/svg/539663.svg"
+    },
+    {
+        "name": "Handicap moteur",
+        "tag": "handicap",
+        "img": "https://www.glen-accessibilite.com/ressources/images/544f1448f3c0.png"
+    },
+    {
+        "name": "Handicap mental",
+        "tag": "handicap",
+        "img": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/32/S3A.svg/1024px-S3A.svg.png"
+    },
+    {
+        "name": "Handicap auditif",
+        "tag": "handicap",
+        "img": "https://www.musee-du-jouet.com/medias/pratiques-activites/visites-activites/groupes-situation-handicap/H-Auditif.jpg"
+    },
+    {
+        "name": "Handicap visuel",
+        "tag": "handicap",
+        "img": "https://www.pickup-prod.com/wp-content/uploads/2019/04/Logo-handicap-visuel.png"
+    },
 ]
