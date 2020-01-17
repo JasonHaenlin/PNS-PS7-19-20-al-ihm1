@@ -78,7 +78,9 @@ class ItineraryCard extends StatelessWidget {
   }
 
   _passEvent() {
-    return data.events.map((item) => EventModel.fromMap(item)).toList();
+    return data.events
+        .map((es) => es.map((e) => EventModel.fromMap(e)).toList())
+        .toList();
   }
 }
 

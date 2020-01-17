@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:polympic/mocks/itinerary_mock.dart';
-import 'package:polympic/models/category_model.dart';
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/services/itinerary_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
