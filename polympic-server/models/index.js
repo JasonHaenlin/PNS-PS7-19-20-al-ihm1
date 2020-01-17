@@ -1,4 +1,5 @@
 const BaseModel = require('./base-model');
+const Graph = require('./graph/graph');
 
 const Preference = new BaseModel('Preference');
 const Event = new BaseModel('Event');
@@ -9,5 +10,6 @@ module.exports = {
   Preference,
   Event,
   TouristicSites,
-  Restaurant
+  Restaurant,
+  Graph
 };

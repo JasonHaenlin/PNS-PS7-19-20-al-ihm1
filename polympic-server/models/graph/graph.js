@@ -15,6 +15,12 @@ module.exports = class Graph {
     return [sourceNode, destinationNode];
   }
 
+  getVertex(id) {
+    if (this.nodes.has(id)) {
+      return this.nodes.get(id);
+    }
+  }
+
   addVertex(id) {
     if (this.nodes.has(id)) {
       return this.nodes.get(id);
