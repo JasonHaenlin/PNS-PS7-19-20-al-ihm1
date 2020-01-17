@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "Sushi Shop",
+        "position" : {
+            "latitude" :48.919541,
+            "longitude" :2.362471
+        }
+    },
+    {
+        "name" : "McDonald",
+        "position" : {
+            "latitude" :48.921522,
+            "longitude" :2.363351
+        }
+    },
+    {
+        "name" : "Hippopotamus Steackhouse",
+        "position" : {
+            "latitude" :48.930788,
+            "longitude" :2.356179
+        }
+    },
+    {
+        "name" : "Pizza Di Napoli",
+        "position" : {
+            "latitude" :48.927639,
+            "longitude" :2.363477
+        }
+    }
+]
