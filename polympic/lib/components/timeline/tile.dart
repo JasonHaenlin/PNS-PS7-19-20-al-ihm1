@@ -12,7 +12,7 @@ class Tile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       direction: Axis.vertical,
-      spacing: 8.0,
+      spacing: 5.0,
       runSpacing: 4.0,
       children: this.childrens,
     );

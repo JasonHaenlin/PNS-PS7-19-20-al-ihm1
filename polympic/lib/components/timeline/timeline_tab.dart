@@ -9,14 +9,14 @@ class TimelineTab extends StatelessWidget {
     @required this.title,
     @required this.beginDate,
     @required this.endDate,
-    @required this.dropChildrens,
+    @required this.descriptions,
     @required this.versus,
   }) : super(key: key);
 
   final String title;
   final DateTime beginDate;
   final DateTime endDate;
-  final List<Widget> dropChildrens;
+  final String descriptions;
   final List<dynamic> versus;
 
   Widget _getTextWidgets(List<dynamic> strings) {
@@ -35,25 +35,33 @@ class TimelineTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final date = DateFormat.Hm();
-    return ExpansionTile(
-      title: Tile(
-        childrens: <Widget>[
-          Text(
-            this.title,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: kColorPrimaryText,
-              fontSize: 15,
+    final _width = MediaQuery.of(context).size.width * 0.6;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: _width,
+        child: Tile(
+          childrens: <Widget>[
+            Text(
+              this.title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kColorPrimaryText,
+                fontSize: 15,
+              ),
             ),
-          ),
-          _getTextWidgets(this.versus),
-          Text(
-            date.format(this.beginDate) + " - " + date.format(this.endDate),
-            style: TextStyle(fontWeight: FontWeight.w400),
-          ),
-        ],
+            _getTextWidgets(this.versus),
+            Text(
+              date.format(this.beginDate) + " - " + date.format(this.endDate),
+              style: TextStyle(fontWeight: FontWeight.w400),
+            ),
+            Text(
+              descriptions,
+              style: TextStyle(fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
       ),
-      children: this.dropChildrens,
     );
   }
 }

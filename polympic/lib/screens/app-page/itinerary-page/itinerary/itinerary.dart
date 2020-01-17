@@ -43,17 +43,7 @@ class Itinerary extends StatelessWidget {
           versus: e.competitors,
           beginDate: formatTimestamp(e.starttime),
           endDate: formatTimestamp(e.endtime),
-          dropChildrens: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: Text(
-                  e.description,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ),
-            ),
-          ],
+          descriptions: e.placename,
         ),
       );
     }

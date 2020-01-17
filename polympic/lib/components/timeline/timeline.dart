@@ -19,16 +19,6 @@ class Timeline extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: <Widget>[
-              //   Padding(
-              //     padding: const EdgeInsets.only(left: 50.0),
-              //     child: Card(
-              //       margin: EdgeInsets.all(20.0),
-              //       child: Container(
-              //         width: double.infinity,
-              //         child: childrens[index],
-              //       ),
-              //     ),
-              //   ),
               childrens[index],
               Line(),
               Indicator(),

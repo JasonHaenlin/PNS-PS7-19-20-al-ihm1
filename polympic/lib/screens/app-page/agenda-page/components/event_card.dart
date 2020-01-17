@@ -16,19 +16,8 @@ class _EventCardState extends State<EventCard> {
   Widget build(BuildContext context) {
     String _starttime = timestampToDateString(this.widget.event.starttime);
     String _endtime = timestampToDateString(this.widget.event.endtime);
-    // bool _favorite = this.widget.event.favorite;
 
     double cWidth = MediaQuery.of(context).size.width * 0.6;
-
-    // void _tooglefavorite() {
-    //   setState(() {
-    //     _favorite = !_favorite;
-    //     _eventBloc.dispatch(EventEvent.update, {
-    //       'event': this.widget.event,
-    //       'favorite': _favorite.toString(),
-    //     });
-    //   });
-    // }
 
     Widget _getTextWidgets(dynamic strings) {
       List<Widget> list = List<Widget>();
