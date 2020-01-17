@@ -10,22 +10,19 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     int indentation = 0;
     String subject;
 
-    private String indent() {
+    private void updateIndentEnteringBlock() {
         indentation++;
-        String indent = "\n";
-        for (int i = 0; i < indentation; i++) {
-            indent += "    ";
-        }
-        return indent;
     }
 
-    private String unIndent() {
+    private void updateIndentClosingBlock() {
         indentation--;
+    }
+
+    private String goToLine() {
         String indent = "\n";
         for (int i = 0; i < indentation; i++) {
             indent += "    ";
         }
-        indent += "}";
         return indent;
     }
 
@@ -41,12 +38,12 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         indentation++;
         result += "for (const ";
         result += this.visitSubject(ctx.subject());
-        result += this.indent();
         for (PolygramParser.StatementContext statementContext : ctx.statement()) {
             result += this.visitStatement(statementContext);
         }
-        result += this.unIndent();
-        indentation--;
+        this.updateIndentClosingBlock();
+        result += this.goToLine();
+        result += "}";
         return result;
     }
 
@@ -65,6 +62,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             this.subject = GeneratorVisitor.PROGRAM;
         }
         result += subject + " of array) {";
+        this.updateIndentEnteringBlock();
         return result;
     }
 
@@ -76,7 +74,9 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
      */
     @Override
     public String visitStatement(PolygramParser.StatementContext ctx) {
-        return this.visitChildren(ctx);
+        String result = "";
+        result += goToLine() + this.visitChildren(ctx);
+        return result;
     }
 
     /**
@@ -92,14 +92,16 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             result += "if (";
             result += this.visitBool(ctx.bool());
             result += ") {";
+            this.updateIndentEnteringBlock();
             if (ctx.THEN() != null) {
-                result += indent();
                 for (PolygramParser.StatementContext statement : ctx.statement()) {
                     result += this.visitStatement(statement);
                 }
             }
         }
-        result += unIndent();
+        this.updateIndentClosingBlock();
+        result += this.goToLine();
+        result += "}";
         return result;
     }
 
@@ -128,7 +130,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitBool(PolygramParser.BoolContext ctx) {
         String result = "";
         if (ctx.IDENTIFIER() != null) {
-            result += ctx.getText();
+            result += this.subject + "." + ctx.getText();
         } else if (ctx.number_cmp() != null) {
             result += this.visitNumber_cmp(ctx.number_cmp());
         } else {
@@ -148,7 +150,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitNumber(PolygramParser.NumberContext ctx) {
         String result = "";
         if (ctx.IDENTIFIER() != null) {
-            result += ctx.getText();
+            result += this.subject + "." + ctx.getText();
         } else if (ctx.NUMBER() != null) {
             result += ctx.getText();
         } else {

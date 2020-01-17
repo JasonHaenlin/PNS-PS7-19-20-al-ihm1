@@ -18,7 +18,7 @@ public class MainPolygram {
         GeneratorVisitor visitor = new GeneratorVisitor();
         String result = "function execute(array) {\n    ";
         result += visitor.visit(tree);
-        result += "\n}";
+        result += "\n}\n\n module.exports = { execute };";
         System.out.println(result);
 
     }

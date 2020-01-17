@@ -21,7 +21,14 @@ condition:
     WHEN bool THEN statement+;
 
 action:
-    DISPLAY;
+        DISPLAY
+    |   MARK_AS place_state
+    ;
+
+place_state:
+        IMPORTANT
+    ;
+
 
 bool:
     IDENTIFIER
@@ -37,6 +44,19 @@ number_cmp:
     | number LE number
     | number NE number
     ;
+
+/*ident_cmp:
+      IDENTIFIER GT IDENTIFIER
+    | IDENTIFIER LT number
+    | IDENTIFIER EQ number
+    | IDENTIFIER GE number
+    | IDENTIFIER LE number
+    | IDENTIFIER NE number
+    | number LT IDENTIFIER
+        | IDENTIFIER EQ number
+        | IDENTIFIER GE number
+        | IDENTIFIER LE number
+        | IDENTIFIER NE number*/
 
 bool_cmp:
         OR bool
@@ -72,7 +92,6 @@ PLUS:
 MINUS:
     '-';
 
-
 EVENT:
     'event';
 
@@ -81,12 +100,6 @@ FOREACH:
 
 NUMBER:
     '-'? [0-9]+ ( ',' | '.')? [0-9]*;
-
-AND:
-    'and';
-
-OR:
-    'or';
 
 NOT:
     'not';
@@ -109,11 +122,24 @@ EQ:
 NE:
     '!=';
 
+AND:
+    'and';
+
+OR:
+    'or';
+
+MARK_AS:
+    'mark as';
+
 WHEN:
     'when';
 
 THEN:
     'then';
+
+IMPORTANT:
+    'important'
+    ;
 
 EOL:
     [\r\n]+ -> skip;

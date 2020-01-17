@@ -41,6 +41,12 @@ public interface PolygramVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAction(PolygramParser.ActionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PolygramParser#place_state}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPlace_state(PolygramParser.Place_stateContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PolygramParser#bool}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
