@@ -47,11 +47,17 @@ public interface PolygramVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPlace_state(PolygramParser.Place_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link PolygramParser#bool}.
+	 * Visit a parse tree produced by {@link PolygramParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBool(PolygramParser.BoolContext ctx);
+	T visitExpr(PolygramParser.ExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PolygramParser#str_cmp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStr_cmp(PolygramParser.Str_cmpContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PolygramParser#number_cmp}.
 	 * @param ctx the parse tree
@@ -59,11 +65,11 @@ public interface PolygramVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNumber_cmp(PolygramParser.Number_cmpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link PolygramParser#bool_cmp}.
+	 * Visit a parse tree produced by {@link PolygramParser#expr_cmp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBool_cmp(PolygramParser.Bool_cmpContext ctx);
+	T visitExpr_cmp(PolygramParser.Expr_cmpContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PolygramParser#number}.
 	 * @param ctx the parse tree

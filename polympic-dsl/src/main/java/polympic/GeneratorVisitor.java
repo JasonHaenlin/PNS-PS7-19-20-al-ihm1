@@ -57,9 +57,9 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitSubject(PolygramParser.SubjectContext ctx) {
         String result = "";
         if (ctx.PROGRAM() != null) {
-            this.subject = GeneratorVisitor.EVENT;
-        } else if (ctx.EVENT() != null) {
             this.subject = GeneratorVisitor.PROGRAM;
+        } else if (ctx.EVENT() != null) {
+            this.subject = GeneratorVisitor.EVENT;
         }
         result += subject + " of array) {";
         this.updateIndentEnteringBlock();
@@ -90,13 +90,12 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         String result = "";
         if (ctx.WHEN() != null) {
             result += "if (";
-            result += this.visitBool(ctx.bool());
+            result += this.visitExpr(ctx.expr());
             result += ") {";
             this.updateIndentEnteringBlock();
             if (ctx.THEN() != null) {
-                for (PolygramParser.StatementContext statement : ctx.statement()) {
-                    result += this.visitStatement(statement);
-                }
+                result += this.visitStatement(ctx.statement());
+
             }
         }
         this.updateIndentClosingBlock();
@@ -115,29 +114,70 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitAction(PolygramParser.ActionContext ctx) {
         String result = "";
         if (ctx.DISPLAY() != null) {
-            result += "display();";
+            result += "addElementToDisplay();";
+        } else if (ctx.place_state() != null) {
+            result += this.visitPlace_state(ctx.place_state());
         }
         return result;
     }
 
     /**
-     * Visit a parse tree produced by {@link PolygramParser#bool}.
+     * Visit a parse tree produced by {@link PolygramParser#expr}.
      *
      * @param ctx the parse tree
      * @return the visitor result
      */
     @Override
-    public String visitBool(PolygramParser.BoolContext ctx) {
+    public String visitExpr(PolygramParser.ExprContext ctx) {
         String result = "";
         if (ctx.IDENTIFIER() != null) {
             result += this.subject + "." + ctx.getText();
         } else if (ctx.number_cmp() != null) {
             result += this.visitNumber_cmp(ctx.number_cmp());
+        } else if (ctx.str_cmp() != null) {
+            result += this.visitStr_cmp(ctx.str_cmp());
         } else {
-            result += this.visitBool(ctx.bool());
-            result += this.visitBool_cmp((ctx.bool_cmp()));
+            result += this.visitExpr(ctx.expr());
+            result += this.visitExpr_cmp((ctx.expr_cmp()));
         }
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitStr_cmp(PolygramParser.Str_cmpContext ctx) {
+        String result = "";
+        result += this.subject + "." + ctx.IDENTIFIER(0).getText();
+        result += " === ";
+        result += "\"" + ctx.IDENTIFIER(1) + "\"";
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitPlace_state(PolygramParser.Place_stateContext ctx) {
+        String result = "";
+        for (PlaceState state : PlaceState.values()) {
+            if (ctx.IDENTIFIER().getText().equals(state.getState())) {
+                result += this.subject + ".setState(\"" + ctx.getText() + "\");";
+                return result;
+            }
+        }
+        throw new NoSuchStateException("The state " + ctx.IDENTIFIER().getText() + " does not exist.");
     }
 
     /**
@@ -206,14 +246,14 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
      * @param ctx
      */
     @Override
-    public String visitBool_cmp(PolygramParser.Bool_cmpContext ctx) {
+    public String visitExpr_cmp(PolygramParser.Expr_cmpContext ctx) {
         String result = "";
         if (ctx.AND() != null) {
             result += " && ";
         } else if (ctx.OR() != null) {
             result += " || ";
         }
-        result += this.visitBool(ctx.bool());
+        result += this.visitExpr(ctx.expr());
         return result;
     }
 

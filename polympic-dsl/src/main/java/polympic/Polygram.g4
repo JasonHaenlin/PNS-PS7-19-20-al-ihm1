@@ -1,6 +1,6 @@
 grammar Polygram;
 
-@header {package polympic;}
+//@header {package polympic;}
 
 // parser rules :
 
@@ -18,7 +18,7 @@ statement:
     ;
 
 condition:
-    WHEN bool THEN statement+;
+    WHEN expr THEN statement;
 
 action:
         DISPLAY
@@ -26,15 +26,19 @@ action:
     ;
 
 place_state:
-        IMPORTANT
+        IDENTIFIER;
+
+expr:
+        IDENTIFIER
+    |   number_cmp
+    |   expr expr_cmp
+    |   str_cmp
     ;
 
-
-bool:
-    IDENTIFIER
-    | number_cmp
-    | bool bool_cmp
+str_cmp:
+        IDENTIFIER IS IDENTIFIER
     ;
+
 
 number_cmp:
       number GT number
@@ -45,22 +49,9 @@ number_cmp:
     | number NE number
     ;
 
-/*ident_cmp:
-      IDENTIFIER GT IDENTIFIER
-    | IDENTIFIER LT number
-    | IDENTIFIER EQ number
-    | IDENTIFIER GE number
-    | IDENTIFIER LE number
-    | IDENTIFIER NE number
-    | number LT IDENTIFIER
-        | IDENTIFIER EQ number
-        | IDENTIFIER GE number
-        | IDENTIFIER LE number
-        | IDENTIFIER NE number*/
-
-bool_cmp:
-        OR bool
-    |   AND bool
+expr_cmp:
+        OR expr
+    |   AND expr
     ;
 
 number:
@@ -131,15 +122,14 @@ OR:
 MARK_AS:
     'mark as';
 
+IS :
+    'is';
+
 WHEN:
     'when';
 
 THEN:
     'then';
-
-IMPORTANT:
-    'important'
-    ;
 
 EOL:
     [\r\n]+ -> skip;
@@ -152,3 +142,4 @@ WS:
 
 IDENTIFIER:
     [a-zA-Z][_a-zA-Z0-9]*;
+

@@ -4,4 +4,4 @@ when score + popularity < 5 or 4 != VAR and BAR then when BAR = 3 then display
 //display
 when foo then display
 display display
-when yes then display
+when yes is no then mark as important
