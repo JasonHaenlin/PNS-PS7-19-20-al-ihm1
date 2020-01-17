@@ -57,7 +57,7 @@ class ChoosePreferences extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: Image.asset(
-              'assets/images/jo.png',
+              'assets/images/no-lience.png',
               fit: BoxFit.cover,
             ),
           ),

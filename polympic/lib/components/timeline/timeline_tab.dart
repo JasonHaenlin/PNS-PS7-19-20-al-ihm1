@@ -46,18 +46,20 @@ class TimelineTab extends StatelessWidget {
               this.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: kColorPrimaryText,
+                color: kColorPrimary,
                 fontSize: 15,
               ),
             ),
             _getTextWidgets(this.versus),
             Text(
               date.format(this.beginDate) + " - " + date.format(this.endDate),
-              style: TextStyle(fontWeight: FontWeight.w400),
+              style:
+                  TextStyle(fontWeight: FontWeight.w400, color: kColorAccent),
             ),
             Text(
               descriptions,
-              style: TextStyle(fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  fontWeight: FontWeight.w400, color: kColorSecondaryText),
             ),
           ],
         ),
