@@ -24,6 +24,14 @@ ThemeData appTheme() {
       iconTheme: IconThemeData(color: kColorTextIcon),
     ),
 
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.white,
+      indicator: BoxDecoration(
+        color: kColorAccent,
+        shape: BoxShape.circle,
+      ),
+    ),
+
     iconTheme: IconThemeData(color: kColorTextIcon),
 
     buttonTheme: ButtonThemeData(

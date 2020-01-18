@@ -6,7 +6,7 @@ import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/screens/app-page/agenda-page/components/event_list.dart';
-import 'package:polympic/screens/app-page/preference-page/preference_sport.dart';
+import 'package:polympic/screens/app-page/preference-page/preference_page.dart';
 
 class AgendaPage extends StatelessWidget {
   const AgendaPage({Key key}) : super(key: key);
@@ -24,7 +24,7 @@ class AgendaPage extends StatelessWidget {
           IconButton(
               iconSize: 30.0,
               icon: Icon(FontAwesomeIcons.slidersH),
-              onPressed: () => navigateToPage(context, PreferenceSport())),
+              onPressed: () => navigateToPage(context, PreferencePage())),
         ],
       ),
       body: StreamBuilder<List<EventModel>>(

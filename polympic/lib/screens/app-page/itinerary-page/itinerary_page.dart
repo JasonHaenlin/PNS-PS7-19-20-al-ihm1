@@ -5,7 +5,7 @@ import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/screens/app-page/itinerary-page/components/itinerary.dart';
-import 'package:polympic/screens/app-page/preference-page/preference_sport.dart';
+import 'package:polympic/screens/app-page/preference-page/preference_page.dart';
 
 class ItinerariesPage extends StatelessWidget {
   const ItinerariesPage({
@@ -37,9 +37,10 @@ class Itineraries extends StatelessWidget {
         title: const Text('Itinéraire'),
         actions: <Widget>[
           IconButton(
-              iconSize: 30.0,
-              icon: Icon(FontAwesomeIcons.slidersH),
-              onPressed: () => navigateToPage(context, PreferenceSport())),
+            iconSize: 30.0,
+            icon: Icon(FontAwesomeIcons.slidersH),
+            onPressed: () => navigateToPage(context, PreferencePage()),
+          )
         ],
       ),
       body: StreamBuilder<ItineraryModel>(

@@ -29,4 +29,24 @@ const CATEGORY_MOCK = [
     "tag": "sport",
     "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg",
   },
+  {
+    "name": "France",
+    "tag": "country",
+    "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg",
+  },
+  {
+    "name": "Pause déjeuner",
+    "tag": "recreation",
+    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+  },
+  {
+    "name": "Capacité à se déplacer",
+    "tag": "handicap",
+    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+  },
+  {
+    "name": "Sites Touristiques",
+    "tag": "tourism",
+    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+  },
 ];
