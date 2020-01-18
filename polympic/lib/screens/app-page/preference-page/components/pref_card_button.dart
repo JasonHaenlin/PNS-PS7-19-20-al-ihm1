@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:polympic/models/category_model.dart';
 import 'package:polympic/theme/colors.dart';
 
 class PrefCardButton extends StatefulWidget {
-  const PrefCardButton({Key key}) : super(key: key);
+  const PrefCardButton({
+    Key key,
+    @required this.data,
+  }) : super(key: key);
+
+  final CategoryModel data;
 
   @override
   _PrefCardButtonState createState() => _PrefCardButtonState();
@@ -36,15 +42,15 @@ class _PrefCardButtonState extends State<PrefCardButton> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Image.network(
-                "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+                this.widget.data.img,
                 fit: BoxFit.cover,
-                width: 130,
+                width: 100,
                 height: 80,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "my name",
+                  this.widget.data.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

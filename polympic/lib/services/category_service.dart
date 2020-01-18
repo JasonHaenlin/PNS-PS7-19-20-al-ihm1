@@ -9,8 +9,11 @@ import 'package:polympic/models/category_model.dart';
 class CategoryService {
   Client client;
 
-  CategoryService({Client client}) {
+  CategoryService({
+    Client client,
+  }) {
     this.client = client ?? Client();
+    getData();
   }
 
   List<CategoryModel> _categories = List();
@@ -18,8 +21,14 @@ class CategoryService {
   Future<List<CategoryModel>> getData([tags]) async {
     String params = _buildParams(tags);
     if (envConfig.mocked) {
-      dynamic data =
-          CATEGORY_MOCK.map((model) => CategoryModel.fromMap(model)).toList();
+      if (tags == null) {
+        tags = [];
+      }
+      dynamic data = CATEGORY_MOCK
+          .map((model) => CategoryModel.fromMap(model))
+          .toList()
+          .where((d) => tags.contains(d.tag))
+          .toList();
       for (CategoryModel d in data) {
         String check = await readStorage(key: d.name, nullReturnValue: 'false');
         d.added = check == 'true';

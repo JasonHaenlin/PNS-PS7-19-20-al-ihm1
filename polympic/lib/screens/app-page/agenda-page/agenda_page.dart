@@ -29,11 +29,9 @@ class AgendaPage extends StatelessWidget {
       ),
       body: StreamBuilder<List<EventModel>>(
         stream: _eventBloc.currentValue$,
-        builder:
-            (BuildContext context, AsyncSnapshot<List<EventModel>> snapshot) =>
-                snapshot.hasData
-                    ? EventList(data: snapshot.data)
-                    : Center(child: CircularProgressIndicator()),
+        builder: (context, snapshot) => snapshot.hasData
+            ? EventList(data: snapshot.data)
+            : Center(child: CircularProgressIndicator()),
       ),
     );
   }

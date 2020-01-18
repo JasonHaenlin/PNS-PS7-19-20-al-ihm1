@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:polympic/blocs/bloc_provider.dart';
-import 'package:polympic/blocs/category/category_bloc.dart';
-import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/screens/app-page/preference-page/components/pref_container.dart';
 import 'package:polympic/screens/app-page/preference-page/components/pref_list.dart';
@@ -12,12 +9,6 @@ class PreferencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
-
-    _categoryBloc.dispatch(CategoryEvent.fetch, {
-      'tag': ['sport']
-    });
-
     return DefaultTabController(
       length: 3,
       child: Scaffold(

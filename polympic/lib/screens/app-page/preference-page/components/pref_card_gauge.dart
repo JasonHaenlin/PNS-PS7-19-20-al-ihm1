@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/models/category_model.dart';
 
 class PrefCardGauge extends StatelessWidget {
-  const PrefCardGauge({Key key}) : super(key: key);
+  const PrefCardGauge({
+    Key key,
+    @required this.data,
+  }) : super(key: key);
+
+  final CategoryModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +20,9 @@ class PrefCardGauge extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Image.network(
-            "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+            data.img,
             fit: BoxFit.cover,
-            width: 130,
+            width: 100,
             height: 80,
           ),
           Padding(
@@ -27,7 +33,7 @@ class PrefCardGauge extends StatelessWidget {
               runSpacing: 4.0,
               children: <Widget>[
                 Text(
-                  "my name",
+                  data.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

@@ -15,8 +15,7 @@ class SportsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _data.length,
-      itemBuilder: (BuildContext context, int index) =>
-          SportCard(data: _data[index]),
+      itemBuilder: (context, index) => SportCard(data: _data[index]),
     );
   }
 }

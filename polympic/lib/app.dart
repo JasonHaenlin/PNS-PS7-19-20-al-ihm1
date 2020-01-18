@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
       bloc: StarterBloc(),
       child: BlocProvider<EventBloc>(
         bloc: EventBloc(),
-        child: BlocProvider<CategoryBloc>(
-          bloc: CategoryBloc(),
-          child: MaterialApp(
-            title: 'Polympic basic',
-            theme: appTheme(),
-            home: StarterPage(),
+        child: MaterialApp(
+          title: 'Polympic basic',
+          theme: appTheme(),
+          home: BlocProvider<CategoryBloc>(
+            bloc: CategoryBloc(),
+            child: StarterPage(),
           ),
         ),
       ),
