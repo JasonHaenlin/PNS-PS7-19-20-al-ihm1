@@ -45,13 +45,13 @@ class Carousel extends StatelessWidget {
                           borderRadius: BorderRadius.circular(3),
                         ),
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            top: BorderSide(color: kColorSecondary, width: 5),
-                          ),
-                        ),
-                        child: childrens[itemIndex],
+                      child: StreamBuilder<Status>(
+                        stream: _timelineBloc.currentValue$,
+                        builder: (BuildContext context,
+                                AsyncSnapshot<Status> snapshot) =>
+                            CardDecoration(
+                                child: childrens[itemIndex],
+                                status: snapshot.data ?? Status.waiting),
                       ),
                     ),
                   ),
@@ -62,6 +62,35 @@ class Carousel extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class CardDecoration extends StatelessWidget {
+  const CardDecoration({
+    Key key,
+    @required this.child,
+    @required this.status,
+  }) : super(key: key);
+
+  final TimelineTab child;
+  final Status status;
+
+  static dynamic colors = <Status, Color>{
+    Status.done: kColorPrimary,
+    Status.waiting: kColorPrimary,
+    Status.inProgress: kColorSecondary,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: colors[status], width: 5),
+        ),
+      ),
+      child: child,
     );
   }
 }
