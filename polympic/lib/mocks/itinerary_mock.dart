@@ -82,8 +82,8 @@ const ITINERARY_MOCK = {
           "latitude": 48.924459,
           "longitude": 2.360164
         },
-        "startTime": 1714903200,
-        "endTime": 1714910400
+        "startTime": 1714910400,
+        "endTime": 1720620000
       },
       {
         "id": "2",

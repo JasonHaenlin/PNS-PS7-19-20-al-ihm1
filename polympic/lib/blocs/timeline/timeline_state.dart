@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:polympic/blocs/bloc_base.dart';
 
-enum TimelineEvent { done, inProgress, waiting, start, emit }
+enum TimelineEvent { done, inProgress, waiting, start, emit, update, cancel }
 enum Status { done, inProgress, waiting }
 
 class TimelineState extends BlocBase<TimelineEvent, Status> {
@@ -25,22 +25,33 @@ class TimelineState extends BlocBase<TimelineEvent, Status> {
       case TimelineEvent.emit:
         yield update(data['beginDate'] ?? 0, data['endDate'] ?? 0);
         break;
+      case TimelineEvent.update:
+        timer.cancel();
+        continue start;
+      start:
       case TimelineEvent.start:
+        if (timer != null) timer.cancel();
         final bTime = data['beginDate'] ?? 0;
         final eTime = data['endDate'] ?? 0;
-        timer.cancel();
+        this.dispatch(
+            TimelineEvent.emit, {'beginDate': bTime, 'endDate': eTime});
         timer = Timer.periodic(
-          Duration(seconds: 5),
-          (Timer t) => eventToState(
-              TimelineEvent.emit, {'beginDate': bTime, 'endDate': eTime}),
+          Duration(seconds: 30),
+          (Timer t) => {
+            this.dispatch(
+                TimelineEvent.emit, {'beginDate': bTime, 'endDate': eTime}),
+          },
         );
+        break;
+      case TimelineEvent.cancel:
+        timer.cancel();
         break;
       default:
     }
   }
 
   Status update(DateTime bDate, DateTime eDate) {
-    DateTime current = DateTime(2022, 1, 5, 13, 30);
+    DateTime current = DateTime(2024, 5, 5, 13, 30);
     bool beforeBegin = bDate.isBefore(current);
     bool beforeEnd = eDate.isBefore(current);
     if (beforeBegin && beforeEnd) {

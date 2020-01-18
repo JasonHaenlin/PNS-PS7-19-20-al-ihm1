@@ -34,7 +34,7 @@ class Itineraries extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Itinéraires'),
+        title: const Text('Itinéraire'),
         actions: <Widget>[
           IconButton(
               iconSize: 30.0,

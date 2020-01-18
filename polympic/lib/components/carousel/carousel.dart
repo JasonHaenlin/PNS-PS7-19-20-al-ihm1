@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/blocs/timeline/timeline_bloc.dart';
+import 'package:polympic/blocs/timeline/timeline_state.dart';
+import 'package:polympic/components/timeline/timeline_tab.dart';
 import 'package:polympic/theme/colors.dart';
 
 class Carousel extends StatelessWidget {
@@ -7,16 +11,27 @@ class Carousel extends StatelessWidget {
     @required this.childrens,
   }) : super(key: key);
 
-  final List<Widget> childrens;
+  final List<TimelineTab> childrens;
 
   @override
   Widget build(BuildContext context) {
+    final _timelineBloc = BlocProvider.of<TimelineBloc>(context).timelineBloc;
+
+    _timelineBloc.dispatch(TimelineEvent.start, {
+      'beginDate': childrens[0].beginDate,
+      'endDate': childrens[0].endDate,
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         SizedBox(
           height: 150,
           child: PageView.builder(
+            onPageChanged: (a) => _timelineBloc.dispatch(TimelineEvent.update, {
+              'beginDate': childrens[a].beginDate,
+              'endDate': childrens[a].endDate,
+            }),
             controller: PageController(viewportFraction: 0.8),
             itemCount: childrens.length,
             itemBuilder: (BuildContext context, int itemIndex) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:polympic/components/timeline/timeline.dart';
+import 'package:polympic/blocs/timeline/timeline_state.dart';
 import 'package:polympic/theme/colors.dart';
 
 class Indicator extends StatelessWidget {
