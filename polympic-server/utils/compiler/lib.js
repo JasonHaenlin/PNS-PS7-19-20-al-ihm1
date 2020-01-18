@@ -1,7 +1,7 @@
-const addElementToDisplay = function(output, element) {
-    output.push(element);
-}
+const addElementToDisplay = (output, element) => {
+  output.push(element);
+};
 
 module.exports = {
-    addElementToDisplay
+  addElementToDisplay
 };

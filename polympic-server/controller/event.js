@@ -10,7 +10,6 @@ const EIFFEL_TOWER_COORD = { latitude: 48.858370, longitude: 2.294481 };
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 
-
 module.exports = {
   getEvents() {
     return this.filterByScript();
@@ -33,7 +32,7 @@ module.exports = {
     let result;
     try {
       const lib = require('../utils/compiler/lib'); // required for the compiled script
-      result = eval(compiledScript).run(events)
+      result = eval(compiledScript).run(events);
     } catch {
       result = [];
     }
