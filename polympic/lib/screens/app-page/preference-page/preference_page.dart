@@ -49,6 +49,7 @@ class PreferencePage extends StatelessWidget {
           ),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
             PrefList(
               tags: ["sport"],

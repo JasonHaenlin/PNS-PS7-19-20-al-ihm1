@@ -26,10 +26,20 @@ ThemeData appTheme() {
 
     tabBarTheme: TabBarTheme(
       labelColor: Colors.white,
+      // indicator: BoxDecoration(),
       indicator: BoxDecoration(
         color: kColorAccent,
         shape: BoxShape.circle,
       ),
+      // labelPadding: EdgeInsets.symmetric(vertical: 5),
+    ),
+
+    sliderTheme: SliderThemeData(
+      activeTickMarkColor: kColorAccent,
+      disabledActiveTickMarkColor: kColorPrimary,
+      disabledInactiveTickMarkColor: kColorPrimary,
+      inactiveTickMarkColor: kColorPrimary,
+      valueIndicatorColor: kColorPrimary,
     ),
 
     iconTheme: IconThemeData(color: kColorTextIcon),

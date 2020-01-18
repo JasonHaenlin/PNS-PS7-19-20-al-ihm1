@@ -16,48 +16,46 @@ class SportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              width: 0.3,
-              color: Colors.grey,
-            ),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            width: 0.3,
+            color: Colors.grey,
           ),
         ),
-        height: 80,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Material(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    clipBehavior: Clip.antiAlias,
-                    elevation: 2.0,
-                    child: Image.network(
-                      this.data.img,
-                      fit: BoxFit.cover,
-                      width: 50,
-                      height: 50,
-                    ),
+      ),
+      height: 80,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Material(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  clipBehavior: Clip.antiAlias,
+                  elevation: 2.0,
+                  child: Image.network(
+                    this.data.img,
+                    fit: BoxFit.cover,
+                    width: 50,
+                    height: 50,
                   ),
                 ),
-                SizedBox(width: 15),
-                Text(
-                  this.data.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+              ),
+              SizedBox(width: 15),
+              Text(
+                this.data.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
-              ],
-            ),
-            PrefButton(data: this.data),
-          ],
-        ),
+              ),
+            ],
+          ),
+          PrefButton(data: this.data),
+        ],
       ),
     );
   }
