@@ -7,7 +7,7 @@ import 'package:polympic/blocs/starter/starter_bloc.dart';
 import 'package:polympic/screens/starter-page/starter_page.dart';
 import 'package:polympic/theme/style.dart';
 
-void main() =>
+void app() =>
     initializeDateFormatting('fr_FR', null).then((_) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {

@@ -1,7 +1,5 @@
 # polympic
 
-A new Flutter project.
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -22,4 +20,44 @@ flutter config --enable-web
 flutter channel dev
 flutter create .
 flutter run -d web
+```
+
+## Run flutter in different flavorss
+
+### production
+
+`flutter run -t lib/main_prod.dart`
+
+>vscode launch.json
+
+```json
+{
+    "name": "Flutter prod",
+    "request": "launch",
+    "type": "dart",
+    "program": "run",
+    "args": [
+        "-t",
+        "lib/main_prod.dart"
+    ]
+},
+```
+
+### dev
+
+`flutter run -t lib/main_dev.dart`
+
+>vscode launch.json
+
+```json
+{
+    "name": "Flutter dev",
+    "request": "launch",
+    "type": "dart",
+    "program": "run",
+    "args": [
+        "-t",
+        "lib/main_dev.dart"
+    ]
+},
 ```

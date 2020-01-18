@@ -1,32 +1,32 @@
 const CATEGORY_MOCK = [
   {
-    "label": "Football",
+    "name": "Football",
     "tag": "sport",
-    "image": "assets/images/football.jpg",
+    "img": "https://otakedev.com/share/preferences/sports/football.jpg",
   },
   {
-    "label": "Natation",
+    "name": "Natation",
     "tag": "sport",
-    "image": "assets/images/natation.png",
+    "img": "https://otakedev.com/share/preferences/sports/natation.png",
   },
   {
-    "label": "Relais",
+    "name": "Relais",
     "tag": "sport",
-    "image": "assets/images/relais.jpg",
+    "img": "https://otakedev.com/share/preferences/sports/relais.jpg",
   },
   {
-    "label": "Rugby",
+    "name": "Rugby",
     "tag": "sport",
-    "image": "assets/images/rugby.png",
+    "img": "https://otakedev.com/share/preferences/sports/rugby.png",
   },
   {
-    "label": "Tennis",
+    "name": "Tennis",
     "tag": "sport",
-    "image": "assets/images/tennis.jpg",
+    "img": "https://otakedev.com/share/preferences/sports/tennis.jpg",
   },
   {
-    "label": "Tir à L'arc",
+    "name": "Tir à L'arc",
     "tag": "sport",
-    "image": "assets/images/tiralarc.jpg",
+    "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg",
   },
 ];

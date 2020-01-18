@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
+import 'package:polympic/config/env_config.dart';
 import 'package:polympic/core/storage.dart';
+import 'package:polympic/mocks/category_mock.dart';
 import 'package:polympic/models/category_model.dart';
 
 class CategoryService {
@@ -15,8 +17,18 @@ class CategoryService {
 
   Future<List<CategoryModel>> getData([tags]) async {
     String params = _buildParams(tags);
-    final response = await client
-        .get('https://polympic.otakedev.com/preferences?select=' + params);
+    if (envConfig.mocked) {
+      dynamic data =
+          CATEGORY_MOCK.map((model) => CategoryModel.fromMap(model)).toList();
+      for (CategoryModel d in data) {
+        String check = await readStorage(key: d.name, nullReturnValue: 'false');
+        d.added = check == 'true';
+      }
+      _categories = data;
+      return data;
+    }
+    final response =
+        await client.get(envConfig.apiBaseUrl + 'preferences?select=' + params);
     Iterable list = json.decode(response.body);
     dynamic data = list.map((model) => CategoryModel.fromMap(model)).toList();
     if (response.statusCode == 200) {
@@ -27,8 +39,7 @@ class CategoryService {
       _categories = data;
       return data;
     } else {
-      // throw Exception('Failed to load post');
-      return [];
+      throw Exception('Failed to load post');
     }
   }
 

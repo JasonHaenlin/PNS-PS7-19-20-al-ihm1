@@ -21,7 +21,7 @@ main() {
       when(client.get('https://polympic.otakedev.com/itineraries?prefs='))
           .thenAnswer((_) async =>
               http.Response(json.encode(ITINERARY_MOCK).toString(), 200));
-      expect(await serv.getData(), const TypeMatcher<List<ItineraryModel>>());
+      expect(await serv.getData(), const TypeMatcher<ItineraryModel>());
     });
   });
 }
