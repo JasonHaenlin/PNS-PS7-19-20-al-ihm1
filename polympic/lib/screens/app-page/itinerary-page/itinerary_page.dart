@@ -4,7 +4,7 @@ import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/itenary_model.dart';
-import 'package:polympic/screens/app-page/itinerary-page/components/itinerary_list.dart';
+import 'package:polympic/screens/app-page/itinerary-page/components/itinerary.dart';
 import 'package:polympic/screens/app-page/preference-page/preference_sport.dart';
 
 class ItinerariesPage extends StatelessWidget {
@@ -42,13 +42,13 @@ class Itineraries extends StatelessWidget {
               onPressed: () => navigateToPage(context, PreferenceSport())),
         ],
       ),
-      body: StreamBuilder<List<ItineraryModel>>(
+      body: StreamBuilder<ItineraryModel>(
         stream: _itineraryBLoc.currentValue$,
-        builder: (BuildContext context,
-                AsyncSnapshot<List<ItineraryModel>> snapshot) =>
-            snapshot.hasData
-                ? ItineraryList(data: snapshot.data)
-                : Center(child: CircularProgressIndicator()),
+        builder:
+            (BuildContext context, AsyncSnapshot<ItineraryModel> snapshot) =>
+                snapshot.hasData
+                    ? Itinerary(data: snapshot.data)
+                    : Center(child: CircularProgressIndicator()),
       ),
     );
   }

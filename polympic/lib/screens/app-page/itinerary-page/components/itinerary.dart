@@ -4,7 +4,7 @@ import 'package:polympic/components/timeline/timeline.dart';
 import 'package:polympic/components/timeline/timeline_tab.dart';
 import 'package:polympic/core/utils.dart';
 import 'package:polympic/models/event_model.dart';
-import 'package:polympic/theme/colors.dart';
+import 'package:polympic/models/itenary_model.dart';
 
 class Itinerary extends StatelessWidget {
   const Itinerary({
@@ -13,14 +13,11 @@ class Itinerary extends StatelessWidget {
   })  : _data = data,
         super(key: key);
 
-  final List<dynamic> _data;
+  final ItineraryModel _data;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: kColorPrimary),
-      body: Timeline(childrens: _buildCarousels(_data)),
-    );
+    return Timeline(childrens: _buildCarousels(_data.events));
   }
 
   List<Carousel> _buildCarousels(data) {
@@ -35,7 +32,7 @@ class Itinerary extends StatelessWidget {
 
   List<TimelineTab> _buildTimelineTabs(data) {
     List<TimelineTab> widgets = List();
-    data = List<EventModel>.from(data);
+    data = data.map((model) => EventModel.fromMap(model)).toList();
     for (dynamic e in data) {
       widgets.add(
         TimelineTab(

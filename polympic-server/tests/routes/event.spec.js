@@ -1,6 +1,7 @@
 const { app } = require('../../bin/www');
 const request = require('supertest');
 const assert = require('assert');
+const _ = require('lodash');
 
 
 describe('status route', () => {
@@ -28,6 +29,8 @@ describe('status route', () => {
         .expect(200)
         .expect((res) => {
           assert.notEqual(res.body, null);
+          const c = _.filter(res.body, (e) => e.sport !== 'Football');
+          assert.equal(c.length, 0);
         })
         .end((err) => {
           if (err) {
@@ -44,6 +47,8 @@ describe('status route', () => {
         .expect(200)
         .expect((res) => {
           assert.notEqual(res.body, null);
+          const c = _.filter(res.body, (e) => e.sport !== 'Football' && e.sport !== 'Rugby');
+          assert.equal(c.length, 0);
         })
         .end((err) => {
           if (err) {
@@ -60,6 +65,8 @@ describe('status route', () => {
         .expect(200)
         .expect((res) => {
           assert.notEqual(res.body, null);
+          const c = _.filter(res.body, (e) => e.sport !== 'Volleyball');
+          assert.equal(c.length, 0);
         })
         .end((err) => {
           if (err) {

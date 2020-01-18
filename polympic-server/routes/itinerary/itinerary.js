@@ -10,7 +10,6 @@ exports.getEventsByPreferencesandDistance = async (req, res) => {
   resHandler.yahResponse(res, anItinierary);
 };
 
-
 exports.previewResult = async (req, res) => {
   let code = req.body.code;
   let prefs = req.query.prefs;

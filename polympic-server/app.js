@@ -36,6 +36,8 @@ app.use('/preferences', route.preferences);
 app.use('/events', route.events);
 // itinerary
 app.use('/itineraries', route.itineraries);
+// editor
+app.use('/editor', route.editor);
 
 // catch 404 and forward to error handler
 // triggered when a non-existent route attempts to be accessed

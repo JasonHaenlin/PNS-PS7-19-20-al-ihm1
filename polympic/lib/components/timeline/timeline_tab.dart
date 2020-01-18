@@ -37,7 +37,7 @@ class TimelineTab extends StatelessWidget {
     final date = DateFormat.Hm();
     final _width = MediaQuery.of(context).size.width * 0.6;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(20, 5, 5, 5),
       child: Container(
         width: _width,
         child: Tile(
