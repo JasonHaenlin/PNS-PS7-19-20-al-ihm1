@@ -41,7 +41,7 @@ pipeline {
                 echo 'Test'
                 dir('./polympic-server/'){
                   sh 'npm run compiler-deploy'
-                  sh 'npm coverage'
+                  sh 'npm run coverage'
                 }
               }
             }
