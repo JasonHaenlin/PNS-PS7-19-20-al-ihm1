@@ -95,27 +95,26 @@ pipeline {
           }
         }
         stage('Deployment'){
-
-        }
-      }
-      steps {
-        echo 'App restarted'
-        // =>/var/lib/jenkins/node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1
-        dir('../../node-app/') {
-          sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
-          sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
-        }
-        dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
-          sh 'git checkout develop'
-          sh 'npm install'
-          withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-            sh  '''
-                export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
-                npm run flutter-deploy
-                '''
-            sh 'npm run compiler-deploy'
-            sh 'npm run doc'
-            sh 'npm run redeploy'
+          steps {
+            echo 'App restarted'
+            // =>/var/lib/jenkins/node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1
+            dir('../../node-app/') {
+              sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
+              sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+            }
+            dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
+              sh 'git checkout develop'
+              sh 'npm install'
+              withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                sh  '''
+                    export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                    npm run flutter-deploy
+                    '''
+                sh 'npm run compiler-deploy'
+                sh 'npm run doc'
+                sh 'npm run redeploy'
+              }
+            }
           }
         }
       }
