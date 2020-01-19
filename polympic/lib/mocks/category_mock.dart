@@ -32,21 +32,31 @@ const CATEGORY_MOCK = [
   {
     "name": "France",
     "tag": "country",
-    "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg",
+    "img": "https://otakedev.com/share/preferences/countries/france.png",
+  },
+  {
+    "name": "Allemagne",
+    "tag": "country",
+    "img": "https://otakedev.com/share/preferences/countries/germany.png",
+  },
+  {
+    "name": "Japon",
+    "tag": "country",
+    "img": "https://otakedev.com/share/preferences/countries/japan.png",
   },
   {
     "name": "Pause déjeuner",
     "tag": "recreation",
-    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+    "img": "https://otakedev.com/share/preferences/others/hamburger.jpg",
   },
   {
-    "name": "Capacité à se déplacer",
+    "name": "Handicap mobile",
     "tag": "handicap",
-    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+    "img": "https://otakedev.com/share/preferences/others/handicap.jpg",
   },
   {
     "name": "Sites Touristiques",
     "tag": "tourism",
-    "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg",
+    "img": "https://otakedev.com/share/preferences/others/eiffel-tower.jpg",
   },
 ];

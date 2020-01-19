@@ -29,7 +29,7 @@ class CategoryService {
             await readStorage(d.name, nullReturnValue: 'nop');
         d.state = currentState != 'nop' ? currentState : defaultValue;
       }
-      _categories = data;
+      _categories[tag] = data;
       return data;
     } else {
       throw Exception('Failed to load post');

@@ -17,13 +17,13 @@ class EventService {
     if (envConfig.mocked) {
       return fetchMockedData();
     }
-    final tags = categoryService.categories;
+    final prefSports = categoryService.categories['sport'];
     String params = '';
-    // for (var t in tags) {
-    //   if (t.state) {
-    //     params += t.name + ',';
-    //   }
-    // }
+    for (var p in prefSports ?? []) {
+      if (p.state) {
+        params += p.name + ',';
+      }
+    }
     if (params.length > 0) {
       params = '?prefs=' + params;
     }

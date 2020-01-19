@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
-import 'package:polympic/blocs/category/category_bloc.dart';
-import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
 import 'package:polympic/blocs/starter/starter_state.dart';
 import 'package:polympic/components/progress/customProgressIndicator.dart';
 import 'package:polympic/core/router.dart';
-import 'package:polympic/models/category_model.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/screens/app-page/preference-page/components/pref_container.dart';
 import 'package:polympic/screens/app-page/preference-page/components/pref_list.dart';
-import 'package:polympic/screens/app-page/preference-page/components/sport_card.dart';
 import 'package:polympic/theme/colors.dart';
 
 class StarterPage extends StatelessWidget {
