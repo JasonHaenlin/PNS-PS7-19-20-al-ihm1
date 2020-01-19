@@ -2,7 +2,7 @@ const resHandler = require('../../utils/response-handler');
 const { restaurant } = require('../../controller');
 
 
-exports.getPreferencesByTypes = async (req, res) => {
+exports.restaurantsWithDistance = async (req, res) => {
   let coord = req.query.select;
   let resto;
   if (coord) {

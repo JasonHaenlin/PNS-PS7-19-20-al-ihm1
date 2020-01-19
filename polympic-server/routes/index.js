@@ -4,6 +4,7 @@ const events = require('./events');
 const preferences = require('./preferences');
 const itineraries = require('./itinerary');
 const touristicSites = require('./touristicsites');
+const restaurant = require('./restaurant');
 const editor = require('./editor');
 
 const main = express.Router();
@@ -22,5 +23,6 @@ module.exports = {
   preferences,
   itineraries,
   touristicSites,
+  restaurant,
   editor
 };

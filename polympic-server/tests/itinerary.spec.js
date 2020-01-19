@@ -8,11 +8,11 @@ let itinerary = Itinerary.addEvents(events);
 itinerary = Itinerary.addAdjacentsEvents(events);
 let event = Itinerary.getEvent('fdm1');
 
-console.log(event);
+// console.log(event);
 
-console.log(itinerary);
+// console.log(itinerary);
 
 
 let eventsfiltered = Events.getEvents();
 
-console.log(eventsfiltered);
+// console.log(eventsfiltered);

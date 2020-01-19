@@ -36,6 +36,8 @@ app.use('/preferences', route.preferences);
 app.use('/events', route.events);
 // itinerary
 app.use('/itineraries', route.itineraries);
+// restaurant
+app.use('/restaurant', route.restaurant);
 // editor
 app.use('/editor', route.editor);
 

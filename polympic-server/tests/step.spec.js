@@ -1,4 +1,4 @@
-const StepModel = require('../models/step/step-model');
+/*const StepModel = require('../models/step/step-model');
 const EventGraph = require('../models/graph/eventgraph');
 const { Event } = require('../models');
 
@@ -12,7 +12,7 @@ events.forEach(element => {
   eventgraph.addEvent(element);
 });
 
-eventgraph.addEdge('fdm1', 'vf1');
+eventgraph.addEdge('fdm1', 'vf1');*/
 
 // console.log(eventgraph);
 
