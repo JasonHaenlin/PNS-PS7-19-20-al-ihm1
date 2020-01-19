@@ -1,8 +1,13 @@
 const resHandler = require('../../utils/response-handler');
 const { itinerary } = require('../../controller');
 
-exports.getEventsByPreferencesandDistance = async (req, res) => {
+exports.getItinerary = async (req, res) => {
   let prefs = req.query.prefs;
+  // let sports = req.query.sports;
+  // let handicap = req.query.handicap;
+  // let recreations = req.query.recreation;
+  // let countries = req.query.countries;
+  // let lunch = req.query.lunch;
   let anItinierary = [];
   if (prefs) {
     anItinierary.push(itinerary.getItinerary(prefs.split(',')));

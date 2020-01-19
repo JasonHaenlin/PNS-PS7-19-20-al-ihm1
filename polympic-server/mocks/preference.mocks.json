@@ -50,33 +50,58 @@
         "img": "https://otakedev.com/share/preferences/sports/tennis.jpg"
     },
     {
-        "name": "Pause repas",
-        "tag": "détente",
-        "img": "https://otakedev.com/share/preferences/recreations/lunchbreak.jpg"
+        "name": "France",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/france.png"
+    },
+    {
+        "name": "Allemagne",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/germany.png"
+    },
+    {
+        "name": "Japon",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/japan.png"
+    },
+    {
+        "name": "Brésil",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/brazil.png"
+    },
+    {
+        "name": "Italie",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/italy.png"
+    },
+    {
+        "name": "Corée",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/korea.png"
+    },
+    {
+        "name": "Espagne",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/spain.png"
+    },
+    {
+        "name": "Chine",
+        "tag": "country",
+        "img": "https://otakedev.com/share/preferences/countries/china.png"
+    },
+    {
+        "name": "Pause déjeuner",
+        "tag": "recreation",
+        "img": "https://otakedev.com/share/preferences/others/hamburger.jpg"
     },
     {
         "name": "Sites touristiques",
-        "tag": "détente",
-        "img": "https://svgsilh.com/svg/539663.svg"
+        "tag": "tourism",
+        "img": "https://otakedev.com/share/preferences/others/eiffel-tower.jpg"
     },
     {
-        "name": "Handicap moteur",
+        "name": "Capacité à se déplacer",
         "tag": "handicap",
-        "img": "https://www.glen-accessibilite.com/ressources/images/544f1448f3c0.png"
-    },
-    {
-        "name": "Handicap mental",
-        "tag": "handicap",
-        "img": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/32/S3A.svg/1024px-S3A.svg.png"
-    },
-    {
-        "name": "Handicap auditif",
-        "tag": "handicap",
-        "img": "https://www.musee-du-jouet.com/medias/pratiques-activites/visites-activites/groupes-situation-handicap/H-Auditif.jpg"
-    },
-    {
-        "name": "Handicap visuel",
-        "tag": "handicap",
-        "img": "https://www.pickup-prod.com/wp-content/uploads/2019/04/Logo-handicap-visuel.png"
-    },
+        "img": "https://otakedev.com/share/preferences/others/handicap.jpg"
+    }
 ]

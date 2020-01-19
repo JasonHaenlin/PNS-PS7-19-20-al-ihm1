@@ -5,7 +5,7 @@ const i = require('./itinerary');
 
 const itinerary = express.Router();
 
-itinerary.get('/', handleExceptions(i.getEventsByPreferencesandDistance));
+itinerary.get('/', handleExceptions(i.getItinerary));
 itinerary.post('/preview', handleExceptions(i.previewResult));
 
 module.exports = itinerary;
