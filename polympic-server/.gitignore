@@ -1,10 +1,13 @@
 node_modules
 .env
-log/*
-doc
+**/log
+**/doc
+**/public/flutter-app
+**/coverage
 .sqlite3
 .antlr
 .gradle
 .settings
-public/flutter-app/
 **/*.jar
+.nyc_output
+.scannerwork

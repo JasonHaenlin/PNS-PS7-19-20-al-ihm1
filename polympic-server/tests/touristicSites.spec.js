@@ -1,6 +1,6 @@
-require('../bin/www');
+require('../app/bin/www');
 const assert = require('chai').assert;
-const { touristicSites } = require('../controller');
+const { touristicSites } = require('../app/controller');
 
 describe('Obtenir les possibles lieux touristiques', () => {
   it('Liste des next quand il ny a pas de temps', async () => {

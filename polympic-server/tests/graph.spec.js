@@ -1,5 +1,5 @@
 /* eslint-disable no-undefined */
-require('../bin/www');
+require('../app/bin/www');
 const assert = require('chai').assert;
 const Graph = require('../models/graph/graph');
 

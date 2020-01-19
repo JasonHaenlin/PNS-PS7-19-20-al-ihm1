@@ -1,4 +1,4 @@
-const { Graph } = require('../models/index');
+const { Graph } = require('../../models');
 const Events = require('./event');
 
 let graphevent = new Graph();

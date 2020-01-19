@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    SNYK_TOKEN = credentials('snyk-token-id')
+  }
   options {
     disableConcurrentBuilds()
     timeout(time: 1, unit: 'HOURS')
@@ -10,7 +13,7 @@ pipeline {
         echo 'Checkout'
       }
     }
-    stage('build parallel') {
+    stage('Testing App') {
       parallel {
         stage('Nodejs') {
           stages {
@@ -38,7 +41,24 @@ pipeline {
                 echo 'Test'
                 dir('./polympic-server/'){
                   sh 'npm run compiler-deploy'
-                  sh 'npm test'
+                  sh 'npm coverage'
+                }
+              }
+            }
+            stage('Sonar') {
+              steps {
+                echo 'Sonar Analysis'
+                withSonarQubeEnv('Sonarqube_env'){
+                  dir('./back'){
+                    sh 'npm run sonar'
+                  }
+                }
+              }
+            }
+            stage('Quality Gate') {
+              steps {
+                timeout(time: 1, unit: 'HOURS') {
+                  waitForQualityGate true
                 }
               }
             }
@@ -60,9 +80,23 @@ pipeline {
         }
       }
     }
-    stage(' Deployment') {
+    stage('Production') {
       environment {
         NODE_ENV = 'production'
+      }
+      stages {
+        stage('Snyk') {
+          steps {
+            echo 'Snyk Diagnosis'
+            dir('./back/'){
+              sh 'snyk test --severity-medium'
+              sh 'snyk monitor'
+            }
+          }
+        }
+        stage('Deployment'){
+
+        }
       }
       steps {
         echo 'App restarted'

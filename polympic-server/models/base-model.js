@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable no-param-reassign */
 const fs = require('fs');
-const { logTheError } = require('../config/logger');
+const { logTheError } = require('../app/config/logger');
 
 module.exports = class BaseModel {
   constructor(name) {

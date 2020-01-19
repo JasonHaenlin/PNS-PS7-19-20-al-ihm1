@@ -5,7 +5,7 @@ const cp = require('child_process');
 // compile a text and return some JS code
 const compileCode = (code) => {
   const response = cp.execSync('echo "' + code.replace('\n', ' ').replace('\r', ' ') +
-        '" | java -jar ./utils/compiler/polympic-dsl.jar').toLocaleString();
+    '" | java -jar ./app/utils/compiler/polympic-dsl.jar').toLocaleString();
   return response;
 };
 

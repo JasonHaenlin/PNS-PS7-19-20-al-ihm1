@@ -1,4 +1,4 @@
-const { TouristicSites } = require('../models');
+const { TouristicSites } = require('../../models');
 const _ = require('lodash');
 
 module.exports = {

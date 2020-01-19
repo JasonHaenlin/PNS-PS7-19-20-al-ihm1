@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-eval-with-expression */
 /* eslint-disable security/detect-object-injection */
-const { Event } = require('../models');
+const { Event } = require('../../models');
 const _ = require('lodash');
 const geolib = require('geolib');
 const compiler = require('../utils/compiler');
@@ -27,7 +27,7 @@ module.exports = {
   filterByScript() {
     let coords = { latitude: 48.858370, longitude: 2.294481 };
     let events = this.measureDistance(coords, Event.get());
-    const scriptName = './public/scripts/example.script';
+    const scriptName = './app/public/scripts/example.script';
     const compiledScript = compiler.compile(scriptName);
     let result;
     try {

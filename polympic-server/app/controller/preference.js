@@ -1,4 +1,4 @@
-const { Preference } = require('../models');
+const { Preference } = require('../../models');
 
 module.exports = {
 

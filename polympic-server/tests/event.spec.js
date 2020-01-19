@@ -1,6 +1,6 @@
-require('../bin/www');
+require('../app/bin/www');
 const assert = require('chai').assert;
-const { event } = require('../controller');
+const { event } = require('../app/controller');
 
 Sevent = {
   id: 'fdm2',

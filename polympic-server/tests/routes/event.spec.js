@@ -1,4 +1,4 @@
-const { app } = require('../../bin/www');
+const { app } = require('../../app/bin/www');
 const request = require('supertest');
 const assert = require('assert');
 const _ = require('lodash');

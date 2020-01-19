@@ -1,4 +1,4 @@
-const { Restaurant } = require('../models');
+const { Restaurant } = require('../../models');
 // const _ = require('lodash');
 const geolib = require('geolib');
 
