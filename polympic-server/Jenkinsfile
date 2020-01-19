@@ -33,6 +33,7 @@ pipeline {
       steps {
         echo 'Test'
         dir('./polympic-server/'){
+          sh 'npm run compiler-deploy'
           sh 'npm test'
         }
       }
@@ -52,6 +53,9 @@ pipeline {
           sh 'git checkout develop'
           sh 'npm install'
           withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+            sh 'npm run flutter-deploy'
+            sh 'npm run compiler-deploy'
+            sh 'npm run doc'
             sh 'npm run redeploy'
           }
         }
