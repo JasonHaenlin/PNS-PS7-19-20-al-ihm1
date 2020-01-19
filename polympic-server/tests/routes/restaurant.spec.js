@@ -27,7 +27,7 @@ describe('status route', () => {
         .expect('content-type', /json/)
         .expect(200)
         .expect((res) => {
-          assert.notEqual(res.body, null);
+          assert.notEqual(res.body[0], null);
         })
         .end((err) => {
           if (err) {
