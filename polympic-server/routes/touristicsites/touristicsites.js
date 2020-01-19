@@ -2,7 +2,7 @@ const resHandler = require('../../utils/response-handler');
 const { touristicSites } = require('../../controller');
 
 
-exports.getPreferencesByTypes = async (req, res) => {
+exports.TouristicSitesWithinDuration = async (req, res) => {
   let duration = req.query.select;
   let touristicSite;
   if (duration) {

@@ -38,6 +38,8 @@ app.use('/events', route.events);
 app.use('/itineraries', route.itineraries);
 // restaurant
 app.use('/restaurant', route.restaurant);
+// restaurant
+app.use('/touristicsites', route.touristicSites);
 // editor
 app.use('/editor', route.editor);
 
