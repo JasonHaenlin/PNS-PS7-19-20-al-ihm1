@@ -31,9 +31,10 @@ module.exports = {
     const compiledScript = compiler.compile(scriptName);
     let result;
     try {
-      const lib = require('../utils/compiler/lib'); // required for the compiled script
+      // required for the compiled script
+      const lib = require('../utils/compiler/lib');
       result = eval(compiledScript).run(events);
-    } catch {
+    } catch (e) {
       result = [];
     }
     return result;

@@ -12,6 +12,10 @@ const main = express.Router();
 main.get('/', (req, res) =>
   res.render('index', { title: 'Zz(>^^)> Server On <(^^<)zZ' }));
 
+main.get('/doc', (req, res) =>
+  res.render('apidoc'));
+
+
 module.exports = {
   main,
   events,
