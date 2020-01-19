@@ -4,9 +4,12 @@ import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
 import 'package:polympic/blocs/starter/starter_state.dart';
+import 'package:polympic/components/progress/customProgressIndicator.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/category_model.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
+import 'package:polympic/screens/app-page/preference-page/components/pref_container.dart';
+import 'package:polympic/screens/app-page/preference-page/components/pref_list.dart';
 import 'package:polympic/screens/app-page/preference-page/components/sport_card.dart';
 import 'package:polympic/theme/colors.dart';
 
@@ -24,7 +27,7 @@ class StarterPage extends StatelessWidget {
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) =>
               snapshot.hasData
                   ? ChoosePreferences()
-                  : Center(child: CircularProgressIndicator()),
+                  : CustomProgressIndicator(),
         ),
       ),
     );
@@ -36,47 +39,14 @@ class ChoosePreferences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
-
-    _categoryBloc.dispatch(CategoryEvent.fetch, {
-      'default': false,
-      'tag': 'sport',
-    });
-
-    return StreamBuilder<List<CategoryModel>>(
-      stream: _categoryBloc.currentValue$,
-      builder:
-          (BuildContext context, AsyncSnapshot<List<CategoryModel>> snapshot) =>
-              snapshot.hasData ? SportStarterPage(data: snapshot.data) : logojo,
-    );
-  }
-
-  Widget get logojo {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Image.asset(
-              'assets/images/jo.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-          CircularProgressIndicator(),
-        ],
-      ),
-    );
+    return SportStarterPage();
   }
 }
 
 class SportStarterPage extends StatelessWidget {
   const SportStarterPage({
     Key key,
-    @required List<CategoryModel> data,
-  })  : _data = data,
-        super(key: key);
-
-  final List<CategoryModel> _data;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -103,11 +73,9 @@ class SportStarterPage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: _data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return SportCard(data: _data[index]);
-        },
+      body: PrefList(
+        tags: ["sport"],
+        childrensType: [PrefType.button],
       ),
     );
   }

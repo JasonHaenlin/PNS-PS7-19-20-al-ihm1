@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
+import 'package:polympic/components/progress/customProgressIndicator.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/screens/app-page/itinerary-page/components/itinerary.dart';
@@ -49,7 +50,7 @@ class Itineraries extends StatelessWidget {
             (BuildContext context, AsyncSnapshot<ItineraryModel> snapshot) =>
                 snapshot.hasData
                     ? Itinerary(data: snapshot.data)
-                    : Center(child: CircularProgressIndicator()),
+                    : CustomProgressIndicator(),
       ),
     );
   }

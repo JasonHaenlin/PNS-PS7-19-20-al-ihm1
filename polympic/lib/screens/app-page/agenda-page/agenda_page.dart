@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/event/event_state.dart';
+import 'package:polympic/components/progress/customProgressIndicator.dart';
 import 'package:polympic/core/router.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/screens/app-page/agenda-page/components/event_list.dart';
@@ -31,7 +32,7 @@ class AgendaPage extends StatelessWidget {
         stream: _eventBloc.currentValue$,
         builder: (context, snapshot) => snapshot.hasData
             ? EventList(data: snapshot.data)
-            : Center(child: CircularProgressIndicator()),
+            : CustomProgressIndicator(),
       ),
     );
   }
