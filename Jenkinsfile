@@ -13,9 +13,6 @@ pipeline {
     stage('build parallel') {
       parallel {
         stage('Nodejs') {
-          agent {
-            label "Nodejs"
-          }
           stages {
             stage('Install') {
               steps {
@@ -48,13 +45,15 @@ pipeline {
           }
         }
         stage('Flutter') {
-          agent {
-            label 'Flutter'
-          }
           stages {
             stage('Test') {
-              dir('./polympic/'){
-                sh 'flutter test'
+              steps {
+                dir('./polympic/'){
+                  sh  '''
+                      export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                      flutter test
+                      '''
+                }
               }
             }
           }
@@ -76,7 +75,10 @@ pipeline {
           sh 'git checkout develop'
           sh 'npm install'
           withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-            sh 'npm run flutter-deploy'
+            sh  '''
+                export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                npm run flutter-deploy
+                '''
             sh 'npm run compiler-deploy'
             sh 'npm run doc'
             sh 'npm run redeploy'
