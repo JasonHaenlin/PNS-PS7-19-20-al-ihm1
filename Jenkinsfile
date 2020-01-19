@@ -10,31 +10,50 @@ pipeline {
         echo 'Checkout'
       }
     }
-    stage('Install') {
-      steps {
-        echo 'Install Dependencies'
-        dir('./polympic-server/'){
-          sh 'npm install'
+    stage('build parallel') {
+      parallel {
+        stages {
+          agent {
+            label "Nodejs"
+          }
+          stage('Install') {
+            steps {
+              echo 'Install Dependencies'
+              dir('./polympic-server/'){
+                sh 'npm install'
+              }
+            }
+          }
+          stage('Lint') {
+            steps {
+              echo 'javascript Linter'
+              dir('./polympic-server/'){
+                sh 'npm run lint'
+              }
+            }
+          }
+          stage('Test') {
+            environment {
+              NODE_ENV = 'development'
+            }
+            steps {
+              echo 'Test'
+              dir('./polympic-server/'){
+                sh 'npm run compiler-deploy'
+                sh 'npm test'
+              }
+            }
+          }
         }
-      }
-    }
-    stage('Lint') {
-      steps {
-        echo 'javascript Linter'
-        dir('./polympic-server/'){
-          sh 'npm run lint'
-        }
-      }
-    }
-    stage('Test') {
-      environment {
-        NODE_ENV = 'development'
-      }
-      steps {
-        echo 'Test'
-        dir('./polympic-server/'){
-          sh 'npm run compiler-deploy'
-          sh 'npm test'
+        stages {
+          agent {
+            label 'Flutter'
+          }
+          stage('Test') {
+            dir('./polympic/'){
+              sh 'flutter test'
+            }
+          }
         }
       }
     }
