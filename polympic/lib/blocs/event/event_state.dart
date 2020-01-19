@@ -2,7 +2,7 @@ import 'package:polympic/blocs/bloc_base.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/services/event_service.dart';
 
-enum EventEvent { fetch, update }
+enum EventEvent { fetch }
 
 class EventState extends BlocBase<EventEvent, List<EventModel>> {
   EventState() : super(initEvent: EventEvent.fetch);
@@ -13,9 +13,7 @@ class EventState extends BlocBase<EventEvent, List<EventModel>> {
       case EventEvent.fetch:
         yield await eventService.getData();
         break;
-      case EventEvent.update:
-        eventService.saveChange(data['event'], data['favorite']);
-        break;
+
       default:
     }
   }

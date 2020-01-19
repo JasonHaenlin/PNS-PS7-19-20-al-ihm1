@@ -80,10 +80,10 @@ class _PrefButtonState extends State<PrefButton> {
 
     void _toogleSport() {
       setState(() {
-        this.widget.data.added = !this.widget.data.added;
+        this.widget.data.state = !this.widget.data.state;
         _categoryBloc.dispatch(CategoryEvent.update, {
           'category': this.widget.data,
-          'checked': this.widget.data.added ? 'true' : 'false',
+          'value': this.widget.data.state,
         });
       });
     }
@@ -92,9 +92,9 @@ class _PrefButtonState extends State<PrefButton> {
       padding: const EdgeInsets.only(right: 25),
       child: Container(
         child: RaisedButton(
-          color: this.widget.data.added ? kColorAccent : kColorIconSelected,
+          color: this.widget.data.state ? kColorAccent : kColorIconSelected,
           onPressed: _toogleSport,
-          child: Text(this.widget.data.added ? 'Retirer' : 'Ajouter'),
+          child: Text(this.widget.data.state ? 'Retirer' : 'Ajouter'),
         ),
       ),
     );

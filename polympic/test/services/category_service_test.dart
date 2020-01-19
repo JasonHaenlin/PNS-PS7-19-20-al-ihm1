@@ -15,13 +15,13 @@ main() {
     test('test to fetch the data from the mocked api', () async {
       SharedPreferences.setMockInitialValues({});
       final client = MockClient();
-      CategoryService serv = new CategoryService(client: client);
+      CategoryService serv = CategoryService(client: client);
       when(client
               .get('https://polympic.otakedev.com/preferences?select=sport,'))
           .thenAnswer((_) async =>
               http.Response(json.encode(CATEGORY_MOCK).toString(), 200));
       expect(serv.categories, []);
-      expect(await serv.getData(['sport']),
+      expect(await serv.getData('sport', false),
           const TypeMatcher<List<CategoryModel>>());
 
       expect(serv.categories, const TypeMatcher<List<CategoryModel>>());

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/blocs/bloc_provider.dart';
+import 'package:polympic/blocs/category/category_bloc.dart';
+import 'package:polympic/blocs/category/category_state.dart';
 import 'package:polympic/models/category_model.dart';
 
 class PrefCardGauge extends StatelessWidget {
@@ -39,7 +42,7 @@ class PrefCardGauge extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                PrefSlider(),
+                PrefSlider(data: this.data, value: this.data.state),
               ],
             ),
           ),
@@ -52,15 +55,20 @@ class PrefCardGauge extends StatelessWidget {
 class PrefSlider extends StatefulWidget {
   const PrefSlider({
     Key key,
-  }) : super(key: key);
+    @required CategoryModel data,
+    @required double value,
+  })  : _data = data,
+        _startingValue = value,
+        super(key: key);
+
+  final CategoryModel _data;
+  final double _startingValue;
 
   @override
   _PrefSliderState createState() => _PrefSliderState();
 }
 
 class _PrefSliderState extends State<PrefSlider> {
-  double _sliderValue = 1.0;
-
   static dynamic colors = <double, Color>{
     1.0: Colors.green,
     2.0: Colors.orange,
@@ -73,8 +81,18 @@ class _PrefSliderState extends State<PrefSlider> {
     3.0: "Très difficile",
   };
 
+  double _sliderValue = 2;
+
+  @override
+  void initState() {
+    super.initState();
+    _sliderValue = this.widget._startingValue;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
+
     return Container(
       child: Stack(
         alignment: Alignment.topRight,
@@ -91,6 +109,8 @@ class _PrefSliderState extends State<PrefSlider> {
             value: _sliderValue,
             onChanged: (newValue) {
               setState(() => _sliderValue = newValue);
+              _categoryBloc.dispatch(CategoryEvent.update,
+                  {'category': this.widget._data, 'value': _sliderValue});
             },
           ),
         ],

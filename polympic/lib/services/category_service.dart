@@ -9,41 +9,25 @@ import 'package:polympic/models/category_model.dart';
 class CategoryService {
   Client client;
 
-  CategoryService({
-    Client client,
-  }) {
+  CategoryService({Client client}) {
     this.client = client ?? Client();
-    getData();
   }
 
-  List<CategoryModel> _categories = List();
+  Map<String, List<CategoryModel>> _categories = Map();
 
-  Future<List<CategoryModel>> getData([tags]) async {
-    String params = _buildParams(tags);
+  Future<List<CategoryModel>> getData(tag, defaultValue) async {
     if (envConfig.mocked) {
-      if (tags == null) {
-        tags = [];
-      }
-      dynamic data = CATEGORY_MOCK
-          .map((model) => CategoryModel.fromMap(model))
-          .toList()
-          .where((d) => tags.contains(d.tag))
-          .toList();
-      for (CategoryModel d in data) {
-        String check = await readStorage(key: d.name, nullReturnValue: 'false');
-        d.added = check == 'true';
-      }
-      _categories = data;
-      return data;
+      return await fetchMockedData(tag, defaultValue);
     }
     final response =
-        await client.get(envConfig.apiBaseUrl + 'preferences?select=' + params);
+        await client.get(envConfig.apiBaseUrl + 'preferences?select=' + tag);
     Iterable list = json.decode(response.body);
     dynamic data = list.map((model) => CategoryModel.fromMap(model)).toList();
     if (response.statusCode == 200) {
       for (CategoryModel d in data) {
-        String check = await readStorage(key: d.name, nullReturnValue: 'false');
-        d.added = check == 'true';
+        dynamic currentState =
+            await readStorage(d.name, nullReturnValue: 'nop');
+        d.state = currentState != 'nop' ? currentState : defaultValue;
       }
       _categories = data;
       return data;
@@ -52,21 +36,26 @@ class CategoryService {
     }
   }
 
-  String _buildParams(tags) {
-    String params = '';
-    if (tags != null) {
-      for (dynamic t in tags) {
-        params += t + ',';
-      }
+  Future<List<CategoryModel>> fetchMockedData(tag, defaultValue) async {
+    dynamic data = CATEGORY_MOCK
+        .map((model) => CategoryModel.fromMap(model))
+        .toList()
+        .where((d) => tag == d.tag)
+        .toList();
+    for (CategoryModel d in data) {
+      dynamic currentState = await readStorage(d.name, nullReturnValue: 'nop');
+      d.state = currentState != 'nop' ? currentState : defaultValue;
+      _categories[d.tag] = data;
     }
-    return params;
+    _categories[tag] = data;
+    return data;
   }
 
-  void saveChange(CategoryModel category, String value) async {
-    await writeStorage(key: category.name, value: value);
+  void saveChange(CategoryModel category, dynamic value) async {
+    await writeStorage(category.name, value);
   }
 
-  List<CategoryModel> get categories => _categories;
+  Map<String, List<CategoryModel>> get categories => _categories;
 }
 
 CategoryService categoryService = CategoryService();

@@ -34,7 +34,8 @@ class PrefContainer extends StatelessWidget {
     final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
 
     _categoryBloc.dispatch(CategoryEvent.fetch, {
-      'tag': [tag]
+      'tag': tag,
+      'default': childType == PrefType.button ? false : 0,
     });
 
     return StreamBuilder<List<CategoryModel>>(

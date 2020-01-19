@@ -4,13 +4,13 @@ class CategoryModel {
   final String name;
   final String tag;
   final String img;
-  bool added;
+  dynamic state;
 
   CategoryModel({
     @required this.name,
     @required this.tag,
     @required this.img,
-    this.added,
+    this.state,
   })  : assert(name != null),
         assert(tag != null),
         assert(img != null);

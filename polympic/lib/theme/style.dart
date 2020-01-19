@@ -26,11 +26,10 @@ ThemeData appTheme() {
 
     tabBarTheme: TabBarTheme(
       labelColor: Colors.white,
-      // indicator: BoxDecoration(),
-      indicator: BoxDecoration(
-        color: kColorAccent,
-        shape: BoxShape.circle,
-      ),
+      // indicator: BoxDecoration(
+      //   color: kColorAccent,
+      //   shape: BoxShape.circle,
+      // ),
       // labelPadding: EdgeInsets.symmetric(vertical: 5),
     ),
 

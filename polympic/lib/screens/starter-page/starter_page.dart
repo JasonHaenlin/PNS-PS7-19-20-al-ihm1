@@ -39,7 +39,8 @@ class ChoosePreferences extends StatelessWidget {
     final _categoryBloc = BlocProvider.of<CategoryBloc>(context).categoryBloc;
 
     _categoryBloc.dispatch(CategoryEvent.fetch, {
-      'tag': ['sport']
+      'default': false,
+      'tag': 'sport',
     });
 
     return StreamBuilder<List<CategoryModel>>(

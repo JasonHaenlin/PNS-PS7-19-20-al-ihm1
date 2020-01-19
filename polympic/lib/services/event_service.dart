@@ -15,15 +15,15 @@ class EventService {
   }
   Future<List<EventModel>> getData() async {
     if (envConfig.mocked) {
-      return EVENT_MOCK.map((model) => EventModel.fromMap(model)).toList();
+      return fetchMockedData();
     }
     final tags = categoryService.categories;
     String params = '';
-    for (var t in tags) {
-      if (t.added) {
-        params += t.name + ',';
-      }
-    }
+    // for (var t in tags) {
+    //   if (t.state) {
+    //     params += t.name + ',';
+    //   }
+    // }
     if (params.length > 0) {
       params = '?prefs=' + params;
     }
@@ -32,8 +32,7 @@ class EventService {
       Iterable list = json.decode(response.body);
       dynamic data = list.map((model) => EventModel.fromMap(model)).toList();
       for (EventModel d in data) {
-        String favorite =
-            await readStorage(key: d.id, nullReturnValue: 'false');
+        String favorite = await readStorage(d.id, nullReturnValue: 'false');
         d.favorite = favorite == 'true';
       }
       return data;
@@ -43,8 +42,8 @@ class EventService {
     }
   }
 
-  void saveChange(EventModel event, String value) async {
-    await writeStorage(key: event.id, value: value);
+  List<EventModel> fetchMockedData() {
+    return EVENT_MOCK.map((model) => EventModel.fromMap(model)).toList();
   }
 }
 

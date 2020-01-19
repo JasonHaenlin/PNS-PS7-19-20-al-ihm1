@@ -12,11 +12,12 @@ class StarterState extends BlocBase<StarterEvent, bool> {
 
     switch (event) {
       case StarterEvent.init:
-        yield await writeStorage(key: key, value: 'Initiated');
+        yield await writeStorage(key, true);
         break;
       case StarterEvent.check:
+        // just to see our starter screen <3
         await Future.delayed(const Duration(seconds: 2));
-        yield await exist(key: key);
+        yield await exist(key);
         break;
       default:
     }

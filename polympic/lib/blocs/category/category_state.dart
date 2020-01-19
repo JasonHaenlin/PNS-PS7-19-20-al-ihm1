@@ -11,10 +11,13 @@ class CategoryState extends BlocBase<CategoryEvent, List<CategoryModel>> {
   Stream<List<CategoryModel>> eventToState(CategoryEvent event, [data]) async* {
     switch (event) {
       case CategoryEvent.fetch:
-        yield await categoryService.getData(data != null ? data['tag'] : []);
+        yield await categoryService.getData(
+          data != null ? data['tag'] : '',
+          data != null ? data['default'] : '',
+        );
         break;
       case CategoryEvent.update:
-        categoryService.saveChange(data['category'], data['checked']);
+        categoryService.saveChange(data['category'], data['value']);
         break;
       default:
     }

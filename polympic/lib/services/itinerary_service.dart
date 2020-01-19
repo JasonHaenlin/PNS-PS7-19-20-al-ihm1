@@ -15,15 +15,15 @@ class ItineraryService {
 
   Future<ItineraryModel> getData() async {
     if (envConfig.mocked) {
-      return ItineraryModel.fromMap(ITINERARY_MOCK);
+      return fetchMockedData();
     }
     final tags = categoryService.categories;
     String params = '';
-    for (var t in tags) {
-      if (t.added) {
-        params += t.name + ',';
-      }
-    }
+    // for (var t in tags) {
+    //   if (t.state) {
+    //     params += t.name + ',';
+    //   }
+    // }
     final response =
         await client.get(envConfig.apiBaseUrl + 'itineraries?prefs=' + params);
     if (response.statusCode == 200) {
@@ -34,6 +34,10 @@ class ItineraryService {
     } else {
       throw Exception('Failed to load post');
     }
+  }
+
+  ItineraryModel fetchMockedData() {
+    return ItineraryModel.fromMap(ITINERARY_MOCK);
   }
 }
 

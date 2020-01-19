@@ -11,22 +11,34 @@ void main() async {
         'prefs3': 'true',
       };
       SharedPreferences.setMockInitialValues(values);
-      expect('true', await readStorage(key: 'prefs1'));
-      expect('false', await readStorage(key: 'prefs2'));
+      expect('true', await readStorage('prefs1'));
+      expect('false', await readStorage('prefs2'));
       cleanStorage();
     });
 
     test('add a key in the storage', () async {
       SharedPreferences.setMockInitialValues({});
-      expect(true, await writeStorage(key: 'prefs1', value: 'true'));
-      expect(true, await writeStorage(key: 'prefs2', value: 'false'));
-      expect('true', await readStorage(key: 'prefs1'));
-      expect('false', await readStorage(key: 'prefs2'));
-      expect(true, await writeStorage(key: 'prefs2', value: 'true'));
-      expect('true', await readStorage(key: 'prefs2'));
+      expect(true, await writeStorage('prefs1', 'true'));
+      expect(true, await writeStorage('prefs2', 'false'));
+      expect('true', await readStorage('prefs1'));
+      expect('false', await readStorage('prefs2'));
+      expect(true, await writeStorage('prefs2', 'true'));
+      expect('true', await readStorage('prefs2'));
       cleanStorage();
-      expect('none', await readStorage(key: 'prefs2', nullReturnValue: 'none'));
-      expect('none', await readStorage(key: 'prefs1', nullReturnValue: 'none'));
+      expect('none', await readStorage('prefs2', nullReturnValue: 'none'));
+      expect('none', await readStorage('prefs1', nullReturnValue: 'none'));
+    });
+
+    test('write and read on dynamic value', () async {
+      SharedPreferences.setMockInitialValues({});
+      expect(true, await writeStorage('prefs1', true));
+      expect(true, await readStorage('prefs1'));
+      expect(true, await writeStorage('prefs2', 1));
+      expect(1, await readStorage('prefs2'));
+      expect(true, await writeStorage('prefs3', 2.0));
+      expect(2.0, await readStorage('prefs3'));
+      expect(true, await writeStorage('prefs3', '2.0'));
+      expect('2.0', await readStorage('prefs3'));
     });
   });
 }
