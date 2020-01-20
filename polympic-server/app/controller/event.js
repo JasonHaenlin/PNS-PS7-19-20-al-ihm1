@@ -1,11 +1,11 @@
 /* eslint-disable security/detect-eval-with-expression */
 /* eslint-disable security/detect-object-injection */
-const {Event} = require('../../models');
+const { Event } = require('../../models');
 const _ = require('lodash');
 const geolib = require('geolib');
 const compiler = require('../utils/compiler');
 
-const EIFFEL_TOWER_COORD = {latitude: 48.858370, longitude: 2.294481};
+const EIFFEL_TOWER_COORD = { latitude: 48.858370, longitude: 2.294481 };
 
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
@@ -17,7 +17,7 @@ module.exports = {
 
   // use the code in parameter
   runScript(code) {
-    let coords = {latitude: 48.858370, longitude: 2.294481};
+    let coords = { latitude: 48.858370, longitude: 2.294481 };
     let events = this.measureDistance(coords, Event.get());
     const compiledScript = compiler.compileCode(code);
     return eval(compiledScript).run(events);
@@ -25,7 +25,7 @@ module.exports = {
 
   // use the example script
   filterByScript() {
-    let coords = {latitude: 48.858370, longitude: 2.294481};
+    let coords = { latitude: 48.858370, longitude: 2.294481 };
     let events = this.measureDistance(coords, Event.get());
     const scriptName = './app/public/scripts/example.script';
     const compiledScript = compiler.compile(scriptName);
@@ -73,7 +73,7 @@ module.exports = {
     events.forEach(event => {
       Vlatitude = event.site.latitude;
       Vlongitude = event.site.longitude;
-      coordElem = {latitude: Vlatitude, longitude: Vlongitude};
+      coordElem = { latitude: Vlatitude, longitude: Vlongitude };
       let distance = geolib.getDistance(coord, coordElem);
       event.distance = distance;
     });

@@ -114,7 +114,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitAction(PolygramParser.ActionContext ctx) {
         String result = "";
         if (ctx.DISPLAY() != null) {
-            result += "lib.addElementToDisplay(output, " + subject + ");";
+            result += "output.push(" + subject + ");";
         } else if (ctx.place_state() != null) {
             result += this.visitPlace_state(ctx.place_state());
         }
@@ -148,8 +148,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     /**
      * {@inheritDoc}
      *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
+     * <p>
+     * The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.
+     * </p>
      *
      * @param ctx
      */
@@ -165,8 +167,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     /**
      * {@inheritDoc}
      *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
+     * <p>
+     * The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.
+     * </p>
      *
      * @param ctx
      */
@@ -178,8 +182,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     /**
      * {@inheritDoc}
      *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
+     * <p>
+     * The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.
+     * </p>
      *
      * @param ctx
      */
@@ -227,8 +233,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     /**
      * {@inheritDoc}
      *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
+     * <p>
+     * The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.
+     * </p>
      *
      * @param ctx
      */
@@ -255,8 +263,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     /**
      * {@inheritDoc}
      *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
+     * <p>
+     * The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.
+     * </p>
      *
      * @param ctx
      */

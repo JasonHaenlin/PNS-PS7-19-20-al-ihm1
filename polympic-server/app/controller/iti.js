@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 const Events = require('./event');
 const Restaurant = require('./restaurant');
-const TouristicsSites = require ('./touristicsites');
+const TouristicsSites = require('./touristicsites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 module.exports = {
