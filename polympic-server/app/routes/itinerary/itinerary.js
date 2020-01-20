@@ -10,7 +10,7 @@ exports.getItinerary = async (req, res) => {
   // let lunch = req.query.lunch;
   let anItinierary = [];
   if (prefs) {
-    anItinierary.push(itinerary.getItinerary(prefs.split(',')));
+    anItinierary.push(itinerary.generateItinerary(prefs));
   }
   resHandler.yahResponse(res, anItinierary);
 };
@@ -18,7 +18,7 @@ exports.getItinerary = async (req, res) => {
 exports.previewResult = async (req, res) => {
   let code = req.body.code;
   let prefs = req.query.prefs;
-  let r = itinerary.runScript(code, prefs.split(','));
+  let r = itinerary.generateItinerary();
 
   resHandler.yahResponse(res, r);
 };

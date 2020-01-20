@@ -1,107 +1,103 @@
-/* eslint-disable security/detect-eval-with-expression */
+/* eslint-disable no-undefined */
+/* eslint-disable no-loop-func */
 /* eslint-disable security/detect-object-injection */
-/* eslint no-eval: 0 */
-const _ = require('lodash');
-const event = require('./event');
-const compiler = require('../utils/compiler');
-
-
-filterEventsWithShortestTime = (events, childEventsToCheck) => {
-  childEventsToCheck = childEventsToCheck || events;
-  events.forEach(e => {
-    e.next = event.retrieveEventWithinGapHour(e, childEventsToCheck, 0, 2);
-  });
-  return events;
-};
-
-rndNextChild = (event) => {
-  return _.sample(event.next);
-};
-
-computeEventsByProximity = (coordObj, events, distance) => {
-  events = event.measureDistance(coordObj, events);
-  return events.filter((e) => e.distance <= distance);
-};
-
-constructObjectItinerary = (itinerary, tags) => {
-  let objItinerary = {};
-  let itineraryEvents = [];
-  if (tags.length > 1) {
-    objItinerary.label = 'Multi-Disciplines';
-  } else {
-    objItinerary.label = 'Uni-Discipline';
-  }
-  objItinerary.description = tags;
-  objItinerary.beginDate = itinerary[0].startTime;
-  objItinerary.endDate = itinerary[itinerary.length - 1].endTime;
-  for (let index = 0; index < itinerary.length; index++) {
-    ['next', 'listNearEvents', 'distance'].forEach((k) => {
-      delete itinerary[index][k];
-    });
-    itineraryEvents.push(itinerary[index]);
-  }
-  objItinerary.events = itineraryEvents;
-
-  return objItinerary;
-};
+const Events = require('./event');
+const {Event} = require('../../models');
+const Restaurant = require('./restaurant');
+const TouristicsSites = require('./touristicsites');
+const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 module.exports = {
-
-  getItinerary(tags) {
-    return this.filterByScript(tags);
-  },
-
-  // use the code in parameter
-  runScript(code, tags) {
-    const compiledScript = compiler.compileCode(code);
-    const distance = 500;// eval(compiledScript).run();
-    return this.computeItineraryByProximity(tags, distance);
-  },
-
-  // use the example script, mock a value for the distance while refactoring
-  // the itinerary stuff
-  filterByScript(tags) {
-    const scriptName = './public/scripts/example_2.script';
-    // const compiledScript = compiler.compile(scriptName);
-    const distance = 500;// eval(compiledScript).run();
-    return this.computeItineraryByProximity(tags, distance);
-  },
-
-  computeRandomItinerary(tags) {
-    let rndItinerary = [];
-    let events = filterEventsWithShortestTime(event.filterEventsByTags(tags));
-    let firstEvent = event.retrieveEarliestEvent(events);
-
-    rndItinerary.push(firstEvent);
-    let nextEvent = rndNextChild(firstEvent);
-    while (nextEvent !== null) {
-      rndItinerary.push(event.getEventById(nextEvent));
-      nextEvent = event.getEventById(nextEvent);
-      nextEvent = rndNextChild(nextEvent);
-    }
-    return rndItinerary;
-  },
-
-  computeItineraryByProximity(tags, distance) {
-    let proximityItinerary = [];
-    let events = event.getEvents();
-
-    events.forEach(e => {
-      latitudeObj = e.site.latitude;
-      longitudeObj = e.site.longitude;
-      coordObj = { latitude: latitudeObj, longitude: longitudeObj };
-      e.listNearEvents = computeEventsByProximity(coordObj, events, distance);
+  generateItinerary(prefs) {
+    let events = Event.get();
+    let itinerary = [];
+    itinerary.includes('blabla');
+    let Stime = 0;
+    let Etime = 0;
+    events = Events.sortEvents('startTime', true, events);
+    events.forEach(ev => {
+      if (ev.startTime !== Stime && ev.startTime >= Etime+1800) {
+        let next = Events.retrieveEventWithSameHour(ev, events);
+        itinerary.push(next);
+        Stime = ev.startTime;
+        Etime = ev.endTime;
+      }
     });
-    events = filterEventsWithShortestTime(events);
-    let firstEvent = event.retrieveEarliestEvent(events);
-    proximityItinerary.push(firstEvent);
-
-    let nextEvent = rndNextChild(firstEvent);
-    while (nextEvent) {
-      proximityItinerary.push(nextEvent);
-      nextEvent = rndNextChild(nextEvent);
+    if (prefs !== undefined && prefs.includes('Pause déjeuner')) {
+      itinerary = this.addRestaurant(itinerary, 12);
     }
-    anItinerary = constructObjectItinerary(proximityItinerary, tags);
-    return anItinerary;
+    if (prefs !== undefined && prefs.includes('Sites touristiques')) {
+      itinerary = this.addTourism(itinerary);
+    }
+    return itinerary;
+  },
+
+  addRestaurant(itinerary, hour) {
+    let newIti = [];
+    let restoB = false;
+    resto = Restaurant.getRestaurants();
+    for (let i = 0; i < itinerary.length; i++) {
+      // eslint-disable-next-line security/detect-object-injection
+      dateGroup = itinerary[i][0].startTime;
+      if (i < itinerary.length-1) {
+        dateGroupNext = itinerary[i+1][0].startTime;
+      }
+      hourGroup = getHourfromDate(dateGroup);
+      if (i < itinerary.length-1) {
+        hourGroupNext = getHourfromDate(dateGroupNext);
+      }
+      if (hourGroup < hour) {
+        newIti.push(itinerary[i]);
+      }
+      if (i < itinerary.length-1) {
+        if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
+          resto.forEach(r => {
+            r.startTime = itinerary[i][0].startTime+3600;
+            r.endTime = r.startTime+3000;
+          });
+          newIti.push(resto);
+          restoB = true;
+        }
+      }
+      if (hourGroup > hour) {
+        newIti.push(itinerary[i]);
+      }
+    }
+    if (!restoB && itinerary.length > 0) {
+      resto.forEach(r => {
+        r.startTime = dateGroup + 7200;
+        r.endTime = r.startTime + 3000;
+      });
+      newIti.push(resto);
+    }
+    return newIti;
+  },
+
+  addTourism(itinerary) {
+    let newIti = [];
+    let start = 0;
+    let end = 0;
+    let tourism = [];
+    TouristicsSites.TouristicSitesWithinDuration();
+    for (let i = 0; i < itinerary.length; i++) {
+      newIti.push(itinerary[i]);
+      start = itinerary[i][0].endTime;
+      if (i < itinerary.length-1) {
+        end = itinerary[i+1][0].startTime;
+      } else {
+        end = 1000000;
+      }
+      freeTime = end - start;
+      tourism = TouristicsSites.TouristicSitesWithinDuration(freeTime);
+      if (freeTime > 600) {
+        tourism.forEach(t => {
+          t.startTime = start;
+          t.endTime = start+t.duration;
+        });
+        newIti.push(tourism);
+      }
+    }
+    return newIti;
   }
+
 };

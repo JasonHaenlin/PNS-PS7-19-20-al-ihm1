@@ -2,7 +2,7 @@
 const express = require('express');
 const events = require('./events');
 const preferences = require('./preferences');
-const itineraries = require('./itinerary');
+const itinerary = require('./itinerary');
 const touristicSites = require('./touristicsites');
 const restaurant = require('./restaurant');
 const editor = require('./editor');
@@ -21,7 +21,7 @@ module.exports = {
   main,
   events,
   preferences,
-  itineraries,
+  itinerary,
   touristicSites,
   restaurant,
   editor

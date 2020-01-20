@@ -35,7 +35,7 @@ app.use('/preferences', route.preferences);
 // events routes
 app.use('/events', route.events);
 // itinerary
-app.use('/itineraries', route.itineraries);
+app.use('/itinerary', route.itinerary);
 // restaurant
 app.use('/restaurant', route.restaurant);
 // restaurant
