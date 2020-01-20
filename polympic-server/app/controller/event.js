@@ -5,7 +5,7 @@ const _ = require('lodash');
 const geolib = require('geolib');
 const compiler = require('../utils/compiler');
 
-const SELF = {latitude: 48.922456, longitude: 2.361977};
+const SELF = { latitude: 48.922456, longitude: 2.361977 };
 
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
@@ -32,7 +32,7 @@ module.exports = {
     let result;
     try {
       // required for the compiled script
-      const lib = require('../utils/compiler/lib');
+      require('../utils/compiler/lib');
       result = eval(compiledScript).run(events);
     } catch (e) {
       result = [];
@@ -71,9 +71,9 @@ module.exports = {
      */
   measureDistance(coord, events) {
     events.forEach(event => {
-      Vlatitude = event.site.latitude;
-      Vlongitude = event.site.longitude;
-      coordElem = { latitude: Vlatitude, longitude: Vlongitude };
+      const Vlatitude = event.site.latitude;
+      const Vlongitude = event.site.longitude;
+      const coordElem = { latitude: Vlatitude, longitude: Vlongitude };
       let distance = geolib.getDistance(coord, coordElem);
       event.distance = distance;
     });

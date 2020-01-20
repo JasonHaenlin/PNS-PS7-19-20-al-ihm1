@@ -11,9 +11,9 @@ module.exports = {
   restaurantsWithDistance(coord) {
     restos = Restaurant.get();
     restos.forEach(resto => {
-      Vlatitude = resto.site.latitude;
-      Vlongitude = resto.site.longitude;
-      coordElem = { latitude: Vlatitude, longitude: Vlongitude };
+      const Vlatitude = resto.site.latitude;
+      const Vlongitude = resto.site.longitude;
+      const coordElem = { latitude: Vlatitude, longitude: Vlongitude };
       let distance = geolib.getDistance(coord, coordElem);
       resto.distance = distance;
     });

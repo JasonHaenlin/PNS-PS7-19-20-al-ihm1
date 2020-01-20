@@ -11,7 +11,6 @@ module.exports = {
   generateItinerary(prefs) {
     let events = Event.get();
     let itinerary = [];
-    itinerary.includes('blabla');
     let Stime = 0;
     let Etime = 0;
     events = Events.sortEvents('startTime', true, events);
@@ -35,14 +34,14 @@ module.exports = {
   addRestaurant(itinerary, hour) {
     let newIti = [];
     let restoB = false;
-    resto = Restaurant.getRestaurants();
+    let resto = Restaurant.getRestaurants();
     for (let i = 0; i < itinerary.length; i++) {
       // eslint-disable-next-line security/detect-object-injection
-      dateGroup = itinerary[i][0].startTime;
+      let dateGroup = itinerary[i][0].startTime;
       if (i < itinerary.length - 1) {
         dateGroupNext = itinerary[i + 1][0].startTime;
       }
-      hourGroup = getHourfromDate(dateGroup);
+      let hourGroup = getHourfromDate(dateGroup);
       if (i < itinerary.length - 1) {
         hourGroupNext = getHourfromDate(dateGroupNext);
       }
