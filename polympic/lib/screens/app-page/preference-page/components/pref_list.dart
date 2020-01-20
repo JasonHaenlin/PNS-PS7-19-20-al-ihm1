@@ -19,20 +19,28 @@ class PrefList extends StatefulWidget {
 
 class _PrefListState extends State<PrefList>
     with AutomaticKeepAliveClientMixin {
+  Future<Null> _handleRefresh() async {
+    setState(() {});
+    return;
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ListView.builder(
-      itemCount: widget.childrenType.length,
-      itemBuilder: (BuildContext context, int index) {
-        return BlocProvider<CategoryBloc>(
-          bloc: CategoryBloc(),
-          child: PrefContainer(
-            childType: widget.childrenType[index],
-            tag: widget.tags[index],
-          ),
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: _handleRefresh,
+      child: ListView.builder(
+        itemCount: widget.childrenType.length,
+        itemBuilder: (BuildContext context, int index) {
+          return BlocProvider<CategoryBloc>(
+            bloc: CategoryBloc(),
+            child: PrefContainer(
+              childType: widget.childrenType[index],
+              tag: widget.tags[index],
+            ),
+          );
+        },
+      ),
     );
   }
 
