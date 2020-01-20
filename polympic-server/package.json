@@ -31,10 +31,10 @@
         "google-maps": "^3.3.0",
         "http-errors": "~1.6.2",
         "lodash": "^4.17.15",
+        "apidoc": "^0.19.1",
         "winston": "^3.2.1"
     },
     "devDependencies": {
-        "apidoc": "^0.19.1",
         "babel-eslint": "^10.0.3",
         "chai": "^4.2.0",
         "eslint": "^6.8.0",

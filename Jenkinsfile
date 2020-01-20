@@ -95,28 +95,54 @@ pipeline {
           }
         }
         stage('Deployment'){
-          steps {
-            echo 'App restarted'
-            // =>/var/lib/jenkins/node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1
-            dir('../../node-app/') {
-              sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
-              sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+          stages {
+            stage('App Fetch') {
+              steps {
+                echo 'Clone App'
+                dir('../../node-app/') {
+                  sh 'rm -rf PNS-PS7-19-20-pns-ps7-19-20-al-ihm1'
+                  sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
+                }
+                dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/'){
+                  sh 'git checkout develop'
+                }
+              }
             }
-            dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
-              sh 'git checkout develop'
-              sh 'npm install'
-              withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                sh  '''
-                    export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
-                    flutter config --enable-web
-                    flutter channel dev
-                    flutter create .
-                    flutter run -d web
-                    npm run flutter-deploy
-                    '''
-                sh 'npm run compiler-deploy'
-                sh 'npm run doc'
-                sh 'npm run redeploy'
+            stage('Flutter config') {
+              steps {
+                echo 'Prepare Flutter web'
+                dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic/') {
+                    sh  '''
+                        export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                        flutter config --enable-web
+                        flutter channel dev
+                        flutter create .
+                        '''
+                }
+              }
+            }
+            stage('Flutter web Deployement') {
+              steps {
+                echo 'Deploy Flutter Web App'
+                dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/'){
+                  sh  '''
+                      export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                      npm run flutter-deploy
+                      '''
+                }
+              }
+            }
+            stage('Reload Nodejs App') {
+              steps {
+                echo 'reload server and compiler'
+                dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/polympic-server/') {
+                  sh 'npm install'
+                  withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                    sh 'npm run compiler-deploy'
+                    sh 'npm run doc'
+                    sh 'npm run redeploy'
+                  }
+                }
               }
             }
           }
