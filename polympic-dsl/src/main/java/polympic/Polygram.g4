@@ -9,6 +9,7 @@ program:
 
 subject:
         PROGRAMS
+    |   PREFS
     |   EVENTS
     ;
 
@@ -40,8 +41,6 @@ str_cmp:
         IDENTIFIER IS IDENTIFIER
     ;
 
-
-
 number_cmp:
       number GT number
     | number LT number
@@ -72,7 +71,7 @@ number:
 // lexer rules :
 
 PROGRAMS:
-    'programs';
+    'itinerary steps';
 
 DISPLAY:
     'display';
@@ -90,7 +89,12 @@ MINUS:
     '-';
 
 EVENTS:
-    'events';
+    'all events';
+
+PREFS:
+        'events matching preferences'
+    |   'preferences'
+    ;
 
 CONCERNING:
     'concerning';

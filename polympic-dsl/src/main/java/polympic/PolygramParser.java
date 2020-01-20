@@ -17,9 +17,10 @@ public class PolygramParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		PROGRAMS=1, DISPLAY=2, MUL=3, DIV=4, PLUS=5, MINUS=6, EVENTS=7, CONCERNING=8, 
-		NUMBER=9, NOT=10, GT=11, LT=12, GE=13, LE=14, EQ=15, NE=16, AND=17, OR=18, 
-		MARK_AS=19, IS=20, WHEN=21, THEN=22, EOL=23, COMMENT=24, WS=25, IDENTIFIER=26;
+		PROGRAMS=1, DISPLAY=2, MUL=3, DIV=4, PLUS=5, MINUS=6, EVENTS=7, PREFS=8, 
+		CONCERNING=9, NUMBER=10, NOT=11, GT=12, LT=13, GE=14, LE=15, EQ=16, NE=17, 
+		AND=18, OR=19, MARK_AS=20, IS=21, WHEN=22, THEN=23, EOL=24, COMMENT=25, 
+		WS=26, IDENTIFIER=27;
 	public static final int
 		RULE_program = 0, RULE_subject = 1, RULE_statement = 2, RULE_condition = 3, 
 		RULE_action = 4, RULE_place_state = 5, RULE_expr = 6, RULE_str_cmp = 7, 
@@ -34,17 +35,18 @@ public class PolygramParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'programs'", "'display'", "'*'", "'/'", "'+'", "'-'", "'events'", 
-			"'concerning'", null, "'not'", "'>'", "'<'", "'>='", "'<='", "'='", "'!='", 
-			"'and'", "'or'", "'mark as'", "'is'", "'when'", "'then'"
+			null, "'programs'", "'display'", "'*'", "'/'", "'+'", "'-'", "'all events'", 
+			null, "'concerning'", null, "'not'", "'>'", "'<'", "'>='", "'<='", "'='", 
+			"'!='", "'and'", "'or'", "'mark as'", "'is'", "'when'", "'then'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "PROGRAMS", "DISPLAY", "MUL", "DIV", "PLUS", "MINUS", "EVENTS", 
-			"CONCERNING", "NUMBER", "NOT", "GT", "LT", "GE", "LE", "EQ", "NE", "AND", 
-			"OR", "MARK_AS", "IS", "WHEN", "THEN", "EOL", "COMMENT", "WS", "IDENTIFIER"
+			"PREFS", "CONCERNING", "NUMBER", "NOT", "GT", "LT", "GE", "LE", "EQ", 
+			"NE", "AND", "OR", "MARK_AS", "IS", "WHEN", "THEN", "EOL", "COMMENT", 
+			"WS", "IDENTIFIER"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -161,6 +163,7 @@ public class PolygramParser extends Parser {
 	public static class SubjectContext extends ParserRuleContext {
 		public TerminalNode PROGRAMS() { return getToken(PolygramParser.PROGRAMS, 0); }
 		public TerminalNode EVENTS() { return getToken(PolygramParser.EVENTS, 0); }
+		public TerminalNode PREFS() { return getToken(PolygramParser.PREFS, 0); }
 		public SubjectContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -181,7 +184,7 @@ public class PolygramParser extends Parser {
 			{
 			setState(31);
 			_la = _input.LA(1);
-			if ( !(_la==PROGRAMS || _la==EVENTS) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PROGRAMS) | (1L << EVENTS) | (1L << PREFS))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -914,7 +917,7 @@ public class PolygramParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34\177\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\177\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\6\2\36\n\2\r\2\16\2\37\3\3\3\3\3\4\3\4"+
 		"\5\4&\n\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\5\6\60\n\6\3\7\3\7\3\b\3\b\3"+
@@ -923,28 +926,28 @@ public class PolygramParser extends Parser {
 		"\3\n\3\n\3\n\3\n\3\n\3\n\5\n^\n\n\3\13\3\13\3\13\3\13\5\13d\n\13\3\f\3"+
 		"\f\3\f\3\r\3\r\3\r\5\rl\n\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3"+
 		"\r\3\r\7\rz\n\r\f\r\16\r}\13\r\3\r\2\4\16\30\16\2\4\6\b\n\f\16\20\22\24"+
-		"\26\30\2\3\4\2\3\3\t\t\2\u0084\2\32\3\2\2\2\4!\3\2\2\2\6%\3\2\2\2\b\'"+
+		"\26\30\2\3\4\2\3\3\t\n\2\u0084\2\32\3\2\2\2\4!\3\2\2\2\6%\3\2\2\2\b\'"+
 		"\3\2\2\2\n/\3\2\2\2\f\61\3\2\2\2\168\3\2\2\2\20A\3\2\2\2\22]\3\2\2\2\24"+
-		"c\3\2\2\2\26e\3\2\2\2\30k\3\2\2\2\32\33\7\n\2\2\33\35\5\4\3\2\34\36\5"+
+		"c\3\2\2\2\26e\3\2\2\2\30k\3\2\2\2\32\33\7\13\2\2\33\35\5\4\3\2\34\36\5"+
 		"\6\4\2\35\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \3\3\2\2"+
 		"\2!\"\t\2\2\2\"\5\3\2\2\2#&\5\n\6\2$&\5\b\5\2%#\3\2\2\2%$\3\2\2\2&\7\3"+
-		"\2\2\2\'(\7\27\2\2()\5\16\b\2)*\7\30\2\2*+\5\6\4\2+\t\3\2\2\2,\60\7\4"+
-		"\2\2-.\7\25\2\2.\60\5\f\7\2/,\3\2\2\2/-\3\2\2\2\60\13\3\2\2\2\61\62\7"+
-		"\34\2\2\62\r\3\2\2\2\63\64\b\b\1\2\649\7\34\2\2\659\5\22\n\2\669\5\20"+
+		"\2\2\2\'(\7\30\2\2()\5\16\b\2)*\7\31\2\2*+\5\6\4\2+\t\3\2\2\2,\60\7\4"+
+		"\2\2-.\7\26\2\2.\60\5\f\7\2/,\3\2\2\2/-\3\2\2\2\60\13\3\2\2\2\61\62\7"+
+		"\35\2\2\62\r\3\2\2\2\63\64\b\b\1\2\649\7\35\2\2\659\5\22\n\2\669\5\20"+
 		"\t\2\679\5\26\f\28\63\3\2\2\28\65\3\2\2\28\66\3\2\2\28\67\3\2\2\29>\3"+
 		"\2\2\2:;\f\5\2\2;=\5\24\13\2<:\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?"+
-		"\17\3\2\2\2@>\3\2\2\2AB\7\34\2\2BC\7\26\2\2CD\7\34\2\2D\21\3\2\2\2EF\5"+
-		"\30\r\2FG\7\r\2\2GH\5\30\r\2H^\3\2\2\2IJ\5\30\r\2JK\7\16\2\2KL\5\30\r"+
-		"\2L^\3\2\2\2MN\5\30\r\2NO\7\21\2\2OP\5\30\r\2P^\3\2\2\2QR\5\30\r\2RS\7"+
-		"\17\2\2ST\5\30\r\2T^\3\2\2\2UV\5\30\r\2VW\7\20\2\2WX\5\30\r\2X^\3\2\2"+
-		"\2YZ\5\30\r\2Z[\7\22\2\2[\\\5\30\r\2\\^\3\2\2\2]E\3\2\2\2]I\3\2\2\2]M"+
-		"\3\2\2\2]Q\3\2\2\2]U\3\2\2\2]Y\3\2\2\2^\23\3\2\2\2_`\7\24\2\2`d\5\16\b"+
-		"\2ab\7\23\2\2bd\5\16\b\2c_\3\2\2\2ca\3\2\2\2d\25\3\2\2\2ef\7\26\2\2fg"+
-		"\7\34\2\2g\27\3\2\2\2hi\b\r\1\2il\7\34\2\2jl\7\13\2\2kh\3\2\2\2kj\3\2"+
-		"\2\2l{\3\2\2\2mn\f\6\2\2no\7\7\2\2oz\5\30\r\7pq\f\5\2\2qr\7\b\2\2rz\5"+
-		"\30\r\6st\f\4\2\2tu\7\5\2\2uz\5\30\r\5vw\f\3\2\2wx\7\6\2\2xz\5\30\r\4"+
-		"ym\3\2\2\2yp\3\2\2\2ys\3\2\2\2yv\3\2\2\2z}\3\2\2\2{y\3\2\2\2{|\3\2\2\2"+
-		"|\31\3\2\2\2}{\3\2\2\2\f\37%/8>]cky{";
+		"\17\3\2\2\2@>\3\2\2\2AB\7\35\2\2BC\7\27\2\2CD\7\35\2\2D\21\3\2\2\2EF\5"+
+		"\30\r\2FG\7\16\2\2GH\5\30\r\2H^\3\2\2\2IJ\5\30\r\2JK\7\17\2\2KL\5\30\r"+
+		"\2L^\3\2\2\2MN\5\30\r\2NO\7\22\2\2OP\5\30\r\2P^\3\2\2\2QR\5\30\r\2RS\7"+
+		"\20\2\2ST\5\30\r\2T^\3\2\2\2UV\5\30\r\2VW\7\21\2\2WX\5\30\r\2X^\3\2\2"+
+		"\2YZ\5\30\r\2Z[\7\23\2\2[\\\5\30\r\2\\^\3\2\2\2]E\3\2\2\2]I\3\2\2\2]M"+
+		"\3\2\2\2]Q\3\2\2\2]U\3\2\2\2]Y\3\2\2\2^\23\3\2\2\2_`\7\25\2\2`d\5\16\b"+
+		"\2ab\7\24\2\2bd\5\16\b\2c_\3\2\2\2ca\3\2\2\2d\25\3\2\2\2ef\7\27\2\2fg"+
+		"\7\35\2\2g\27\3\2\2\2hi\b\r\1\2il\7\35\2\2jl\7\f\2\2kh\3\2\2\2kj\3\2\2"+
+		"\2l{\3\2\2\2mn\f\6\2\2no\7\7\2\2oz\5\30\r\7pq\f\5\2\2qr\7\b\2\2rz\5\30"+
+		"\r\6st\f\4\2\2tu\7\5\2\2uz\5\30\r\5vw\f\3\2\2wx\7\6\2\2xz\5\30\r\4ym\3"+
+		"\2\2\2yp\3\2\2\2ys\3\2\2\2yv\3\2\2\2z}\3\2\2\2{y\3\2\2\2{|\3\2\2\2|\31"+
+		"\3\2\2\2}{\3\2\2\2\f\37%/8>]cky{";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
