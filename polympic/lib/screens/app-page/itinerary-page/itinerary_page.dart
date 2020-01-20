@@ -26,7 +26,7 @@ class _ItineraryPageState extends State<ItineraryPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Itinéraire'),
+        title: const Text('Programme'),
         actions: <Widget>[
           IconButton(
             iconSize: 30.0,
