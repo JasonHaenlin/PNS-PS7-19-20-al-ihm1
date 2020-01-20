@@ -5,10 +5,19 @@ grammar Polygram;
 // parser rules :
 
 program:
-    CONCERNING subject statement+;
+        sub_program_programs
+    |   sub_program_events+
+    ;
 
-subject:
-        PROGRAMS
+sub_program_programs:
+        CONCERNING PROGRAMS statement+
+    ;
+
+sub_program_events:
+        CONCERNING subject_events statement+
+    ;
+
+subject_events:
     |   PREFS
     |   EVENTS
     ;
