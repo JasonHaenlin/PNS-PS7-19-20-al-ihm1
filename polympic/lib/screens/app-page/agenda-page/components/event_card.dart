@@ -4,8 +4,6 @@ import 'package:polympic/core/utils.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/theme/colors.dart';
 
-enum CardStatus { none, importante, recommanded }
-
 class EventCard extends StatelessWidget {
   const EventCard({
     Key key,
@@ -72,7 +70,7 @@ class EventCard extends StatelessWidget {
             child: Stack(
               alignment: Alignment.topRight,
               children: <Widget>[
-                StatusCard(status: CardStatus.recommanded),
+                StatusCard(status: event.status),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Padding(
@@ -126,29 +124,28 @@ class EventCard extends StatelessWidget {
 class StatusCard extends StatelessWidget {
   const StatusCard({
     Key key,
-    this.status = CardStatus.none,
+    this.status = 'none',
   }) : super(key: key);
 
-  final CardStatus status;
+  final String status;
 
   static dynamic statusText = {
-    CardStatus.none: const Text('', style: TextStyle(color: Colors.white)),
-    CardStatus.importante:
-        const Text('Important', style: TextStyle(color: Colors.white)),
-    CardStatus.recommanded:
+    'none': const Text('', style: TextStyle(color: Colors.white)),
+    'important': const Text('Important', style: TextStyle(color: Colors.white)),
+    'recommanded':
         const Text('Recommandé', style: TextStyle(color: Colors.white)),
   };
 
   static dynamic statusIcon = {
-    CardStatus.none: Icon(Icons.bubble_chart),
-    CardStatus.importante: Icon(Icons.warning),
-    CardStatus.recommanded: Icon(Icons.star),
+    'none': Icon(Icons.bubble_chart),
+    'important': Icon(Icons.warning),
+    'recommanded': Icon(Icons.star),
   };
 
   static dynamic statusColor = {
-    CardStatus.none: kColorIconSelected,
-    CardStatus.importante: kColorValidate,
-    CardStatus.recommanded: kColorSecondary,
+    'none': kColorIconSelected,
+    'important': kColorValidate,
+    'recommanded': kColorSecondary,
   };
 
   @override
@@ -165,8 +162,8 @@ class StatusCard extends StatelessWidget {
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
-            statusIcon[status],
-            statusText[status],
+            statusIcon[status] ?? Icon(Icons.bubble_chart),
+            statusText[status] ?? Text(''),
           ],
         ),
       ),
