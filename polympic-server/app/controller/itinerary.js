@@ -2,9 +2,9 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable security/detect-object-injection */
 const Events = require('./event');
-const {Event} = require('../../models');
+const { Event } = require('../../models');
 const Restaurant = require('./restaurant');
-const TouristicsSites = require('./touristicsites');
+const TouristicsSites = require('./touristic_sites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
     let Etime = 0;
     events = Events.sortEvents('startTime', true, events);
     events.forEach(ev => {
-      if (ev.startTime !== Stime && ev.startTime >= Etime+1800) {
+      if (ev.startTime !== Stime && ev.startTime >= Etime + 1800) {
         let next = Events.retrieveEventWithSameHour(ev, events);
         itinerary.push(next);
         Stime = ev.startTime;
@@ -39,21 +39,21 @@ module.exports = {
     for (let i = 0; i < itinerary.length; i++) {
       // eslint-disable-next-line security/detect-object-injection
       dateGroup = itinerary[i][0].startTime;
-      if (i < itinerary.length-1) {
-        dateGroupNext = itinerary[i+1][0].startTime;
+      if (i < itinerary.length - 1) {
+        dateGroupNext = itinerary[i + 1][0].startTime;
       }
       hourGroup = getHourfromDate(dateGroup);
-      if (i < itinerary.length-1) {
+      if (i < itinerary.length - 1) {
         hourGroupNext = getHourfromDate(dateGroupNext);
       }
       if (hourGroup < hour) {
         newIti.push(itinerary[i]);
       }
-      if (i < itinerary.length-1) {
+      if (i < itinerary.length - 1) {
         if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
           resto.forEach(r => {
-            r.startTime = itinerary[i][0].startTime+3600;
-            r.endTime = r.startTime+3000;
+            r.startTime = itinerary[i][0].startTime + 3600;
+            r.endTime = r.startTime + 3000;
           });
           newIti.push(resto);
           restoB = true;
@@ -82,8 +82,8 @@ module.exports = {
     for (let i = 0; i < itinerary.length; i++) {
       newIti.push(itinerary[i]);
       start = itinerary[i][0].endTime;
-      if (i < itinerary.length-1) {
-        end = itinerary[i+1][0].startTime;
+      if (i < itinerary.length - 1) {
+        end = itinerary[i + 1][0].startTime;
       } else {
         end = 1000000;
       }
@@ -92,7 +92,7 @@ module.exports = {
       if (freeTime > 600) {
         tourism.forEach(t => {
           t.startTime = start;
-          t.endTime = start+t.duration;
+          t.endTime = start + t.duration;
         });
         newIti.push(tourism);
       }
