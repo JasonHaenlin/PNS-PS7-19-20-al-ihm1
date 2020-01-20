@@ -1,6 +1,0 @@
-projectKey=ps7-polympic
-serverUrl=https://sonar.otakedev.com
-serverVersion=6.7.5.38563
-dashboardUrl=https://sonar.otakedev.com/dashboard/index/ps7-polympic
-ceTaskId=AW-_2ZKSI35Gon_7ncAM
-ceTaskUrl=https://sonar.otakedev.com/api/ce/task?id=AW-_2ZKSI35Gon_7ncAM
