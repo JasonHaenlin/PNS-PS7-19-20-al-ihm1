@@ -46,24 +46,7 @@ class EventCard extends StatelessWidget {
                 width: 100,
                 height: 180,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: kColorPrimary,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(8),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    '500m',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
+              DistanceCard(),
             ],
           ),
           Expanded(
@@ -116,6 +99,34 @@ class EventCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class DistanceCard extends StatelessWidget {
+  const DistanceCard({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: kColorPrimary,
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(8),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Text(
+          '500m',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
+        ),
       ),
     );
   }
