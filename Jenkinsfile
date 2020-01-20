@@ -108,6 +108,10 @@ pipeline {
               withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
                 sh  '''
                     export PATH=${PATH}:/var/lib/jenkins/development/flutter/bin
+                    flutter config --enable-web
+                    flutter channel dev
+                    flutter create .
+                    flutter run -d web
                     npm run flutter-deploy
                     '''
                 sh 'npm run compiler-deploy'
