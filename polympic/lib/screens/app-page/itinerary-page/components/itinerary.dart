@@ -17,14 +17,14 @@ class Itinerary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Timeline(childrens: _buildCarousels(_data.events));
+    return Timeline(children: _buildCarousels(_data.events));
   }
 
   List<Carousel> _buildCarousels(data) {
     List<Carousel> widgets = List();
     for (dynamic c in data) {
       widgets.add(Carousel(
-        childrens: _buildTimelineTabs(c),
+        children: _buildTimelineTabs(c),
       ));
     }
     return widgets;

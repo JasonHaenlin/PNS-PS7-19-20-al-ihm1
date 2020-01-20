@@ -19,17 +19,14 @@ class TimelineTab extends StatelessWidget {
   final String descriptions;
   final List<dynamic> versus;
 
-  Widget _getTextWidgets(List<dynamic> strings) {
-    List<Widget> list = List<Widget>();
+  Widget get _getTextCompetitors {
+    String text = '';
     int i = 0;
-    for (; i < strings.length - 1; i++) {
-      list.add(Text(strings[i] + "-"));
+    for (; i < versus.length - 1; i++) {
+      text += versus[i] + ' - ';
     }
-    list.add(Text(
-      strings[i],
-      style: TextStyle(fontSize: 15),
-    ));
-    return Row(children: list);
+    text += versus[i];
+    return Text(text);
   }
 
   @override
@@ -41,7 +38,7 @@ class TimelineTab extends StatelessWidget {
       child: Container(
         width: _width,
         child: Tile(
-          childrens: <Widget>[
+          children: <Widget>[
             Text(
               this.title,
               style: TextStyle(
@@ -50,7 +47,7 @@ class TimelineTab extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            _getTextWidgets(this.versus),
+            _getTextCompetitors,
             Text(
               date.format(this.beginDate) + " - " + date.format(this.endDate),
               style:
@@ -59,7 +56,9 @@ class TimelineTab extends StatelessWidget {
             Text(
               descriptions,
               style: TextStyle(
-                  fontWeight: FontWeight.w400, color: kColorSecondaryText),
+                fontWeight: FontWeight.w400,
+                color: kColorSecondaryText,
+              ),
             ),
           ],
         ),

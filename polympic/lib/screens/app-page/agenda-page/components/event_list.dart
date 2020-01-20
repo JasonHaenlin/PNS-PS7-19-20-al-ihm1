@@ -45,11 +45,7 @@ class _EventListState extends State<EventList> {
     for (dynamic d in data) {
       items.add(Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: EventCard(event: d),
-          ),
-          Divider(thickness: 1.0, color: kColorIcon),
+          EventCard(event: d),
         ],
       ));
     }

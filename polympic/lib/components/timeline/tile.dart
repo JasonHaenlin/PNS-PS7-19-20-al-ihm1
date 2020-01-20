@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class Tile extends StatelessWidget {
   const Tile({
     Key key,
-    @required this.childrens,
+    @required this.children,
   }) : super(key: key);
 
-  final List<Widget> childrens;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Tile extends StatelessWidget {
       direction: Axis.vertical,
       spacing: 5.0,
       runSpacing: 4.0,
-      children: this.childrens,
+      children: this.children,
     );
   }
 }

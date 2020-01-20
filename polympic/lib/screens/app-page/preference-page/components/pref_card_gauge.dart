@@ -77,8 +77,8 @@ class _PrefSliderState extends State<PrefSlider> {
 
   static dynamic indications = <double, String>{
     1.0: "Aucune difficulté",
-    2.0: "difficile",
-    3.0: "Très difficile",
+    2.0: "Difficile",
+    3.0: "Très réduite",
   };
 
   double _sliderValue = 2;

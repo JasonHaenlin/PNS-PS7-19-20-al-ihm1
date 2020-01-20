@@ -28,7 +28,7 @@ class _AppPage extends State<AppPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.format_list_numbered),
-            title: Text('Itinéraires'),
+            title: Text('Programme'),
           ),
         ],
       ),

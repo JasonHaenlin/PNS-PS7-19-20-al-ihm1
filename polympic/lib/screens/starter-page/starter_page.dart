@@ -71,7 +71,7 @@ class SportStarterPage extends StatelessWidget {
       ),
       body: PrefList(
         tags: ["sport"],
-        childrensType: [PrefType.button],
+        childrenType: [PrefType.button],
       ),
     );
   }

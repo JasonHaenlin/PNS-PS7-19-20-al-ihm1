@@ -44,11 +44,11 @@ class PreferencePage extends StatelessWidget {
           children: [
             PrefList(
               tags: ["sport"],
-              childrensType: [PrefType.button],
+              childrenType: [PrefType.button],
             ),
             PrefList(
               tags: ["country"],
-              childrensType: [PrefType.button],
+              childrenType: [PrefType.button],
             ),
             PrefList(
               tags: [
@@ -56,7 +56,7 @@ class PreferencePage extends StatelessWidget {
                 "tourism",
                 "handicap",
               ],
-              childrensType: [
+              childrenType: [
                 PrefType.button,
                 PrefType.button,
                 PrefType.gauge,

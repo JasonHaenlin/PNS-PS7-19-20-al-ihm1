@@ -4,7 +4,7 @@ main() {
   testWidgets('timeline test', (WidgetTester tester) async {
     // await tester.pumpWidget(Material(
     //   child: Timeline(
-    //     childrens: [
+    //     children: [
     //       TimelineTab(
     //         dropChildrens: <Widget>[Text('ok')],
     //         beginDate: DateTime(2022, 9, 7, 10, 30),

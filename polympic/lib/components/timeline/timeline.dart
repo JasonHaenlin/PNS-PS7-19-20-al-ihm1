@@ -8,10 +8,10 @@ import 'package:polympic/components/timeline/line.dart';
 class Timeline extends StatelessWidget {
   Timeline({
     Key key,
-    @required this.childrens,
+    @required this.children,
   }) : super(key: key);
 
-  final List<Widget> childrens;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,10 @@ class Timeline extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return BlocProvider<TimelineBloc>(
             bloc: TimelineBloc(),
-            child: TimelineContainer(child: childrens[index]),
+            child: TimelineContainer(child: children[index]),
           );
         },
-        itemCount: childrens.length,
+        itemCount: children.length,
       ),
     );
   }

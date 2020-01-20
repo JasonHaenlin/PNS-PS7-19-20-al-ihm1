@@ -8,18 +8,18 @@ import 'package:polympic/theme/colors.dart';
 class Carousel extends StatelessWidget {
   const Carousel({
     Key key,
-    @required this.childrens,
+    @required this.children,
   }) : super(key: key);
 
-  final List<TimelineTab> childrens;
+  final List<TimelineTab> children;
 
   @override
   Widget build(BuildContext context) {
     final _timelineBloc = BlocProvider.of<TimelineBloc>(context).timelineBloc;
 
     _timelineBloc.dispatch(TimelineEvent.start, {
-      'beginDate': childrens[0].beginDate,
-      'endDate': childrens[0].endDate,
+      'beginDate': children[0].beginDate,
+      'endDate': children[0].endDate,
     });
 
     return Column(
@@ -29,11 +29,11 @@ class Carousel extends StatelessWidget {
           height: 150,
           child: PageView.builder(
             onPageChanged: (a) => _timelineBloc.dispatch(TimelineEvent.update, {
-              'beginDate': childrens[a].beginDate,
-              'endDate': childrens[a].endDate,
+              'beginDate': children[a].beginDate,
+              'endDate': children[a].endDate,
             }),
             controller: PageController(viewportFraction: 0.8),
-            itemCount: childrens.length,
+            itemCount: children.length,
             itemBuilder: (BuildContext context, int itemIndex) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 15, 5),
@@ -50,7 +50,7 @@ class Carousel extends StatelessWidget {
                         builder: (BuildContext context,
                                 AsyncSnapshot<Status> snapshot) =>
                             CardDecoration(
-                                child: childrens[itemIndex],
+                                child: children[itemIndex],
                                 status: snapshot.data ?? Status.waiting),
                       ),
                     ),

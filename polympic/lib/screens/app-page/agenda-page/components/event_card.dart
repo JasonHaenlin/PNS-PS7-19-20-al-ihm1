@@ -1,87 +1,175 @@
 import 'package:flutter/material.dart';
+import 'package:polympic/components/timeline/tile.dart';
 import 'package:polympic/core/utils.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/theme/colors.dart';
 
-class EventCard extends StatefulWidget {
+enum CardStatus { none, importante, recommanded }
+
+class EventCard extends StatelessWidget {
+  const EventCard({
+    Key key,
+    @required this.event,
+  }) : super(key: key);
+
   final EventModel event;
-  const EventCard({Key key, @required this.event}) : super(key: key);
 
-  @override
-  _EventCardState createState() => _EventCardState();
-}
+  String get _starttime => timestampToDateString(event.starttime);
+  String get _endtime => timestampToDateString(event.endtime);
 
-class _EventCardState extends State<EventCard> {
+  Widget get _getTextCompetitors {
+    String text = '';
+    int i = 0;
+    for (; i < event.competitors.length - 1; i++) {
+      text += event.competitors[i] + ' - ';
+    }
+    text += event.competitors[i];
+    return Text(text);
+  }
+
   @override
   Widget build(BuildContext context) {
-    String _starttime = timestampToDateString(this.widget.event.starttime);
-    String _endtime = timestampToDateString(this.widget.event.endtime);
+    double width = MediaQuery.of(context).size.width * 0.6;
 
-    double cWidth = MediaQuery.of(context).size.width * 0.6;
-
-    Widget _getTextWidgets(dynamic strings) {
-      List<Widget> list = List<Widget>();
-      int i = 0;
-      for (; i < strings.length - 1; i++) {
-        list.add(Text(strings[i] + "-"));
-      }
-      list.add(Text(
-        strings[i],
-        style: TextStyle(fontSize: 15),
-      ));
-      return Row(children: list);
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          widget.event.name,
-          style: TextStyle(
-            color: kColorPrimary,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        _getTextWidgets(this.widget.event.competitors),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              width: cWidth,
-              child: Text(
-                widget.event.description,
-                style: TextStyle(color: kColorAccent, fontSize: 15),
+    return Card(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Flex(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        direction: Axis.horizontal,
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              Image.network(
+                'https://otakedev.com/share/preferences/others/hamburger.jpg',
+                fit: BoxFit.cover,
+                width: 100,
+                height: 180,
               ),
+              Container(
+                decoration: BoxDecoration(
+                  color: kColorPrimary,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(8),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    '500m',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: <Widget>[
+                StatusCard(status: CardStatus.recommanded),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Tile(
+                      children: <Widget>[
+                        SizedBox(height: 18),
+                        Text(event.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: kColorPrimary,
+                            )),
+                        _getTextCompetitors,
+                        Container(
+                          width: width,
+                          child: Text(
+                            event.description,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: kColorSecondaryText,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          _starttime + " - " + _endtime,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: kColorAccent,
+                          ),
+                        ),
+                        Text(
+                          event.placename,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            // IconButton(
-            //   icon: (_favorite ? Icon(Icons.star) : Icon(Icons.star_border)),
-            //   color: kColorSecondary,
-            //   onPressed: _tooglefavorite,
-            // )
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class StatusCard extends StatelessWidget {
+  const StatusCard({
+    Key key,
+    this.status = CardStatus.none,
+  }) : super(key: key);
+
+  final CardStatus status;
+
+  static dynamic statusText = {
+    CardStatus.none: const Text('', style: TextStyle(color: Colors.white)),
+    CardStatus.importante:
+        const Text('Important', style: TextStyle(color: Colors.white)),
+    CardStatus.recommanded:
+        const Text('Recommandé', style: TextStyle(color: Colors.white)),
+  };
+
+  static dynamic statusIcon = {
+    CardStatus.none: Icon(Icons.bubble_chart),
+    CardStatus.importante: Icon(Icons.warning),
+    CardStatus.recommanded: Icon(Icons.star),
+  };
+
+  static dynamic statusColor = {
+    CardStatus.none: kColorIconSelected,
+    CardStatus.importante: kColorValidate,
+    CardStatus.recommanded: kColorSecondary,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: statusColor[status],
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(8),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: <Widget>[
+            statusIcon[status],
+            statusText[status],
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              _starttime + " - " + _endtime + "\n" + widget.event.placename,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: kColorSecondaryText,
-              ),
-            ),
-          ],
-        ),
-        Text(
-          "Se trouve à ${widget.event.distance}m",
-          style: TextStyle(
-            fontSize: 14,
-            color: kColorAccent,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

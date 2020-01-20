@@ -6,22 +6,22 @@ import 'package:polympic/screens/app-page/preference-page/components/pref_contai
 class PrefList extends StatelessWidget {
   const PrefList({
     Key key,
-    @required this.childrensType,
+    @required this.childrenType,
     @required this.tags,
   }) : super(key: key);
 
-  final List<PrefType> childrensType;
+  final List<PrefType> childrenType;
   final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: childrensType.length,
+      itemCount: childrenType.length,
       itemBuilder: (BuildContext context, int index) {
         return BlocProvider<CategoryBloc>(
           bloc: CategoryBloc(),
           child: PrefContainer(
-            childType: childrensType[index],
+            childType: childrenType[index],
             tag: tags[index],
           ),
         );
