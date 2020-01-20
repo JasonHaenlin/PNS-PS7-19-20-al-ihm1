@@ -1,10 +1,8 @@
 const { Event } = require('../models/index');
-const Itinerary = require('../app/controller/itinerary');
+// const Itinerary = require('../app/controller/itinerarybygraph');
+const Itinerary = require('../app/controller/iti');
 const Events = require('../app/controller/event');
 
-let events = Event.get();
-// console.log(events);
+let iti = Itinerary.generateItinerary();
+console.log(iti);
 
-// let iti = Itinerary.computeRandomItinerary(['Football', 'Handball', 'Rugby']);
-// let iti = Itinerary.computeItineraryByProximity(['Football', 'Handball', 'Rugby'], 100000);
-// console.log(iti);

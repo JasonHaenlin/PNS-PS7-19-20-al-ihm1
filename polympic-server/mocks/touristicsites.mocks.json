@@ -1,74 +1,90 @@
 [
     {
-        "name" : "Mini-expo : l'histoire du ballon",
-        "position" : {
+        "name" : "Mini-expo : l histoire du ballon",
+        "description": "Petite expo",
+        "site": {
+            "name" :"Ballon house",
             "latitude" :48.920482,
             "longitude" :2.366151
         },
         "duration" : 900,
-        "type" : "Exposition"
+        "versus" : ["Exposition"]
     },
     {
-        "name" : "Mini-expo : l'histoire de Paris",
-        "position" : {
+        "name" : "Mini-expo : l histoire de Paris",
+        "description": "Petite expo",
+        "site": {
+            "name" :"Center Paris",
             "latitude" :48.924072,
             "longitude" :2.352351
         },
         "duration" : 900,
-        "type" : "Exposition"
+        "versus" : ["Exposition"]
     },
     {
-        "name" : "Exposition des droits de l'homme",
-        "position" : {
+        "name" : "Exposition des droits de l homme",
+        "description": "Grande expo",
+        "site": {
+            "name" :"Palais expo",
             "latitude" :48.919117,
             "longitude" :2.362289
         },
         "duration" : 1800,
-        "type" : "Exposition"
+        "versus" : ["Exposition"]
     },
     {
         "name" : "Musée des Trains",
-        "position" : {
+        "description": "Grande expo",
+        "site": {
+            "name" :"Musée Paris",
             "latitude" :48.918229,
             "longitude" :2.363469
         },
         "duration" : 2700,
-        "type" : "Musée"
+        "versus" : ["Musée"]
     },
     {
-        "name" : "Musée de la légion d'honneur",
-        "position" : {
+        "name" : "Musée de la légion d honneur",
+        "description": "Grande expo",
+        "site": {
+            "name" :"Musée Nord",
             "latitude" :48.932907,
             "longitude" :2.361413
         },
         "duration" : 3600,
-        "type" : "Musée"
+        "versus" : ["Musée"]
     },
     {
         "name" : "Promenade de la Courneuve",
-        "position" : {
+        "description": "Grande promenade",
+        "site": {
+            "name" :"Promenade Nord",
             "latitude" :48.941142,
             "longitude" :2.400398
         },
         "duration" : 1800,
-        "type" : "Jardin"
+        "versus" : ["Jardin"]
     },
     {
         "name" : "Les merveilles des Chanteraines",
-        "position" : {
+        "description": "Grande promenade",
+        "site": {
+            "name" :"Promenade Sud",
             "latitude" :48.939512,
             "longitude" :2.316766
         },
         "duration" : 4500,
-        "type" : "Parc"
+        "versus" : ["Parc"]
     },
     {
         "name" : "Le détour des Sévines",
-        "position" : {
+        "description": "Grande promenade",
+        "site": {
+            "name" :"Promenade Ouest",
             "latitude" :48.929069,
             "longitude" :2.304663
         },
         "duration" : 900,
-        "type" : "Parc"
+        "versus" : ["Parc"]
     }
 ]

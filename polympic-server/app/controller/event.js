@@ -5,7 +5,7 @@ const _ = require('lodash');
 const geolib = require('geolib');
 const compiler = require('../utils/compiler');
 
-const EIFFEL_TOWER_COORD = { latitude: 48.858370, longitude: 2.294481 };
+const SELF = {latitude: 48.922456, longitude: 2.361977};
 
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
@@ -17,7 +17,7 @@ module.exports = {
 
   // use the code in parameter
   runScript(code) {
-    let coords = { latitude: 48.858370, longitude: 2.294481 };
+    let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
     const compiledScript = compiler.compileCode(code);
     return eval(compiledScript).run(events);
@@ -25,7 +25,7 @@ module.exports = {
 
   // use the example script
   filterByScript() {
-    let coords = { latitude: 48.858370, longitude: 2.294481 };
+    let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
     const scriptName = './app/public/scripts/example.script';
     const compiledScript = compiler.compile(scriptName);
@@ -47,7 +47,7 @@ module.exports = {
 
   filterEventsByProximityAndTags(tags, from) {
     let events = this.getEvents();
-    from = from || EIFFEL_TOWER_COORD;
+    from = from || SELF;
     events = this.filterEventsByTags(tags, events);
     events = this.measureDistance(from, events);
     return events;
