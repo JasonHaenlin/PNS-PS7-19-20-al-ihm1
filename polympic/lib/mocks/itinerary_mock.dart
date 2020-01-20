@@ -7,6 +7,7 @@ const ITINERARY_MOCK = {
     [
       {
         "id": "1",
+        "img": "",
         "name": "Match de Foot",
         "description":
             "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
@@ -23,6 +24,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "1",
+        "img": "",
         "name": "Match de Foot",
         "description":
             "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
@@ -39,6 +41,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "1",
+        "img": "",
         "name": "Match de Foot",
         "description":
             "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
@@ -57,6 +60,7 @@ const ITINERARY_MOCK = {
     [
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Comment sont-ils arrivés là ? Personne ne le sait...",
         "sport": "Rugby",
@@ -72,6 +76,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Comment sont-ils arrivés là ? Personne ne le sait...",
         "sport": "Rugby",
@@ -87,6 +92,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Comment sont-ils arrivés là ? Personne ne le sait...",
         "sport": "Rugby",
@@ -102,6 +108,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Comment sont-ils arrivés là ? Personne ne le sait...",
         "sport": "Rugby",
@@ -119,6 +126,7 @@ const ITINERARY_MOCK = {
     [
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Peut-être un beau match qui s'annnoce ! Ou pas.",
         "sport": "Rugby",
@@ -134,6 +142,7 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "2",
+        "img": "",
         "name": "Match de Rugby",
         "description": "Peut-être un beau match qui s'annnoce ! Ou pas.",
         "sport": "Rugby",

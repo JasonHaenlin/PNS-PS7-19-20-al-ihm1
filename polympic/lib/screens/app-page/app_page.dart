@@ -11,13 +11,16 @@ class _AppPage extends State<AppPage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     AgendaPage(),
-    ItinerariesPage(),
+    ItineraryPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _children,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,

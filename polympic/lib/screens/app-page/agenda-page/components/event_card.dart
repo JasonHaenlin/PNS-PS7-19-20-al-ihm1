@@ -41,7 +41,7 @@ class EventCard extends StatelessWidget {
           Stack(
             children: <Widget>[
               Image.network(
-                'https://otakedev.com/share/preferences/others/hamburger.jpg',
+                event.img,
                 fit: BoxFit.cover,
                 width: 100,
                 height: 180,
@@ -154,7 +154,7 @@ class StatusCard extends StatelessWidget {
   };
 
   static dynamic statusColor = {
-    'none': kColorIconSelected,
+    'none': kColorFade,
     'important': kColorValidate,
     'recommanded': kColorSecondary,
   };

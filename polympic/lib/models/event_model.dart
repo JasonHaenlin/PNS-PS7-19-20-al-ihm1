@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class EventModel {
   final String id;
   final String name;
+  final String img;
   final String description;
   final int starttime;
   final int endtime;
@@ -19,6 +20,7 @@ class EventModel {
       @required this.description,
       @required this.starttime,
       @required this.endtime,
+      @required this.img,
       @required this.site,
       @required this.status,
       @required this.competitors,
@@ -30,6 +32,7 @@ class EventModel {
         assert(description != null),
         assert(starttime != null),
         assert(endtime != null),
+        assert(img != null),
         assert(site != null),
         assert(competitors != null),
         assert(status != null),
@@ -45,6 +48,7 @@ class EventModel {
         placename = map["site"]["name"],
         status = map["status"],
         competitors = map["versus"],
+        img = map["img"],
         distance = map["distance"];
 
   Map<String, dynamic> toMap() => {
@@ -53,6 +57,7 @@ class EventModel {
         "description": description,
         "startTime": starttime,
         "endTime": endtime,
+        "img": img,
         "site": site,
         "status": status,
       };

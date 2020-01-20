@@ -2,6 +2,7 @@ const EVENT_MOCK = [
   {
     "id": "fp1",
     "name": "Pétanque Finale 1",
+    "img": "https://otakedev.com/share/preferences/sports/petanque.jpg",
     "description":
         "La finale de pétanque, le nouveaux sport des jeux olympique. Qui sera le grand maître des boules ?",
     "versus": ["France", "Monaco"],

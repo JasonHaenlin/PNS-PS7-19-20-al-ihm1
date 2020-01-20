@@ -3,7 +3,7 @@ import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/screens/app-page/preference-page/components/pref_container.dart';
 
-class PrefList extends StatelessWidget {
+class PrefList extends StatefulWidget {
   const PrefList({
     Key key,
     @required this.childrenType,
@@ -14,18 +14,28 @@ class PrefList extends StatelessWidget {
   final List<String> tags;
 
   @override
+  _PrefListState createState() => _PrefListState();
+}
+
+class _PrefListState extends State<PrefList>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView.builder(
-      itemCount: childrenType.length,
+      itemCount: widget.childrenType.length,
       itemBuilder: (BuildContext context, int index) {
         return BlocProvider<CategoryBloc>(
           bloc: CategoryBloc(),
           child: PrefContainer(
-            childType: childrenType[index],
-            tag: tags[index],
+            childType: widget.childrenType[index],
+            tag: widget.tags[index],
           ),
         );
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -33,5 +33,13 @@ abstract class BlocBase<Event, Type> {
     }
   }
 
+  bool isEmpty() {
+    return _currentValue == null;
+  }
+
+  Type lastValue() {
+    return _currentValue;
+  }
+
   Stream<Type> eventToState(Event event, [dynamic data]);
 }

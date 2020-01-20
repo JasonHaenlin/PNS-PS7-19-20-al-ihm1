@@ -8,25 +8,16 @@ import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/screens/app-page/itinerary-page/components/itinerary.dart';
 import 'package:polympic/screens/app-page/preference-page/preference_page.dart';
 
-class ItinerariesPage extends StatelessWidget {
-  const ItinerariesPage({
+class ItineraryPage extends StatefulWidget {
+  const ItineraryPage({
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider<ItineraryBloc>(
-      bloc: ItineraryBloc(),
-      child: Itineraries(),
-    );
-  }
+  _ItineraryPageState createState() => _ItineraryPageState();
 }
 
-class Itineraries extends StatelessWidget {
-  const Itineraries({
-    Key key,
-  }) : super(key: key);
-
+class _ItineraryPageState extends State<ItineraryPage> {
   @override
   Widget build(BuildContext context) {
     final _itineraryBLoc =

@@ -3,7 +3,6 @@ import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/event/event_state.dart';
 import 'package:polympic/models/event_model.dart';
-import 'package:polympic/theme/colors.dart';
 
 import 'event_card.dart';
 
