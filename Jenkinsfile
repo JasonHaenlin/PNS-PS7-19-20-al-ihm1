@@ -49,7 +49,7 @@ pipeline {
               steps {
                 echo 'Sonar Analysis'
                 withSonarQubeEnv('Sonarqube_env'){
-                  dir('./back'){
+                  dir('./polympic-server/'){
                     sh 'npm run sonar'
                   }
                 }
@@ -88,7 +88,7 @@ pipeline {
         stage('Snyk') {
           steps {
             echo 'Snyk Diagnosis'
-            dir('./back/'){
+            dir('./polympic-server/'){
               sh 'snyk test --severity-medium'
               sh 'snyk monitor'
             }
