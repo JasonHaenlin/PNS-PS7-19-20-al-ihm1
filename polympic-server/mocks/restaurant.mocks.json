@@ -1,28 +1,40 @@
 [
     {
         "name" : "Sushi Shop",
-        "position" : {
+        "description": "Petit resto de sushi",
+        "versus": ["Fast Food"],
+        "site": {
+            "name" :"Sushi Shop",
             "latitude" :48.919541,
             "longitude" :2.362471
         }
     },
     {
         "name" : "McDonald",
-        "position" : {
+        "description": "Petit fast food",
+        "versus": ["Fast Food"],
+        "site": {
+            "name" :"McDonald",
             "latitude" :48.921522,
             "longitude" :2.363351
         }
     },
     {
         "name" : "Hippopotamus Steackhouse",
-        "position" : {
+        "description": "Grand resto de viande !",
+        "versus": ["Restaurant"],
+        "site": {
+            "name" :"Hippopotamus",
             "latitude" :48.930788,
             "longitude" :2.356179
         }
     },
     {
         "name" : "Pizza Di Napoli",
-        "position" : {
+        "description": "Une petite pizza ?",
+        "versus": ["Restaurant"],
+        "site": {
+            "name" :"Pizza Di Napoli",
             "latitude" :48.927639,
             "longitude" :2.363477
         }

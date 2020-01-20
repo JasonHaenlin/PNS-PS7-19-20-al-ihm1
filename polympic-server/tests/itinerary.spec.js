@@ -1,18 +1,10 @@
 const { Event } = require('../models/index');
-const Itinerary = require('../app/controller/itinerarybygraph');
+// const Itinerary = require('../app/controller/itinerarybygraph');
+const Itinerary = require('../app/controller/iti');
 const Events = require('../app/controller/event');
 
 let events = Event.get();
 
-let itinerary = Itinerary.addEvents(events);
-itinerary = Itinerary.addAdjacentsEvents(events);
-let event = Itinerary.getEvent('fdm1');
-
-// console.log(event);
-
-// console.log(itinerary);
-
-
-let eventsfiltered = Events.getEvents();
-
-// console.log(eventsfiltered);
+let iti = Itinerary.generateItinerary(events);
+iti = Itinerary.addRestaurant(iti, 13);
+iti = Itinerary.addTourism(iti, 2);

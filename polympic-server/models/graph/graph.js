@@ -15,6 +15,14 @@ module.exports = class Graph {
     return [sourceNode, destinationNode];
   }
 
+  addAnotherEdge(source, destination) {
+    const sourceNode = this.addVertex(source);
+    const destinationNode = this.addVertex(destination);
+    sourceNode.addSimilar(destinationNode);
+
+    return [sourceNode, destinationNode];
+  }
+
   getVertex(id) {
     if (this.nodes.has(id)) {
       return this.nodes.get(id);

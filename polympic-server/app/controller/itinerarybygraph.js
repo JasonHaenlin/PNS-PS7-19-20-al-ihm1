@@ -19,11 +19,24 @@ addAdjacentsEvents = (events) => {
   });
   return graphevent;
 };
+
+addSimilarEvents = (events) => {
+  events.forEach(element => {
+    let next = Events.retrieveEventWithSameHour(element, events);
+    next.forEach(ev => {
+      graphevent.addAnotherEdge(element.id, ev.id);
+    });
+  });
+  return graphevent;
+};
+
 getEvent = (id) => {
   return graphevent.getVertex(id);
 };
+
 module.exports = {
   addEvents,
   addAdjacentsEvents,
+  addSimilarEvents,
   getEvent
 };
