@@ -63,7 +63,7 @@ module.exports = {
   // use the example script, mock a value for the distance while refactoring
   // the itinerary stuff
   filterByScript(tags) {
-    const scriptName = './public/scripts/example_2.script';
+    const scriptName = './public/scripts/itineraries.script';
     // const compiledScript = compiler.compile(scriptName);
     const distance = 500;
     // eval(compiledScript).run();

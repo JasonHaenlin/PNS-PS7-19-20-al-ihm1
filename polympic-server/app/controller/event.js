@@ -29,9 +29,9 @@ module.exports = {
     let events = this.measureDistance(coords, Event.get());
     let scriptName;
     if (preview) {
-      scriptName = './app/public/scripts/preview_example.script';
+      scriptName = './app/public/scripts/preview_events.script';
     } else {
-      scriptName = './app/public/scripts/example.script';
+      scriptName = './app/public/scripts/events.script';
     } const compiledScript = compiler.compile(scriptName);
     let result;
     try {
