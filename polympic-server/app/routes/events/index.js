@@ -36,6 +36,5 @@ const events = express.Router();
  * ]
  */
 events.get('/', handleExceptions(e.getEventsByPreferences));
-events.post('/preview', handleExceptions(e.previewResult));
 
 module.exports = events;

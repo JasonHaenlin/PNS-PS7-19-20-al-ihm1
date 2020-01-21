@@ -4,6 +4,7 @@
 const Events = require('./event');
 const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
+const compiler = require('../utils/compiler')
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 let access1 = 150;
@@ -16,8 +17,8 @@ module.exports = {
   access2,
   access3,
   meal,
-  generateItinerary(prefs) {
-    let events = Events.getEvents(false, prefs);
+  generateItinerary(prefs, preview) {
+    let events = Events.getEvents(preview, prefs);
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
@@ -48,7 +49,30 @@ module.exports = {
     if (prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary, access);
     }
-    return itinerary;
+
+
+    let scriptName;
+    if (preview) {
+      scriptName = './app/public/scripts/preview_itineraries.script';
+    } else {
+      scriptName = './app/public/scripts/itineraries.script';
+    }
+    const compiledScript = compiler.compile(scriptName);
+    let result = [];
+    try {
+      // required for the compiled script
+      // pass prefs to the compiler
+      const lib = require('../utils/compiler/lib');
+      const runScript = eval(compiledScript).run;
+      for (const group of itinerary) {
+        result.push(runScript(group, prefs));
+      }
+    } catch (e) {
+      result = [];
+    }
+
+
+    return result;
   },
 
   addRestaurant(itinerary, access) {

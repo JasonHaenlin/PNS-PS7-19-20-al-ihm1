@@ -5,7 +5,7 @@ const { event } = require('../../controller');
 exports.getEventsByPreferences = async (req, res) => {
   let preview = false;
   if (req.query.preview) {
-    preview = req.query.preview;
+    preview = (req.query.preview === 'true');
   }
   const prefs = {
     sport: ansHandler.parseQuery(req.query.sport),
