@@ -21,6 +21,7 @@ const ITINERARY_MOCK = {
         },
         "startTime": 1714888800,
         "endTime": 1714896000,
+        "status": "important"
       },
       {
         "id": "1",
@@ -38,6 +39,7 @@ const ITINERARY_MOCK = {
         },
         "startTime": 1714888800,
         "endTime": 1714896000,
+        "status": "recommanded"
       },
       {
         "id": "1",
@@ -85,7 +87,8 @@ const ITINERARY_MOCK = {
           "longitude": 2.360164
         },
         "startTime": 1714903200,
-        "endTime": 1714910400
+        "endTime": 1714910400,
+        "status": "recommended"
       },
       {
         "id": "2",

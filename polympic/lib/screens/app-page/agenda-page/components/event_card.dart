@@ -139,9 +139,19 @@ class StatusCard extends StatelessWidget {
   const StatusCard({
     Key key,
     this.status = 'none',
+    this.displayText = true,
+    this.bottomLeft = 8,
+    this.bottomRight = 0,
+    this.topLeft = 0,
+    this.topRight = 0,
   }) : super(key: key);
 
   final String status;
+  final bool displayText;
+  final double bottomLeft;
+  final double bottomRight;
+  final double topLeft;
+  final double topRight;
 
   static dynamic statusText = {
     'none': const Text('', style: TextStyle(color: Colors.white)),
@@ -168,7 +178,10 @@ class StatusCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: statusColor[status],
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(8),
+          bottomLeft: Radius.circular(bottomLeft),
+          bottomRight: Radius.circular(bottomRight),
+          topLeft: Radius.circular(topLeft),
+          topRight: Radius.circular(topRight),
         ),
       ),
       child: Padding(
@@ -177,7 +190,7 @@ class StatusCard extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
             statusIcon[status] ?? Icon(Icons.bubble_chart),
-            statusText[status] ?? Text(''),
+            displayText ? statusText[status] ?? Text('') : Text(''),
           ],
         ),
       ),

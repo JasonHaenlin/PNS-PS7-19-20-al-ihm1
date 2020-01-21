@@ -51,7 +51,7 @@ class TimelineState extends BlocBase<TimelineEvent, Status> {
   }
 
   Status update(DateTime bDate, DateTime eDate) {
-    DateTime current = DateTime(2022, 5, 1, 13, 30);
+    DateTime current = DateTime(2022, 1, 5, 13, 30);
     bool beforeBegin = bDate.isBefore(current);
     bool beforeEnd = eDate.isBefore(current);
     if (beforeBegin && beforeEnd) {

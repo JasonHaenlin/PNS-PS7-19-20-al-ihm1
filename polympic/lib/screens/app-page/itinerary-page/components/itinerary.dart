@@ -41,6 +41,7 @@ class Itinerary extends StatelessWidget {
           beginDate: formatTimestamp(e.starttime),
           endDate: formatTimestamp(e.endtime),
           descriptions: e.site['name'],
+          status: e.status,
         ),
       );
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:polympic/components/timeline/tile.dart';
+import 'package:polympic/screens/app-page/agenda-page/components/event_card.dart';
 import 'package:polympic/theme/colors.dart';
 
 class TimelineTab extends StatelessWidget {
@@ -11,6 +12,7 @@ class TimelineTab extends StatelessWidget {
     @required this.endDate,
     @required this.descriptions,
     @required this.versus,
+    @required this.status,
   }) : super(key: key);
 
   final String title;
@@ -18,6 +20,7 @@ class TimelineTab extends StatelessWidget {
   final DateTime endDate;
   final String descriptions;
   final List<dynamic> versus;
+  final String status;
 
   Widget get _getTextCompetitors {
     String text = '';
@@ -39,13 +42,26 @@ class TimelineTab extends StatelessWidget {
         width: _width,
         child: Tile(
           children: <Widget>[
-            Text(
-              this.title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: kColorPrimary,
-                fontSize: 15,
-              ),
+            Row(
+              children: <Widget>[
+                StatusCard(
+                  status: status,
+                  displayText: false,
+                  bottomLeft: 8,
+                  bottomRight: 8,
+                  topRight: 8,
+                  topLeft: 8,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  this.title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kColorPrimary,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
             ),
             _getTextCompetitors,
             Text(
