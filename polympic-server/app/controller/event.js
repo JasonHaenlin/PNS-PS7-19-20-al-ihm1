@@ -32,7 +32,6 @@ module.exports = {
     let result;
     try {
       // required for the compiled script
-      require('../utils/compiler/lib');
       result = eval(compiledScript).run(events);
     } catch (e) {
       result = [];
