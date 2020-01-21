@@ -22,7 +22,7 @@ class ItineraryService {
     final tags = categoryService.categories;
     final params = buildOptions(tags);
     final response =
-        await client.get(envConfig.apiBaseUrl + 'itineraries' + params);
+        await client.get(envConfig.apiBaseUrl + 'itinerary' + params);
     if (response.statusCode == 200) {
       dynamic list = json.decode(response.body);
       dynamic data = ItineraryModel.fromMap(list);

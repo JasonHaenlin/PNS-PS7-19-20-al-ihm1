@@ -5,8 +5,8 @@ import 'package:polympic/app.dart';
 void main() {
   envConfig.appName = kEnvAppName;
   envConfig.flavorName = kEnvDev;
-  envConfig.apiBaseUrl = kEnvApiUrlDev;
-  envConfig.mocked = true;
+  envConfig.apiBaseUrl = kEnvApiUrlProd;
+  envConfig.mocked = false;
   envConfig.preview = false;
   app();
 }

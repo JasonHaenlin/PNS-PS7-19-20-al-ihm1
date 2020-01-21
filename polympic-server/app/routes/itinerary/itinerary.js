@@ -12,7 +12,7 @@ exports.getItinerary = async (req, res) => {
   };
 
   const resIti = itinerary.generateItinerary(prefs);
-  resHandler.yahResponse(res, resIti);
+  resHandler.yahResponse(res, { events: resIti });
 };
 
 exports.previewResult = async (req, res) => {
