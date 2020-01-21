@@ -28,12 +28,11 @@ module.exports = {
     let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
     let scriptName;
-    console.log('\n\n\nfgdgdgdg ' + preview + '\n\n\n');
-    if (preview)
+    if (preview) {
       scriptName = './app/public/scripts/preview_example.script';
-    else
+    } else {
       scriptName = './app/public/scripts/example.script';
-    const compiledScript = compiler.compile(scriptName);
+    } const compiledScript = compiler.compile(scriptName);
     let result;
     try {
       // required for the compiled script
@@ -49,7 +48,7 @@ module.exports = {
     return events.filter((elem) => tags.includes(elem.sport));
   },
 
-  filterEventsByProximityAndTags(tags, from, preview) {
+  filterEventsByProximityAndTags(tags, preview, from) {
     let events = this.getEvents(preview);
     from = from || SELF;
     events = this.filterEventsByTags(tags, events);

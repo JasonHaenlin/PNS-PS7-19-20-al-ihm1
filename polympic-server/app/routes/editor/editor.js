@@ -13,7 +13,6 @@ exports.saveScript = async (req, res) => {
 exports.savePreview = async (req, res) => {
   let code = req.body.code;
   let file = __dirname+'/../../public/scripts/preview_' + req.body.file;
-  console.log(file);
   fs.writeFileSync(file, code);
   resHandler.yahResponse(res, 'ok');
 };
@@ -28,7 +27,6 @@ exports.viewEditor = async (req, res) => {
 };
 
 exports.compile = async (req, res) => {
-  console.log(req.body);
   let code = req.body.code;
   try {
     let compiledCode = compiler.compileCode(code);
@@ -36,6 +34,6 @@ exports.compile = async (req, res) => {
     eval(compiledCode);
     resHandler.yahResponse(res, { compiledCode: compiledCode });
   } catch {
-    resHandler.nahResponse(res, "failed");
+    resHandler.nahResponse(res, 'failed');
   }
-}
+};
