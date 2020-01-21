@@ -25,7 +25,7 @@ class _TimelineState extends State<Timeline> {
     final _itiBloc = BlocProvider.of<ItineraryBloc>(context).itineraryBloc;
 
     Future<Null> _handleRefresh() async {
-      // _itiBloc.dispatch(ItineraryEvent.fetch);
+      _itiBloc.dispatch(ItineraryEvent.fetch);
       setState(() {});
       return;
     }

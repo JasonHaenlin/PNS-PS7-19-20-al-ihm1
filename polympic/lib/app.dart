@@ -5,6 +5,7 @@ import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
+import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/screens/starter-page/starter_page.dart';
 import 'package:polympic/theme/style.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             theme: appTheme(),
             home: BlocProvider<CategoryBloc>(
               bloc: CategoryBloc(),
-              child: StarterPage(),
+              child: AppPage(),
             ),
           ),
         ),

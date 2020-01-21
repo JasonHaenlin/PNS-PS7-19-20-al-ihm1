@@ -16,11 +16,12 @@ class ItineraryService {
   }
 
   Future<ItineraryModel> getData() async {
+    final tags = categoryService.categories;
+    final params = buildOptions(tags);
+    final url = envConfig.apiBaseUrl + 'itinerary' + params;
     if (envConfig.mocked) {
       return fetchMockedData();
     }
-    final tags = categoryService.categories;
-    final params = buildOptions(tags);
     final response =
         await client.get(envConfig.apiBaseUrl + 'itinerary' + params);
     if (response.statusCode == 200) {

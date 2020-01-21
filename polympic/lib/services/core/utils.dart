@@ -10,17 +10,17 @@ String buildOptions(Map<String, List<CategoryModel>> tags) {
       if (v.state is bool && v.state) {
         opt += v.name + ',';
       }
-      if (v.state is int) {
-        opt += v.name + ':' + v.state.toString() + ',';
+      if (v.state is int || v.state is double) {
+        opt += v.name + ':' + v.state.toInt().toString() + ',';
       }
     }
     if (opt != '') {
       options += separator + t.key + '=' + opt;
       separator = '&';
     }
-    if (envConfig.preview) {
-      options += separator + 'preview=true';
-    }
+  }
+  if (envConfig.preview) {
+    options += separator + 'preview=true';
   }
   return options;
 }
