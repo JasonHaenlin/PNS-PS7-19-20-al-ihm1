@@ -20,15 +20,6 @@ module.exports = {
     let Stime = 0;
     let Etime = 0;
     let access;
-<<<<<<< HEAD
-    if (prefs.handicap.split(':')[1] === 1) {
-      access = this.access1;
-    }
-    if (prefs.handicap.split(':')[1] === 2) {
-      access = this.access2;
-    }
-    if (prefs.handicap.split(':')[1] === 3) {
-=======
     if (prefs.handicap[0].split(':')[1]== 1) {
       access = this.access1;
     }
@@ -36,7 +27,6 @@ module.exports = {
       access = this.access2;
     }
     if (prefs.handicap[0].split(':')[1]== 3) {
->>>>>>> GH-94 Itinerary change
       access = this.access3;
     }
     events = Events.sortEvents('startTime', true, events);
@@ -48,19 +38,11 @@ module.exports = {
         Etime = ev.endTime;
       }
     });
-<<<<<<< HEAD
-    if (prefs !== undefined && prefs.recreation.includes('Pause déjeuner')) {
-      itinerary = this.addRestaurant(itinerary, 12);
-    }
-    if (prefs !== undefined && prefs.tourism.includes('Sites touristiques')) {
-      itinerary = this.addTourism(itinerary);
-=======
     if (prefs.recreation.includes('Pause déjeuner')) {
       itinerary = this.addRestaurant(itinerary, 12, access);
     }
     if (prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary, access);
->>>>>>> GH-94 Itinerary change
     }
     return itinerary;
   },
