@@ -40,6 +40,20 @@ exports.getAccessibilityValues = async (req, res) => {
   });
 };
 
+exports.updateMealHour = async (req, res) => {
+  const acs = ansHandler.parseQuery(req.query.values);
+  itinerary.meal = acs;
+  resHandler.yahResponse(res, acs);
+};
+
+exports.getMealHour = async (req, res) => {
+  resHandler.yahResponse(res, {
+    value: [
+      itinerary.meal
+    ]
+  });
+};
+
 exports.previewResult = async (req, res) => {
   let code = req.body.code;
   let prefs = req.query.prefs;

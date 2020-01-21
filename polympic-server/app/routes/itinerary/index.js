@@ -9,5 +9,7 @@ itinerary.get('/', handleExceptions(i.getItinerary));
 itinerary.post('/preview', handleExceptions(i.previewResult));
 itinerary.put('/accessibilities', handleExceptions(i.updateAccessibilityValues));
 itinerary.get('/accessibilities', handleExceptions(i.getAccessibilityValues));
+itinerary.get('/meal', handleExceptions(i.updateMealHour));
+itinerary.get('/meal', handleExceptions(i.getMealHour));
 
 module.exports = itinerary;

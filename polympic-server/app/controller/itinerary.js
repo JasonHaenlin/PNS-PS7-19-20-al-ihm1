@@ -7,9 +7,9 @@ const TouristicsSites = require('./touristic_sites');
 const compiler = require('../utils/compiler')
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
-let access1 = 150;
-let access2 = 300;
-let access3 = 600;
+let access1 = 2;
+let access2 = 5;
+let access3 = 10;
 let meal = 12;
 
 module.exports = {
@@ -25,13 +25,13 @@ module.exports = {
     let access;
     if (prefs.handicap.length > 0) {
       if (prefs.handicap[0].split(':')[1] === '1') {
-        access = this.access1;
+        access = this.access1 * 60;
       }
       if (prefs.handicap[0].split(':')[1] === '2') {
-        access = this.access2;
+        access = this.access2 * 60;
       }
       if (prefs.handicap[0].split(':')[1] === '3') {
-        access = this.access3;
+        access = this.access3 * 60;
       }
     }
     events = Events.sortEvents('startTime', true, events);
