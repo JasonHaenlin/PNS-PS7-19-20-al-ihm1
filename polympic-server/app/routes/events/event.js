@@ -8,8 +8,8 @@ exports.getEventsByPreferences = async (req, res) => {
     preview = req.query.preview;
   }
   const prefs = {
-    sport: ansHandler.parseQuery(req.query.sports),
-    country: ansHandler.parseQuery(req.query.countries)
+    sport: ansHandler.parseQuery(req.query.sport),
+    country: ansHandler.parseQuery(req.query.country)
   };
   const events = event.getEvents(preview, prefs);
   resHandler.yahResponse(res, events);

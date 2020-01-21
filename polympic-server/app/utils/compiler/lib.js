@@ -5,7 +5,12 @@ const addElementToDisplay = (output, element) => {
 };
 
 const getEventsMatchingUserPreferences = (array, user_prefs) => {
-  return array.filter(e => user_prefs.includes(e.sport));
+  return array.filter(e => 
+    user_prefs.sport.includes(e.sport) && (
+      user_prefs.country.includes(e.versus[0]) ||
+      user_prefs.country.includes(e.versus[1])
+    )
+  ));
 };
 
 const setState = (newStatus, element) => {
