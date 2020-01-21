@@ -22,7 +22,7 @@ module.exports = {
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
-    let access;
+    let access = 1800;
     if (prefs.handicap.length > 0) {
       if (prefs.handicap[0].split(':')[1] === '1') {
         access = this.access1 * 60;
@@ -36,7 +36,7 @@ module.exports = {
     }
     events = Events.sortEvents('startTime', true, events);
     events.forEach(ev => {
-      if (ev.startTime !== Stime && ev.startTime >= Etime + 1800) {
+      if (ev.startTime !== Stime && ev.startTime >= Etime + access) {
         let next = Events.retrieveEventWithSameHour(ev, events);
         itinerary.push(next);
         Stime = ev.startTime;

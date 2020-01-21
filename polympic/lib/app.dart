@@ -5,6 +5,7 @@ import 'package:polympic/blocs/category/category_bloc.dart';
 import 'package:polympic/blocs/event/event_bloc.dart';
 import 'package:polympic/blocs/itinerary/itinerary_bloc.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
+import 'package:polympic/core/storage.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
 import 'package:polympic/screens/starter-page/starter_page.dart';
 import 'package:polympic/theme/style.dart';
@@ -15,6 +16,7 @@ void app() =>
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    cleanStorage();
     return BlocProvider<StarterBloc>(
       bloc: StarterBloc(),
       child: BlocProvider<ItineraryBloc>(
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             theme: appTheme(),
             home: BlocProvider<CategoryBloc>(
               bloc: CategoryBloc(),
-              child: AppPage(),
+              child: StarterPage(),
             ),
           ),
         ),

@@ -1,90 +1,106 @@
 [
     {
-        "name" : "Mini-expo : l histoire du ballon",
+        "name": "l'histoire du ballon",
         "description": "Petite expo",
         "site": {
-            "name" :"Ballon house",
-            "latitude" :48.920482,
-            "longitude" :2.366151
+            "name": "Ballon house",
+            "latitude": 48.920482,
+            "longitude": 2.366151
         },
-        "duration" : 900,
-        "versus" : ["Exposition"]
+        "duration": 900,
+        "versus": [
+            "Exposition"
+        ]
     },
     {
-        "name" : "Mini-expo : l histoire de Paris",
+        "name": "l'histoire de Paris",
         "description": "Petite expo",
         "site": {
-            "name" :"Center Paris",
-            "latitude" :48.924072,
-            "longitude" :2.352351
+            "name": "Center Paris",
+            "latitude": 48.924072,
+            "longitude": 2.352351
         },
-        "duration" : 900,
-        "versus" : ["Exposition"]
+        "duration": 900,
+        "versus": [
+            "Exposition"
+        ]
     },
     {
-        "name" : "Exposition des droits de l homme",
+        "name": "Il était une balle",
         "description": "Grande expo",
         "site": {
-            "name" :"Palais expo",
-            "latitude" :48.919117,
-            "longitude" :2.362289
+            "name": "Palais expo",
+            "latitude": 48.919117,
+            "longitude": 2.362289
         },
-        "duration" : 1800,
-        "versus" : ["Exposition"]
+        "duration": 1800,
+        "versus": [
+            "Exposition"
+        ]
     },
     {
-        "name" : "Musée des Trains",
+        "name": "Musée des Trains",
         "description": "Grande expo",
         "site": {
-            "name" :"Musée Paris",
-            "latitude" :48.918229,
-            "longitude" :2.363469
+            "name": "Musée Paris",
+            "latitude": 48.918229,
+            "longitude": 2.363469
         },
-        "duration" : 2700,
-        "versus" : ["Musée"]
+        "duration": 2700,
+        "versus": [
+            "Musée"
+        ]
     },
     {
-        "name" : "Musée de la légion d honneur",
+        "name": "Musée de la légion",
         "description": "Grande expo",
         "site": {
-            "name" :"Musée Nord",
-            "latitude" :48.932907,
-            "longitude" :2.361413
+            "name": "Musée Nord",
+            "latitude": 48.932907,
+            "longitude": 2.361413
         },
-        "duration" : 3600,
-        "versus" : ["Musée"]
+        "duration": 3600,
+        "versus": [
+            "Musée"
+        ]
     },
     {
-        "name" : "Promenade de la Courneuve",
+        "name": "Prom. de la Courneuve",
         "description": "Grande promenade",
         "site": {
-            "name" :"Promenade Nord",
-            "latitude" :48.941142,
-            "longitude" :2.400398
+            "name": "Promenade Nord",
+            "latitude": 48.941142,
+            "longitude": 2.400398
         },
-        "duration" : 1800,
-        "versus" : ["Jardin"]
+        "duration": 1800,
+        "versus": [
+            "Jardin"
+        ]
     },
     {
-        "name" : "Les merveilles des Chanteraines",
+        "name": "Les merveilles des Chanteraines",
         "description": "Grande promenade",
         "site": {
-            "name" :"Promenade Sud",
-            "latitude" :48.939512,
-            "longitude" :2.316766
+            "name": "Promenade Sud",
+            "latitude": 48.939512,
+            "longitude": 2.316766
         },
-        "duration" : 4500,
-        "versus" : ["Parc"]
+        "duration": 4500,
+        "versus": [
+            "Parc"
+        ]
     },
     {
-        "name" : "Le détour des Sévines",
+        "name": "Le détour des Sévines",
         "description": "Grande promenade",
         "site": {
-            "name" :"Promenade Ouest",
-            "latitude" :48.929069,
-            "longitude" :2.304663
+            "name": "Promenade Ouest",
+            "latitude": 48.929069,
+            "longitude": 2.304663
         },
-        "duration" : 900,
-        "versus" : ["Parc"]
+        "duration": 900,
+        "versus": [
+            "Parc"
+        ]
     }
 ]
