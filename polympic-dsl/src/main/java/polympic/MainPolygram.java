@@ -12,7 +12,7 @@ public class MainPolygram implements ANTLRErrorListener {
 
     static String getJSCodeForRunFunction(RuleContext tree) {
         GeneratorVisitor visitor = new GeneratorVisitor();
-        String result = "function run(array) {\n    ";
+        String result = "function run(array, user_prefs) {\n    ";
         result += "let output = [];\n    ";
         result += visitor.visit(tree);
         result += "\n    return output;\n};\n";
@@ -28,7 +28,7 @@ public class MainPolygram implements ANTLRErrorListener {
         } else if (args.length == 1) {
             input = new ANTLRFileStream(args[0]);
         } else {
-            throw new IllegalArgumentException("Expected 0 or 1 argument");
+            throw new IllegalArgumentException("Expected 0 or 1 argument.");
         }
         PolygramLexer lexer = new PolygramLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

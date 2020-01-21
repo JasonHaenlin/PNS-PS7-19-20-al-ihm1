@@ -1,9 +1,14 @@
-//concerning programs
+//concerning itinerary steps
 //when score + popularity < 5 or 4 != VAR and BAR then when BAR = 3 then display
 //when FOO then display
 //display
 //when popularity > 25 then display
 //display display
+
+concerning all events
+when distance < 8700 and sport is Football then mark as important
+concerning preferences
+display
 
 //when yes is no then mark as important
 
@@ -11,5 +16,5 @@
 
 //display
 
-concerning all events
-display
+//concerning all events
+//display

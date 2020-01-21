@@ -5,7 +5,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 public class GeneratorVisitor extends PolygramBaseVisitor<String> {
 
     private static final String EVENT = "event";
-    private static final String PROGRAM = "program";
+    private static final String EVENT_IN_PREF = "event_in_pref";
+    private static final String STEP = "itinerary_step";
 
     private int indentation = 0;
     private String subject;
@@ -35,31 +36,106 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitProgram(PolygramParser.ProgramContext ctx) {
         String result = "";
+        if (ctx.sub_prog_events(0) != null) {
+            for (PolygramParser.Sub_prog_eventsContext subProgEvents : ctx.sub_prog_events()) {
+                result += this.visitSub_prog_events(subProgEvents);
+            }
+            return result;
+        } else if (ctx.sub_prog_steps() != null) {
+            return this.visitSub_prog_steps(ctx.sub_prog_steps());
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitSub_prog_events(PolygramParser.Sub_prog_eventsContext ctx) {
+        String result = "";
         indentation++;
         result += "for (const ";
-        result += this.visitSubject(ctx.subject());
+        result += this.visitSubject_events(ctx.subject_events());
         for (PolygramParser.StatementContext statementContext : ctx.statement()) {
             result += this.visitStatement(statementContext);
         }
         this.updateIndentClosingBlock();
         result += this.goToLine();
-        result += "}";
+        result += "} ";
+        result += this.goToLine();
+        this.updateIndentClosingBlock();
         return result;
     }
 
     /**
-     * Visit a parse tree produced by {@link PolygramParser#subject}.
+     * {@inheritDoc}
      *
-     * @param ctx the parse tree
-     * @return the visitor result
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
      */
     @Override
-    public String visitSubject(PolygramParser.SubjectContext ctx) {
+    public String visitSub_prog_steps(PolygramParser.Sub_prog_stepsContext ctx) {
         String result = "";
-        if (ctx.PROGRAMS() != null) {
-            this.subject = GeneratorVisitor.PROGRAM;
-        } else if (ctx.EVENTS() != null) {
+        result += "for (const ";
+        result += this.visitSubject_it_steps(ctx.subject_it_steps());
+        for (PolygramParser.StatementContext statementContext : ctx.statement()) {
+            result += this.visitStatement(statementContext);
+        }
+        this.updateIndentClosingBlock();
+        result += this.goToLine();
+        result += "} ";
+        result += this.goToLine();
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitSubject_events(PolygramParser.Subject_eventsContext ctx) {
+        String result = "";
+        if (ctx.EVENTS() != null) {
             this.subject = GeneratorVisitor.EVENT;
+            result += subject + " of array) { ";
+        } else if (ctx.PREFS() != null) {
+            this.subject = GeneratorVisitor.EVENT_IN_PREF;
+            result += subject + " of lib.getEventsMatchingUserPreferences(array, user_prefs)) { ";
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
+        }
+
+        this.updateIndentEnteringBlock();
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     *
+     * @param ctx
+     */
+    @Override
+    public String visitSubject_it_steps(PolygramParser.Subject_it_stepsContext ctx) {
+        String result = "";
+        if (ctx.IT_STEPS() != null) {
+            this.subject = GeneratorVisitor.STEP;
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
         result += subject + " of array) {";
         this.updateIndentEnteringBlock();
@@ -95,12 +171,11 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             this.updateIndentEnteringBlock();
             if (ctx.THEN() != null) {
                 result += this.visitStatement(ctx.statement());
-
             }
         }
         this.updateIndentClosingBlock();
         result += this.goToLine();
-        result += "}";
+        result += "} ";
         return result;
     }
 
@@ -114,9 +189,11 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitAction(PolygramParser.ActionContext ctx) {
         String result = "";
         if (ctx.DISPLAY() != null) {
-            result += "output.push(" + subject + ");";
+            result += "addElementToDisplay(" + subject + ");";
         } else if (ctx.place_state() != null) {
             result += this.visitPlace_state(ctx.place_state());
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
         return result;
     }
@@ -194,7 +271,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         String result = "";
         for (PlaceState state : PlaceState.values()) {
             if (ctx.IDENTIFIER().getText().equals(state.getState())) {
-                result += this.subject + ".setState(\"" + ctx.getText() + "\");";
+                result += this.subject + ".lib.setState(\"" + ctx.getText() + "\", " + this.subject + ");";
                 return result;
             }
         }

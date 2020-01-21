@@ -17,11 +17,29 @@ public interface PolygramVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(PolygramParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link PolygramParser#subject}.
+	 * Visit a parse tree produced by {@link PolygramParser#sub_prog_steps}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubject(PolygramParser.SubjectContext ctx);
+	T visitSub_prog_steps(PolygramParser.Sub_prog_stepsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PolygramParser#sub_prog_events}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSub_prog_events(PolygramParser.Sub_prog_eventsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PolygramParser#subject_it_steps}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubject_it_steps(PolygramParser.Subject_it_stepsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PolygramParser#subject_events}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubject_events(PolygramParser.Subject_eventsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PolygramParser#statement}.
 	 * @param ctx the parse tree

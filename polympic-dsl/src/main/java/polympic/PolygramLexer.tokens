@@ -1,4 +1,4 @@
-PROGRAMS=1
+IT_STEPS=1
 DISPLAY=2
 MUL=3
 DIV=4
@@ -25,7 +25,7 @@ EOL=24
 COMMENT=25
 WS=26
 IDENTIFIER=27
-'programs'=1
+'itinerary steps'=1
 'display'=2
 '*'=3
 '/'=4

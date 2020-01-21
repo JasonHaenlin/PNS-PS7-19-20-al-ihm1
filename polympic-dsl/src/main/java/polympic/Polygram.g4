@@ -1,20 +1,24 @@
 grammar Polygram;
 
-//@header {package polympic;}
-
 // parser rules :
 
+// TODO add RED_MOB
+
 program:
-        sub_program_programs
-    |   sub_program_events+
+        sub_prog_steps
+    |   sub_prog_events+
     ;
 
-sub_program_programs:
-        CONCERNING PROGRAMS statement+
+sub_prog_steps:
+        CONCERNING subject_it_steps statement+
     ;
 
-sub_program_events:
+sub_prog_events:
         CONCERNING subject_events statement+
+    ;
+
+subject_it_steps:
+    IT_STEPS
     ;
 
 subject_events:
@@ -79,7 +83,7 @@ number:
 
 // lexer rules :
 
-PROGRAMS:
+IT_STEPS:
     'itinerary steps';
 
 DISPLAY:
@@ -101,7 +105,7 @@ EVENTS:
     'all events';
 
 PREFS:
-        'events matching preferences'
+        'events matching preferences' // todo for() if (lib.in_UserPref(event, user_pref))
     |   'preferences'
     ;
 
