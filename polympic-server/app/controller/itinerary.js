@@ -2,14 +2,13 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable security/detect-object-injection */
 const Events = require('./event');
-const { Event } = require('../../models');
 const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 module.exports = {
   generateItinerary(prefs) {
-    let events = Event.get();
+    let events = Events.getEvents(prefs);
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
@@ -22,10 +21,10 @@ module.exports = {
         Etime = ev.endTime;
       }
     });
-    if (prefs !== undefined && prefs.includes('Pause déjeuner')) {
+    if (prefs !== undefined && prefs.recreation.includes('Pause déjeuner')) {
       itinerary = this.addRestaurant(itinerary, 12);
     }
-    if (prefs !== undefined && prefs.includes('Sites touristiques')) {
+    if (prefs !== undefined && prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary);
     }
     return itinerary;

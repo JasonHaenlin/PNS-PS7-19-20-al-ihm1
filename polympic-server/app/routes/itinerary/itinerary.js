@@ -1,18 +1,17 @@
 const resHandler = require('../../utils/response-handler');
+const ansHandler = require('../../utils/answer-handler');
 const { itinerary } = require('../../controller');
 
 exports.getItinerary = async (req, res) => {
-  let prefs = req.query.prefs;
-  // let sports = req.query.sports;
-  // let handicap = req.query.handicap;
-  // let recreations = req.query.recreation;
-  // let countries = req.query.countries;
-  // let lunch = req.query.lunch;
-  let anItinierary = [];
-  if (prefs) {
-    anItinierary.push(itinerary.generateItinerary(prefs));
-  }
-  resHandler.yahResponse(res, anItinierary);
+  const prefs = {
+    sport: ansHandler.parseQuery(req.query.sports),
+    handicap: ansHandler.parseQuery(req.query.handicap),
+    recreation: ansHandler.parseQuery(req.query.recreation),
+    country: ansHandler.parseQuery(req.query.countries),
+    lunch: ansHandler.parseQuery(req.query.lunch)
+  };
+  const resIti = itinerary.generateItinerary(prefs);
+  resHandler.yahResponse(res, resIti);
 };
 
 exports.previewResult = async (req, res) => {
