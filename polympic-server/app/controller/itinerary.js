@@ -6,10 +6,10 @@ const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
-let access1 = 0;
-let access2 = 0;
-let access3 = 0;
-let meal = 14;
+let access1 = 150;
+let access2 = 300;
+let access3 = 600;
+let meal = 12;
 
 module.exports = {
   access1,

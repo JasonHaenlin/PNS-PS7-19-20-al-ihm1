@@ -13,4 +13,4 @@ const prefs = {
 Itinerary.access2 = 600;
 Itinerary.meal = 14;
 let iti = Itinerary.generateItinerary(prefs);
-console.log(iti);
+// console.log(iti);
