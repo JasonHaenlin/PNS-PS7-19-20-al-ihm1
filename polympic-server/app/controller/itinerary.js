@@ -55,9 +55,9 @@ module.exports = {
     let newIti = [];
     let restoB = false;
     let resto = Restaurant.getRestaurants();
+    let dateGroup;
     for (let i = 0; i < itinerary.length; i++) {
-      // eslint-disable-next-line security/detect-object-injection
-      let dateGroup = itinerary[i][0].startTime;
+      dateGroup = itinerary[i][0].startTime;
       if (i < itinerary.length - 1) {
         dateGroupNext = itinerary[i + 1][0].startTime;
       }
