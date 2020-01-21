@@ -189,7 +189,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     public String visitAction(PolygramParser.ActionContext ctx) {
         String result = "";
         if (ctx.DISPLAY() != null) {
-            result += "addElementToDisplay(" + subject + ");";
+            result += "lib.addElementToDisplay(output, " + subject + ");";
         } else if (ctx.place_state() != null) {
             result += this.visitPlace_state(ctx.place_state());
         } else {
