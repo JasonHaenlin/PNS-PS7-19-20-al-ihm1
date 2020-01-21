@@ -11,7 +11,7 @@ const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 
 module.exports = {
-  getEvents(preview=false) {
+  getEvents(preview) {
     return this.filterByScript(preview);
   },
 
@@ -24,10 +24,11 @@ module.exports = {
   },
 
   // use the example script
-  filterByScript() {
+  filterByScript(preview) {
     let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
     let scriptName;
+    console.log('\n\n\nfgdgdgdg ' + preview + '\n\n\n');
     if (preview)
       scriptName = './app/public/scripts/preview_example.script';
     else
@@ -48,8 +49,8 @@ module.exports = {
     return events.filter((elem) => tags.includes(elem.sport));
   },
 
-  filterEventsByProximityAndTags(tags, from) {
-    let events = this.getEvents();
+  filterEventsByProximityAndTags(tags, from, preview) {
+    let events = this.getEvents(preview);
     from = from || SELF;
     events = this.filterEventsByTags(tags, events);
     events = this.measureDistance(from, events);

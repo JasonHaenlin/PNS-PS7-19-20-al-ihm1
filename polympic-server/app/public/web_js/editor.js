@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable promise/always-return */
 const loadFile = async filename => {
-  let res = await fetch('/scripts/' + filename);
+  let res = await fetch('/scripts/preview_' + filename);
   let code = await res.text();
   editor.innerText = code;
   file = filename;

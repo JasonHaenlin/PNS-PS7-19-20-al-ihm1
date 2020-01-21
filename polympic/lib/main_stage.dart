@@ -6,7 +6,7 @@ void main() {
   envConfig.appName = kEnvAppName;
   envConfig.flavorName = kEnvDev;
   envConfig.apiBaseUrl = kEnvApiUrlDev;
-  envConfig.mocked = true;
-  envConfig.preview = false;
+  envConfig.mocked = false;
+  envConfig.preview = true;
   app();
 }

@@ -27,6 +27,12 @@ class EventService {
     if (params.length > 0) {
       params = '?prefs=' + params;
     }
+    if (envConfig.preview) {
+      if (params != '')
+        params += '&preview=true';
+      else
+        params = '?preview=true';
+    }
     final response = await client.get(envConfig.apiBaseUrl + 'events' + params);
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
