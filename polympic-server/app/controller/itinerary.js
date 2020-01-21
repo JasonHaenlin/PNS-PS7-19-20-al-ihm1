@@ -6,20 +6,21 @@ const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
-let access1;
-let access2;
-let access3;
+let access1 = 0;
+let access2 = 0;
+let access3 = 0;
 
 module.exports = {
   access1,
   access2,
   access3,
   generateItinerary(prefs) {
-    let events = Events.getEvents(prefs);
+    let events = Events.getEvents(false, prefs);
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
     let access;
+<<<<<<< HEAD
     if (prefs.handicap.split(':')[1] === 1) {
       access = this.access1;
     }
@@ -27,6 +28,15 @@ module.exports = {
       access = this.access2;
     }
     if (prefs.handicap.split(':')[1] === 3) {
+=======
+    if (prefs.handicap[0].split(':')[1]== 1) {
+      access = this.access1;
+    }
+    if (prefs.handicap[0].split(':')[1]== 2) {
+      access = this.access2;
+    }
+    if (prefs.handicap[0].split(':')[1]== 3) {
+>>>>>>> GH-94 Itinerary change
       access = this.access3;
     }
     events = Events.sortEvents('startTime', true, events);
@@ -38,11 +48,19 @@ module.exports = {
         Etime = ev.endTime;
       }
     });
+<<<<<<< HEAD
     if (prefs !== undefined && prefs.recreation.includes('Pause déjeuner')) {
       itinerary = this.addRestaurant(itinerary, 12);
     }
     if (prefs !== undefined && prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary);
+=======
+    if (prefs.recreation.includes('Pause déjeuner')) {
+      itinerary = this.addRestaurant(itinerary, 12, access);
+    }
+    if (prefs.tourism.includes('Sites touristiques')) {
+      itinerary = this.addTourism(itinerary, access);
+>>>>>>> GH-94 Itinerary change
     }
     return itinerary;
   },
@@ -68,7 +86,7 @@ module.exports = {
         if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
           resto.forEach(r => {
             r.startTime = itinerary[i][0].startTime + 3600 + access;
-            r.endTime = (r.startTime + 3600) - access;
+            r.endTime = (r.startTime + 3600) - access*2;
           });
           newIti.push(resto);
           restoB = true;
@@ -97,15 +115,12 @@ module.exports = {
     for (let i = 0; i < itinerary.length; i++) {
       newIti.push(itinerary[i]);
       start = itinerary[i][0].endTime + access;
-      console.log('start : ', start);
       if (i < itinerary.length - 1) {
         end = itinerary[i + 1][0].startTime - access;
-        console.log('end : ', end);
       } else {
         end = 1000000 - access;
       }
       freeTime = end - start;
-      console.log('freeTime : ', freeTime);
       tourism = TouristicsSites.TouristicSitesWithinDuration(freeTime);
       if (freeTime > 600) {
         tourism.forEach(t => {

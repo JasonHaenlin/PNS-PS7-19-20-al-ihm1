@@ -3,8 +3,13 @@ const { Event } = require('../models/index');
 const Itinerary = require('../app/controller/itinerary');
 const Events = require('../app/controller/event');
 
-
-let prefs = ['Pause déjeuner', 'Sites touristiques'];
-Itinerary.access1 = 600;
-let iti = Itinerary.generateItinerary(false, prefs);
-
+const prefs = {
+  sport: ['Football', 'Tennis'],
+  handicap: ['Capacité à se déplacer:2'],
+  recreation: ['Pause déjeuner'],
+  country: ['France', 'Japon'],
+  tourism: ['Sites touristiques']
+};
+Itinerary.access2 = 600;
+let iti = Itinerary.generateItinerary(prefs);
+console.log(iti);
