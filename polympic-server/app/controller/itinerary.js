@@ -97,17 +97,20 @@ module.exports = {
     for (let i = 0; i < itinerary.length; i++) {
       newIti.push(itinerary[i]);
       start = itinerary[i][0].endTime + access;
+      console.log('start : ',start);
       if (i < itinerary.length - 1) {
         end = itinerary[i + 1][0].startTime - access;
+        console.log('end : ',end);
       } else {
         end = 1000000 - access;
       }
       freeTime = end - start;
+      console.log(freeTime);
       tourism = TouristicsSites.TouristicSitesWithinDuration(freeTime);
       if (freeTime > 600) {
         tourism.forEach(t => {
           t.startTime = start;
-          t.endTime = start + t.duration - access * 2;
+          t.endTime = start + t.duration;
         });
         newIti.push(tourism);
       }

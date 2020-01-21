@@ -8,7 +8,7 @@ exports.getItinerary = async (req, res) => {
     handicap: ansHandler.parseQuery(req.query.handicap),
     recreation: ansHandler.parseQuery(req.query.recreation),
     country: ansHandler.parseQuery(req.query.country),
-    lunch: ansHandler.parseQuery(req.query.lunch)
+    tourism: ansHandler.parseQuery(req.query.tourism)
   };
   const resIti = itinerary.generateItinerary(prefs);
   resHandler.yahResponse(res, resIti);
@@ -17,7 +17,7 @@ exports.getItinerary = async (req, res) => {
 exports.previewResult = async (req, res) => {
   let code = req.body.code;
   let prefs = req.query.prefs;
-  let r = itinerary.generateItinerary();
+  let r = itinerary.generateItinerary(prefs);
 
   resHandler.yahResponse(res, r);
 };
