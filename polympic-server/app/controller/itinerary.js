@@ -9,11 +9,13 @@ const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 let access1 = 0;
 let access2 = 0;
 let access3 = 0;
+let meal = 14;
 
 module.exports = {
   access1,
   access2,
   access3,
+  meal,
   generateItinerary(prefs) {
     let events = Events.getEvents(false, prefs);
     let itinerary = [];
@@ -41,7 +43,7 @@ module.exports = {
       }
     });
     if (prefs.recreation.includes('Pause déjeuner')) {
-      itinerary = this.addRestaurant(itinerary, 12, access);
+      itinerary = this.addRestaurant(itinerary, access);
     }
     if (prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary, access);
@@ -49,7 +51,7 @@ module.exports = {
     return itinerary;
   },
 
-  addRestaurant(itinerary, hour, access) {
+  addRestaurant(itinerary, access) {
     let newIti = [];
     let restoB = false;
     let resto = Restaurant.getRestaurants();
@@ -63,11 +65,11 @@ module.exports = {
       if (i < itinerary.length - 1) {
         hourGroupNext = getHourfromDate(dateGroupNext);
       }
-      if (hourGroup < hour) {
+      if (hourGroup < this.meal) {
         newIti.push(itinerary[i]);
       }
       if (i < itinerary.length - 1) {
-        if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
+        if (hourGroupNext > this.meal && hourGroup < this.meal || hourGroup === this.meal) {
           resto.forEach(r => {
             r.startTime = itinerary[i][0].startTime + 3600 + access;
             r.endTime = (r.startTime + 3600) - access * 2;
@@ -76,7 +78,7 @@ module.exports = {
           restoB = true;
         }
       }
-      if (hourGroup > hour) {
+      if (hourGroup > this.meal) {
         newIti.push(itinerary[i]);
       }
     }
