@@ -20,7 +20,7 @@ main() {
       final client = MockClient();
       ItineraryService serv = ItineraryService(client: client);
 
-      when(client.get('mock/itineraries')).thenAnswer((_) async =>
+      when(client.get('mock/itinerary')).thenAnswer((_) async =>
           http.Response(json.encode(ITINERARY_MOCK).toString(), 200));
       expect(await serv.getData(), const TypeMatcher<ItineraryModel>());
     });
@@ -37,7 +37,7 @@ main() {
       final client = MockClient();
       ItineraryService serv = ItineraryService(client: client);
 
-      when(client.get('mock/itineraries?sport=Football,Tennis,')).thenAnswer(
+      when(client.get('mock/itinerary?sport=Football,Tennis,')).thenAnswer(
           (_) async =>
               http.Response(json.encode(ITINERARY_MOCK).toString(), 200));
 
@@ -60,7 +60,7 @@ main() {
       ItineraryService serv = ItineraryService(client: client);
 
       when(client.get(
-              'mock/itineraries?sport=Football,Tennis,&country=France,Japon,'))
+              'mock/itinerary?sport=Football,Tennis,&country=France,Japon,'))
           .thenAnswer((_) async =>
               http.Response(json.encode(ITINERARY_MOCK).toString(), 200));
 
@@ -85,7 +85,7 @@ main() {
       ItineraryService serv = ItineraryService(client: client);
 
       when(client.get(
-              'mock/itineraries?sport=Football,Tennis,&country=France,Japon,&handicap=Handicap mobile:3,'))
+              'mock/itinerary?sport=Football,Tennis,&country=France,Japon,&handicap=Handicap mobile:3,'))
           .thenAnswer((_) async =>
               http.Response(json.encode(ITINERARY_MOCK).toString(), 200));
 
