@@ -14,6 +14,7 @@
             "latitude": 48.924298,
             "longitude": 2.359805
         },
+        "status": "none",
         "startTime": 1641369600,
         "endTime": 1641373200
     },
@@ -32,6 +33,7 @@
             "latitude": 48.924298,
             "longitude": 2.359805
         },
+        "status": "none",
         "startTime": 1641376800,
         "endTime": 1641380400
     },
@@ -50,6 +52,7 @@
             "latitude": 48.924072,
             "longitude": 2.352351
         },
+        "status": "none",
         "startTime": 1641376800,
         "endTime": 1641380400
     },
@@ -68,6 +71,7 @@
             "latitude": 48.926455,
             "longitude": 2.359569
         },
+        "status": "none",
         "startTime": 1641369600,
         "endTime": 1641373200
     },
@@ -86,6 +90,7 @@
             "latitude": 48.926455,
             "longitude": 2.359569
         },
+        "status": "none",
         "startTime": 1641376800,
         "endTime": 1641380400
     },
@@ -104,6 +109,7 @@
             "latitude": 48.926455,
             "longitude": 2.359569
         },
+        "status": "none",
         "startTime": 1641384000,
         "endTime": 1641387600
     },
@@ -122,6 +128,7 @@
             "latitude": 48.926455,
             "longitude": 2.359569
         },
+        "status": "none",
         "startTime": 1641391200,
         "endTime": 1641394800
     },
@@ -140,6 +147,7 @@
             "latitude": 48.924072,
             "longitude": 2.352351
         },
+        "status": "none",
         "startTime": 1641398400,
         "endTime": 1641402000
     },
@@ -158,6 +166,7 @@
             "latitude": 48.940065,
             "longitude": 2.394088
         },
+        "status": "none",
         "startTime": 1641398400,
         "endTime": 1641402000
     },
@@ -176,6 +185,7 @@
             "latitude": 48.926455,
             "longitude": 2.359569
         },
+        "status": "none",
         "startTime": 1641405600,
         "endTime": 1641409200
     },
@@ -194,6 +204,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641373200,
         "endTime": 1641376800
     },
@@ -212,6 +223,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641380400,
         "endTime": 1641384000
     },
@@ -230,6 +242,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641387600,
         "endTime": 1641391200
     },
@@ -248,6 +261,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641394800,
         "endTime": 1641398400
     },
@@ -266,6 +280,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641402000,
         "endTime": 1641405600
     },
@@ -284,6 +299,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641409200,
         "endTime": 1641412800
     },
@@ -302,6 +318,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641416400,
         "endTime": 1641420000
     },
@@ -320,6 +337,7 @@
             "latitude": 48.928184,
             "longitude": 2.349687
         },
+        "status": "none",
         "startTime": 1641421800,
         "endTime": 1641423600
     },
@@ -338,6 +356,7 @@
             "latitude": 48.920482,
             "longitude": 2.366151
         },
+        "status": "none",
         "startTime": 1641376800,
         "endTime": 1641380400
     },
@@ -356,6 +375,7 @@
             "latitude": 48.920482,
             "longitude": 2.366151
         },
+        "status": "none",
         "startTime": 1641384000,
         "endTime": 1641387600
     },
@@ -374,6 +394,7 @@
             "latitude": 48.920482,
             "longitude": 2.366151
         },
+        "status": "none",
         "startTime": 1641391200,
         "endTime": 1641394800
     },
@@ -392,6 +413,7 @@
             "latitude": 48.920482,
             "longitude": 2.366151
         },
+        "status": "none",
         "startTime": 1641398400,
         "endTime": 1641402000
     }

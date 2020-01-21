@@ -271,7 +271,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         String result = "";
         for (PlaceState state : PlaceState.values()) {
             if (ctx.IDENTIFIER().getText().equals(state.getState())) {
-                result += this.subject + ".lib.setState(\"" + ctx.getText() + "\", " + this.subject + ");";
+                result += "lib.setState(\"" + ctx.getText() + "\", " + this.subject + ");";
                 return result;
             }
         }
