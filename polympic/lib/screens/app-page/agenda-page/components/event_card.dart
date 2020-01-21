@@ -46,7 +46,7 @@ class EventCard extends StatelessWidget {
                 width: 100,
                 height: 180,
               ),
-              DistanceCard(),
+              DistanceCard(distance: event.distance),
             ],
           ),
           Expanded(
@@ -107,7 +107,10 @@ class EventCard extends StatelessWidget {
 class DistanceCard extends StatelessWidget {
   const DistanceCard({
     Key key,
+    @required this.distance,
   }) : super(key: key);
+
+  final int distance;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +124,7 @@ class DistanceCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Text(
-          '500m',
+          this.distance.toString() + 'm',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
