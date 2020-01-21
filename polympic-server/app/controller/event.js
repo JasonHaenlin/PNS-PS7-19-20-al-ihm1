@@ -11,8 +11,8 @@ const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 
 module.exports = {
-  getEvents() {
-    return this.filterByScript();
+  getEvents(preview=false) {
+    return this.filterByScript(preview);
   },
 
   // use the code in parameter
@@ -27,7 +27,11 @@ module.exports = {
   filterByScript() {
     let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
-    const scriptName = './app/public/scripts/example.script';
+    let scriptName;
+    if (preview)
+      scriptName = './app/public/scripts/preview_example.script';
+    else
+      scriptName = './app/public/scripts/example.script';
     const compiledScript = compiler.compile(scriptName);
     let result;
     try {

@@ -8,5 +8,7 @@ const editor = express.Router();
 editor.get('/', handleExceptions(e.viewEditor));
 
 editor.post('/save', handleExceptions(e.saveScript));
+editor.post('/preview', handleExceptions(e.savePreview));
+editor.post('/compile', handleExceptions(e.compile));
 
 module.exports = editor;

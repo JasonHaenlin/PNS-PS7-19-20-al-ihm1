@@ -1,9 +1,19 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const resHandler = require('../../utils/response-handler');
+const compiler = require('../../utils/compiler');
+const fs = require('fs');
 
 exports.saveScript = async (req, res) => {
   let code = req.body.code;
-  let file = './public/scripts/' + req.body.file;
+  let file = __dirname+'/../../public/scripts/' + req.body.file;
+  fs.writeFileSync(file, code);
+  resHandler.yahResponse(res, 'ok');
+};
+
+exports.savePreview = async (req, res) => {
+  let code = req.body.code;
+  let file = __dirname+'/../../public/scripts/preview_' + req.body.file;
+  console.log(file);
   fs.writeFileSync(file, code);
   resHandler.yahResponse(res, 'ok');
 };
@@ -16,3 +26,16 @@ exports.viewEditor = async (req, res) => {
     res.render('index', { title: 'Σ(ﾟДﾟ)' });
   }
 };
+
+exports.compile = async (req, res) => {
+  console.log(req.body);
+  let code = req.body.code;
+  try {
+    let compiledCode = compiler.compileCode(code);
+    const lib = require('../../utils/compiler/lib');
+    eval(compiledCode);
+    resHandler.yahResponse(res, { compiledCode: compiledCode });
+  } catch {
+    resHandler.nahResponse(res, "failed");
+  }
+}
