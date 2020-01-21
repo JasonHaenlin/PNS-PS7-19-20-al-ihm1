@@ -14,7 +14,8 @@
 
 <body>
     <div class="header">
-        <div class="title">Editor &nbsp;<small>(</small><small id="sub-title"></small><small>)</small></div>
+        <div class="title">Editor &nbsp;<small>(</small><small
+                id="sub-title"></small><small>)</small></div>
         <div class="buttons">
             <button id="loader" class="pure-button"></button>
             <button id="btn-save" class="pure-button-primary pure-button">Save</button>
@@ -27,38 +28,59 @@
                 <span class='tooltip'>
                     <strong>concerning all events</strong>
                     <span class='tooltip-text'>Qtatements will be applied to all the events</span>
-                </span> <br/>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>concerning</strong> [events matching preferences / preferences]
-                    <span class='tooltip-text'>Statements will be applied the events matching the user's preferences</span>
-                </span> <br/>
+                    <span class='tooltip-text'>Statements will be applied the events matching the
+                        user's preferences</span>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>concerning itinerary steps</strong>
-                    <span class='tooltip-text'>Statements will be used to create the itinerary for the user</span>
-                </span> <br/>
+                    <span class='tooltip-text'>Statements will be used to create the itinerary for
+                        the user</span>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>when</strong> [condition] <strong>then</strong> [action]
-                    <span class='tooltip-text'>Executes the action only if the condition is evaluated to true</span>
-                </span> <br/>
+                    <span class='tooltip-text'>Executes the action only if the condition is
+                        evaluated to true</span>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>display</strong>
                     <span class='tooltip-text'>Make the event appear in the app</span>
-                </span> <br/>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>mark as</strong> [recommended, important]
                     <span class='tooltip-text'>Change the display of the event in the app</span>
-                </span> <br/>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>&gt;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&equals;&nbsp;&nbsp;&gt;&equals;&nbsp;&nbsp;&lt;&equals;&nbsp;&nbsp;!&equals;</strong>
                     <span class='tooltip-text'>Available symbols for comparing numbers</span>
-                </span> <br/>
+                </span> <br />
                 <span class='tooltip'>
                     <strong>sport&nbsp;&nbsp;distance&nbsp;&nbsp;tag</strong>
                     <span class='tooltip-text'>Informations available for the events</span>
-                </span> <br/>
+                </span> <br />
             </div>
-            <div id='config'>
-                <span>Some value<input/></span>
+            <div class="config-container">
+                <h3>Distance between steps according to mobility</h3>
+                <div class='config'>
+                    <span>No Difficulties (meters)<input id="acs1"
+                            value="<%= acs1%>" /></span>
+                </div>
+                <div class='config'>
+                    <span>Some Difficulties (meters)<input id="acs2" value="<%= acs2%>" /></span>
+                </div>
+                <div class='config'>
+                    <span>High Difficulties (meters)<input id="acs3" value="<%= acs3%>" /></span>
+                </div>
+                <h3>Lunch time</h3>
+
+                <div class='config'>
+                    <span>Hour of lunch<input id="meal" value="<%= meal%>" /></span>
+                </div>
+                <button id="btn_config"
+                    class="pure-button-primary pure-button" onclick="validation()">Valider</button>
+                <span id="textValidation"></span>
             </div>
         </div>
         <div id="editor-container">
@@ -70,6 +92,15 @@
     </div>
 
     <script src="/web_js/editor.js"></script>
+    <script>
+        function validation() {
+            let textValidation = document.getElementById("textValidation");
+            textValidation.innerHTML = 'Sauvegardé';
+            setTimeout(() => {
+                textValidation.innerHTML = '';
+            }, 1000);
+        }
+    </script>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ const compile = async () => {
   fetch('/editor/compile', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 'code': editor.innerText})
+    body: JSON.stringify({ 'code': editor.innerText })
   }).then(res => {
     if (res.status == 200) {
       canSave = true;
@@ -35,7 +35,9 @@ let editor = document.getElementById('editor');
 let preview_btn = document.getElementById('btn-preview');
 let save_btn = document.getElementById('btn-save');
 let loader_btn = document.getElementById('loader');
+let config_btn = document.getElementById('btn-config');
 let subtitle = document.getElementById('sub-title');
+let textValidation = document.getElementById('textValidation');
 loadFile(file_events);
 loader_btn.innerText = 'Load itineraries';
 subtitle.innerText = 'Events';
@@ -67,4 +69,21 @@ loader_btn.addEventListener('click', () => {
     loader_btn.innerText = 'Load itineraries';
     subtitle.innerText = 'Events'
   }
+});
+
+config_btn.addEventListener('click', () => {
+  fetch('itinerary/accessibilities', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      value: [
+        document.getElementById('acs1').value,
+        document.getElementById('acs2').value,
+        document.getElementById('acs3').value,
+        document.getElementById('meal').value
+      ]
+    })
+  });
 });

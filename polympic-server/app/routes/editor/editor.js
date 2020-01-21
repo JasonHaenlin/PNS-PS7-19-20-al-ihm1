@@ -1,6 +1,8 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const resHandler = require('../../utils/response-handler');
 const compiler = require('../../utils/compiler');
+const { itinerary } = require('../../controller');
+
 const fs = require('fs');
 
 exports.saveScript = async (req, res) => {
@@ -20,7 +22,13 @@ exports.savePreview = async (req, res) => {
 exports.viewEditor = async (req, res) => {
   let id = req.query.id;
   if (id === '438c83fa-f6bc-4fe7-a20a-ee08d87df21d') {
-    res.render('editor/index');
+    res.render('editor/index', {
+      acs1: itinerary.access1,
+      acs2: itinerary.access2,
+      acs3: itinerary.access3,
+      meal: itinerary.meal
+
+    });
   } else {
     res.render('index', { title: 'Σ(ﾟДﾟ)' });
   }

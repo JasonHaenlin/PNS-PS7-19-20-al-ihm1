@@ -31,6 +31,11 @@ html {
     height: 8em;
 }
 
+#btn_config {
+    margin-top: 1em;
+    width: 8em;
+}
+
 #ide {
     display: flex;
     flex-direction: row;
@@ -77,19 +82,35 @@ html {
 }
 
 #doc {
-    height: 50%;
     padding-left: 2em;
 }
 
 #left-panel div {
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
+
+.config>span {
+    display: inline-block;
+    width: 50%;
+}
+
+.config-container {
+    padding: 2em;
+    font-size: 13px;
+}
+
+
+input {
+    width: 10em;
+}
+
 
 .tooltip {
     position: relative;
-    color: rgba(0,0,0,0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
+
 .tooltip:hover {
     background-color: #e6e6e6;
 }
@@ -102,14 +123,14 @@ html {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-  
+
     /* Position the tooltip text */
     position: absolute;
     z-index: 2;
     bottom: 125%;
-    
+
     margin-left: -120px;
-  
+
     /* Fade in tooltip */
     opacity: 0;
     transition: opacity 0.3s;
@@ -124,9 +145,9 @@ html {
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-  }
-  
-  /* Show the tooltip text when you mouse over the tooltip container */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;

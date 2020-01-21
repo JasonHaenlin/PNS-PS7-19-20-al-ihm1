@@ -4,7 +4,7 @@
 const Events = require('./event');
 const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
-const compiler = require('../utils/compiler')
+const compiler = require('../utils/compiler');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 let access1 = 2;

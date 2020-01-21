@@ -19,23 +19,23 @@ exports.getItinerary = async (req, res) => {
   resHandler.yahResponse(res, { events: resIti });
 };
 
-exports.updateAccessibilityValues = async (req, res) => {
-  const acs = ansHandler.parseQuery(req.query.values, [], ',');
-
-  if (acs.length === 3) {
-    itinerary.access1 = Number(acs[0]);
-    itinerary.access2 = Number(acs[1]);
-    itinerary.access3 = Number(acs[2]);
+exports.updateConfig = async (req, res) => {
+  if (req.body.value.length === 4) {
+    itinerary.access1 = Number(req.body.value[0]);
+    itinerary.access2 = Number(req.body.value[1]);
+    itinerary.access3 = Number(req.body.value[2]);
+    itinerary.meal = Number(req.body.value[3]);
   }
-  resHandler.yahResponse(res, acs);
+  resHandler.yahResponse(res, req.body.value);
 };
 
-exports.getAccessibilityValues = async (req, res) => {
+exports.getConfig = async (req, res) => {
   resHandler.yahResponse(res, {
     value: [
       itinerary.access1,
       itinerary.access2,
-      itinerary.access3
+      itinerary.access3,
+      itinerary.meal
     ]
   });
 };
