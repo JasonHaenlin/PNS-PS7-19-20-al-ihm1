@@ -6,12 +6,29 @@ const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
+let access1;
+let access2;
+let access3;
+
 module.exports = {
+  access1,
+  access2,
+  access3,
   generateItinerary(prefs) {
     let events = Events.getEvents(prefs);
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
+    let access;
+    if (prefs.handicap.split(':')[1]=== 1) {
+      access = this.access1;
+    }
+    if (prefs.handicap.split(':')[1]=== 2) {
+      access = this.access2;
+    }
+    if (prefs.handicap.split(':')[1]=== 3) {
+      access = this.access3;
+    }
     events = Events.sortEvents('startTime', true, events);
     events.forEach(ev => {
       if (ev.startTime !== Stime && ev.startTime >= Etime + 1800) {
@@ -21,16 +38,24 @@ module.exports = {
         Etime = ev.endTime;
       }
     });
+<<<<<<< HEAD
     if (prefs !== undefined && prefs.recreation.includes('Pause déjeuner')) {
       itinerary = this.addRestaurant(itinerary, 12);
     }
     if (prefs !== undefined && prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary);
+=======
+    if (prefs.recreation.includes('Pause déjeuner')) {
+      itinerary = this.addRestaurant(itinerary, 12, this.access1);
+    }
+    if (prefs.tourism.includes('Sites touristiques')) {
+      itinerary = this.addTourism(itinerary, this.access1);
+>>>>>>> #94 Itinerary
     }
     return itinerary;
   },
 
-  addRestaurant(itinerary, hour) {
+  addRestaurant(itinerary, hour, access) {
     let newIti = [];
     let restoB = false;
     let resto = Restaurant.getRestaurants();
@@ -50,8 +75,8 @@ module.exports = {
       if (i < itinerary.length - 1) {
         if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
           resto.forEach(r => {
-            r.startTime = itinerary[i][0].startTime + 3600;
-            r.endTime = r.startTime + 3000;
+            r.startTime = itinerary[i][0].startTime + 3600 + access;
+            r.endTime = (r.startTime + 3600) - access;
           });
           newIti.push(resto);
           restoB = true;
@@ -63,15 +88,15 @@ module.exports = {
     }
     if (!restoB && itinerary.length > 0) {
       resto.forEach(r => {
-        r.startTime = dateGroup + 7200;
-        r.endTime = r.startTime + 3000;
+        r.startTime = dateGroup + 7200 + access;
+        r.endTime = r.startTime + 3000 - access;
       });
       newIti.push(resto);
     }
     return newIti;
   },
 
-  addTourism(itinerary) {
+  addTourism(itinerary, access) {
     let newIti = [];
     let start = 0;
     let end = 0;
@@ -79,18 +104,21 @@ module.exports = {
     TouristicsSites.TouristicSitesWithinDuration();
     for (let i = 0; i < itinerary.length; i++) {
       newIti.push(itinerary[i]);
-      start = itinerary[i][0].endTime;
+      start = itinerary[i][0].endTime + access;
+      console.log('start : ', start);
       if (i < itinerary.length - 1) {
-        end = itinerary[i + 1][0].startTime;
+        end = itinerary[i + 1][0].startTime - access;
+        console.log('end : ', end);
       } else {
-        end = 1000000;
+        end = 1000000 - access;
       }
       freeTime = end - start;
+      console.log('freeTime : ', freeTime);
       tourism = TouristicsSites.TouristicSitesWithinDuration(freeTime);
       if (freeTime > 600) {
         tourism.forEach(t => {
           t.startTime = start;
-          t.endTime = start + t.duration;
+          t.endTime = start + t.duration - access*2;
         });
         newIti.push(tourism);
       }

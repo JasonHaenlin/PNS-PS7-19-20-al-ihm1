@@ -33,7 +33,7 @@ exports.compile = async (req, res) => {
     const lib = require('../../utils/compiler/lib');
     eval(compiledCode);
     resHandler.yahResponse(res, { compiledCode: compiledCode });
-  } catch {
+  } catch (e) {
     resHandler.nahResponse(res, 'failed');
   }
 };
