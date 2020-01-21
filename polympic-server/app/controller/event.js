@@ -11,7 +11,7 @@ const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 
 
 module.exports = {
-  getEvents(preview, prefs = {}) {
+  getEvents(preview, prefs) {
     return this.filterByScript(preview, prefs);
   },
 
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   // use the example script
-  filterByScript(preview, prefs = {}) {
+  filterByScript(preview, prefs) {
     let coords = SELF;
     let events = this.measureDistance(coords, Event.get());
     let scriptName;
@@ -37,7 +37,8 @@ module.exports = {
     try {
       // required for the compiled script
       // pass prefs to the compiler
-      result = eval(compiledScript).run(events);
+      const lib = require('../utils/compiler/lib');
+      result = eval(compiledScript).run(events, prefs);
     } catch (e) {
       result = [];
     }

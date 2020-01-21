@@ -20,13 +20,13 @@ module.exports = {
     let Stime = 0;
     let Etime = 0;
     let access;
-    if (prefs.handicap[0].split(':')[1]== 1) {
+    if (prefs.handicap[0].split(':')[1]=== 1) {
       access = this.access1;
     }
-    if (prefs.handicap[0].split(':')[1]== 2) {
+    if (prefs.handicap[0].split(':')[1]=== 2) {
       access = this.access2;
     }
-    if (prefs.handicap[0].split(':')[1]== 3) {
+    if (prefs.handicap[0].split(':')[1]=== 3) {
       access = this.access3;
     }
     events = Events.sortEvents('startTime', true, events);

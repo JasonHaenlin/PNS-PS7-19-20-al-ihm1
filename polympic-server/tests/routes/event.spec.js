@@ -21,7 +21,7 @@ describe('status route', () => {
         });
     });
   });
-  describe('GET /events filtered with Football', () => {
+  describe.skip('GET /events filtered with Football', () => {
     it('should respond with a 200', () => {
       request(app)
         .get('/events?prefs=Football')
@@ -39,7 +39,7 @@ describe('status route', () => {
         });
     });
   });
-  describe('GET /events filtered with Football and Rugby', () => {
+  describe.skip('GET /events filtered with Football and Rugby', () => {
     it('should respond with a 200', () => {
       request(app)
         .get('/events?prefs=Football,Rugby')
@@ -57,7 +57,7 @@ describe('status route', () => {
         });
     });
   });
-  describe('GET /events filtered with Volleyball', () => {
+  describe.skip('GET /events filtered with Volleyball', () => {
     it('should respond with a 200', () => {
       request(app)
         .get('/events?prefs=Volleyball')
