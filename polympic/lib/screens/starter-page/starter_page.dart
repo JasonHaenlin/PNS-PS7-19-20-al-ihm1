@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:polympic/blocs/bloc_provider.dart';
 import 'package:polympic/blocs/starter/starter_bloc.dart';
-import 'package:polympic/blocs/starter/starter_state.dart';
 import 'package:polympic/components/progress/customProgressIndicator.dart';
-import 'package:polympic/core/router.dart';
 import 'package:polympic/screens/app-page/app_page.dart';
-import 'package:polympic/screens/app-page/preference-page/components/pref_container.dart';
-import 'package:polympic/screens/app-page/preference-page/components/pref_list.dart';
-import 'package:polympic/theme/colors.dart';
+import 'package:polympic/screens/starter-page/steps/sport_step.dart';
 
 class StarterPage extends StatelessWidget {
   const StarterPage({Key key}) : super(key: key);
@@ -22,7 +18,7 @@ class StarterPage extends StatelessWidget {
           stream: _starterBloc.currentValue$,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) =>
               snapshot.hasData
-                  ? ChoosePreferences()
+                  ? (snapshot.data ? AppPage() : ChoosePreferences())
                   : CustomProgressIndicator(),
         ),
       ),
@@ -35,44 +31,6 @@ class ChoosePreferences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SportStarterPage();
-  }
-}
-
-class SportStarterPage extends StatelessWidget {
-  const SportStarterPage({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final _starterBloc = BlocProvider.of<StarterBloc>(context).starterBloc;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Choisir vos Préférences"),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 20,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
-          child: RaisedButton(
-            child: Text(
-              "Terminer",
-              style: TextStyle(color: Colors.white),
-            ),
-            color: kColorPrimary,
-            onPressed: () => {
-              _starterBloc.dispatch(StarterEvent.init),
-              navigateToPage(context, AppPage()),
-            },
-          ),
-        ),
-      ),
-      body: PrefList(
-        tags: ["sport"],
-        childrenType: [PrefType.button],
-      ),
-    );
+    return SportStep();
   }
 }

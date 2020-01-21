@@ -41,6 +41,19 @@ const ITINERARY_MOCK = {
       },
       {
         "id": "1",
+        "name": "Hippopotamus Steackhouse",
+        "description": "Grand resto de viande !",
+        "versus": ["Restaurant"],
+        "site": {
+          "name": "Hippopotamus",
+          "latitude": 48.930788,
+          "longitude": 2.356179
+        },
+        "startTime": 1714888800,
+        "endTime": 1714896000,
+      },
+      {
+        "id": "1",
         "img": "",
         "name": "Match de Foot",
         "description":

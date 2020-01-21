@@ -40,7 +40,7 @@ class Itinerary extends StatelessWidget {
           versus: e.competitors,
           beginDate: formatTimestamp(e.starttime),
           endDate: formatTimestamp(e.endtime),
-          descriptions: e.placename,
+          descriptions: e.site['name'],
         ),
       );
     }
