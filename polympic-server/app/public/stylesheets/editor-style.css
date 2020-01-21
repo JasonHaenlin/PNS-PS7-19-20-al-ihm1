@@ -21,6 +21,33 @@ html {
     overflow: hidden;
 }
 
+h4,
+h3 {
+    padding: 0;
+    margin: 0.5em;
+    margin-left: 0;
+    padding-left: 1em;
+}
+
+#outerbox {
+    width: 100%;
+    position: absolute;
+    top: 120px;
+    bottom: 0px;
+    overflow: auto;
+}
+
+#innerbox {
+    width: 100%;
+    position: absolute;
+    min-height: 100% !important;
+    height: 100%;
+}
+
+.margin-left {
+    margin-left: 1em !important;
+}
+
 .title {
     color: rgb(75, 75, 75);
     font-size: 2em;
@@ -37,29 +64,24 @@ html {
 }
 
 #ide {
-    display: flex;
-    flex-direction: row;
     background: rgb(250, 250, 250);
     padding: 0.5em auto;
-    border: 1px solid #ddd;
     height: calc(100% - 8em);
+}
+
+.mid-panel {
+    height: 80%;
 }
 
 
 #editor-container {
-    padding: 2em;
-    border: 1px solid #ddd;
+    padding: 1em;
     overflow: auto;
-    flex-grow: 3;
 }
 
 #editor {
     outline: none;
     overflow: auto;
-}
-
-#right-panel {
-    flex-grow: 2;
 }
 
 #preview {
@@ -69,20 +91,14 @@ html {
     width: 100%;
 }
 
-.ide [class*="pure-u"] {
-    padding: 1em 0;
+[class*="pure-u"] {
     border: 1px solid #ddd;
     border-right: none;
     border-bottom: none;
 }
 
-#left-panel {
-    flex-grow: 1;
-    width: 20%;
-}
-
 #doc {
-    padding-left: 2em;
+    padding: 1em;
 }
 
 #left-panel div {
@@ -102,7 +118,7 @@ html {
 
 
 input {
-    width: 10em;
+    width: 5em;
 }
 
 
@@ -151,4 +167,14 @@ input {
 .tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+.pure-g>div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.l-box {
+    padding: 1em;
 }

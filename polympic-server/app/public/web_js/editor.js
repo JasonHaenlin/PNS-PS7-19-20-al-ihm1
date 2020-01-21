@@ -71,7 +71,7 @@ loader_btn.addEventListener('click', () => {
   }
 });
 
-config_btn.addEventListener('click', () => {
+function SaveConfig() {
   fetch('itinerary/accessibilities', {
     method: 'PUT',
     headers: {
@@ -86,4 +86,9 @@ config_btn.addEventListener('click', () => {
       ]
     })
   });
-});
+  let textValidation = document.getElementById("textValidation");
+  textValidation.innerHTML = 'Sauvegardé';
+  setTimeout(() => {
+    textValidation.innerHTML = '';
+  }, 1000);
+}
