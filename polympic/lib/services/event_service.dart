@@ -6,6 +6,7 @@ import 'package:polympic/core/storage.dart';
 import 'package:polympic/mocks/event_mock.dart';
 import 'package:polympic/models/event_model.dart';
 import 'package:polympic/services/category_service.dart';
+import 'package:polympic/services/core/utils.dart';
 
 class EventService {
   Client client;
@@ -17,22 +18,11 @@ class EventService {
     if (envConfig.mocked) {
       return fetchMockedData();
     }
-    final prefSports = categoryService.categories['sport'];
-    String params = '';
-    for (var p in prefSports ?? []) {
-      if (p.state) {
-        params += p.name + ',';
-      }
-    }
-    if (params.length > 0) {
-      params = '?prefs=' + params;
-    }
-    if (envConfig.preview) {
-      if (params != '')
-        params += '&preview=true';
-      else
-        params = '?preview=true';
-    }
+    final tags = {
+      'sport': categoryService.categories['sport'] ?? [],
+      'country': categoryService.categories['country'] ?? [],
+    };
+    final params = buildOptions(tags);
     final response = await client.get(envConfig.apiBaseUrl + 'events' + params);
     if (response.statusCode == 200) {
       Iterable list = json.decode(response.body);
