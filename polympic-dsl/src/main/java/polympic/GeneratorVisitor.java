@@ -262,7 +262,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
      */
     @Override
     public String visitBool_cmp(PolygramParser.Bool_cmpContext ctx) {
-        return this.subject + ".getSport() === \"" + ctx.IDENTIFIER().getText() + "\"";
+        return this.subject + ".sport === \"" + ctx.IDENTIFIER().getText() + "\"";
     }
 
     /**
