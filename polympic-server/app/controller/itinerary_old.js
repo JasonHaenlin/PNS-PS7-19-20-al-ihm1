@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable security/detect-eval-with-expression */
 /* eslint-disable security/detect-object-injection */
 /* eslint no-eval: 0 */
@@ -54,7 +55,8 @@ module.exports = {
   // use the code in parameter
   runScript(code, tags) {
     const compiledScript = compiler.compileCode(code);
-    const distance = 500;// eval(compiledScript).run();
+    const distance = 500;
+    // eval(compiledScript).run();
     return this.computeItineraryByProximity(tags, distance);
   },
 
@@ -63,7 +65,8 @@ module.exports = {
   filterByScript(tags) {
     const scriptName = './public/scripts/example_2.script';
     // const compiledScript = compiler.compile(scriptName);
-    const distance = 500;// eval(compiledScript).run();
+    const distance = 500;
+    // eval(compiledScript).run();
     return this.computeItineraryByProximity(tags, distance);
   },
 

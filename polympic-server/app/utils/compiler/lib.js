@@ -10,7 +10,7 @@ const getEventsMatchingUserPreferences = (array, user_prefs) => {
 
 const setState = (newStatus, element) => {
   element.status = newStatus;
-}
+};
 
 module.exports = {
   addElementToDisplay,

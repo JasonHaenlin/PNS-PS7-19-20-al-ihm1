@@ -20,13 +20,13 @@ module.exports = {
     let Stime = 0;
     let Etime = 0;
     let access;
-    if (prefs.handicap.split(':')[1]=== 1) {
+    if (prefs.handicap.split(':')[1] === 1) {
       access = this.access1;
     }
-    if (prefs.handicap.split(':')[1]=== 2) {
+    if (prefs.handicap.split(':')[1] === 2) {
       access = this.access2;
     }
-    if (prefs.handicap.split(':')[1]=== 3) {
+    if (prefs.handicap.split(':')[1] === 3) {
       access = this.access3;
     }
     events = Events.sortEvents('startTime', true, events);
@@ -38,19 +38,11 @@ module.exports = {
         Etime = ev.endTime;
       }
     });
-<<<<<<< HEAD
     if (prefs !== undefined && prefs.recreation.includes('Pause déjeuner')) {
       itinerary = this.addRestaurant(itinerary, 12);
     }
     if (prefs !== undefined && prefs.tourism.includes('Sites touristiques')) {
       itinerary = this.addTourism(itinerary);
-=======
-    if (prefs.recreation.includes('Pause déjeuner')) {
-      itinerary = this.addRestaurant(itinerary, 12, this.access1);
-    }
-    if (prefs.tourism.includes('Sites touristiques')) {
-      itinerary = this.addTourism(itinerary, this.access1);
->>>>>>> #94 Itinerary
     }
     return itinerary;
   },
@@ -118,7 +110,7 @@ module.exports = {
       if (freeTime > 600) {
         tourism.forEach(t => {
           t.startTime = start;
-          t.endTime = start + t.duration - access*2;
+          t.endTime = start + t.duration - access * 2;
         });
         newIti.push(tourism);
       }
