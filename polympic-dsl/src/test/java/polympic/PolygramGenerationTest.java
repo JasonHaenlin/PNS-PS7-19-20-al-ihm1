@@ -1,61 +1,118 @@
 package polympic;
 
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PolygramGenerationTest {
 
-    CharStream input;
-    String scriptToExecute;
-    ScriptEngine engine;
-
-    PolygramLexer lexer;
-    CommonTokenStream tokens;
-    PolygramParser parser;
-
-    Invocable inv;
+    String path;
 
     @BeforeEach
     void setUp() {
-        ScriptEngineManager manager = new ScriptEngineManager();
-        engine = manager.getEngineByName("JavaScript");
     }
 
-    @Disabled
     @Test
-    void simpleBasicTest() throws IOException, ScriptException, NoSuchMethodException {
-        input = new ANTLRFileStream("src/main/resources/sample-code.txt");
+    void fail_codeMultipleConcerning() throws IOException {
+        path = "src/main/resources/fail_codeMultipleConcerning.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(0, e.getColumn());
+        }
+    }
 
-        lexer = new PolygramLexer(input);
-        tokens = new CommonTokenStream(lexer);
-        parser = new PolygramParser(tokens);
+    @Test
+    void fail_noStatement() throws IOException {
+        path = "src/main/resources/fail_noStatement.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(1, e.getLine());
+            assertEquals(21, e.getColumn());
+        }
+    }
 
-        parser.setBuildParseTree(true);
+    @Test
+    void multipleItineraryLoops() throws IOException {
+        path = "src/main/resources/multipleItineraryLoops.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(3, e.getLine());
+            assertEquals(11, e.getColumn());
+        }
+    }
 
-        scriptToExecute = MainPolygram.getJSCodeForRunFunction(parser.program());
+    @Test
+    void fail_multipleEventLoopsWithItinerary() throws IOException {
+        path = "src/main/resources/fail_multipleEventLoopsWithItinerary.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(7, e.getLine());
+            assertEquals(11, e.getColumn());
+        }
+    }
 
-        // evaluate script
-        engine.eval(scriptToExecute);
+    @Test
+    void fail_when() throws IOException {
+        path = "src/main/resources/fail_when1.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(5, e.getColumn());
+        }
 
-        inv = (Invocable) engine;
+        path = "src/main/resources/fail_when2.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(11, e.getColumn());
+        }
 
-        List<String> events = new ArrayList<>(Arrays.asList("1", "2", "3"));
+        path = "src/main/resources/fail_when3.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(7, e.getColumn());
+        }
 
-        inv.invokeFunction("run", events);
+        path = "src/main/resources/fail_when4.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(12, e.getColumn());
+        }
+
+        path = "src/main/resources/fail_when5.test";
+        try {
+            MainPolygram.runCompilation(path);
+        } catch (ThrowableSyntaxErrorException e) {
+            assertEquals(2, e.getLine());
+            assertEquals(18, e.getColumn());
+        }
+    }
+
+    @Test
+    void OK_when() throws IOException {
+        path = "src/main/resources/OK_when.test";
+        assertNotNull(MainPolygram.runCompilation(path));
+    }
+
+    @Test
+    void fail_markAs() throws IOException {
+        path = "src/main/resources/fail_markAs1.test";
+        assertThrows(NoSuchStateException.class, () ->
+                MainPolygram.runCompilation(path)
+        );
     }
 }

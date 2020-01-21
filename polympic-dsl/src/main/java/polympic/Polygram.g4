@@ -2,10 +2,8 @@ grammar Polygram;
 
 // parser rules :
 
-// TODO add RED_MOB
-
 program:
-        sub_prog_steps
+        sub_prog_steps+
     |   sub_prog_events+
     ;
 
@@ -48,6 +46,7 @@ expr:
     |   expr expr_cmp
     |   str_cmp
     |   bool_cmp
+    |   NOT expr
     ;
 
 str_cmp:
@@ -73,12 +72,12 @@ bool_cmp:
     ;
 
 number:
-	IDENTIFIER
-	| NUMBER
-	| number PLUS number
-	| number MINUS number
-	| number MUL number
-	| number DIV number
+	    IDENTIFIER
+	|   NUMBER
+	|   number PLUS number
+	|   number MINUS number
+	|   number MUL number
+	|   number DIV number
 	;
 
 // lexer rules :
@@ -105,7 +104,7 @@ EVENTS:
     'all events';
 
 PREFS:
-        'events matching preferences' // todo for() if (lib.in_UserPref(event, user_pref))
+        'events matching preferences'
     |   'preferences'
     ;
 

@@ -3,11 +3,7 @@ package polympic;
 public enum PlaceState {
 
     RECOMMENDED("recommended"),
-    IMPORTANT("important"),
-    NEAR("near"),
-    FAR("far"),
-    URGENT("urgent"),
-
+    IMPORTANT("important")
     ;
 
     private String state;

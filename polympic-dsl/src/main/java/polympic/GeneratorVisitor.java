@@ -42,7 +42,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             }
             return result;
         } else if (ctx.sub_prog_steps() != null) {
-            return this.visitSub_prog_steps(ctx.sub_prog_steps());
+            for (PolygramParser.Sub_prog_stepsContext subProgSteps : ctx.sub_prog_steps()) {
+                result += this.visitSub_prog_steps(subProgSteps);
+            }
+            return result;
         } else {
             throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
@@ -116,7 +119,6 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         } else {
             throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
-
         this.updateIndentEnteringBlock();
         return result;
     }
@@ -134,10 +136,11 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
         String result = "";
         if (ctx.IT_STEPS() != null) {
             this.subject = GeneratorVisitor.STEP;
+            result += subject + " of array) {";
         } else {
             throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
-        result += subject + " of array) {";
+        this.updateIndentEnteringBlock();
         this.updateIndentEnteringBlock();
         return result;
     }
@@ -215,9 +218,15 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             result += this.visitStr_cmp(ctx.str_cmp());
         } else if (ctx.bool_cmp() != null) {
             result += this.visitBool_cmp(ctx.bool_cmp());
-        } else {
+        } else if (ctx.expr() != null && ctx.expr_cmp() != null) {
             result += this.visitExpr(ctx.expr());
             result += this.visitExpr_cmp((ctx.expr_cmp()));
+        } else if (ctx.NOT() != null && ctx.expr() != null) {
+            result += "!(";
+            result += this.visitExpr(ctx.expr());
+            result += ")";
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
         }
         return result;
     }
