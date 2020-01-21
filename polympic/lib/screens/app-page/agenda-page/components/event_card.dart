@@ -143,20 +143,20 @@ class StatusCard extends StatelessWidget {
   static dynamic statusText = {
     'none': const Text('', style: TextStyle(color: Colors.white)),
     'important': const Text('Important', style: TextStyle(color: Colors.white)),
-    'recommanded':
+    'recommended':
         const Text('Recommandé', style: TextStyle(color: Colors.white)),
   };
 
   static dynamic statusIcon = {
     'none': Icon(Icons.bubble_chart),
     'important': Icon(Icons.warning),
-    'recommanded': Icon(Icons.star),
+    'recommended': Icon(Icons.star),
   };
 
   static dynamic statusColor = {
     'none': kColorFade,
     'important': kColorValidate,
-    'recommanded': kColorSecondary,
+    'recommended': kColorSecondary,
   };
 
   @override

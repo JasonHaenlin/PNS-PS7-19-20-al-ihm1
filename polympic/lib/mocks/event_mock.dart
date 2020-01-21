@@ -15,6 +15,6 @@ const EVENT_MOCK = [
     "startTime": 1641418200,
     "endTime": 1641421800,
     "distance": 11655,
-    "status": "recommanded",
+    "status": "recommended",
   }
 ];
