@@ -20,14 +20,16 @@ module.exports = {
     let Stime = 0;
     let Etime = 0;
     let access;
-    if (prefs.handicap[0].split(':')[1] === '1') {
-      access = this.access1;
-    }
-    if (prefs.handicap[0].split(':')[1] === '2') {
-      access = this.access2;
-    }
-    if (prefs.handicap[0].split(':')[1] === '3') {
-      access = this.access3;
+    if (prefs.handicap.length > 0) {
+      if (prefs.handicap[0].split(':')[1] === '1') {
+        access = this.access1;
+      }
+      if (prefs.handicap[0].split(':')[1] === '2') {
+        access = this.access2;
+      }
+      if (prefs.handicap[0].split(':')[1] === '3') {
+        access = this.access3;
+      }
     }
     events = Events.sortEvents('startTime', true, events);
     events.forEach(ev => {
@@ -68,7 +70,7 @@ module.exports = {
         if (hourGroupNext > hour && hourGroup < hour || hourGroup === hour) {
           resto.forEach(r => {
             r.startTime = itinerary[i][0].startTime + 3600 + access;
-            r.endTime = (r.startTime + 3600) - access*2;
+            r.endTime = (r.startTime + 3600) - access * 2;
           });
           newIti.push(resto);
           restoB = true;

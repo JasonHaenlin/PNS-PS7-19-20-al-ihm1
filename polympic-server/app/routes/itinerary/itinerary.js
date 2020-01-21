@@ -10,6 +10,7 @@ exports.getItinerary = async (req, res) => {
     country: ansHandler.parseQuery(req.query.country),
     tourism: ansHandler.parseQuery(req.query.tourism)
   };
+
   const resIti = itinerary.generateItinerary(prefs);
   resHandler.yahResponse(res, resIti);
 };
