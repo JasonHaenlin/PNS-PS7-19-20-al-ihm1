@@ -13,7 +13,7 @@ const touristicSites = express.Router();
  * filtered by max duration
  * @apiExample {curl} Example usage:
  * curl -i http://localhost:3000/touristicsites?select=10000
- * @apiSucess (200) {json[]} touristic sites list
+ * @apiSuccess (200) {json[]} touristic sites list
  * @apiExample Response:
  * HTTP/1.1 200 OK
  * [

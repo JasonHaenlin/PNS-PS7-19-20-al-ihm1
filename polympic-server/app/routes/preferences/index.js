@@ -13,7 +13,7 @@ const preferences = express.Router();
  * Should be a list of preferences separeted by comma ','
  * @apiExample {curl} Example usage:
  * curl -i http://localhost:3000/preferences?select=sport
- * @apiSucess (200) {json[]} events list
+ * @apiSuccess (200) {json[]} events list
  * @apiExample Response:
  * HTTP/1.1 200 OK
  * [

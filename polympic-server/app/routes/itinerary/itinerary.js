@@ -43,11 +43,3 @@ exports.getConfig = async (req, res) => {
     ]
   });
 };
-
-exports.previewResult = async (req, res) => {
-  let code = req.body.code;
-  let prefs = req.query.prefs;
-  let r = itinerary.generateItinerary(prefs);
-
-  resHandler.yahResponse(res, r);
-};

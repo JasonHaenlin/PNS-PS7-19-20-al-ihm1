@@ -32,10 +32,15 @@ In production flavor alternative flavor for our web preview on the editor (Nodej
 
 ## Enable web
 
+This part is essentiel if you want to deploy the app in the editor
+take a look at the [Nodejs instruction](../polympic-server/readme.md) to have the full instructions
+
 ```sh
 flutter config --enable-web
 flutter channel dev
 flutter create .
+# the next line is only for the test,
+# not needed for the deployement
 flutter run -d web
 ```
 
