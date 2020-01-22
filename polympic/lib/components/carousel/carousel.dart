@@ -32,12 +32,13 @@ class Carousel extends StatelessWidget {
               'beginDate': children[a].beginDate,
               'endDate': children[a].endDate,
             }),
-            controller: PageController(viewportFraction: 0.8),
+            controller: PageController(viewportFraction: 0.75),
             itemCount: children.length,
             itemBuilder: (BuildContext context, int itemIndex) {
               return Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 15, 5),
+                padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
                 child: Card(
+                  elevation: 8,
                   child: Container(
                     child: ClipPath(
                       clipper: ShapeBorderClipper(

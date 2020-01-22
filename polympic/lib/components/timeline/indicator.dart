@@ -30,8 +30,8 @@ class Indicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 30,
-      left: 15.0,
+      top: 0,
+      left: 25.0,
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,

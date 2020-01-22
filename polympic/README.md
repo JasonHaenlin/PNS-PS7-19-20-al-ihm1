@@ -2,16 +2,33 @@
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+>run flutter
 
-A few resources to get you started if this is your first Flutter project:
+In production flavor, need to have the back-end running
+`flutter run -t lib/main_prod.dart`
+In developmement flavor. No http fetch, everything is mocked
+`flutter run -t lib/main_dev.dart`
+In production flavor alternative flavor for our web preview on the editor (Nodejs project)
+`flutter run -t lib/main_stage.dart`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Organization
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```s
+    - lib
+        - blocs (business logic of the app )
+        - components (general componenents of the app )
+        - config (env variables are here )
+        - core (functions and helpers used int the app )
+        - mocks (data for dev )
+        - models (models for our data )
+        - screens (pages and widgets related to our app )
+        - services (singleton services used by the blocs where the logic is )
+        - theme (theme and color of the app )
+        - app.dart (main app )
+        - main_dev.dart (start main app with dev flavor )
+        - main_prod.dart (start main app with stage prod )
+        - main_stage.dart (start main app with prod flavor )
+```
 
 ## Enable web
 
@@ -22,7 +39,7 @@ flutter create .
 flutter run -d web
 ```
 
-## Run flutter in different flavorss
+## Run flutter in different flavors
 
 ### production
 
@@ -61,3 +78,12 @@ flutter run -d web
     ]
 },
 ```
+
+## Deploy the app for production
+
+### Android
+
+Build the apks
+`flutter build apk --split-per-abi -t lib\main_prod.dart`
+Install the apk in a android device
+`flutter install`

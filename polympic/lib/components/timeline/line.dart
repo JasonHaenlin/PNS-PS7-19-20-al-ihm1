@@ -23,7 +23,7 @@ class Line extends StatelessWidget {
     return Positioned(
       top: 0.0,
       bottom: 0.0,
-      left: 35.0,
+      left: 45.0,
       child: Container(
         height: double.infinity,
         width: 2.0,
