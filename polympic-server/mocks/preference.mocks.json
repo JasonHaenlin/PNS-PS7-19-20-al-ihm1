@@ -15,7 +15,7 @@
         "img": "https://otakedev.com/share/preferences/sports/relais.jpg"
     },
     {
-        "name": "Tir à l'arc",
+        "name": "Tir a l'arc",
         "tag": "sport",
         "img": "https://otakedev.com/share/preferences/sports/tiralarc.jpg"
     },
@@ -40,7 +40,7 @@
         "img": "https://otakedev.com/share/preferences/sports/curling.jpg"
     },
     {
-        "name": "Pétanque",
+        "name": "Petanque",
         "tag": "sport",
         "img": "https://otakedev.com/share/preferences/sports/petanque.jpg"
     },
@@ -65,7 +65,7 @@
         "img": "https://otakedev.com/share/preferences/countries/japan.png"
     },
     {
-        "name": "Brésil",
+        "name": "Bresil",
         "tag": "country",
         "img": "https://otakedev.com/share/preferences/countries/brazil.png"
     },
@@ -75,7 +75,7 @@
         "img": "https://otakedev.com/share/preferences/countries/italy.png"
     },
     {
-        "name": "Corée",
+        "name": "Coree",
         "tag": "country",
         "img": "https://otakedev.com/share/preferences/countries/korea.png"
     },
@@ -90,7 +90,7 @@
         "img": "https://otakedev.com/share/preferences/countries/china.png"
     },
     {
-        "name": "Pause déjeuner",
+        "name": "Pause dejeuner",
         "tag": "recreation",
         "img": "https://otakedev.com/share/preferences/others/hamburger.jpg"
     },
@@ -100,7 +100,7 @@
         "img": "https://otakedev.com/share/preferences/others/eiffel-tower.jpg"
     },
     {
-        "name": "Capacité à se déplacer",
+        "name": "Capacite a se deplacer",
         "tag": "handicap",
         "img": "https://otakedev.com/share/preferences/others/handicap.jpg"
     }
