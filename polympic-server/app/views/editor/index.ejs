@@ -8,8 +8,7 @@
 
     <link rel="stylesheet" href="/stylesheets/editor-style.css" />
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
-        crossorigin="anonymous">
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
@@ -17,102 +16,92 @@
 
 <body>
     <div class="header">
-        <div class="title">Editor &nbsp;<small>(</small><small
-                id="sub-title"></small><small>)</small></div>
-        <div class="buttons">
-            <button id="loader" class="pure-button"></button>
-            <button id="btn-save" class="pure-button-primary pure-button">Save</button>
-            <button id="btn-preview" class="button-secondary pure-button">Preview</button>
-        </div>
+        <div class="title">Editor &nbsp;<small>(</small><small id="sub-title"></small><small>)</small></div>
     </div>
     <div id="outerbox">
         <div id="innerbox" class="pure-g">
-            <div id="left-panel" class="pure-u-1 pure-u-md-1-3 mid-panel">
+            <div id="left-panel" class="pure-u-1 pure-u-md-1-4 mid-panel">
                 <div id="doc">
                     <span class="tooltip">
                         <strong>concerning all events</strong>
                         <span class="tooltip-text">Qtatements will be applied to all the
                             events</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>concerning</strong> [events matching preferences / preferences]
-                        <span class="tooltip-text">Statements will be applied the events matching
-                            the
-                            user"s preferences</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>concerning itinerary steps</strong>
-                        <span class="tooltip-text">Statements will be used to create the itinerary
-                            for
-                            the user</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>when</strong> [condition] <strong>then</strong> [action]
-                        <span class="tooltip-text">Executes the action only if the condition is
-                            evaluated to true</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>display</strong>
-                        <span class="tooltip-text">Make the event appear in the app</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>mark as</strong> [recommended, important]
-                        <span class="tooltip-text">Change the display of the event in the app</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>&gt;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&equals;&nbsp;&nbsp;&gt;&equals;&nbsp;&nbsp;&lt;&equals;&nbsp;&nbsp;!&equals;</strong>
-                        <span class="tooltip-text">Available symbols for comparing numbers</span>
-                    </span> <br />
-                    <span class="tooltip">
-                        <strong>sport&nbsp;&nbsp;distance&nbsp;&nbsp;tag</strong>
-                        <span class="tooltip-text">Informations available for the events</span>
-                    </span> <br />
-                </div>
-            </div>
-            <div id="editor-container" class="pure-u-1 pure-u-md-1-3 mid-panel">
-                <div id="editor" contenteditable="true" spellcheck="false"></div>
-            </div>
-            <div id="right-panel" class="pure-u-1 pure-u-md-1-3 mid-panel">
-                <object id="preview" type="text/html" data="/flutter-app"></object>
-            </div>
-            <div class="pure-form pure-u-1">
-                <fieldset>
-                    <h4>Distance between steps according to mobility</h4>
-                    <label class="l-box" for="ndiff">No Difficulties (meters)</label>
-                    <input class="l-box" id="acs1" type="text" placeholder="Acs1"
-                        type="ndiff"
-                        value="<%= acs1%>"
-                        required>
-
-                    <label class="l-box" for="mdiff">Some Difficulties (meters)</label
-                        class="l-box">
-                    <input class="l-box" id="acs2" type="text" placeholder="Acs2"
-                        type="mdiff"
-                        value="<%= acs2%>"
-                        required>
-
-                    <label class="l-box" for="hdiff">High Difficulties (meters)</label>
-                    <input class="l-box" id="acs3" type="text" placeholder="Acs3"
-                        type="hdiff"
-                        value="<%= acs3%>"
-                        required>
-
-                    <h4>Lunch time</h4>
-                    <label class="l-box" for="meal">Hour of lunch</label>
-                    <input class="l-box" id="meal" type="text" placeholder="meal"
-                        type="hdiff"
-                        value="<%= meal%>"
-                        required>
-
-                    <button type="submit" onclick="SaveConfig()"
-                        class="pure-button-primary pure-button l-box">Valider</button>
-                </fieldset>
-            </div>
-        </div>
-    </div>
-
-    <script src="/web_js/editor.js"></script>
-
-</body>
-
-</html>
+                        </span> <br />
+                        <span class="tooltip">
+                            <strong>concerning</strong> [events matching preferences / preferences]
+                            <span class="tooltip-text">Statements will be applied the events matching
+                                the
+                                user"s preferences</span>
+                            </span> <br />
+                            <span class="tooltip">
+                                <strong>concerning itinerary steps</strong>
+                                <span class="tooltip-text">Statements will be used to create the itinerary
+                                    for
+                                    the user</span>
+                                </span> <br />
+                                <span class="tooltip">
+                                    <strong>when</strong> [condition] <strong>then</strong> [action]
+                                    <span class="tooltip-text">Executes the action only if the condition is
+                                        evaluated to true</span>
+                                    </span> <br />
+                                    <span class="tooltip">
+                                        <strong>display</strong>
+                                        <span class="tooltip-text">Make the event appear in the app</span>
+                                    </span> <br />
+                                    <span class="tooltip">
+                                        <strong>mark as</strong> [recommended, important]
+                                        <span class="tooltip-text">Change the display of the event in the app</span>
+                                    </span> <br />
+                                    <span class="tooltip">
+                                        <strong>&gt;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&equals;&nbsp;&nbsp;&gt;&equals;&nbsp;&nbsp;&lt;&equals;&nbsp;&nbsp;!&equals;</strong>
+                                        <span class="tooltip-text">Available symbols for comparing numbers</span>
+                                    </span> <br />
+                                    <span class="tooltip">
+                                        <strong>sport&nbsp;&nbsp;distance&nbsp;&nbsp;tag</strong>
+                                        <span class="tooltip-text">Informations available for the events</span>
+                                    </span> <br />
+                                </div>
+                            </div>
+                            <div id="editor-container" class="pure-u-1 pure-u-md-1-2 mid-panel">
+                                <div class="buttons">
+                                    <button id="loader" class="button-secondary pure-button"></button>
+                                    <button id="btn-save" class="pure-button-primary pure-button">Deploy</button>
+                                    <button id="btn-preview" class="button-secondary pure-button">Preview</button>
+                                </div>
+                                <div id="editor" contenteditable="true" spellcheck="false"></div>
+                            </div>
+                            <div id="right-panel" class="pure-u-1 pure-u-md-1-4 mid-panel">
+                                <object id="preview" type="text/html" data="/flutter-app"></object>
+                            </div>
+                            <div class="pure-form pure-u-1">
+                                <fieldset>
+                                    <h4>Distance between steps according to mobility</h4>
+                                    <label class="l-box" for="ndiff">No Difficulties (meters)</label>
+                                    <input class="l-box" id="acs1" type="text" placeholder="Acs1" type="ndiff" value="<%= acs1%>"
+                                    required>
+                                    
+                                    <label class="l-box" for="mdiff">Some Difficulties (meters)</label class="l-box">
+                                        <input class="l-box" id="acs2" type="text" placeholder="Acs2" type="mdiff" value="<%= acs2%>"
+                                        required>
+                                        
+                                        <label class="l-box" for="hdiff">High Difficulties (meters)</label>
+                                        <input class="l-box" id="acs3" type="text" placeholder="Acs3" type="hdiff" value="<%= acs3%>"
+                                        required>
+                                        
+                                        <h4>Lunch time</h4>
+                                        <label class="l-box" for="meal">Hour of lunch</label>
+                                        <input class="l-box" id="meal" type="text" placeholder="meal" type="hdiff" value="<%= meal%>"
+                                        required>
+                                        
+                                        <button type="submit" onclick="SaveConfig()"
+                                        class="pure-button-primary pure-button l-box">Valider</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script src="/web_js/editor.js"></script>
+                        
+                    </body>
+                    
+                    </html>

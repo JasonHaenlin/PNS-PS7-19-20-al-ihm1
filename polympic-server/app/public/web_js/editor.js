@@ -39,7 +39,7 @@ let config_btn = document.getElementById('btn-config');
 let subtitle = document.getElementById('sub-title');
 let textValidation = document.getElementById('textValidation');
 loadFile(file_events);
-loader_btn.innerText = 'Load itineraries';
+loader_btn.innerText = 'Itineraries';
 subtitle.innerText = 'Events';
 
 editor.addEventListener('keypress', () => { canSave = false; });
@@ -62,11 +62,11 @@ save_btn.addEventListener('click', () => {
 loader_btn.addEventListener('click', () => {
   if (file === file_events) {
     loadFile(file_itineraries);
-    loader_btn.innerText = 'Load events';
+    loader_btn.innerText = 'Events';
     subtitle.innerText = 'Itineraries'
   } else {
     loadFile(file_events);
-    loader_btn.innerText = 'Load itineraries';
+    loader_btn.innerText = 'Itineraries';
     subtitle.innerText = 'Events'
   }
 });

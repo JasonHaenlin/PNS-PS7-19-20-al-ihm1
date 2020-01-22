@@ -29,6 +29,10 @@ h3 {
     padding-left: 1em;
 }
 
+.header {
+    background-color: #e5e5e5;
+}
+
 #outerbox {
     width: 100%;
     position: absolute;
@@ -73,15 +77,24 @@ h3 {
     height: 80%;
 }
 
-
 #editor-container {
-    padding: 1em;
     overflow: auto;
+    padding: 0em;
+    padding-bottom: 1em;
+    background-color: #eee;
 }
 
 #editor {
     outline: none;
     overflow: auto;
+    color: #333;
+    border-left: #aaa solid 0.25em;
+    border-right: #aaa solid 0.25em;
+    padding-left: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fff;
 }
 
 #preview {
@@ -95,10 +108,33 @@ h3 {
     border: 1px solid #ddd;
     border-right: none;
     border-bottom: none;
+    background-color: #d5d5d5;
 }
 
 #doc {
     padding: 1em;
+}
+
+.buttons {
+    display: flex;
+    justify-content:center;
+    background-color: #e5e5e5;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+.buttons button {
+    width: 25%;
+    margin: auto;
+}
+
+.buttons .button-secondary {
+    background-color: #ccc;
+}
+
+#left-panel {
+    background-color: #d8d8d8;
 }
 
 #left-panel div {
