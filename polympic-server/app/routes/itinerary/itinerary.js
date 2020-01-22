@@ -21,10 +21,10 @@ exports.getItinerary = async (req, res) => {
 
 exports.updateConfig = async (req, res) => {
   if (req.body.value.length === 4) {
-    itinerary.access1 = Number(req.body.value[0]);
-    itinerary.access2 = Number(req.body.value[1]);
-    itinerary.access3 = Number(req.body.value[2]);
-    itinerary.meal = Number(req.body.value[3]);
+    global.access1 = Number(req.body.value[0]);
+    global.access2 = Number(req.body.value[1]);
+    global.access3 = Number(req.body.value[2]);
+    global.meal = Number(req.body.value[3]);
   }
   resHandler.yahResponse(res, req.body.value);
 };
@@ -32,24 +32,10 @@ exports.updateConfig = async (req, res) => {
 exports.getConfig = async (req, res) => {
   resHandler.yahResponse(res, {
     value: [
-      itinerary.access1,
-      itinerary.access2,
-      itinerary.access3,
-      itinerary.meal
-    ]
-  });
-};
-
-exports.updateMealHour = async (req, res) => {
-  const acs = ansHandler.parseQuery(req.query.values);
-  itinerary.meal = acs;
-  resHandler.yahResponse(res, acs);
-};
-
-exports.getMealHour = async (req, res) => {
-  resHandler.yahResponse(res, {
-    value: [
-      itinerary.meal
+      global.access1,
+      global.access2,
+      global.access3,
+      global.meal
     ]
   });
 };

@@ -14,10 +14,6 @@ global.access3 = 10;
 global.meal = 12;
 
 module.exports = {
-  access1,
-  access2,
-  access3,
-  meal,
   generateItinerary(prefs, preview) {
     let events = Events.getEvents(preview, prefs);
     let itinerary = [];
@@ -25,13 +21,13 @@ module.exports = {
     let Etime = 0;
     if (prefs.handicap.length > 0) {
       if (prefs.handicap[0].split(':')[1] === '1') {
-        access = this.access1 * 60;
+        access = global.access1 * 60;
       }
       if (prefs.handicap[0].split(':')[1] === '2') {
-        access = this.access2 * 60;
+        access = global.access2 * 60;
       }
       if (prefs.handicap[0].split(':')[1] === '3') {
-        access = this.access3 * 60;
+        access = global.access3 * 60;
       }
     }
     events = Events.sortEvents('startTime', true, events);
@@ -87,13 +83,13 @@ module.exports = {
     for (let i = 0; i < itinerary.length; i++) {
       dateGroup = itinerary[i][0].startTime;
       hourGroup = getHourfromDate(dateGroup);
-      if (hourGroup < this.meal) {
+      if (hourGroup < global.meal) {
         newIti.push(itinerary[i]);
       }
       if (i < itinerary.length - 1) {
         dateGroupNext = itinerary[i + 1][0].startTime;
         hourGroupNext = getHourfromDate(dateGroupNext);
-        if (hourGroupNext > this.meal && hourGroup < this.meal || hourGroup === this.meal) {
+        if (hourGroupNext > global.meal && hourGroup < global.meal || hourGroup === global.meal) {
           resto.forEach(r => {
             r.startTime = itinerary[i][0].startTime + 3600 + access;
             r.endTime = (r.startTime + 3600) - access * 2;
@@ -102,7 +98,7 @@ module.exports = {
           restoB = true;
         }
       }
-      if (hourGroup > this.meal) {
+      if (hourGroup > global.meal) {
         newIti.push(itinerary[i]);
       }
     }

@@ -3,6 +3,15 @@ const { Event } = require('../models/index');
 const Itinerary = require('../app/controller/itinerary');
 const assert = require('chai').assert;
 
+
+const prefs = {
+  sport: ['Football', 'Tennis'],
+  handicap: ['Capacité à se déplacer:2'],
+  recreation: ['Pause déjeuner'],
+  country: ['France', 'Japon'],
+  tourism: ['Sites touristiques']
+};
+
 const prefs_t = {
   sport: ['Football', 'Tennis'],
   handicap: ['Capacité à se déplacer:2'],
@@ -27,10 +36,10 @@ const prefs_t_d = {
   tourism: ['']
 };
 
-/* Itinerary.access2 = 5;
-Itinerary.meal = 13;
-let iti = Itinerary.generateItinerary(prefs_d);
-console.log(iti); */
+global.access2 = 10;
+global.meal = 18;
+let iti = Itinerary.generateItinerary(prefs);
+console.log(iti);
 
 describe('Obtenir un itinéraire', () => {
   let iti_t_d;
