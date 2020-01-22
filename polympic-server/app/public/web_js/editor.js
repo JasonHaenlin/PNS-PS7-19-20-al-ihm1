@@ -38,6 +38,15 @@ let loader_btn = document.getElementById('loader');
 let config_btn = document.getElementById('btn-config');
 let subtitle = document.getElementById('sub-title');
 let textValidation = document.getElementById('textValidation');
+let submit_btn = document.getElementById('submit');
+
+fetch('/itinerary/accessibilities').then(res => res.json()).then(json => {
+  document.getElementById('acs1').value = json.value[0];
+  document.getElementById('acs2').value = json.value[1];
+  document.getElementById('acs3').value = json.value[2];
+  document.getElementById('meal').value = json.value[3];
+});
+
 loadFile(file_events);
 loader_btn.innerText = 'Itineraries';
 subtitle.innerText = 'Events';
@@ -71,8 +80,8 @@ loader_btn.addEventListener('click', () => {
   }
 });
 
-function SaveConfig() {
-  fetch('itinerary/accessibilities', {
+submit_btn.addEventListener('click', () => {
+  fetch('/itinerary/accessibilities', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -85,10 +94,10 @@ function SaveConfig() {
         document.getElementById('meal').value
       ]
     })
-  });
+  }).then(res=>console.log(res.status));
   let textValidation = document.getElementById("textValidation");
   textValidation.innerHTML = 'Sauvegardé';
   setTimeout(() => {
     textValidation.innerHTML = '';
   }, 1000);
-}
+});

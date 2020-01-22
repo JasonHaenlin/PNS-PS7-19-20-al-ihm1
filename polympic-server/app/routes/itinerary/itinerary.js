@@ -25,6 +25,10 @@ exports.updateConfig = async (req, res) => {
     global.access2 = Number(req.body.value[1]);
     global.access3 = Number(req.body.value[2]);
     global.meal = Number(req.body.value[3]);
+    console.log(global.access1);
+    console.log(global.access2);
+    console.log(global.access3);
+    console.log(global.meal);
   }
   resHandler.yahResponse(res, req.body.value);
 };
