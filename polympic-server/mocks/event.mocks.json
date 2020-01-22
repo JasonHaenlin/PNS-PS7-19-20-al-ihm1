@@ -3,7 +3,7 @@
         "id": "fdm1",
         "img": "https://otakedev.com/share/preferences/sports/football.jpg",
         "name": "Football Demi Finale 1/2 ",
-        "description": "La demi finale presentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
+        "description": "La demi finale présentant le match tant attendu Italie vs Espagne, lequel des deux ira en final ? !",
         "versus": [
             "Italie",
             "Espagne"
@@ -22,7 +22,7 @@
         "id": "fdm2",
         "img": "https://otakedev.com/share/preferences/sports/football.jpg",
         "name": "Football Demi Finale 2/2 ",
-        "description": "La demi finale presentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
+        "description": "La demi finale présentant le match tant attendu France vs Allemagne, lequel des deux ira en final ? !",
         "versus": [
             "France",
             "Allemagne"
@@ -41,14 +41,14 @@
         "id": "vf1",
         "img": "https://otakedev.com/share/preferences/sports/volleyball.jpg",
         "name": "Volley Finale 1/1 ",
-        "description": "La grande finale de volley opposant l'Italie et le Canada, un match a ne surtout pas rater !",
+        "description": "La grande finale de volley opposant l'Italie et le Canada, un match à ne surtout pas râter !",
         "versus": [
             "Italie",
             "Canada"
         ],
         "sport": "Volleyball",
         "site": {
-            "name": "Stade de la croisee",
+            "name": "Stade de la croisée",
             "latitude": 48.924072,
             "longitude": 2.352351
         },
@@ -136,7 +136,7 @@
         "id": "fc1",
         "img": "https://otakedev.com/share/preferences/sports/curling.jpg",
         "name": "Curling Finale 1",
-        "description": "La grande finale ! Evenement a ne pas rater pour les fans de nettoyage au balai.",
+        "description": "La grande finale ! Evenement à ne pas râter pour les fans de nettoyage au balai.",
         "versus": [
             "Autriche",
             "Allemagne"
@@ -154,13 +154,13 @@
     {
         "id": "fp1",
         "img": "https://otakedev.com/share/preferences/sports/petanque.jpg",
-        "name": "Petanque Finale 1",
-        "description": "La finale de petanque, le nouveaux sport des jeux olympique. Qui sera le grand maitre des boules ?",
+        "name": "Pétanque Finale 1",
+        "description": "La finale de pétanque, le nouveaux sport des jeux olympique. Qui sera le grand maître des boules ?",
         "versus": [
             "France",
             "Monaco"
         ],
-        "sport": "Petanque",
+        "sport": "Pétanque",
         "site": {
             "name": "Stade de France",
             "latitude": 48.940065,
@@ -176,8 +176,8 @@
         "name": "Tennis Quart de finale 5/4",
         "description": "Le quart de finale opposant Lepetit et Legrand, un match de taille, encore une fois.",
         "versus": [
-            "Lepetit Te",
-            "Legrand Me"
+            "Lepetit Té",
+            "Legrand Mé"
         ],
         "sport": "Tennis",
         "site": {
@@ -192,8 +192,8 @@
     {
         "id": "rhf1",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 1/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 1/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "Canada"
@@ -211,8 +211,8 @@
     {
         "id": "rhf2",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 2/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 2/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "France",
             "Canada"
@@ -230,8 +230,8 @@
     {
         "id": "rhf3",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 3/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 3/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Italie",
             "Espagne"
@@ -249,8 +249,8 @@
     {
         "id": "rhf4",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 4/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 4/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Belgique",
             "Canada"
@@ -268,8 +268,8 @@
     {
         "id": "rhf5",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 5/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 5/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "France"
@@ -287,8 +287,8 @@
     {
         "id": "rhf6",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 6/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 6/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "Canada"
@@ -306,8 +306,8 @@
     {
         "id": "rhf7",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 7/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 7/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "Canada"
@@ -325,8 +325,8 @@
     {
         "id": "rhf8",
         "img": "https://otakedev.com/share/preferences/sports/rugby.png",
-        "name": "Rugby Huiteme de finale 8/8",
-        "description": "Les huitiemes de finale commencent, quelles equipes seront selectionnees ?",
+        "name": "Rugby Huitème de finale 8/8",
+        "description": "Les huitièmes de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "Canada"
@@ -345,7 +345,7 @@
         "id": "hdf1",
         "img": "https://otakedev.com/share/preferences/sports/handball.png",
         "name": "Handball Demi finale 1/4",
-        "description": "Les quarts de finale commencent, quelles equipes seront selectionnees ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "France",
             "Canada"
@@ -364,7 +364,7 @@
         "id": "hdf2",
         "img": "https://otakedev.com/share/preferences/sports/handball.png",
         "name": "Handball Demi finale 2/4",
-        "description": "Les quarts de finale commencent, quelles equipes seront selectionnees ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Etats-Unis",
             "Espagne"
@@ -383,7 +383,7 @@
         "id": "hdf3",
         "img": "https://otakedev.com/share/preferences/sports/handball.png",
         "name": "Handball Demi finale 3/4",
-        "description": "Les quarts de finale commencent, quelles equipes seront selectionnees ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Italie",
             "Turquie"
@@ -402,7 +402,7 @@
         "id": "hdf4",
         "img": "https://otakedev.com/share/preferences/sports/handball.png",
         "name": "Handball Demi finale 4/4",
-        "description": "Les quarts de finale commencent, quelles equipes seront selectionnees ?",
+        "description": "Les quarts de finale commencent, quelles équipes seront sélectionnées ?",
         "versus": [
             "Belgique",
             "Monaco"
