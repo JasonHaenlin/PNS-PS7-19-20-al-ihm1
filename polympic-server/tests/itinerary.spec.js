@@ -36,10 +36,10 @@ const prefs_t_d = {
   tourism: ['']
 };
 
-global.access2 = 10;
+/* global.access2 = 10;
 global.meal = 18;
 let iti = Itinerary.generateItinerary(prefs);
-console.log(iti);
+console.log(iti); */
 
 describe('Obtenir un itinéraire', () => {
   let iti_t_d;
