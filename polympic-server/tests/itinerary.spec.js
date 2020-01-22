@@ -29,7 +29,7 @@ const prefs_t_d = {
 
 /* Itinerary.access2 = 5;
 Itinerary.meal = 13;
-let iti = Itinerary.generateItinerary(prefs);
+let iti = Itinerary.generateItinerary(prefs_d);
 console.log(iti); */
 
 describe('Obtenir un itinéraire', () => {

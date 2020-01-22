@@ -8,10 +8,10 @@ const compiler = require('../utils/compiler');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
 const SELF = { latitude: 48.922456, longitude: 2.361977 };
 
-let access1 = 2;
-let access2 = 5;
-let access3 = 10;
-let meal = 12;
+global.access1 = 2;
+global.access2 = 5;
+global.access3 = 10;
+global.meal = 12;
 
 module.exports = {
   access1,
@@ -23,7 +23,6 @@ module.exports = {
     let itinerary = [];
     let Stime = 0;
     let Etime = 0;
-    let access = 1800;
     if (prefs.handicap.length > 0) {
       if (prefs.handicap[0].split(':')[1] === '1') {
         access = this.access1 * 60;
