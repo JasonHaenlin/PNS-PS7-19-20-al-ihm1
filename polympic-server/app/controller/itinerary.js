@@ -6,6 +6,7 @@ const Restaurant = require('./restaurant');
 const TouristicsSites = require('./touristic_sites');
 const compiler = require('../utils/compiler');
 const getHourfromDate = (timestamp) => new Date(timestamp * 1000).getHours();
+const SELF = { latitude: 48.922456, longitude: 2.361977 };
 
 let access1 = 2;
 let access2 = 5;
@@ -79,20 +80,20 @@ module.exports = {
     let newIti = [];
     let restoB = false;
     let resto = Restaurant.getRestaurants();
+    resto = Restaurant.restaurantsWithDistance(SELF, resto);
     let dateGroup;
+    let hourGroup;
+    let dateGroupNext;
+    let hourGroupNext;
     for (let i = 0; i < itinerary.length; i++) {
       dateGroup = itinerary[i][0].startTime;
-      if (i < itinerary.length - 1) {
-        dateGroupNext = itinerary[i + 1][0].startTime;
-      }
-      let hourGroup = getHourfromDate(dateGroup);
-      if (i < itinerary.length - 1) {
-        hourGroupNext = getHourfromDate(dateGroupNext);
-      }
+      hourGroup = getHourfromDate(dateGroup);
       if (hourGroup < this.meal) {
         newIti.push(itinerary[i]);
       }
       if (i < itinerary.length - 1) {
+        dateGroupNext = itinerary[i + 1][0].startTime;
+        hourGroupNext = getHourfromDate(dateGroupNext);
         if (hourGroupNext > this.meal && hourGroup < this.meal || hourGroup === this.meal) {
           resto.forEach(r => {
             r.startTime = itinerary[i][0].startTime + 3600 + access;
@@ -132,6 +133,7 @@ module.exports = {
       }
       freeTime = end - start;
       tourism = TouristicsSites.TouristicSitesWithinDuration(freeTime);
+      tourism = TouristicsSites.TouristicSitesWithDistance(SELF, tourism);
       if (freeTime > 600) {
         tourism.forEach(t => {
           t.startTime = start;
