@@ -104,7 +104,7 @@ pipeline {
                   sh 'git clone git@github.com:PNS-PS7and8/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1.git'
                 }
                 dir('../../node-app/PNS-PS7-19-20-pns-ps7-19-20-al-ihm1/'){
-                  sh 'git checkout develop'
+                  sh 'git checkout master'
                 }
               }
             }

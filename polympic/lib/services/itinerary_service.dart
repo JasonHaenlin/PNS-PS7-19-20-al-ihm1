@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' show Client;
 import 'package:polympic/config/env_config.dart';
 import 'package:polympic/mocks/itinerary_mock.dart';
-import 'package:polympic/models/category_model.dart';
 import 'package:polympic/models/itenary_model.dart';
 import 'package:polympic/services/category_service.dart';
 import 'package:polympic/services/core/utils.dart';
@@ -18,7 +17,6 @@ class ItineraryService {
   Future<ItineraryModel> getData() async {
     final tags = categoryService.categories;
     final params = buildOptions(tags);
-    final url = envConfig.apiBaseUrl + 'itinerary' + params;
     if (envConfig.mocked) {
       return fetchMockedData();
     }
