@@ -1,6 +1,6 @@
 # PS7 AL-IHM-1
 
-##DSL project
+## DSL project
 
 To compile the project and run the tests :
 `mvn clean package`
