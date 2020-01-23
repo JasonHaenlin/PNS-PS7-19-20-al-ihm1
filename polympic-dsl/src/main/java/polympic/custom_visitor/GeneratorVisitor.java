@@ -1,6 +1,5 @@
 package polympic.custom_visitor;
 
-import org.antlr.v4.runtime.tree.TerminalNode;
 import polympic.antlr_generated.PolygramBaseVisitor;
 import polympic.antlr_generated.PolygramParser;
 import polympic.event_state.NoSuchStateException;
@@ -121,7 +120,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             this.subject = GeneratorVisitor.EVENT_IN_PREF;
             result += subject + " of lib.getEventsMatchingUserPreferences(array, user_prefs)) { ";
         } else {
-            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
+            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
         }
         this.updateIndentEnteringBlock();
         return result;
@@ -142,7 +141,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             this.subject = GeneratorVisitor.STEP;
             result += subject + " of array) {";
         } else {
-            throw new IllegalArgumentException(ctx.getText() + " is not defined.");
+            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
         }
         this.updateIndentEnteringBlock();
         this.updateIndentEnteringBlock();
@@ -179,6 +178,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             if (ctx.THEN() != null) {
                 result += this.visitStatement(ctx.statement());
             }
+        } else {
+            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
         }
         this.updateIndentClosingBlock();
         result += this.goToLine();
@@ -314,6 +315,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
                 result += " + ";
             } else if (ctx.MINUS() != null) {
                 result += " - ";
+            } else {
+                throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
             }
             result += visitNumber(ctx.number(1));
         }
@@ -346,6 +349,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             result += " <= ";
         else if (ctx.NE() != null)
             result += " != ";
+        else throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
+
         result += this.visitNumber(ctx.number(1));
         return result;
     }
@@ -367,13 +372,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
             result += " && ";
         } else if (ctx.OR() != null) {
             result += " || ";
-        }
+        } else throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
         result += this.visitExpr(ctx.expr());
         return result;
-    }
-
-    @Override
-    public String visitTerminal(TerminalNode terminalNode) {
-        return null;
     }
 }
