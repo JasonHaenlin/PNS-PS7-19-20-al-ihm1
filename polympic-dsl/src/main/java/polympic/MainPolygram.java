@@ -3,6 +3,10 @@ package polympic;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
+import polympic.antlr_generated.PolygramLexer;
+import polympic.antlr_generated.PolygramParser;
+import polympic.custom_visitor.GeneratorVisitor;
+import polympic.custom_visitor.ThrowableSyntaxErrorException;
 
 import java.io.IOException;
 import java.util.BitSet;

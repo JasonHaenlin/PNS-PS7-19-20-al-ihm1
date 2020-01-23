@@ -2,6 +2,8 @@ package polympic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import polympic.custom_visitor.ThrowableSyntaxErrorException;
+import polympic.event_state.NoSuchStateException;
 
 import java.io.IOException;
 

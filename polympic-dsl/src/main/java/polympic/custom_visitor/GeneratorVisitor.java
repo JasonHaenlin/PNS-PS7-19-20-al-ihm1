@@ -1,6 +1,10 @@
-package polympic;
+package polympic.custom_visitor;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
+import polympic.antlr_generated.PolygramBaseVisitor;
+import polympic.antlr_generated.PolygramParser;
+import polympic.event_state.NoSuchStateException;
+import polympic.event_state.PlaceState;
 
 public class GeneratorVisitor extends PolygramBaseVisitor<String> {
 

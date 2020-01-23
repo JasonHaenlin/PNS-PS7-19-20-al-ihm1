@@ -1,4 +1,4 @@
-package polympic;
+package polympic.event_state;
 
 public enum PlaceState {
 
@@ -12,7 +12,7 @@ public enum PlaceState {
         this.state = state;
     }
 
-    String getState(){
+    public String getState(){
         return this.state;
     }
 

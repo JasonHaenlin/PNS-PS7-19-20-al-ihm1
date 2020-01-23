@@ -1,4 +1,4 @@
-package polympic;
+package polympic.event_state;
 
 import java.util.NoSuchElementException;
 

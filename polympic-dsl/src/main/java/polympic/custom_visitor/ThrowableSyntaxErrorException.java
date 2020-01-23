@@ -1,4 +1,4 @@
-package polympic;
+package polympic.custom_visitor;
 
 public class ThrowableSyntaxErrorException extends RuntimeException {
 
