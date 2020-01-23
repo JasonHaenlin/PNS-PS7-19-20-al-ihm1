@@ -1,5 +1,7 @@
 grammar Polygram;
 
+@header {package polympic.antlr_generated;}
+
 // parser rules :
 
 program:
