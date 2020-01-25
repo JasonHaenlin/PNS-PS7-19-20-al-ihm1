@@ -21,7 +21,7 @@ you need *flutter installed* for this part
 
 make sure to follow those instruction before running the next command.
 
-[Flutter instructions](../polympic/readme.md)
+[Flutter instructions](../polympic/README.md)
 
 `npm run flutter-deploy`
 

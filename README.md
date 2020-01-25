@@ -4,7 +4,7 @@
 
 The different sections
 
-- flutter app : [polympic](./polympic/readme.md)
+- flutter app : [polympic](./polympic/README.md)
 - Nodejs Server : [polympic-server](./polympic-server/readme.md)
 - DSL (Domain Specific Language) using Antlr : polympic-dsl
 
