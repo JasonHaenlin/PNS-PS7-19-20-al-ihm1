@@ -9,6 +9,9 @@ To compile the project and generate a valid jar, run from the root of the maven 
 
 `mvn clean compile assembly:single`
 
+To execute the jar file :
+`java -jar path/to/file.jar`
+
 After modifying the grammar, you must generate ANTLR files with a visitor structure and no listener :
 Download ANTLR jar file then :
 
