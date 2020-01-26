@@ -39,7 +39,7 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitProgram(PolygramParser.ProgramContext ctx) {
         String result = "";
-        if (ctx.sub_prog_events() != null) {
+        if (ctx.sub_prog_events(0) != null) {
             for (PolygramParser.Sub_prog_eventsContext subProgEvents : ctx.sub_prog_events()) {
                 result += this.visitSub_prog_events(subProgEvents);
             }
@@ -65,21 +65,18 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitSub_prog_events(PolygramParser.Sub_prog_eventsContext ctx) {
         String result = "";
-        if (ctx.CONCERNING() != null) {
-            indentation++;
-            result += "for (const ";
-            result += this.visitSubject_events(ctx.subject_events());
-            for (PolygramParser.StatementContext statementContext : ctx.statement()) {
-                result += this.visitStatement(statementContext);
-            }
-            this.updateIndentClosingBlock();
-            result += this.goToLine();
-            result += "} ";
-            result += this.goToLine();
-            this.updateIndentClosingBlock();
-            return result;
-        } else
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
+        indentation++;
+        result += "for (const ";
+        result += this.visitSubject_events(ctx.subject_events());
+        for (PolygramParser.StatementContext statementContext : ctx.statement()) {
+            result += this.visitStatement(statementContext);
+        }
+        this.updateIndentClosingBlock();
+        result += this.goToLine();
+        result += "} ";
+        result += this.goToLine();
+        this.updateIndentClosingBlock();
+        return result;
     }
 
     /**
@@ -93,19 +90,16 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitSub_prog_steps(PolygramParser.Sub_prog_stepsContext ctx) {
         String result = "";
-        if (ctx.CONCERNING() != null) {
-            result += "for (const ";
-            result += this.visitSubject_it_steps(ctx.subject_it_steps());
-            for (PolygramParser.StatementContext statementContext : ctx.statement()) {
-                result += this.visitStatement(statementContext);
-            }
-            this.updateIndentClosingBlock();
-            result += this.goToLine();
-            result += "} ";
-            result += this.goToLine();
-            return result;
-        } else
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
+        result += "for (const ";
+        result += this.visitSubject_it_steps(ctx.subject_it_steps());
+        for (PolygramParser.StatementContext statementContext : ctx.statement()) {
+            result += this.visitStatement(statementContext);
+        }
+        this.updateIndentClosingBlock();
+        result += this.goToLine();
+        result += "} ";
+        result += this.goToLine();
+        return result;
     }
 
     /**
@@ -163,11 +157,8 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitStatement(PolygramParser.StatementContext ctx) {
         String result = "";
-        if (ctx.action() != null || ctx.condition() != null) {
-            result += goToLine() + this.visitChildren(ctx);
-            return result;
-        } else
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
+        result += goToLine() + this.visitChildren(ctx);
+        return result;
     }
 
     /**
@@ -258,13 +249,10 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitStr_cmp(PolygramParser.Str_cmpContext ctx) {
         String result = "";
-        if (ctx.IDENTIFIER() != null) {
-            result += this.subject + "." + ctx.IDENTIFIER(0).getText();
-            result += " === ";
-            result += "\"" + ctx.IDENTIFIER(1) + "\"";
-            return result;
-        } else
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
+        result += this.subject + "." + ctx.IDENTIFIER(0).getText();
+        result += " === ";
+        result += "\"" + ctx.IDENTIFIER(1) + "\"";
+        return result;
     }
 
     /**
@@ -279,8 +267,6 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
      */
     @Override
     public String visitBool_cmp(PolygramParser.Bool_cmpContext ctx) {
-        if (ctx.IS() == null)
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
         return this.subject + ".sport === \"" + ctx.IDENTIFIER().getText() + "\"";
     }
 
@@ -297,9 +283,6 @@ public class GeneratorVisitor extends PolygramBaseVisitor<String> {
     @Override
     public String visitPlace_state(PolygramParser.Place_stateContext ctx) {
         String result = "";
-        if (ctx.IDENTIFIER() == null) {
-            throw new IllegalArgumentException(ctx.getText() + " is not defined in the GeneratorVisitor.");
-        }
         for (PlaceState state : PlaceState.values()) {
             if (ctx.IDENTIFIER().getText().equals(state.getState())) {
                 result += "lib.setState(\"" + ctx.getText() + "\", " + this.subject + ");";
