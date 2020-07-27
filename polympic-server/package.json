@@ -30,7 +30,7 @@
         "geolib": "^3.2.1",
         "google-maps": "^3.3.0",
         "http-errors": "~1.6.2",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "apidoc": "^0.19.1",
         "winston": "^3.2.1"
     },
