@@ -44,7 +44,7 @@
         "mocha": "^7.0.0",
         "nodemon": "^2.0.2",
         "nyc": "^15.0.0",
-        "snyk": "^1.278.1",
+        "snyk": "^1.1012.0",
         "sonarqube-scanner": "^2.5.0",
         "supertest": "^4.0.2"
     },
